@@ -54,7 +54,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
        ibadd.setOnClickListener(this);
 
         UserContainer.DesasignarUser();   //DETACHING USER!
-
+        GenerarTesteo();
     }
 
 

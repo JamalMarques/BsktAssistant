@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.ExifInterface;
 import android.os.Environment;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.skynet.basketassistant.R;
@@ -53,14 +54,17 @@ public class Manejo_Imagenes {
 
     public static void Grabar_Imagen(Bitmap bitmap,String imagename){  //Lo va a guardar en el directorio de Imagenes!!
 
-        OutputStream Foutp = null;
+        FileOutputStream Foutp = null;
         File f = new File(Url,imagename);
         try{
             Foutp = new FileOutputStream(f);
             bitmap.compress(Bitmap.CompressFormat.JPEG,100,Foutp);
             Foutp.flush();
             Foutp.close();
-        }catch(Exception e){ e.printStackTrace(); }
+        }catch(Exception e){
+            Log.e("PUTA MADRE",e.getMessage()+"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            e.printStackTrace();
+        }
     }
 
     public static Bitmap Hacer_cubo_imagen(Bitmap bitmap){

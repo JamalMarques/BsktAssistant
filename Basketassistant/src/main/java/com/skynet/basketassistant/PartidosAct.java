@@ -40,17 +40,13 @@ public class PartidosAct extends Activity implements View.OnClickListener,Frag_l
         setContentView(R.layout.activity_partidos);
 
         bun_equip = getIntent().getExtras();   //solo lo uso para bun_usr.getString("Nom_Equip") ---> nombre equipo seleccionado
+        //bun_equip.getString("Nom_Equip") NOMBRE DEL EQUIPO QUE SE LE PASO A LA ACTIVITY
 
-        DBEquipos dbe = new DBEquipos(this);
+        /*DBEquipos dbe = new DBEquipos(this);
         dbe.Modolectura();
-        equipo = dbe.DameEquipo(bun_equip.getString("Nom_Equip"));
+        equipo = dbe.DameEquipo(bun_equip.getString("Nom_Equip"));*/
 
-        //cargo el fragment de la lista de partidos
-        Frag_listapartidos frag_l_partidos = new Frag_listapartidos(equipo);
-        FragmentTransaction ft = getFragmentManager().beginTransaction();
-        ft.replace(R.id.framelayout_listpartidos,frag_l_partidos);
-        ft.setTransition(FragmentTransaction.TRANSIT_ENTER_MASK);
-        ft.commit();
+        LoadListFragment(bun_equip.getString("Nom_Equip"));
 
         b_back = (Button)findViewById(R.id.bback);
         b_eliminar = (Button)findViewById(R.id.b_eliminar);
@@ -92,6 +88,16 @@ public class PartidosAct extends Activity implements View.OnClickListener,Frag_l
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         ft.replace(R.id.framelayout_exppartidos,frag);
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);  //Transition effect.
+        ft.commit();
+    }
+
+    public void LoadListFragment(String nom_equip){
+        //cargo el fragment de la lista de partidos
+        //Frag_listapartidos frag_l_partidos = new Frag_listapartidos(equipo);
+        Frag_listapartidos frag_l_partidos = Frag_listapartidos.getInstance(nom_equip);
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        ft.replace(R.id.framelayout_listpartidos,frag_l_partidos);
+        ft.setTransition(FragmentTransaction.TRANSIT_ENTER_MASK);
         ft.commit();
     }
 }

@@ -29,7 +29,7 @@ public class SelecTeamAct extends Activity implements View.OnClickListener,Frag_
 
     private SystemUiHider mSystemUiHider;
 
-    Button ibagregarteam,iblogout;
+    private Button ibagregarteam,iblogout;
     //Bundle bun_usr;    //bun_usr.getString("User") ---> nombre del usuario!
 
     @Override
@@ -73,7 +73,9 @@ public class SelecTeamAct extends Activity implements View.OnClickListener,Frag_
 
     @Override
     public void onSelecciondeItemEquipo(Equipo equip) {  //Aca va a venir luego del onItemClick() del Fragment1
-        Frag_expequip frag = new Frag_expequip(equip);
+        //Frag_expequip frag = new Frag_expequip(equip);
+        //get instance
+        Frag_expequip frag = Frag_expequip.getInstance(equip.getId());
         CambiarFrameLayout(frag);
     }
 

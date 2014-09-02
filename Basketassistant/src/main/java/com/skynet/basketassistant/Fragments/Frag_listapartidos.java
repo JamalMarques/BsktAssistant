@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.skynet.basketassistant.Adapters.ItemAdapterPartidos;
+import com.skynet.basketassistant.Datos.DBEquipos;
 import com.skynet.basketassistant.Datos.DBPartidos;
 import com.skynet.basketassistant.Modelo.Equipo;
 import com.skynet.basketassistant.Modelo.Partido;
@@ -35,8 +36,18 @@ public class Frag_listapartidos extends Fragment implements AdapterView.OnItemCl
     private Callback mcallback = callbackvacio;
 
 
-    public Frag_listapartidos(Equipo eq){
+    /*public Frag_listapartidos(Equipo eq){
         equipo = eq;
+    }*/
+
+    public Frag_listapartidos(){/*Empty constructor*/}
+
+    public static Frag_listapartidos getInstance(String nom_equip){
+        Frag_listapartidos flp = new Frag_listapartidos();
+        Bundle bun = new Bundle();
+        bun.putString("nom_equip",nom_equip);
+        flp.setArguments(bun);
+        return flp;
     }
 
     public interface Callback{   //Creo la interfaz que me va a servir para enlazarlo cn el metodo "onSelecciondeItemPartido" del Activity que lo contiene.
@@ -56,6 +67,12 @@ public class Frag_listapartidos extends Fragment implements AdapterView.OnItemCl
 
         View view;
         view = inflater.inflate(R.layout.frag_listapartidos,container,false);
+
+        //Bundle
+        DBEquipos dbe = new DBEquipos(getActivity());
+        dbe.Modolectura();
+        equipo = dbe.DameEquipo(getArguments().getString("nom_equip")); //instancia el equipo
+        dbe.Cerrar();
 
         lvpartidos = (ListView)view.findViewById(R.id.lvpartidos);
         lvpartidos.setOnItemClickListener(this);

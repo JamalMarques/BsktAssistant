@@ -79,8 +79,17 @@ public class Frag_expjugador extends Fragment implements View.OnClickListener {
     private DBRebotes dbr;
 
 
-    public Frag_expjugador(Jugador jug){
+    /*public Frag_expjugador(Jugador jug){
         jugador = jug;
+    }*/
+    public Frag_expjugador(){/*Empty constructor*/}
+
+    public static Frag_expjugador getInstance(int id_jug){
+        Frag_expjugador fexpj = new Frag_expjugador();
+        Bundle bun = new Bundle();
+        bun.putInt("id_jug",id_jug);
+        fexpj.setArguments(bun);
+        return fexpj;
     }
 
     @Override
@@ -93,6 +102,12 @@ public class Frag_expjugador extends Fragment implements View.OnClickListener {
         dbr = new DBRebotes(getActivity());
         dbl.Modolectura();
         dbr.Modolectura();
+
+        //Bundle
+        DBJugadores dbj = new DBJugadores(getActivity());
+        dbj.Modolectura();
+        jugador = dbj.DameJugador(getArguments().getInt("id_jug"));
+        dbj.Cerrar();
 
         iv_fotoplayer = (ImageView)view.findViewById(R.id.iv_fotoplayer);
         iv_fotoplayer.setOnClickListener(this);

@@ -54,7 +54,8 @@ public class JugadoresAct extends Activity implements View.OnClickListener,Frag_
         equipo = dbe.DameEquipo(bun_equip.getString("Nom_Equip"));
         dbe.Cerrar();
 
-        Frag_jugadores frag_jugadores = new Frag_jugadores(equipo);
+        //Frag_jugadores frag_jugadores = new Frag_jugadores(equipo);
+        Frag_jugadores frag_jugadores = Frag_jugadores.getInstance(equipo.getId());
         CambiarFragment1(frag_jugadores);
     }
 
@@ -78,9 +79,11 @@ public class JugadoresAct extends Activity implements View.OnClickListener,Frag_
     }
 
     @Override
-    public void onSeleccionItemJugador(Jugador jug) {
+    public void onSeleccionItemJugador(int id_jug) {
 
-        Frag_expjugador frag = new Frag_expjugador(jug);
+        //Frag_expjugador frag = new Frag_expjugador(jug);
+        //getinstance
+        Frag_expjugador frag = Frag_expjugador.getInstance(id_jug);
         CambiarFragment2(frag);
     }
 

@@ -3,6 +3,7 @@ package com.skynet.basketassistant.Fragments;
 import android.app.Fragment;
 import android.content.Intent;
 import android.database.Cursor;
+import android.nfc.tech.NfcBarcode;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.skynet.basketassistant.Datos.DBCiudades;
+import com.skynet.basketassistant.Datos.DBEquipos;
 import com.skynet.basketassistant.Datos.DBPartidos;
 import com.skynet.basketassistant.JugadoresAct;
 import com.skynet.basketassistant.Modelo.Equipo;
@@ -19,6 +21,8 @@ import com.skynet.basketassistant.Modelo.Partido;
 import com.skynet.basketassistant.PartidosAct;
 import com.skynet.basketassistant.R;
 import com.skynet.basketassistant.SelecTeamAct;
+
+import java.lang.reflect.Array;
 
 /**
  * Created by jamal on 22/04/14.
@@ -31,8 +35,17 @@ public class Frag_expequip extends Fragment implements View.OnClickListener{
     private int num_games,num_wins,num_loses;
     private Button b_eliminar,b_partidos,b_jugadores;
 
-    public Frag_expequip(Equipo equip){
+    /*public Frag_expequip(Equipo equip){
         equipo = equip;
+    }*/
+    public Frag_expequip(){}
+
+    public static Frag_expequip getInstance(int equipo_id){
+        Frag_expequip fexp = new Frag_expequip();
+        Bundle bun = new Bundle();
+        bun.putInt("equipo_id",equipo_id);
+        fexp.setArguments(bun);
+        return fexp;
     }
 
     @Override
@@ -42,6 +55,10 @@ public class Frag_expequip extends Fragment implements View.OnClickListener{
         view = inflater.inflate(R.layout.frag_expequip,container,false);
 
         //bun_usr = getArguments();
+        DBEquipos dbe = new DBEquipos(getActivity());
+        dbe.Modolectura();
+        equipo = dbe.DameEquipo(getArguments().getInt("equipo_id"));
+        dbe.Cerrar();
 
         num_games = 0;
         num_wins = 0;

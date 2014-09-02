@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.skynet.basketassistant.Adapters.ItemAdapterJugadores;
+import com.skynet.basketassistant.Datos.DBEquipos;
 import com.skynet.basketassistant.Datos.DBJugadores;
 import com.skynet.basketassistant.Modelo.Equipo;
 import com.skynet.basketassistant.Modelo.Jugador;
@@ -35,19 +36,28 @@ public class Frag_jugadores extends Fragment implements AdapterView.OnItemClickL
 
     private Callback m_callback = callbackvacio;
 
-    public Frag_jugadores(Equipo eq){
+    /*public Frag_jugadores(Equipo eq){
         equipo = eq;
+    }*/
+    public Frag_jugadores(){/*Empty constructor*/}
+
+    public static Frag_jugadores getInstance(int equipo_id){
+        Frag_jugadores fjug = new Frag_jugadores();
+        Bundle bun = new Bundle();
+        bun.putInt("equipo_id",equipo_id);
+        fjug.setArguments(bun);
+        return fjug;
     }
 
 
     public interface Callback{
-        public void onSeleccionItemJugador(Jugador jug);
+        public void onSeleccionItemJugador(int id_jug);
     }
 
 
     public static Callback callbackvacio = new Callback() { //callback vacio para sobreescribir
         @Override
-        public void onSeleccionItemJugador(Jugador jug) {
+        public void onSeleccionItemJugador(int id_jug) {
             //vacio!
         }
     };
@@ -63,6 +73,12 @@ public class Frag_jugadores extends Fragment implements AdapterView.OnItemClickL
 
         gv_jugadores = (GridView)view.findViewById(R.id.gv_jugadores);
         gv_jugadores.setOnItemClickListener(this);
+
+        //Bundle
+        DBEquipos dbe = new DBEquipos(getActivity());
+        dbe.Modolectura();
+        equipo = dbe.DameEquipo(getArguments().getInt("equipo_id"));
+        dbe.Cerrar();
 
         DBJugadores dbj = new DBJugadores(getActivity());
         dbj.Modolectura();
@@ -120,12 +136,12 @@ public class Frag_jugadores extends Fragment implements AdapterView.OnItemClickL
 
         int id_jug = Integer.parseInt(((TextView)view.findViewById(R.id.tv_hidden_idplayer)).getText().toString());
 
-        DBJugadores dbj = new DBJugadores(getActivity());
+       /* DBJugadores dbj = new DBJugadores(getActivity());
         dbj.Modolectura();
         Jugador jug = dbj.DameJugador(id_jug);
-        dbj.Cerrar();
+        dbj.Cerrar();*/
 
-        m_callback.onSeleccionItemJugador(jug);
+        m_callback.onSeleccionItemJugador(id_jug);
     }
 
     private class SetearAdaptador extends AsyncTask<Void,Void,Void>{
