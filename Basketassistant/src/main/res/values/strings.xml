@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Basket Assistant</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="Nombre">Nombre</string>
+    <string name="Password">Password</string>
+    <string name="title_activity_fullscreen">FullscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_selec_team">SelecTeamAct</string>
+    <string name="title_activity_new_user">NewUserAct</string>
+    <string name="Passwordrepite">Repite Password</string>
+    <string name="Correo">Mail</string>
+    <string name="title_activity_frag_listequip2">Frag_listequip2</string>
+    <string name="title_activity_frag_equiplista">Frag_equiplista</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Crear_Equipo">Creacion de Equipo</string>
+    <string name="Ciudad">Ciudad</string>
+    <string name="Crear">Crear</string>
+    <string name="Nom_Usuario">Nom_Usuario</string>
+    <string name="Nom_Equip">Nom_Equip</string>
+    <string name="Ciud_Equip">Ciud_Equip</string>
+    <string name="Jugadores_team">Jugadores</string>
+    <string name="Partidos_jugados">Partidos</string>
+    <string name="Jugar_team">Jugar</string>
+    <string name="Eliminar">Eliminar</string>
+    <string name="Ciudades">Ciudades</string>
+    <string name="Provincia">Provincia</string>
+    <string name="Agregar">Agregar</string>
+    <string name="Cancelar">Cancelar</string>
+    <string name="title_activity_partidos">PartidosAct</string>
+    <string name="Mail">Mail</string>
+    <string name="Final">Final</string>
+    <string name="Atras">Atras</string>
+    <string name="title_activity_jugadores">JugadoresAct</string>
+    <string name="Apellido">Apellido</string>
+    <string name="Altura">Altura</string>
+    <string name="Posicion">Posicion</string>
+    <string name="Peso">Peso</string>
+    <string name="Numero">Numero</string>
+    <string name="Juegos">Juegos</string>
+    <string name="Anotaciones">Anot.</string>
+    <string name="Disparos">Disparos</string>
+    <string name="Triples">Triples</string>
+    <string name="Dobles">Dobles</string>
+    <string name="Simples">Simples</string>
+    <string name="PorcentajeEfectividad">Efect:</string>
+    <string name="Robos">Robos</string>
+    <string name="Tapas">Tapas</string>
+    <string name="Asistencias">Asist.</string>
+    <string name="Rebotes">Rebotes</string>
+    <string name="Def">Def</string>
+    <string name="Ofen">Ofen</string><string name="Rol">Rol</string><string name="Puntos">Puntos</string><string name="Fules">Fules</string><string name="Lanzamientos">Lanz.</string><string name="Acertados">Acert.</string><string name="Fallidos">Fallidos</string><string name="Fecha">Fecha</string><string name="Defensivos">Defensivos</string><string name="Ofensivos">Ofensivos</string><string name="LogOut">Log Out</string><string name="NewTeam">Nuevo</string><string name="Jugadores">Jugadores</string><string name="Kg">Kg</string><string name="Nuevo_Jugador">Nuevo Jugador</string>
+
+</resources>

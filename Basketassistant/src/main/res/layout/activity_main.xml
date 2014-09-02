@@ -1,0 +1,87 @@
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center"
+    android:background="@drawable/wood_background">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout"
+        android:layout_margin="20dp"
+        android:background="@drawable/layout_bg"
+        android:gravity="center"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/Nombre"
+            android:id="@+id/tv_nom" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/etnom"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/Password"
+            android:id="@+id/tv_pass" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:id="@+id/etpass"
+            android:layout_below="@+id/etnom"
+            android:layout_alignLeft="@+id/etnom"
+            android:layout_alignStart="@+id/etnom"
+            android:gravity="center" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/layout_bg"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ibadd"
+            android:background="@null"
+            android:src="@android:drawable/ic_input_add"
+            android:layout_alignTop="@+id/ibnext"
+            android:layout_alignLeft="@+id/etpass"
+            android:layout_alignStart="@+id/etpass"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ibnext"
+            android:src="@android:drawable/ic_media_ff"
+            android:layout_below="@+id/etpass"
+            android:layout_alignRight="@+id/etpass"
+            android:layout_alignEnd="@+id/etpass"
+            android:contentDescription="hola"
+            android:layout_weight="1"
+            android:background="@null" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,67 @@
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/wood_background">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="0.5">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:background="@drawable/layout_bg"
+            android:layout_margin="5dp">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/iblogout"
+                android:text="@string/LogOut"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/Nom_Usuario"
+                android:id="@+id/tvuser"
+                android:textColor="@color/Gris_Negro"
+                android:textStyle="bold"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:layout_weight="0" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/NewTeam"
+                android:id="@+id/ibagregarteam"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:name="com.skynet.basketassistant.Fragments.Frag_listaequip"
+            tools:layout="@layout/frag_listaequip"
+            android:layout_weight="0.5"
+            android:layout_marginLeft="5dp"
+            android:id="@+id/fragment" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/framelayout_contdetalle"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="0.3"></FrameLayout>
+
+</LinearLayout>

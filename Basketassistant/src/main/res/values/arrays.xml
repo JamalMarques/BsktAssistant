@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="categorias">
+        <item>Infantil</item>
+        <item>Premini</item>
+        <item>Mini</item>
+        <item>Cadetes</item>
+        <item>Juveniles</item>
+        <item>Primera</item>
+        <item>Pre-Maxiliga</item>
+        <item>Maxiliga</item>
+    </string-array>
+
+    <string-array name="roles">
+        <item>Base</item>
+        <item>Ayuda-Base</item>
+        <item>Alero</item>
+        <item>Ala-Pivot</item>
+        <item>Pivot</item>
+    </string-array>
+</resources>

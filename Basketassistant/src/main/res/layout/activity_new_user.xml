@@ -1,0 +1,126 @@
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/Gris_1">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        android:layout_margin="20dp"
+        android:background="@color/Blanco">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Nombre"
+            android:id="@+id/tvnom"
+            android:layout_alignParentTop="true"
+            android:layout_alignLeft="@+id/etnom"
+            android:layout_alignStart="@+id/etnom" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/etnom"
+            android:layout_below="@+id/tvnom"
+            android:layout_centerHorizontal="true"
+            android:textColor="#1d1d1d"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Password"
+            android:id="@+id/tvpass1"
+            android:layout_below="@+id/etnom"
+            android:layout_alignLeft="@+id/etnom"
+            android:layout_alignStart="@+id/etnom" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:id="@+id/etpass1"
+            android:layout_below="@+id/tvpass1"
+            android:layout_alignLeft="@+id/tvpass1"
+            android:layout_alignStart="@+id/tvpass1"
+            android:textColor="#202020"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Passwordrepite"
+            android:id="@+id/tvpass2"
+            android:layout_below="@+id/etpass1"
+            android:layout_alignLeft="@+id/etpass1"
+            android:layout_alignStart="@+id/etpass1" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:id="@+id/etpass2"
+            android:layout_below="@+id/tvpass2"
+            android:layout_alignLeft="@+id/tvpass2"
+            android:layout_alignStart="@+id/tvpass2"
+            android:textColor="#171717"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Mail"
+            android:id="@+id/tvcorreo"
+            android:layout_centerVertical="true"
+            android:layout_alignLeft="@+id/etpass2"
+            android:layout_alignStart="@+id/etpass2" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:ems="10"
+            android:id="@+id/etcorreo"
+            android:layout_below="@+id/tvcorreo"
+            android:layout_alignLeft="@+id/tvcorreo"
+            android:gravity="center" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:gravity="center" >
+
+            <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/ibback"
+                android:background="@null"
+                android:src="@android:drawable/ic_menu_close_clear_cancel"
+                android:layout_alignTop="@+id/ibok"
+                android:layout_alignLeft="@+id/etcorreo"
+                android:layout_weight="1" />
+
+            <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/ibok"
+                android:background="@null"
+                android:src="@android:drawable/ic_menu_add"
+                android:layout_below="@+id/etcorreo"
+                android:layout_alignRight="@+id/etcorreo"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

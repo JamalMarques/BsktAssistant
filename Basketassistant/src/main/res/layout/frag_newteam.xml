@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/Crear_Equipo"
+        android:id="@+id/twtitulo_crearteam"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:textColor="#8eb8de"
+        android:textStyle="bold" />
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/linearLayout">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="top|center"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/Nombre"
+                android:id="@+id/tvnom_team"
+                android:textColor="#8eb8de"
+                android:layout_above="@+id/tvciudad_team"
+                android:layout_toLeftOf="@+id/twtitulo_crearteam"
+                android:layout_gravity="center_horizontal" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/etnombre_team"
+                android:layout_alignBottom="@+id/tvnom_team"
+                android:layout_toRightOf="@+id/tvnom_team"
+                android:layout_alignRight="@+id/twtitulo_crearteam"
+                android:layout_alignEnd="@+id/twtitulo_crearteam"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/Ciudad"
+                android:id="@+id/tvciudad_team"
+                android:layout_centerVertical="true"
+                android:layout_alignLeft="@+id/tvnom_team"
+                android:layout_alignStart="@+id/tvnom_team"
+                android:singleLine="false"
+                android:textColor="#8eb8de"
+                android:layout_marginTop="10dp" />
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/spinner_ciu"
+                android:layout_alignBottom="@+id/tvciudad_team"
+                android:layout_toRightOf="@+id/tvnom_team"
+                android:layout_below="@+id/etnombre_team"
+                android:layout_alignRight="@+id/etnombre_team"
+                android:layout_alignEnd="@+id/etnombre_team"
+                android:textAlignment="center"
+                android:gravity="center" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ibaddciu"
+                android:layout_alignBottom="@+id/spinner_ciu"
+                android:layout_toRightOf="@+id/spinner_ciu"
+                android:src="@android:drawable/ic_menu_add"
+                android:layout_alignTop="@+id/spinner_ciu"
+                android:background="@null"
+                android:layout_marginTop="10dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:layout_marginTop="20dp"
+            android:gravity="top|center">
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/spinner_cate"
+                android:popupBackground="@color/Celeste_Letras"
+                android:gravity="center"
+                android:paddingLeft="5dp"
+                android:paddingRight="10dp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/Crear"
+                android:id="@+id/bcrear"
+                android:textColor="#fcfdff"
+                android:background="@color/Celeste_botones"
+                android:layout_below="@+id/spinner_ciu"
+                android:layout_toLeftOf="@+id/ibaddciu"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="10dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

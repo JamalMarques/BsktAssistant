@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/layout_bg">
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/prog_bar" />
+
+    <GridView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/gv_jugadores"
+        android:numColumns="2"
+        android:textFilterEnabled="false"
+        android:gravity="center"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:verticalSpacing="10dp"
+        android:horizontalSpacing="7dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/layout_bg"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:visibility="invisible" />
+
+</LinearLayout>

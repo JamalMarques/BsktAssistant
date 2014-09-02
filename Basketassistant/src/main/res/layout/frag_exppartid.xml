@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/layout_bg"
+        android:paddingTop="4dp"
+        android:paddingBottom="2dp"
+        android:layout_marginBottom="5dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="99"
+                android:id="@+id/tv_p_global_e1"
+                android:layout_weight="1"
+                android:gravity="center|right"
+                android:textStyle="bold"
+                android:textColor="@color/Gris_2_score" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Equipo1"
+                android:id="@+id/tv_nom_equip1"
+                android:layout_marginTop="2dp"
+                android:textColor="@color/Celeste_Letras"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.2"
+            android:gravity="center"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/Final"
+                android:id="@+id/tv_final"
+                android:gravity="center"
+                android:textStyle="bold|italic"
+                android:textColor="@color/Celeste_Letras"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:layout_width="42dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/iw_result"
+                android:src="@android:drawable/ic_menu_compass"
+                android:layout_weight="1"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="31/12/99"
+                android:id="@+id/tv_fecha"
+                android:textColor="@color/Celeste_Letras" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="left">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="99"
+                android:id="@+id/tv_p_global_e2"
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:gravity="left"
+                android:textColor="@color/Gris_2_score" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Equipo2"
+                android:id="@+id/tv_nom_equip2"
+                android:layout_marginTop="2dp"
+                android:textColor="@color/Celeste_Letras"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/layout_bg"
+        android:layout_marginBottom="10dp"
+        android:paddingLeft="5dp"
+        android:paddingTop="15dp"
+        android:paddingRight="5dp"
+        android:paddingBottom="10dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.9">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"></LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Medium Text"
+                android:id="@+id/tv_nom_equip1b"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/Celeste_Letras"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Medium Text"
+                android:id="@+id/tv_nom_equip2b"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/Celeste_Letras"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Q1"
+                android:id="@+id/tv_q1"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/Gris_Negro"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="00"
+                android:id="@+id/tv_q1_e1"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/Gris_Negro" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="00"
+                android:id="@+id/tv_q1_e2"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/Gris_Negro" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Q2"
+                android:id="@+id/tv_q1"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/Gris_Negro"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="00"
+                android:id="@+id/tv_q2_e1"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:singleLine="false"
+                android:textColor="@color/Gris_Negro" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="00"
+                android:id="@+id/tv_q2_e2"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/Gris_Negro" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Q3"
+                android:id="@+id/tv_q3"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/Gris_Negro"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="00"
+                android:id="@+id/tv_q3_e1"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/Gris_Negro" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="00"
+                android:id="@+id/tv_q3_e2"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/Gris_Negro" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Q4"
+                android:id="@+id/tv_q4"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/Gris_Negro"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="00"
+                android:id="@+id/tv_q4_e1"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/Gris_Negro" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="00"
+                android:id="@+id/tv_q4_e2"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/Gris_Negro" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="EXT"
+                android:id="@+id/tv_ext"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/VerdeClaro_1"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="00"
+                android:id="@+id/tv_ext_e1"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/Gris_Negro" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="00"
+                android:id="@+id/tv_ext_e2"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/Gris_Negro" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/layout_bg"
+        android:layout_marginLeft="15dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="false"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="5dp"
+        android:gravity="center">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/load_circle" />
+
+        <view
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            class="com.skynet.basketassistant.ListView.HorizontalListView"
+            android:id="@+id/h_listview"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:visibility="invisible" />
+    </LinearLayout>
+
+</LinearLayout>
