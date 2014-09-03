@@ -2,6 +2,7 @@ package com.skynet.basketassistant.Otros;
 
 import android.app.Activity;
 import android.app.FragmentTransaction;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
 import com.skynet.basketassistant.Fragments.Frag_listapartidos;
@@ -21,5 +22,9 @@ public class Manejo_Vistas {
         ft.commit();*/
 
         //EXPERIMENTAL
+    }
+
+    public static void Fragment_en_Framelayout(Activity act,int framelayoutid,Fragment frag,Bundle bun){
+        
     }
 }
