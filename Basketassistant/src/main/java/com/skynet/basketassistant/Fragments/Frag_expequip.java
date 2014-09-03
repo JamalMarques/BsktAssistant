@@ -3,26 +3,21 @@ package com.skynet.basketassistant.Fragments;
 import android.app.Fragment;
 import android.content.Intent;
 import android.database.Cursor;
-import android.nfc.tech.NfcBarcode;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.skynet.basketassistant.Datos.DBCiudades;
 import com.skynet.basketassistant.Datos.DBEquipos;
 import com.skynet.basketassistant.Datos.DBPartidos;
-import com.skynet.basketassistant.JugadoresAct;
+import com.skynet.basketassistant.Activities.JugadoresAct;
 import com.skynet.basketassistant.Modelo.Equipo;
 import com.skynet.basketassistant.Modelo.Partido;
-import com.skynet.basketassistant.PartidosAct;
+import com.skynet.basketassistant.Activities.PartidosAct;
 import com.skynet.basketassistant.R;
-import com.skynet.basketassistant.SelecTeamAct;
-
-import java.lang.reflect.Array;
 
 /**
  * Created by jamal on 22/04/14.

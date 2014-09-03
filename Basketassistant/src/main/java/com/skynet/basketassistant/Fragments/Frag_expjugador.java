@@ -322,7 +322,13 @@ public class Frag_expjugador extends Fragment implements View.OnClickListener {
             jugador.setImagen_url(jugador.getApellido()+String.valueOf(jugador.getId())+".jpg");  //Ya almaceno el nombre de la imagen en el objeto ya creado
             dbj.Cerrar();
             try{
-                iv_fotoplayer.setImageBitmap(Bitmap.createScaledBitmap(Manejo_Imagenes.Cubo_Rotar_Rotacion(jugador.getImagen_url()),350,350,true)); //Luego probar con el metodo CargarFoto!
+                Bitmap bm = Manejo_Imagenes.Cubo_Rotar_Rotacion(jugador.getImagen_url());
+                if(bm == null)
+                    Toast.makeText(getActivity(),getString(R.string.NoFoto),Toast.LENGTH_SHORT).show();
+                else{
+                    iv_fotoplayer.setImageBitmap(Bitmap.createScaledBitmap(bm,350,350,true));
+                }
+                //iv_fotoplayer.setImageBitmap(Bitmap.createScaledBitmap(Manejo_Imagenes.Cubo_Rotar_Rotacion(jugador.getImagen_url()),350,350,true)); //Luego probar con el metodo CargarFoto!
             }catch (Exception e){
                 System.out.println(e.getMessage().toString());
             }

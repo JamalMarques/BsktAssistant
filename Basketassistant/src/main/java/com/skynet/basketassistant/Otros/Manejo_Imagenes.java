@@ -81,8 +81,11 @@ public class Manejo_Imagenes {
     public static Bitmap Cubo_Rotar_Rotacion(String nom_img_jugador) throws Exception{  //Roto la imagen segun la foto que es y la recorto en cubo al mismo tiempo
         String file = Url+nom_img_jugador;
         Bitmap bitmap = Dame_Bitmap(nom_img_jugador);
-        Bitmap bitmap2 = Hacer_cubo_imagen(Rotar_Imagen(bitmap, Dame_Rotacion(file)));
-        return bitmap2;
+        if(bitmap != null) {
+            Bitmap bitmap2 = Hacer_cubo_imagen(Rotar_Imagen(bitmap, Dame_Rotacion(file)));
+            return bitmap2;
+        }else
+            return null;
     }
 
 }

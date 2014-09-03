@@ -1,7 +1,6 @@
 package com.skynet.basketassistant.Fragments;
 
 import android.app.Fragment;
-import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -22,7 +21,7 @@ import com.skynet.basketassistant.Modelo.Equipo;
 import com.skynet.basketassistant.Modelo.UserContainer;
 import com.skynet.basketassistant.Modelo.Usuario;
 import com.skynet.basketassistant.R;
-import com.skynet.basketassistant.SelecTeamAct;
+import com.skynet.basketassistant.Activities.SelecTeamAct;
 
 import java.util.ArrayList;
 import java.util.List;

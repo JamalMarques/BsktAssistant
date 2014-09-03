@@ -1,12 +1,8 @@
 package com.skynet.basketassistant.Fragments;
 
-import android.app.AlertDialog;
 import android.app.Fragment;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,13 +15,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.skynet.basketassistant.Datos.DBJugadores;
-import com.skynet.basketassistant.JugadoresAct;
+import com.skynet.basketassistant.Activities.JugadoresAct;
 import com.skynet.basketassistant.Modelo.Equipo;
-import com.skynet.basketassistant.Modelo.Jugador;
-import com.skynet.basketassistant.Otros.Manejo_Imagenes;
 import com.skynet.basketassistant.R;
-
-import java.io.File;
 
 /**
  * Created by Jamal on 05/07/14.

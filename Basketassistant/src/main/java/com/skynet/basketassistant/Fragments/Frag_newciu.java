@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import com.skynet.basketassistant.Datos.DBCiudades;
 import com.skynet.basketassistant.R;
-import com.skynet.basketassistant.SelecTeamAct;
+import com.skynet.basketassistant.Activities.SelecTeamAct;
 
 /**
  * Created by Jamal on 22/05/14.

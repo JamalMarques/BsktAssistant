@@ -10,18 +10,15 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.skynet.basketassistant.Adapters.ItemAdapterEquip;
 import com.skynet.basketassistant.Adapters.ItemAdapterJugadores;
 import com.skynet.basketassistant.Datos.DBEquipos;
 import com.skynet.basketassistant.Datos.DBJugadores;
 import com.skynet.basketassistant.Datos.DBPartidos;
-import com.skynet.basketassistant.JugadoresAct;
 import com.skynet.basketassistant.ListView.HorizontalListView;
 import com.skynet.basketassistant.Modelo.Jugador;
 import com.skynet.basketassistant.Modelo.Partido;
-import com.skynet.basketassistant.PartidosAct;
+import com.skynet.basketassistant.Activities.PartidosAct;
 import com.skynet.basketassistant.R;
 
 /**
