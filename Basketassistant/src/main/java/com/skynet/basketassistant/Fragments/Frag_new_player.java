@@ -1,5 +1,6 @@
 package com.skynet.basketassistant.Fragments;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
@@ -111,8 +112,6 @@ public class Frag_new_player extends Fragment implements View.OnClickListener{
                     builder.show();
                 }*/
     }
-
-
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {

@@ -51,12 +51,17 @@ public class Frag_listaequip extends Fragment implements AdapterView.OnItemClick
         }
     };
 
+    public Frag_listaequip(){/*Empty constructor*/}
 
+    public static Frag_listaequip getInstance(){
+        Frag_listaequip fle = new Frag_listaequip();
+        return fle;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view;
-        view = inflater.inflate(R.layout.frag_listaequip,container);
+        view = inflater.inflate(R.layout.frag_listaequip,container, false);
 
         listview = (ListView)view.findViewById(R.id.lvequip);
         String nombreuser = UserContainer.DameUser().getNombre(); //getActivity().getIntent().getExtras().getString("User");
@@ -116,10 +121,10 @@ public class Frag_listaequip extends Fragment implements AdapterView.OnItemClick
     }
 
     public void Refrescar(){  //solo queda arreglar esto para que refresque... entra bien al metodo.
+        adapterlist.notifyDataSetChanged();
+    }
 
-        Toast.makeText(getActivity(),"Entra al refresco de lista",Toast.LENGTH_SHORT).show();
-        //adapterlist.notifyDataSetChanged();
-
-
+    public void Refrescar(Equipo equip){
+        adapterlist.AgregarALista(equip.getNombre());
     }
 }

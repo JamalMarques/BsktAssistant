@@ -25,12 +25,12 @@ public class SelecTeamAct extends BaseActivity implements View.OnClickListener,F
     private SystemUiHider mSystemUiHider;
 
     private Button ibagregarteam,iblogout;
+    private Frag_listaequip frag_listaequipos;
     //Bundle bun_usr;    //bun_usr.getString("User") ---> nombre del usuario!
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       // alskdalskdnaklsnd
         setContentView(R.layout.activity_selec_team);
 
         //bun_usr = getIntent().getExtras();
@@ -45,6 +45,8 @@ public class SelecTeamAct extends BaseActivity implements View.OnClickListener,F
         ibagregarteam.setOnClickListener(this);
         iblogout.setOnClickListener(this);
 
+        frag_listaequipos = Frag_listaequip.getInstance();
+        CambiarFrameLayoutLista(frag_listaequipos);
     }
 
     @Override
@@ -74,10 +76,15 @@ public class SelecTeamAct extends BaseActivity implements View.OnClickListener,F
         CambiarFrameLayout(frag);
     }
 
-    public void RefrescarListaFrag1(){  //se llama desde el fragment frag_newteam al hacer la insercion
+    public void RefrescarListaEquipos(){  //se llama desde el fragment frag_newteam al hacer la insercion
                                         //aca se refrescara el framelayout con el equipo recien creado (como si lo ubiera seleccionado)
-        Frag_listaequip fraglista = (Frag_listaequip)getFragmentManager().findFragmentById(R.id.fragment);
-        fraglista.Refrescar();
+        /*Frag_listaequip fraglista = (Frag_listaequip)getFragmentManager().findFragmentById(R.id.fragment);
+        fraglista.Refrescar();*/
+        frag_listaequipos.Refrescar();
+    }
+
+    public void RefrescarListaEquiposAdd(Equipo equip){
+        frag_listaequipos.Refrescar(equip);
     }
 
     public void CambiarFrameLayout(Fragment frag){
@@ -86,6 +93,13 @@ public class SelecTeamAct extends BaseActivity implements View.OnClickListener,F
         //frag.setArguments(bun_usr);
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         ft.replace(R.id.framelayout_contdetalle,frag);
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        ft.commit();
+    }
+
+    public void CambiarFrameLayoutLista(Fragment frag){
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        ft.replace(R.id.framelayout_lista,frag);
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
         ft.commit();
     }

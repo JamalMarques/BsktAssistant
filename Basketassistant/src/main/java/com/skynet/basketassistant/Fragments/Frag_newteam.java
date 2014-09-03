@@ -108,7 +108,7 @@ public class Frag_newteam extends Fragment implements View.OnClickListener{
                     Equipo newequip = dbe.DameEquipo(tvnom.getText().toString());
 
                     //antes de llamarlo tengo q llamar a un metodo de SelecTeamAct para que refresque la lista antes.
-                    ((SelecTeamAct)getActivity()).RefrescarListaFrag1();
+                    ((SelecTeamAct)getActivity()).RefrescarListaEquiposAdd(newequip);
                     ((SelecTeamAct)getActivity()).onSelecciondeItemEquipo(newequip);
 
                 }else

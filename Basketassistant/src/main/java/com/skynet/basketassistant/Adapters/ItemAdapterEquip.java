@@ -62,4 +62,9 @@ public class ItemAdapterEquip extends BaseAdapter {
 
         return rowview;
     }
+
+    public void AgregarALista(String nom_equip){
+        equiposlista.add(nom_equip);
+        notifyDataSetChanged();
+    }
 }
