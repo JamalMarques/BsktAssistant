@@ -19,15 +19,16 @@
             android:background="@drawable/layout_bg"
             android:layout_margin="5dp">
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <ImageButton
+                android:layout_width="60dp"
+                android:layout_height="44dp"
                 android:id="@+id/iblogout"
-                android:text="@string/LogOut"
-                android:layout_weight="1" />
+                android:src="@drawable/abc_ic_ab_back_holo_light"
+                style="@style/ButtonGreenStyle1"
+                android:layout_marginLeft="3dp" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/Nom_Usuario"
@@ -36,22 +37,27 @@
                 android:textStyle="bold"
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp"
-                android:layout_weight="0" />
+                android:layout_weight="1"
+                android:gravity="center" />
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/NewTeam"
+            <ImageButton
+                android:layout_width="60dp"
+                android:layout_height="44dp"
                 android:id="@+id/ibagregarteam"
-                android:layout_weight="1" />
+                android:scaleType="centerCrop"
+                android:layout_marginRight="3dp"
+                style="@style/ButtonGreenStyle1" />
 
         </LinearLayout>
 
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="5dp"
-            android:id="@+id/framelayout_lista"></FrameLayout>
+            android:id="@+id/framelayout_lista"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"></FrameLayout>
 
     </LinearLayout>
 

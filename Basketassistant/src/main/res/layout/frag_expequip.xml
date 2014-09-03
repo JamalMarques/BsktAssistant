@@ -218,9 +218,8 @@
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true"
                         android:layout_gravity="right"
-                        android:background="@color/Celeste_botones"
-                        android:textColor="#ffffff"
-                        android:layout_marginRight="10dp" />
+                        android:layout_marginRight="10dp"
+                        style="@style/ButtonLightBlueStyle1" />
 
                     <Button
                         android:layout_width="120dp"
@@ -231,9 +230,8 @@
                         android:layout_alignLeft="@+id/bjugadores"
                         android:layout_alignStart="@+id/bjugadores"
                         android:layout_gravity="right"
-                        android:background="@color/Celeste_botones"
                         android:layout_marginTop="5dp"
-                        android:textColor="#ffffff" />
+                        style="@style/ButtonLightBlueStyle1" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -250,9 +248,8 @@
                         android:layout_alignTop="@+id/bjugadores"
                         android:layout_alignBottom="@+id/bpartidos"
                         android:layout_marginLeft="15dp"
-                        android:background="@color/Celeste_botones"
-                        android:textColor="#ffffff"
-                        android:layout_marginRight="15dp" />
+                        android:layout_marginRight="15dp"
+                        style="@style/ButtonLightBlueStyle1" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

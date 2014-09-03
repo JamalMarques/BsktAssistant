@@ -17,6 +17,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 
@@ -24,7 +25,7 @@ public class SelecTeamAct extends BaseActivity implements View.OnClickListener,F
 
     private SystemUiHider mSystemUiHider;
 
-    private Button ibagregarteam,iblogout;
+    private ImageButton ibagregarteam,iblogout;
     private Frag_listaequip frag_listaequipos;
     //Bundle bun_usr;    //bun_usr.getString("User") ---> nombre del usuario!
 
@@ -39,8 +40,8 @@ public class SelecTeamAct extends BaseActivity implements View.OnClickListener,F
         TextView nomusr = (TextView)findViewById(R.id.tvuser);
         nomusr.setText(UserContainer.DameUser().getNombre());
 
-        ibagregarteam = (Button)findViewById(R.id.ibagregarteam);
-        iblogout = (Button)findViewById(R.id.iblogout);
+        ibagregarteam = (ImageButton)findViewById(R.id.ibagregarteam);
+        iblogout = (ImageButton)findViewById(R.id.iblogout);
 
         ibagregarteam.setOnClickListener(this);
         iblogout.setOnClickListener(this);

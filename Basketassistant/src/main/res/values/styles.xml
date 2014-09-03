@@ -24,4 +24,17 @@
 
     <style name="ButtonBarButton" />
 
+    <style name="BaseBackground" >
+        <item name="android:background">@drawable/layout_bg</item>
+    </style>
+
+    <style name="ButtonGreenStyle1">
+        <item name="android:background">@drawable/button1_bg</item>
+    </style>
+
+    <style name="ButtonLightBlueStyle1">
+        <item name="android:background">@drawable/button2_bg</item>
+        <item name="android:textColor">@color/CelesteButton1</item>
+    </style>
+
 </resources>
