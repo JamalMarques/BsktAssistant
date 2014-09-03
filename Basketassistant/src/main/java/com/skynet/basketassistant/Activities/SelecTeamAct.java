@@ -30,7 +30,7 @@ public class SelecTeamAct extends BaseActivity implements View.OnClickListener,F
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       // requestWindowFeature(Window.FEATURE_NO_TITLE);
+       // alskdalskdnaklsnd
         setContentView(R.layout.activity_selec_team);
 
         //bun_usr = getIntent().getExtras();
