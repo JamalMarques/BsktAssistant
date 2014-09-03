@@ -15,7 +15,9 @@ import android.widget.TextView;
 
 import com.skynet.basketassistant.Datos.DBAsistencias;
 import com.skynet.basketassistant.Datos.DBFaltas;
+import com.skynet.basketassistant.Datos.DBJugadores;
 import com.skynet.basketassistant.Datos.DBLanzamientos;
+import com.skynet.basketassistant.Datos.DBPartidos;
 import com.skynet.basketassistant.Datos.DBRebotes;
 import com.skynet.basketassistant.Datos.DBRobos;
 import com.skynet.basketassistant.Datos.DBTapones;
@@ -50,9 +52,20 @@ public class Frag_exp_jug_part extends Fragment implements View.OnClickListener{
 
     private ImageButton b_back;
 
-    public Frag_exp_jug_part(Jugador jug,Partido part){
+    /*public Frag_exp_jug_part(Jugador jug,Partido part){
         jugador = jug;
         partido = part;
+    }*/
+
+    public Frag_exp_jug_part(){/*Empty constructor*/}
+
+    public static Frag_exp_jug_part getInstance(int id_jug,int id_part){
+        Frag_exp_jug_part fejp = new Frag_exp_jug_part();
+        Bundle bun = new Bundle();
+        bun.putInt("id_jug",id_jug);
+        bun.putInt("id_part",id_part);
+        fejp.setArguments(bun);
+        return fejp;
     }
 
     @Override
@@ -64,6 +77,16 @@ public class Frag_exp_jug_part extends Fragment implements View.OnClickListener{
         b_back.setOnClickListener(this);
         load_circle = (ProgressBar)view.findViewById(R.id.load_circle);
         iv_photoplayer = (ImageView)view.findViewById(R.id.iv_photoplayer);
+
+        //Bundle
+        DBJugadores dbj = new DBJugadores(getActivity());
+        dbj.Modolectura();
+        jugador = dbj.DameJugador(getArguments().getInt("id_jug"));
+        DBPartidos dbp = new DBPartidos(getActivity());
+        dbp.Modolectura();
+        partido = dbp.DamePartido(getArguments().getInt("id_part"));
+        dbj.Cerrar();
+        dbp.Cerrar();
 
         new CargaImagen_on_BG().execute();
 
@@ -224,7 +247,8 @@ public class Frag_exp_jug_part extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View view) {
         if( view.getId() == b_back.getId()){  //if i press back!
-            Frag_exppart frag = new Frag_exppart(partido);
+            //Frag_exppart frag = new Frag_exppart(partido);
+            Frag_exppart frag = Frag_exppart.getInstance(partido.getId());
             ((PartidosAct)getActivity()).CambiarFragmentLayout2(frag);
         }
     }

@@ -43,8 +43,18 @@ public class Frag_exppart extends Fragment implements AdapterView.OnItemClickLis
     private ProgressBar load_circle;
 
 
-    public Frag_exppart(Partido part){
+    /*public Frag_exppart(Partido part){
         partido = part;
+    }*/
+
+    public Frag_exppart(){/*Empty constructor*/}
+
+    public static Frag_exppart getInstance(int id_partido){
+        Frag_exppart fexp = new Frag_exppart();
+        Bundle bun = new Bundle();
+        bun.putInt("id_partido",id_partido);
+        fexp.setArguments(bun);
+        return fexp;
     }
 
 
@@ -54,7 +64,11 @@ public class Frag_exppart extends Fragment implements AdapterView.OnItemClickLis
         View view;
         view = inflater.inflate(R.layout.frag_exppartid,container,false);
 
-
+        //Bundle
+        DBPartidos dbp = new DBPartidos(getActivity());
+        dbp.Modolectura();
+        partido = dbp.DamePartido(getArguments().getInt("id_partido"));
+        dbp.Cerrar();
 
         if( partido != null ){
             CargaBasica(view);
@@ -131,7 +145,8 @@ public class Frag_exppart extends Fragment implements AdapterView.OnItemClickLis
         Jugador jug = dbj.DameJugador(id_jug);
         dbj.Cerrar();
 
-        Frag_exp_jug_part frag = new Frag_exp_jug_part(jug,partido);
+       // Frag_exp_jug_part frag = new Frag_exp_jug_part(jug,partido);
+        Frag_exp_jug_part frag = Frag_exp_jug_part.getInstance(id_jug,partido.getId());
         ((PartidosAct)getActivity()).CambiarFragmentLayout2(frag);
     }
 

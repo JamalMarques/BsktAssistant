@@ -75,7 +75,8 @@ public class PartidosAct extends Activity implements View.OnClickListener,Frag_l
     @Override
     public void onSeleccionItemPartido(Partido part) {
         Last_part_pressed = part;
-        Frag_exppart frag = new Frag_exppart(part);
+        //Frag_exppart frag = new Frag_exppart(part);
+        Frag_exppart frag = Frag_exppart.getInstance(part.getId());
         CambiarFragmentLayout2(frag);
     }
 
