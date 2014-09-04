@@ -12,10 +12,10 @@
         android:layout_height="wrap_content"
         android:focusableInTouchMode="false"
         android:gravity="center"
-        android:background="@drawable/layout_bg"
         android:clickable="false"
         android:id="@+id/linearLayout"
-        android:layout_margin="3dp">
+        android:paddingTop="1dp"
+        android:paddingBottom="1dp">
 
         <LinearLayout
             android:orientation="horizontal"
