@@ -21,20 +21,22 @@
             style="@style/BaseBackground">
 
             <Button
-                style="?android:attr/buttonStyleSmall"
+                style="@style/ButtonGreenStyle1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/Atras"
                 android:id="@+id/bback"
-                android:layout_weight="0.3" />
+                android:layout_weight="0.3"
+                android:layout_margin="5dp" />
 
             <Button
-                style="?android:attr/buttonStyleSmall"
+                style="@style/ButtonGreenStyle1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="X"
                 android:id="@+id/b_eliminar"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:layout_margin="5dp" />
 
         </LinearLayout>
 

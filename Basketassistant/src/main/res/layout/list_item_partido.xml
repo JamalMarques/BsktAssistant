@@ -48,8 +48,8 @@
                 android:layout_marginRight="10dp" >
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="1"
                     android:id="@+id/tv_idpartido"
@@ -62,8 +62,7 @@
                     android:text="Medium Text"
                     android:id="@+id/tv_fecha"
                     android:gravity="right"
-                    android:textColor="@color/black_overlay"
-                    android:textStyle="bold" />
+                    android:textColor="@color/black_overlay" />
 
             </LinearLayout>
         </LinearLayout>
@@ -84,7 +83,6 @@
                 android:text="Medium Text"
                 android:id="@+id/tv_result"
                 android:gravity="center"
-                android:textStyle="bold"
                 android:textColor="@color/VerdeClaro_1" />
 
         </LinearLayout>

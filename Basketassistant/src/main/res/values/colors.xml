@@ -14,8 +14,10 @@
     <color name="Verde_oscuro_1">#44a03c</color>
     <color name="lightblue_1">#62adff</color>
     <color name="Verdeclaro_2">#ff4ae538</color>
-    <color name="VerdeclaroFondoButton1">#1b4bff38</color>
+    <color name="VerdeclaroFondoPressButton1">#1b4bff38</color>
     <color name="Transparente">#00000000</color>
     <color name="CelesteButton1">#FF7ECFF1</color>
-    <color name="CelesteFondoButton1">#507ecff1</color>
+    <color name="CelesteFondoPressButton1">#507ecff1</color>
+    <color name="RojoDeleteButton">#ffe1311c</color>
+    <color name="RojoDeletePressButton">#41e1311c</color>
 </resources>

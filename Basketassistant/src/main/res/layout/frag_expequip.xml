@@ -58,11 +58,12 @@
                     android:gravity="right">
 
                     <Button
-                        style="?android:attr/buttonStyleSmall"
+                        style="@style/ButtonDeleteStyle1"
                         android:layout_width="wrap_content"
-                        android:layout_height="34dp"
+                        android:layout_height="30dp"
                         android:text="@string/Eliminar"
-                        android:id="@+id/b_eliminar" />
+                        android:id="@+id/b_eliminar"
+                        android:layout_marginRight="5dp" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -218,8 +219,9 @@
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true"
                         android:layout_gravity="right"
-                        android:layout_marginRight="10dp"
-                        style="@style/ButtonLightBlueStyle1" />
+                        android:layout_marginRight="5dp"
+                        style="@style/ButtonLightBlueStyle1"
+                        android:layout_marginTop="5dp" />
 
                     <Button
                         android:layout_width="120dp"
@@ -231,7 +233,8 @@
                         android:layout_alignStart="@+id/bjugadores"
                         android:layout_gravity="right"
                         android:layout_marginTop="5dp"
-                        style="@style/ButtonLightBlueStyle1" />
+                        style="@style/ButtonLightBlueStyle1"
+                        android:layout_marginLeft="5dp" />
                 </LinearLayout>
 
                 <LinearLayout
