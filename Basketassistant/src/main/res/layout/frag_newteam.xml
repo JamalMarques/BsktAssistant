@@ -90,7 +90,8 @@
                 android:src="@android:drawable/ic_menu_add"
                 android:layout_alignTop="@+id/spinner_ciu"
                 android:background="@null"
-                android:layout_marginTop="10dp" />
+                android:layout_marginTop="10dp"
+                style="@style/ButtonGreenStyle1" />
         </LinearLayout>
 
         <LinearLayout
@@ -115,13 +116,13 @@
                 android:layout_height="wrap_content"
                 android:text="@string/Crear"
                 android:id="@+id/bcrear"
-                android:textColor="#fcfdff"
-                android:background="@color/Celeste_botones"
                 android:layout_below="@+id/spinner_ciu"
                 android:layout_toLeftOf="@+id/ibaddciu"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="30dp"
-                android:layout_marginRight="10dp" />
+                style="@style/ButtonLightBlueStyle1"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp" />
 
         </LinearLayout>
 

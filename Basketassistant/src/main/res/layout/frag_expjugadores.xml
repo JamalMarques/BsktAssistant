@@ -11,21 +11,19 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/scrollView"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp">
+        android:id="@+id/scrollView">
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+            android:layout_height="fill_parent"
+            android:paddingTop="5dp">
 
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:background="@drawable/layout_bg"
-                android:layout_marginTop="10dp">
+                android:background="@drawable/layout_bg">
 
                 <LinearLayout
                     android:orientation="horizontal"
@@ -615,13 +613,15 @@
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:padding="10dp">
 
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/Eliminar"
-                    android:id="@+id/button" />
+                    android:id="@+id/button"
+                    style="@style/ButtonDeleteStyle1" />
             </LinearLayout>
 
         </LinearLayout>

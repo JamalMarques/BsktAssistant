@@ -35,12 +35,12 @@
 
     <style name="ButtonLightBlueStyle1">
         <item name="android:background">@drawable/button2_bg</item>
-        <item name="android:textColor">@color/CelesteButton1</item>
+        <item name="android:textColor">@drawable/button2_text</item>
     </style>
 
     <style name="ButtonDeleteStyle1">
         <item name="android:background">@drawable/button3_bg</item>
-        <item name="android:textColor">@color/RojoDeleteButton</item>
+        <item name="android:textColor">@drawable/button3_text</item>
         <item name="android:paddingLeft">5dp</item>
         <item name="android:paddingRight">5dp</item>
     </style>
