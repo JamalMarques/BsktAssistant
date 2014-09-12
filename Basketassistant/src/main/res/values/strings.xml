@@ -69,5 +69,6 @@
     <string name="Nuevo_Jugador">Nuevo Jugador</string>
     <string name="NoFoto">No se encontro la imagen</string>
     <string name="title_activity_game">GameActivity</string>
+    <string name="Points">Puntos</string>
 
 </resources>
