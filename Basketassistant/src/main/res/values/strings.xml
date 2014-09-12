@@ -52,7 +52,22 @@
     <string name="Asistencias">Asist.</string>
     <string name="Rebotes">Rebotes</string>
     <string name="Def">Def</string>
-    <string name="Ofen">Ofen</string><string name="Rol">Rol</string><string name="Puntos">Puntos</string><string name="Fules">Fules</string><string name="Lanzamientos">Lanz.</string><string name="Acertados">Acert.</string><string name="Fallidos">Fallidos</string><string name="Fecha">Fecha</string><string name="Defensivos">Defensivos</string><string name="Ofensivos">Ofensivos</string><string name="LogOut">Log Out</string><string name="NewTeam">Nuevo</string><string name="Jugadores">Jugadores</string><string name="Kg">Kg</string><string name="Nuevo_Jugador">Nuevo Jugador</string>
+    <string name="Ofen">Ofen</string>
+    <string name="Rol">Rol</string>
+    <string name="Puntos">Puntos</string>
+    <string name="Fules">Fules</string>
+    <string name="Lanzamientos">Lanz.</string>
+    <string name="Acertados">Acert.</string>
+    <string name="Fallidos">Fallidos</string>
+    <string name="Fecha">Fecha</string>
+    <string name="Defensivos">Defensivos</string>
+    <string name="Ofensivos">Ofensivos</string>
+    <string name="LogOut">Log Out</string>
+    <string name="NewTeam">Nuevo</string>
+    <string name="Jugadores">Jugadores</string>
+    <string name="Kg">Kg</string>
+    <string name="Nuevo_Jugador">Nuevo Jugador</string>
     <string name="NoFoto">No se encontro la imagen</string>
+    <string name="title_activity_game">GameActivity</string>
 
 </resources>

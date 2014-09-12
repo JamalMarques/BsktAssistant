@@ -45,4 +45,9 @@
         <item name="android:paddingRight">5dp</item>
     </style>
 
+    <style name="Text_Style_S">
+        <item name="android:textSize">@dimen/text_S</item>
+        <item name="android:textColor">@color/Gris_Negro</item>
+    </style>
+
 </resources>

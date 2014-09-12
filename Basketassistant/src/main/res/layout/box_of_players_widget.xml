@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content" android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="top|center">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/linear1">
+
+            <view
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                class="com.skynet.basketassistant.UI.Widgets.PlayerBoxWidget"
+                android:id="@+id/wplayer1" />
+
+            <view
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                class="com.skynet.basketassistant.UI.Widgets.PlayerBoxWidget"
+                android:id="@+id/wplayer2" />
+
+            <view
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                class="com.skynet.basketassistant.UI.Widgets.PlayerBoxWidget"
+                android:id="@+id/wplayer3" />
+
+            <view
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                class="com.skynet.basketassistant.UI.Widgets.PlayerBoxWidget"
+                android:id="@+id/wplayer4" />
+
+            <view
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                class="com.skynet.basketassistant.UI.Widgets.PlayerBoxWidget"
+                android:id="@+id/wplayer5" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/linear2">
+
+            <view
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                class="com.skynet.basketassistant.UI.Widgets.PlayerBoxWidget"
+                android:id="@+id/wplayer6" />
+
+            <view
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                class="com.skynet.basketassistant.UI.Widgets.PlayerBoxWidget"
+                android:id="@+id/wplayer7" />
+
+            <view
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                class="com.skynet.basketassistant.UI.Widgets.PlayerBoxWidget"
+                android:id="@+id/wplayer8" />
+
+            <view
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                class="com.skynet.basketassistant.UI.Widgets.PlayerBoxWidget"
+                android:id="@+id/wplayer9" />
+
+            <view
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                class="com.skynet.basketassistant.UI.Widgets.PlayerBoxWidget"
+                android:id="@+id/wplayer10" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/linear3">
+
+            <view
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                class="com.skynet.basketassistant.UI.Widgets.PlayerBoxWidget"
+                android:id="@+id/wplayer11" />
+
+            <view
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                class="com.skynet.basketassistant.UI.Widgets.PlayerBoxWidget"
+                android:id="@+id/wplayer12" />
+
+            <view
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                class="com.skynet.basketassistant.UI.Widgets.PlayerBoxWidget"
+                android:id="@+id/wplayer13" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

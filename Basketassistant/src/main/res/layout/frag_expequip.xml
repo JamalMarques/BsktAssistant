@@ -76,7 +76,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/imageView"
+                    android:id="@+id/imageViewPlayer"
                     android:src="@android:drawable/ic_menu_mylocation"
                     android:layout_alignTop="@+id/tvnomequip"
                     android:layout_toLeftOf="@+id/tvnomequip"
@@ -135,8 +135,8 @@
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text="Small Text"
                         android:id="@+id/tv_totalgames"
-                        android:layout_below="@+id/imageView"
-                        android:layout_toLeftOf="@+id/imageView"
+                        android:layout_below="@+id/imageViewPlayer"
+                        android:layout_toLeftOf="@+id/imageViewPlayer"
                         android:layout_weight="1"
                         android:layout_marginTop="10dp" />
 
