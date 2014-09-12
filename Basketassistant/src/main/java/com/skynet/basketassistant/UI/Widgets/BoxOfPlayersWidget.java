@@ -10,6 +10,7 @@ import android.widget.RelativeLayout;
 import com.skynet.basketassistant.Modelo.Jugador;
 import com.skynet.basketassistant.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -27,24 +28,40 @@ public class BoxOfPlayersWidget extends RelativeLayout {
         linear1 = (LinearLayout)getRootView().findViewById(R.id.linear1);
         linear2 = (LinearLayout)getRootView().findViewById(R.id.linear2);
         linear3 = (LinearLayout)getRootView().findViewById(R.id.linear3);
+
         populateList();
 
     }
 
-    private void populateList(){
-        listPlayerWidget.add((PlayerBoxWidget)getRootView().findViewById(R.id.wplayer1));
-        listPlayerWidget.add((PlayerBoxWidget)getRootView().findViewById(R.id.wplayer2));
-        listPlayerWidget.add((PlayerBoxWidget)getRootView().findViewById(R.id.wplayer3));
-        listPlayerWidget.add((PlayerBoxWidget)getRootView().findViewById(R.id.wplayer4));
-        listPlayerWidget.add((PlayerBoxWidget)getRootView().findViewById(R.id.wplayer5));
-        listPlayerWidget.add((PlayerBoxWidget)getRootView().findViewById(R.id.wplayer6));
-        listPlayerWidget.add((PlayerBoxWidget)getRootView().findViewById(R.id.wplayer7));
-        listPlayerWidget.add((PlayerBoxWidget)getRootView().findViewById(R.id.wplayer8));
-        listPlayerWidget.add((PlayerBoxWidget)getRootView().findViewById(R.id.wplayer9));
-        listPlayerWidget.add((PlayerBoxWidget)getRootView().findViewById(R.id.wplayer10));
-        listPlayerWidget.add((PlayerBoxWidget)getRootView().findViewById(R.id.wplayer11));
-        listPlayerWidget.add((PlayerBoxWidget)getRootView().findViewById(R.id.wplayer12));
-        listPlayerWidget.add((PlayerBoxWidget)getRootView().findViewById(R.id.wplayer13));
+    public void populateList(){
+        PlayerBoxWidget w1 = (PlayerBoxWidget)getRootView().findViewById(R.id.wplayer1);
+        PlayerBoxWidget w2 = (PlayerBoxWidget)getRootView().findViewById(R.id.wplayer2);
+        PlayerBoxWidget w3 = (PlayerBoxWidget)getRootView().findViewById(R.id.wplayer3);
+        PlayerBoxWidget w4 = (PlayerBoxWidget)getRootView().findViewById(R.id.wplayer4);
+        PlayerBoxWidget w5 = (PlayerBoxWidget)getRootView().findViewById(R.id.wplayer5);
+        PlayerBoxWidget w6 = (PlayerBoxWidget)getRootView().findViewById(R.id.wplayer6);
+        PlayerBoxWidget w7 = (PlayerBoxWidget)getRootView().findViewById(R.id.wplayer7);
+        PlayerBoxWidget w8 = (PlayerBoxWidget)getRootView().findViewById(R.id.wplayer8);
+        PlayerBoxWidget w9 = (PlayerBoxWidget)getRootView().findViewById(R.id.wplayer9);
+        PlayerBoxWidget w10 = (PlayerBoxWidget)getRootView().findViewById(R.id.wplayer10);
+        PlayerBoxWidget w11 = (PlayerBoxWidget)getRootView().findViewById(R.id.wplayer11);
+        PlayerBoxWidget w12 = (PlayerBoxWidget)getRootView().findViewById(R.id.wplayer12);
+        PlayerBoxWidget w13 = (PlayerBoxWidget)getRootView().findViewById(R.id.wplayer13);
+
+        listPlayerWidget = new ArrayList<PlayerBoxWidget>();
+        listPlayerWidget.add(w1);
+        listPlayerWidget.add(w2);
+        listPlayerWidget.add(w3);
+        listPlayerWidget.add(w4);
+        listPlayerWidget.add(w5);
+        listPlayerWidget.add(w6);
+        listPlayerWidget.add(w7);
+        listPlayerWidget.add(w8);
+        listPlayerWidget.add(w9);
+        listPlayerWidget.add(w10);
+        listPlayerWidget.add(w11);
+        listPlayerWidget.add(w12);
+        listPlayerWidget.add(w13);
     }
 
     @Override
@@ -58,10 +75,6 @@ public class BoxOfPlayersWidget extends RelativeLayout {
 
     public List<PlayerBoxWidget> getListPlayerWidget() {
         return listPlayerWidget;
-    }
-
-    public void setListPlayerWidget(List<PlayerBoxWidget> listPlayerWidget) {
-        this.listPlayerWidget = listPlayerWidget;
     }
 
     public void setPlayers(List<Jugador> listplayers,int numberOfPlayers){

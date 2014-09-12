@@ -245,7 +245,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/Jugar_team"
-                        android:id="@+id/bjugar"
+                        android:id="@+id/bPlay"
                         android:layout_toRightOf="@+id/bjugadores"
                         android:layout_alignTop="@+id/bjugadores"
                         android:layout_alignBottom="@+id/bpartidos"

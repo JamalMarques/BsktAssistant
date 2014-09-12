@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.skynet.basketassistant.Activities.GameActivity;
 import com.skynet.basketassistant.Datos.DBCiudades;
 import com.skynet.basketassistant.Datos.DBEquipos;
 import com.skynet.basketassistant.Datos.DBPartidos;
@@ -28,7 +29,7 @@ public class Frag_expequip extends Fragment implements View.OnClickListener{
     //private Bundle bun_usr;
     private TextView tvequip,tvciudad,tv_games,tv_wins,tv_loses;
     private int num_games,num_wins,num_loses;
-    private Button b_eliminar,b_partidos,b_jugadores;
+    private Button b_eliminar,b_partidos,b_jugadores,b_play;
 
     /*public Frag_expequip(Equipo equip){
         equipo = equip;
@@ -68,8 +69,10 @@ public class Frag_expequip extends Fragment implements View.OnClickListener{
         tv_loses = (TextView)view.findViewById(R.id.tv_loses);
         b_partidos = (Button)view.findViewById(R.id.bpartidos);
         b_jugadores = (Button)view.findViewById(R.id.bjugadores);
+        b_play = (Button)view.findViewById(R.id.bPlay);
         b_partidos.setOnClickListener(this);
         b_jugadores.setOnClickListener(this);
+        b_play.setOnClickListener(this);
 
 
 
@@ -130,21 +133,28 @@ public class Frag_expequip extends Fragment implements View.OnClickListener{
     public void onClick(View view) {
         //thake care, you need eliminate rows in others tables!!
 
-        if( view.getId() == b_partidos.getId() ){  //presiona el boton de "PARTIDOS"
+        if( view == b_partidos ){  //presiona el boton de "PARTIDOS"
 
             Intent intent = new Intent(getActivity(), PartidosAct.class);
             Bundle bun_equip = new Bundle();
-            bun_equip.putString("Nom_Equip",equipo.getNombre());
+            bun_equip.putString("Nom_Equip", equipo.getNombre());
             intent.putExtras(bun_equip);
             startActivity(intent);
         }else
-            if( view.getId() == b_jugadores.getId() ){ //presiona el boton "JUGADORES"
+            if( view == b_jugadores){ //presiona el boton "JUGADORES"
 
                 Intent intent = new Intent(getActivity(), JugadoresAct.class);
                 Bundle bun_equip = new Bundle();
                 bun_equip.putString("Nom_Equip",equipo.getNombre());
                 intent.putExtras(bun_equip);
                 startActivity(intent);
-            }
+            }else
+                 if( view == b_play){
+                     Intent intent = new Intent(getActivity(), GameActivity.class);
+                     Bundle bun_equip = new Bundle();
+                     bun_equip.putString("Nom_Equip",equipo.getNombre());
+                     intent.putExtras(bun_equip);
+                     startActivity(intent);
+                 }
     }
 }
