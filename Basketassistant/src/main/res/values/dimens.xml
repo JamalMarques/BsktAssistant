@@ -13,4 +13,8 @@
     <dimen name="left_padding_staticsBoxW">2.5dp</dimen>
     <dimen name="right_margin_text_staticsBoxW">10dp</dimen>
 
+    <!-- ShootButton-->
+    <dimen name="width_image_shoot">70dp</dimen>
+    <dimen name="height_image_shoot">50dp</dimen>
+
     </resources>

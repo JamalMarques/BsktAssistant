@@ -13,4 +13,40 @@
         android:id="@+id/view"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
+
+    <view
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        class="com.skynet.basketassistant.UI.Widgets.StatisticsBoxWidget"
+        android:id="@+id/view2"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/layout_bg">
+
+        <view
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            class="com.skynet.basketassistant.UI.Widgets.ShootButtonWidget"
+            android:id="@+id/view3" />
+
+        <view
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            class="com.skynet.basketassistant.UI.Widgets.ShootButtonWidget"
+            android:id="@+id/view4" />
+
+        <view
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            class="com.skynet.basketassistant.UI.Widgets.ShootButtonWidget"
+            android:id="@+id/view5" />
+    </LinearLayout>
 </RelativeLayout>

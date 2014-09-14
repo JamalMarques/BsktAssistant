@@ -46,7 +46,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
        ibadd.setOnClickListener(this);
 
         UserContainer.DesasignarUser();   //DETACHING USER!
-        //GenerarTesteo();
+        GenerarTesteo();
     }
 
 

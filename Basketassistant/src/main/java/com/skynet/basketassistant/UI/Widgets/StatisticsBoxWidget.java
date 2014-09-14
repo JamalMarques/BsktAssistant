@@ -12,7 +12,7 @@ import com.skynet.basketassistant.R;
 /**
  * Created by yamil.marques on 12/09/2014.
  */
-public class StaticsBoxWidget extends RelativeLayout {
+public class StatisticsBoxWidget extends RelativeLayout {
 
     private View rootView;
     private TextView tvPoints;
@@ -21,7 +21,7 @@ public class StaticsBoxWidget extends RelativeLayout {
     private TextView tvBlocks;
     private TextView tvFouls;
 
-    public StaticsBoxWidget(Context context, AttributeSet attrs) {
+    public StatisticsBoxWidget(Context context, AttributeSet attrs) {
         super(context, attrs);
         setRootView(LayoutInflater.from(context).inflate(R.layout.statics_box_widget,this));
         tvPoints = (TextView)getRootView().findViewById(R.id.tvPoints);
@@ -29,6 +29,16 @@ public class StaticsBoxWidget extends RelativeLayout {
         tvSteals = (TextView)getRootView().findViewById(R.id.tvSteals);
         tvBlocks = (TextView)getRootView().findViewById(R.id.tvBlocks);
         tvFouls = (TextView)getRootView().findViewById(R.id.tvFouls);
+
+        initiate();
+    }
+
+    private void initiate(){
+        getTvPoints().setText("0");
+        getTvRebounds().setText("0");
+        getTvSteals().setText("0");
+        getTvBlocks().setText("0");
+        getTvFouls().setText("0");
     }
 
     @Override
