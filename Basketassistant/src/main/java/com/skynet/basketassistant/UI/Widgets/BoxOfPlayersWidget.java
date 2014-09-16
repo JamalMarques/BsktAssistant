@@ -24,7 +24,7 @@ public class BoxOfPlayersWidget extends RelativeLayout {
 
     public BoxOfPlayersWidget(Context context, AttributeSet attrs) {
         super(context, attrs);
-        setRootView(LayoutInflater.from(context).inflate(R.layout.box_of_players_widget,this));
+        setRootView(LayoutInflater.from(context).inflate(R.layout.widget_box_of_players,this));
         linear1 = (LinearLayout)getRootView().findViewById(R.id.linear1);
         linear2 = (LinearLayout)getRootView().findViewById(R.id.linear2);
         linear3 = (LinearLayout)getRootView().findViewById(R.id.linear3);

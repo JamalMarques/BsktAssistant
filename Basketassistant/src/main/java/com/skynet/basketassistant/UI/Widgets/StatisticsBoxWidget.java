@@ -23,7 +23,7 @@ public class StatisticsBoxWidget extends RelativeLayout {
 
     public StatisticsBoxWidget(Context context, AttributeSet attrs) {
         super(context, attrs);
-        setRootView(LayoutInflater.from(context).inflate(R.layout.statics_box_widget,this));
+        setRootView(LayoutInflater.from(context).inflate(R.layout.widget_statics_box,this));
         tvPoints = (TextView)getRootView().findViewById(R.id.tvPoints);
         tvRebounds = (TextView)getRootView().findViewById(R.id.tvRebounds);
         tvSteals = (TextView)getRootView().findViewById(R.id.tvSteals);

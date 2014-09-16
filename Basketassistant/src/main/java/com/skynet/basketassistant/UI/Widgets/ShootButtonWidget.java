@@ -22,7 +22,7 @@ public class ShootButtonWidget extends RelativeLayout {
 
     public ShootButtonWidget(Context context, AttributeSet attrs) {
         super(context, attrs);
-        setRootView(LayoutInflater.from(context).inflate(R.layout.shoot_button_widget,this));
+        setRootView(LayoutInflater.from(context).inflate(R.layout.widget_shoot_button,this));
         pointButton = (ImageButton)getRootView().findViewById(R.id.ibPoint);
         lessButton = (ImageButton)getRootView().findViewById(R.id.ibLess);
     }

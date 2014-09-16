@@ -27,7 +27,7 @@ public class PlayerBoxWidget extends RelativeLayout {
 
     public PlayerBoxWidget(Context context, AttributeSet attrs) {
         super(context, attrs);
-        setRootView(LayoutInflater.from(context).inflate(R.layout.player_box_widget,this));
+        setRootView(LayoutInflater.from(context).inflate(R.layout.widget_player_box,this));
 
         totalLayoutContainer = (LinearLayout)getRootView().findViewById(R.id.totalLayoutContainer);
         playerImage = (ImageView)getRootView().findViewById(R.id.imageViewPlayer);

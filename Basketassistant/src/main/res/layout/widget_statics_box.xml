@@ -15,6 +15,24 @@
         android:paddingBottom="@dimen/height_width_right_padding_staticsBoxW"
         android:background="@drawable/layout_bg">
 
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/PlayerStatistics"
+                android:id="@+id/textView2" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"/>
+
         <TableLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
@@ -114,6 +132,6 @@
                     style="@style/Text_Style_S" />
             </TableRow>
         </TableLayout>
-
     </LinearLayout>
+
 </RelativeLayout>
