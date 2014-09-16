@@ -56,19 +56,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             class="com.skynet.basketassistant.UI.Widgets.AditionalButtonWidget"
-            android:id="@+id/view6" />
+            android:id="@+id/view6"
+            android:layout_marginBottom="5dp" />
 
         <view
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             class="com.skynet.basketassistant.UI.Widgets.AditionalButtonWidget"
-            android:id="@+id/view7" />
+            android:id="@+id/view7"
+            android:layout_marginBottom="5dp" />
 
         <view
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             class="com.skynet.basketassistant.UI.Widgets.AditionalButtonWidget"
-            android:id="@+id/view8" />
+            android:id="@+id/view8"
+            android:layout_marginBottom="5dp" />
 
         <view
             android:layout_width="wrap_content"
