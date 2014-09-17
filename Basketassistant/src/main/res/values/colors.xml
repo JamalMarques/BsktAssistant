@@ -18,6 +18,7 @@
     <color name="Transparente">#00000000</color>
     <color name="CelesteButton1">#FF7ECFF1</color>
     <color name="CelesteFondoPressButton1">#ff7ecff1</color>
+    <color name="CelesteFondopressButtonTransparent1">#6d7ecff1</color>
     <color name="RojoDeleteButton">#ffe1311c</color>
     <color name="RojoDeletePressButton">#ffe1311c</color>
 

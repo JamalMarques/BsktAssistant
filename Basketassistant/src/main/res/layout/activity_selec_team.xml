@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:gravity="center"
-            android:background="@drawable/layout_bg"
+            android:background="@drawable/layout_bg_standard"
             android:layout_margin="5dp">
 
             <ImageButton

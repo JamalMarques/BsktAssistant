@@ -15,7 +15,7 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@drawable/layout_bg"
+            android:background="@drawable/layout_bg_standard"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="5dp">
 

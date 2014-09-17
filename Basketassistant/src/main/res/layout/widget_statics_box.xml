@@ -13,7 +13,7 @@
         android:paddingTop="@dimen/height_width_right_padding_staticsBoxW"
         android:paddingRight="@dimen/height_width_right_padding_staticsBoxW"
         android:paddingBottom="@dimen/height_width_right_padding_staticsBoxW"
-        android:background="@drawable/layout_bg">
+        android:background="@drawable/layout_bg_leftline">
 
         <LinearLayout
             android:orientation="horizontal"

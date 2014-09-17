@@ -19,7 +19,7 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/layout_bg"
+            android:background="@drawable/layout_bg_standard"
             android:paddingTop="5dp"
             android:paddingBottom="5dp">
 
@@ -28,7 +28,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="right"
-                android:background="@drawable/layout_bg">
+                android:background="@drawable/layout_bg_standard">
 
                 <LinearLayout
                     android:orientation="horizontal"
@@ -70,7 +70,7 @@
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/layout_bg"
+                android:background="@drawable/layout_bg_standard"
                 android:layout_marginTop="5dp">
 
                 <ImageView
@@ -112,7 +112,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:paddingBottom="5dp"
-                android:background="@drawable/layout_bg">
+                android:background="@drawable/layout_bg_standard">
 
                 <LinearLayout
                     android:orientation="horizontal"
@@ -202,7 +202,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
-                android:background="@drawable/layout_bg">
+                android:background="@drawable/layout_bg_standard">
 
                 <LinearLayout
                     android:orientation="horizontal"

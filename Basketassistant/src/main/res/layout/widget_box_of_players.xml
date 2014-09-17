@@ -7,14 +7,14 @@
         android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="top|center"
-        android:background="@drawable/layout_bg">
+        android:gravity="top|center">
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/linear1">
+            android:id="@+id/linear1"
+            android:background="@color/Blanco">
 
             <view
                 android:layout_width="wrap_content"
@@ -51,7 +51,8 @@
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/linear2">
+            android:id="@+id/linear2"
+            android:background="@drawable/layout_bg_topline">
 
             <view
                 android:layout_width="wrap_content"
@@ -88,7 +89,8 @@
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/linear3">
+            android:id="@+id/linear3"
+            android:background="@drawable/layout_bg_topline">
 
             <view
                 android:layout_width="wrap_content"

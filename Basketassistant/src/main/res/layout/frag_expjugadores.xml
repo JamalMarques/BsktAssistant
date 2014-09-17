@@ -23,7 +23,7 @@
                 android:orientation="vertical"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:background="@drawable/layout_bg">
+                android:background="@drawable/layout_bg_standard">
 
                 <LinearLayout
                     android:orientation="horizontal"
@@ -101,7 +101,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:background="@drawable/layout_bg"
+                android:background="@drawable/layout_bg_standard"
                 android:padding="10dp">
 
                 <LinearLayout
@@ -229,7 +229,7 @@
                     android:layout_weight="1"
                     android:layout_marginTop="10dp"
                     android:padding="10dp"
-                    android:background="@drawable/layout_bg"
+                    android:background="@drawable/layout_bg_standard"
                     android:layout_marginRight="10dp">
 
                     <LinearLayout
@@ -319,7 +319,7 @@
                         android:orientation="vertical"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
-                        android:background="@drawable/layout_bg"
+                        android:background="@drawable/layout_bg_standard"
                         android:paddingTop="5dp"
                         android:paddingBottom="5dp"
                         android:paddingRight="10dp"
@@ -402,7 +402,7 @@
                         android:orientation="horizontal"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
-                        android:background="@drawable/layout_bg"
+                        android:background="@drawable/layout_bg_standard"
                         android:layout_marginTop="13dp"
                         android:paddingLeft="5dp">
 
@@ -441,7 +441,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@drawable/layout_bg"
+                    android:background="@drawable/layout_bg_standard"
                     android:padding="10dp"
                     android:layout_marginRight="10dp">
 
@@ -526,7 +526,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@drawable/layout_bg"
+                    android:background="@drawable/layout_bg_standard"
                     android:padding="10dp">
 
                     <LinearLayout

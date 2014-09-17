@@ -16,7 +16,7 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/layout_bg"
+            android:background="@drawable/layout_bg_standard"
             android:padding="5dp"
             android:layout_margin="5dp">
 
@@ -62,7 +62,7 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/layout_bg"
+            android:background="@drawable/layout_bg_standard"
             android:padding="5dp"
             android:layout_margin="5dp">
 
@@ -133,7 +133,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:padding="5dp"
-            android:background="@drawable/layout_bg">
+            android:background="@drawable/layout_bg_standard">
 
             <LinearLayout
                 android:orientation="vertical"
