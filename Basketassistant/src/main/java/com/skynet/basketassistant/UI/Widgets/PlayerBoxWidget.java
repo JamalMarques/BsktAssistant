@@ -65,7 +65,5 @@ public class PlayerBoxWidget extends RelativeLayout {
         return player;
     }
 
-    public void setOnClickListenerWidget(OnClickListener event){
-        totalLayoutContainer.setOnClickListener(event);
-    }
+    public LinearLayout getViewListener(){ return totalLayoutContainer; }
 }

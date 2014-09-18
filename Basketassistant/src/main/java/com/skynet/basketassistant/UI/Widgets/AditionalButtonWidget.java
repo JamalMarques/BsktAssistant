@@ -15,12 +15,12 @@ import com.skynet.basketassistant.R;
 public class AditionalButtonWidget extends LinearLayout {
 
     private View rootView;
-    private ImageButton ibIcon,ibLess;
+    private ImageButton iButton;
 
     public AditionalButtonWidget(Context context, AttributeSet attrs) {
         super(context, attrs);
         setRootView(LayoutInflater.from(context).inflate(R.layout.widget_aditional_button,this));
-        ibIcon = (ImageButton)getRootView().findViewById(R.id.imageButton);
+        iButton = (ImageButton)getRootView().findViewById(R.id.iButton);
     }
 
 
@@ -32,4 +32,6 @@ public class AditionalButtonWidget extends LinearLayout {
     public void setRootView(View rootView) {
         this.rootView = rootView;
     }
+
+    public ImageButton getViewListener(){ return iButton;}
 }

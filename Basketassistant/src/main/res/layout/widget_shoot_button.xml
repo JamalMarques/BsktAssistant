@@ -11,12 +11,7 @@
         <ImageButton
             android:layout_width="@dimen/width_image_shoot"
             android:layout_height="@dimen/height_image_shoot"
-            android:id="@+id/ibPoint" />
+            android:id="@+id/iButton" />
 
-        <ImageButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/ibLess"
-            android:layout_marginTop="-7dp" />
     </LinearLayout>
 </RelativeLayout>

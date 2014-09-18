@@ -16,21 +16,18 @@ import com.skynet.basketassistant.R;
 public class ShootButtonWidget extends RelativeLayout {
 
     private View rootView;
-    private ImageButton pointButton;
-    private ImageButton lessButton;
+    private ImageButton iButton;
     private int shootvalue;
 
     public ShootButtonWidget(Context context, AttributeSet attrs) {
         super(context, attrs);
         setRootView(LayoutInflater.from(context).inflate(R.layout.widget_shoot_button,this));
-        pointButton = (ImageButton)getRootView().findViewById(R.id.ibPoint);
-        lessButton = (ImageButton)getRootView().findViewById(R.id.ibLess);
+        iButton = (ImageButton)getRootView().findViewById(R.id.iButton);
     }
 
-    public void setButtonProperties(int shootvalue,Bitmap imagepoint,Bitmap imageless){
+    public void setButtonProperties(int shootvalue,Bitmap imagepoint){
         this.shootvalue = shootvalue;
-        pointButton.setImageBitmap(imagepoint);
-        lessButton.setImageBitmap(imageless);
+        iButton.setImageBitmap(imagepoint);
     }
 
     @Override
@@ -42,11 +39,8 @@ public class ShootButtonWidget extends RelativeLayout {
         this.rootView = rootView;
     }
 
-    public ImageButton getPointButton() {
-        return pointButton;
-    }
-    public ImageButton getLessButton() {
-        return lessButton;
+    public ImageButton getViewListener() {
+        return iButton;
     }
 
 }

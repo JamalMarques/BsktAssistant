@@ -33,7 +33,7 @@ public class BoxOfPlayersWidget extends RelativeLayout {
 
     }
 
-    public void populateList(){
+    private void populateList(){
         PlayerBoxWidget w1 = (PlayerBoxWidget)getRootView().findViewById(R.id.wplayer1);
         PlayerBoxWidget w2 = (PlayerBoxWidget)getRootView().findViewById(R.id.wplayer2);
         PlayerBoxWidget w3 = (PlayerBoxWidget)getRootView().findViewById(R.id.wplayer3);
@@ -92,7 +92,7 @@ public class BoxOfPlayersWidget extends RelativeLayout {
 
     public void setOnPlayersWidgetsClickListener(OnClickListener event){
         for (int i=0;i < listPlayerWidget.size() ; i++){
-            listPlayerWidget.get(i).setOnClickListenerWidget(event);  //Set the OnClick event from activity container
+            listPlayerWidget.get(i).getViewListener().setOnClickListener(event);  //Set the OnClick event from activity container
         }
     }
 }

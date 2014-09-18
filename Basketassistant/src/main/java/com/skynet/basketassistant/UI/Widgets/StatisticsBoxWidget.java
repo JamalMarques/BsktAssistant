@@ -21,6 +21,12 @@ public class StatisticsBoxWidget extends RelativeLayout {
     private TextView tvBlocks;
     private TextView tvFouls;
 
+    private int points=0;
+    private int rebounds=0;
+    private int steals=0;
+    private int blocks=0;
+    private int fouls=0;
+
     public StatisticsBoxWidget(Context context, AttributeSet attrs) {
         super(context, attrs);
         setRootView(LayoutInflater.from(context).inflate(R.layout.widget_statics_box,this));
@@ -34,11 +40,71 @@ public class StatisticsBoxWidget extends RelativeLayout {
     }
 
     private void initiate(){
-        getTvPoints().setText("0");
-        getTvRebounds().setText("0");
-        getTvSteals().setText("0");
-        getTvBlocks().setText("0");
-        getTvFouls().setText("0");
+        refresh();
+    }
+
+    private void refresh(){
+        getTvPoints().setText(String.valueOf(getPoints()));
+        getTvRebounds().setText(String.valueOf(getRebounds()));
+        getTvSteals().setText(String.valueOf(getSteals()));
+        getTvBlocks().setText(String.valueOf(getBlocks()));
+        getTvFouls().setText(String.valueOf(getFouls()));
+    }
+
+    public void addPoints(int points){
+        this.points += points;
+        refresh();
+    }
+    public void addRebounds(int rebounds){
+        this.rebounds += rebounds;
+        refresh();
+    }
+    public void addSteals(int steals){
+        this.steals += steals;
+        refresh();
+    }
+    public void addBlocks(int blocks){
+        this.blocks += blocks;
+        refresh();
+    }
+    public void addFouls(int fouls){
+        this.fouls += fouls;
+        refresh();
+    }
+    public void removePoints(int points){
+        if( (this.points - points) <= 0)
+            this.points = 0;
+        else
+            this.points -= points;
+        refresh();
+    }
+    public void removeRebounds(int rebounds){
+        if( (this.rebounds - rebounds) <= 0)
+            this.rebounds = 0;
+        else
+            this.rebounds -= rebounds;
+        refresh();
+    }
+    public void removeSteals(int steals){
+        if( (this.steals - steals) <= 0)
+            this.steals = 0;
+        else
+            this.steals -= steals;
+        refresh();
+    }
+    public void removeBlocks(int blocks){
+        if( (this.blocks - blocks) <= 0)
+            this.blocks = 0;
+        else
+            this.blocks -= blocks;
+        refresh();
+    }
+    public void removeFouls(int fouls){
+        if( (this.fouls - fouls) <= 0)
+            this.fouls = 0;
+        else
+            this.fouls -= fouls;
+        refresh();
     }
 
     @Override
@@ -73,4 +139,23 @@ public class StatisticsBoxWidget extends RelativeLayout {
         return tvFouls;
     }
 
+    public int getPoints() {
+        return points;
+    }
+
+    public int getRebounds() {
+        return rebounds;
+    }
+
+    public int getSteals() {
+        return steals;
+    }
+
+    public int getBlocks() {
+        return blocks;
+    }
+
+    public int getFouls() {
+        return fouls;
+    }
 }
