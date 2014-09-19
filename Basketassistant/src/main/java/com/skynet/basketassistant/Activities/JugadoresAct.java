@@ -40,7 +40,6 @@ public class JugadoresAct extends BaseActivity implements View.OnClickListener,F
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       // requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_jugadores);
 
         bun_equip = getIntent().getExtras();  //Here i recive the team´s name  ("Nom_Equip")
@@ -55,7 +54,6 @@ public class JugadoresAct extends BaseActivity implements View.OnClickListener,F
         equipo = dbe.DameEquipo(bun_equip.getString("Nom_Equip"));
         dbe.Cerrar();
 
-        //Frag_jugadores frag_jugadores = new Frag_jugadores(equipo);
         Frag_jugadores frag_jugadores = Frag_jugadores.getInstance(equipo.getId());
         CambiarFragment1(frag_jugadores);
     }
@@ -82,8 +80,6 @@ public class JugadoresAct extends BaseActivity implements View.OnClickListener,F
     @Override
     public void onSeleccionItemJugador(int id_jug) {
 
-        //Frag_expjugador frag = new Frag_expjugador(jug);
-        //getinstance
         Frag_expjugador frag = Frag_expjugador.getInstance(id_jug);
         CambiarFragment2(frag);
     }

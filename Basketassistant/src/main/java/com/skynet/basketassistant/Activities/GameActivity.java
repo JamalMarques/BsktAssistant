@@ -44,6 +44,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
+
         loadAtributtes();
 
 
