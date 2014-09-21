@@ -28,7 +28,7 @@ import com.skynet.basketassistant.UI.Widgets.StatisticsBoxWidget;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameActivity extends BaseActivity implements View.OnClickListener,View.OnLongClickListener {
+public class GameActivity extends BaseActivity implements View.OnClickListener,View.OnLongClickListener,FragDialog_ScoreOrNot.OnCompleteDialogListener {
 
     //Necesary data
     private Equipo myTeam;
@@ -164,8 +164,8 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
         return is;
     }
 
-    private void showScoreOrNotDialog(){
-        FragDialog_ScoreOrNot fragdialog = FragDialog_ScoreOrNot.getInstance();
+    private void showScoreOrNotDialog(int constant_shoot){
+        FragDialog_ScoreOrNot fragdialog = FragDialog_ScoreOrNot.getInstance(constant_shoot);
         fragdialog.show(getFragmentManager(),Constants.FRAGMENT_DIALOG_SCORE_OR_NOT);
     }
 
@@ -181,20 +181,36 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
     private void foulBehavior(){
         Toast.makeText(this,"foul button toucked",Toast.LENGTH_SHORT).show();
     }
+
+    // -------------  SHOOTS --------------
+
     private void simpleshootBehavior(){
         if(isPlayerSelected()){
-            showScoreOrNotDialog();
-            //Lanzamiento shoot = new Lanzamiento()
+            showScoreOrNotDialog(Constants.SIMPLE_SHOOT);
+        }else {
+            Toast.makeText(this,getString(R.string.SelectPlayerError),Toast.LENGTH_SHORT).show();
         }
     }
     private void doubleshootBehavior(){
-        Toast.makeText(this,"doublePoint button toucked",Toast.LENGTH_SHORT).show();
+        if(isPlayerSelected()){
+            showScoreOrNotDialog(Constants.DOUBLE_SHOOT);
+        }else {
+            Toast.makeText(this,getString(R.string.SelectPlayerError),Toast.LENGTH_SHORT).show();
+        }
     }
     private void tripleshootBehavior(){
-        Toast.makeText(this,"triplePoint button toucked",Toast.LENGTH_SHORT).show();
+        if(isPlayerSelected()){
+            showScoreOrNotDialog(Constants.TRIPLE_SHOOT);
+        }else {
+            Toast.makeText(this,getString(R.string.SelectPlayerError),Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onComplete(int status, int constant_shoot) {
+
     }
 
 
-
-
+    // ------------------------------------
 }

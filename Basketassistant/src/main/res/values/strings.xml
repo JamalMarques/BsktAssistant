@@ -74,5 +74,6 @@
     <string name="Shoot">Lanzamiento</string>
     <string name="Scored">Acertado</string>
     <string name="Failed">Fallido</string>
+    <string name="SelectPlayerError">Debe seleccionar un jugador</string>
 
 </resources>

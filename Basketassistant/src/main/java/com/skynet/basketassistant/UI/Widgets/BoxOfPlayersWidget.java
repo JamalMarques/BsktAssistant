@@ -90,6 +90,11 @@ public class BoxOfPlayersWidget extends RelativeLayout {
         for (int i=0; i< MAX; i++){
             listPlayerWidget.get(i).setPlayer(listplayers.get(i));  //Setting player to the diferents widgets
         }
+        if(MAX < 13){ //Remove the extras boxes
+            for(int i=MAX; i < 13; i++){
+                listPlayerWidget.get(i).setVisibility(View.GONE);
+            }
+        }
     }
 
     public void setOnPlayersWidgetsClickListener(OnClickListener event){
