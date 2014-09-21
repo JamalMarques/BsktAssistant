@@ -6,12 +6,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.skynet.basketassistant.Datos.DBEquipos;
+import com.skynet.basketassistant.Datos.DBJugadores;
+import com.skynet.basketassistant.Datos.DBLanzamientos;
+import com.skynet.basketassistant.Fragments.FragDialog_ScoreOrNot;
 import com.skynet.basketassistant.Modelo.Equipo;
 import com.skynet.basketassistant.Modelo.Falta;
+import com.skynet.basketassistant.Modelo.Jugador;
 import com.skynet.basketassistant.Modelo.Lanzamiento;
 import com.skynet.basketassistant.Modelo.Rebote;
 import com.skynet.basketassistant.Modelo.Robo;
 import com.skynet.basketassistant.Modelo.Tapon;
+import com.skynet.basketassistant.Otros.Constants;
 import com.skynet.basketassistant.R;
 import com.skynet.basketassistant.UI.Widgets.AditionalButtonWidget;
 import com.skynet.basketassistant.UI.Widgets.BoxOfPlayersWidget;
@@ -19,12 +25,15 @@ import com.skynet.basketassistant.UI.Widgets.PlayerBoxWidget;
 import com.skynet.basketassistant.UI.Widgets.ShootButtonWidget;
 import com.skynet.basketassistant.UI.Widgets.StatisticsBoxWidget;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GameActivity extends BaseActivity implements View.OnClickListener,View.OnLongClickListener {
 
+    //Necesary data
     private Equipo myTeam;
     private String enemyTeam;
+    private List<Jugador> teamPlayers = new ArrayList<Jugador>();
 
     private BoxOfPlayersWidget boxOfPlayersW;
     private PlayerBoxWidget playerTouched = null;
@@ -32,11 +41,12 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
     private AditionalButtonWidget reboundButton,stealButton,blockButton,foulButton;
     private ShootButtonWidget simplePointWidget,doublePointWidget,triplePointWidget;
 
-    private List<Lanzamiento> shootList;
-    private List<Rebote> reboundList;
-    private List<Robo> stealList;
-    private List<Tapon> blockList;
-    private List<Falta> foulList;
+    //Statistics
+    private List<Lanzamiento> shootList = new ArrayList<Lanzamiento>();
+    private List<Rebote> reboundList = new ArrayList<Rebote>();
+    private List<Robo> stealList = new ArrayList<Robo>();
+    private List<Tapon> blockList = new ArrayList<Tapon>();
+    private List<Falta> foulList = new ArrayList<Falta>();
 
 
     @Override
@@ -44,15 +54,27 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-
         loadAtributtes();
-
-
-
-
+        loadPlayers();
     }
 
     private void loadAtributtes(){
+
+        //Loading Team
+        String team_name = getIntent().getExtras().getString(Constants.TEAM_NAME);
+        DBEquipos dbe = new DBEquipos(this);
+        dbe.Modolectura();
+        myTeam = dbe.DameEquipo(team_name);
+        dbe.Cerrar();
+
+        //Loading Team Players
+        DBJugadores dbj = new DBJugadores(this);
+        dbj.Modolectura();
+        teamPlayers = dbj.DameListaJugadoresEquipo(myTeam.getId());
+        dbj.Cerrar();
+
+        Toast.makeText(this,teamPlayers.size()+"",Toast.LENGTH_LONG).show();
+
         boxOfPlayersW = (BoxOfPlayersWidget)findViewById(R.id.playersBox);
         statisticsWidget = (StatisticsBoxWidget)findViewById(R.id.statisticsBox);
         reboundButton = (AditionalButtonWidget)findViewById(R.id.reboundButton);
@@ -82,6 +104,13 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
     }
 
 
+    private void loadPlayers(){
+        if( teamPlayers != null && boxOfPlayersW != null){
+            boxOfPlayersW.setPlayers(teamPlayers,teamPlayers.size());
+        }
+    }
+
+
     @Override
     public void onClick(View view) {
        if( view == reboundButton.getViewListener()){ //Press Rebound button
@@ -107,9 +136,17 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
                                }else { //Search for player touched!
                                    for (int i=0;i < boxOfPlayersW.getListPlayerWidget().size(); i++){
                                        if( view == boxOfPlayersW.getListPlayerWidget().get(i).getViewListener()){ //Player has been touched!
-                                            //change background color
-                                            //set playertouched atribute
-                                           Toast.makeText(this,i+" touched",Toast.LENGTH_SHORT).show();
+                                           if(boxOfPlayersW.getListPlayerWidget().get(i) != playerTouched ) {
+                                               if (isPlayerSelected()) {
+                                                   playerTouched.statePressed(false);
+                                                   playerTouched = null;
+                                               }
+                                               playerTouched = boxOfPlayersW.getListPlayerWidget().get(i);
+                                               playerTouched.statePressed(true);
+                                           }else {
+                                               playerTouched.statePressed(false);
+                                               playerTouched = null;
+                                           }
                                            i = boxOfPlayersW.getListPlayerWidget().size()-1; //Break for!
                                        }
                                    }
@@ -120,6 +157,16 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
     @Override
     public boolean onLongClick(View view) {
         return false;
+    }
+
+    private boolean isPlayerSelected(){
+        boolean is = (playerTouched != null)? true : false;
+        return is;
+    }
+
+    private void showScoreOrNotDialog(){
+        FragDialog_ScoreOrNot fragdialog = FragDialog_ScoreOrNot.getInstance();
+        fragdialog.show(getFragmentManager(),Constants.FRAGMENT_DIALOG_SCORE_OR_NOT);
     }
 
     private void reboundBehavior(){
@@ -135,7 +182,10 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
         Toast.makeText(this,"foul button toucked",Toast.LENGTH_SHORT).show();
     }
     private void simpleshootBehavior(){
-        Toast.makeText(this,"simplePoint button toucked",Toast.LENGTH_SHORT).show();
+        if(isPlayerSelected()){
+            showScoreOrNotDialog();
+            //Lanzamiento shoot = new Lanzamiento()
+        }
     }
     private void doubleshootBehavior(){
         Toast.makeText(this,"doublePoint button toucked",Toast.LENGTH_SHORT).show();

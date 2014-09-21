@@ -6,6 +6,7 @@ import com.skynet.basketassistant.Fragments.Frag_exppart;
 import com.skynet.basketassistant.Fragments.Frag_listapartidos;
 import com.skynet.basketassistant.Modelo.Equipo;
 import com.skynet.basketassistant.Modelo.Partido;
+import com.skynet.basketassistant.Otros.Constants;
 import com.skynet.basketassistant.R;
 import com.skynet.basketassistant.util.SystemUiHider;
 
@@ -47,7 +48,7 @@ public class PartidosAct extends BaseActivity implements View.OnClickListener,Fr
         dbe.Modolectura();
         equipo = dbe.DameEquipo(bun_equip.getString("Nom_Equip"));*/
 
-        LoadListFragment(bun_equip.getString("Nom_Equip"));
+        LoadListFragment(bun_equip.getString(Constants.TEAM_NAME));
 
         b_back = (Button)findViewById(R.id.bback);
         b_eliminar = (Button)findViewById(R.id.b_eliminar);

@@ -7,6 +7,7 @@ import com.skynet.basketassistant.Fragments.Frag_listapartidos;
 import com.skynet.basketassistant.Fragments.Frag_new_player;
 import com.skynet.basketassistant.Modelo.Equipo;
 import com.skynet.basketassistant.Modelo.Jugador;
+import com.skynet.basketassistant.Otros.Constants;
 import com.skynet.basketassistant.R;
 import com.skynet.basketassistant.util.SystemUiHider;
 
@@ -51,7 +52,7 @@ public class JugadoresAct extends BaseActivity implements View.OnClickListener,F
 
         DBEquipos dbe = new DBEquipos(this);
         dbe.Modolectura();
-        equipo = dbe.DameEquipo(bun_equip.getString("Nom_Equip"));
+        equipo = dbe.DameEquipo(bun_equip.getString(Constants.TEAM_NAME));
         dbe.Cerrar();
 
         Frag_jugadores frag_jugadores = Frag_jugadores.getInstance(equipo.getId());
@@ -65,7 +66,7 @@ public class JugadoresAct extends BaseActivity implements View.OnClickListener,F
             finish();
         }else
             if( view.getId() == b_add.getId()){
-                Frag_new_player frag = new Frag_new_player(equipo);
+                Frag_new_player frag = Frag_new_player.getInstance(equipo.getId());
                 CambiarFragment2(frag);
             }
     }

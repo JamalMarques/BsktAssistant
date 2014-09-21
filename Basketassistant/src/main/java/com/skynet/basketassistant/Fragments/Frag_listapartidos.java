@@ -19,6 +19,7 @@ import com.skynet.basketassistant.Datos.DBEquipos;
 import com.skynet.basketassistant.Datos.DBPartidos;
 import com.skynet.basketassistant.Modelo.Equipo;
 import com.skynet.basketassistant.Modelo.Partido;
+import com.skynet.basketassistant.Otros.Constants;
 import com.skynet.basketassistant.R;
 
 import java.util.ArrayList;
@@ -45,7 +46,7 @@ public class Frag_listapartidos extends Fragment implements AdapterView.OnItemCl
     public static Frag_listapartidos getInstance(String nom_equip){
         Frag_listapartidos flp = new Frag_listapartidos();
         Bundle bun = new Bundle();
-        bun.putString("nom_equip",nom_equip);
+        bun.putString(Constants.TEAM_NAME,nom_equip);
         flp.setArguments(bun);
         return flp;
     }
@@ -71,7 +72,7 @@ public class Frag_listapartidos extends Fragment implements AdapterView.OnItemCl
         //Bundle
         DBEquipos dbe = new DBEquipos(getActivity());
         dbe.Modolectura();
-        equipo = dbe.DameEquipo(getArguments().getString("nom_equip")); //instancia el equipo
+        equipo = dbe.DameEquipo(getArguments().getString(Constants.TEAM_NAME)); //instancia el equipo
         dbe.Cerrar();
 
         lvpartidos = (ListView)view.findViewById(R.id.lvpartidos);

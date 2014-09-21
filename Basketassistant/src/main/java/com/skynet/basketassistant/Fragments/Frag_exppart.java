@@ -19,6 +19,7 @@ import com.skynet.basketassistant.ListView.HorizontalListView;
 import com.skynet.basketassistant.Modelo.Jugador;
 import com.skynet.basketassistant.Modelo.Partido;
 import com.skynet.basketassistant.Activities.PartidosAct;
+import com.skynet.basketassistant.Otros.Constants;
 import com.skynet.basketassistant.R;
 
 /**
@@ -49,7 +50,7 @@ public class Frag_exppart extends Fragment implements AdapterView.OnItemClickLis
     public static Frag_exppart getInstance(int id_partido){
         Frag_exppart fexp = new Frag_exppart();
         Bundle bun = new Bundle();
-        bun.putInt("id_partido",id_partido);
+        bun.putInt(Constants.GAME_ID,id_partido);
         fexp.setArguments(bun);
         return fexp;
     }
@@ -64,7 +65,7 @@ public class Frag_exppart extends Fragment implements AdapterView.OnItemClickLis
         //Bundle
         DBPartidos dbp = new DBPartidos(getActivity());
         dbp.Modolectura();
-        partido = dbp.DamePartido(getArguments().getInt("id_partido"));
+        partido = dbp.DamePartido(getArguments().getInt(Constants.GAME_ID));
         dbp.Cerrar();
 
         if( partido != null ){

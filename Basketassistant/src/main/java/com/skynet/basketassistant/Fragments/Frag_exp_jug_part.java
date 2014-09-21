@@ -25,6 +25,7 @@ import com.skynet.basketassistant.Modelo.Jugador;
 import com.skynet.basketassistant.Modelo.Lanzamiento;
 import com.skynet.basketassistant.Modelo.Partido;
 import com.skynet.basketassistant.Modelo.Rebote;
+import com.skynet.basketassistant.Otros.Constants;
 import com.skynet.basketassistant.Otros.Manejo_Imagenes;
 import com.skynet.basketassistant.Activities.PartidosAct;
 import com.skynet.basketassistant.R;
@@ -62,8 +63,8 @@ public class Frag_exp_jug_part extends Fragment implements View.OnClickListener{
     public static Frag_exp_jug_part getInstance(int id_jug,int id_part){
         Frag_exp_jug_part fejp = new Frag_exp_jug_part();
         Bundle bun = new Bundle();
-        bun.putInt("id_jug",id_jug);
-        bun.putInt("id_part",id_part);
+        bun.putInt(Constants.PLAYER_ID,id_jug);
+        bun.putInt(Constants.GAME_ID,id_part);
         fejp.setArguments(bun);
         return fejp;
     }
@@ -81,10 +82,10 @@ public class Frag_exp_jug_part extends Fragment implements View.OnClickListener{
         //Bundle
         DBJugadores dbj = new DBJugadores(getActivity());
         dbj.Modolectura();
-        jugador = dbj.DameJugador(getArguments().getInt("id_jug"));
+        jugador = dbj.DameJugador(getArguments().getInt(Constants.PLAYER_ID));
         DBPartidos dbp = new DBPartidos(getActivity());
         dbp.Modolectura();
-        partido = dbp.DamePartido(getArguments().getInt("id_part"));
+        partido = dbp.DamePartido(getArguments().getInt(Constants.GAME_ID));
         dbj.Cerrar();
         dbp.Cerrar();
 

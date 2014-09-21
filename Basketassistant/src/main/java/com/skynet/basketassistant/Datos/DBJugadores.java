@@ -98,15 +98,15 @@ public class DBJugadores{
     }
 
     //Carga de cursor
-    public Cursor Cargarcursorjugadores(){
+    private Cursor Cargarcursorjugadores(){
         String[] columnas = new String[]{CN_ID,CN_APELLIDO,CN_NOMBRE,CN_ALTURA,CN_PESO,CN_NUMERO,CN_ROL,CN_EQUIPO_ID,CN_IMAGEN_URL};
         return db.query(TABLE_NAME,columnas,null,null,null,null,null);
     }
 
     //Cursor con busqueda especifica por equipo
-    public Cursor Cargarcursorjugadores(Equipo equipo){
+    private Cursor Cargarcursorjugadores(int equipo_id){
         String[] columnas = new String[]{CN_ID,CN_APELLIDO,CN_NOMBRE,CN_ALTURA,CN_PESO,CN_NUMERO,CN_ROL,CN_EQUIPO_ID,CN_IMAGEN_URL};
-        return db.query(TABLE_NAME,columnas,CN_EQUIPO_ID+" = "+equipo.getId(),null,null,null,null);
+        return db.query(TABLE_NAME,columnas,CN_EQUIPO_ID+" = "+equipo_id,null,null,null,null);
     }
 
     public Jugador DameJugador(int idjug){
@@ -135,7 +135,7 @@ public class DBJugadores{
         }
     }
 
-    public List<Jugador> CrearLista(Cursor c){
+    private List<Jugador> CrearLista(Cursor c){
         List<Jugador> list_jug = new ArrayList<Jugador>();
         if(c.moveToFirst()){
             do {
@@ -159,5 +159,9 @@ public class DBJugadores{
 
     public List<Jugador> DameListaJugadores(){
         return CrearLista(Cargarcursorjugadores());
+    }
+
+    public List<Jugador> DameListaJugadoresEquipo(int team_id){
+        return CrearLista(Cargarcursorjugadores(team_id));
     }
 }

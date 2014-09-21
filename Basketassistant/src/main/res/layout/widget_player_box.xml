@@ -10,7 +10,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/totalLayoutContainer"
-        android:padding="@dimen/totalLayout_padding">
+        android:padding="@dimen/totalLayout_padding"
+        android:background="@drawable/button_player_unpressed_bg">
 
         <ImageView
             android:layout_width="@dimen/image_player_height_width"
@@ -27,7 +28,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="X"
+                android:text="8"
                 android:id="@+id/textViewPlayerNumber"
                 android:lines="1"
                 style="@style/Text_Style_S" />

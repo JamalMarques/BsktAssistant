@@ -27,15 +27,11 @@ public class SelecTeamAct extends BaseActivity implements View.OnClickListener,F
 
     private ImageButton ibagregarteam,iblogout;
     private Frag_listaequip frag_listaequipos;
-    //Bundle bun_usr;    //bun_usr.getString("User") ---> nombre del usuario!
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selec_team);
-
-        //bun_usr = getIntent().getExtras();
-        //bun_usr.getString("User") ---> nombre del usuario!
 
         TextView nomusr = (TextView)findViewById(R.id.tvuser);
         nomusr.setText(UserContainer.DameUser().getNombre());
@@ -79,8 +75,6 @@ public class SelecTeamAct extends BaseActivity implements View.OnClickListener,F
 
     public void RefrescarListaEquipos(){  //se llama desde el fragment frag_newteam al hacer la insercion
                                         //aca se refrescara el framelayout con el equipo recien creado (como si lo ubiera seleccionado)
-        /*Frag_listaequip fraglista = (Frag_listaequip)getFragmentManager().findFragmentById(R.id.fragment);
-        fraglista.Refrescar();*/
         frag_listaequipos.Refrescar();
     }
 
@@ -89,9 +83,6 @@ public class SelecTeamAct extends BaseActivity implements View.OnClickListener,F
     }
 
     public void CambiarFrameLayout(Fragment frag){
-        //IDEA! usar este metodo como generico para cambiar el framelayout segun nuestra voluntad. el fragment
-        // enviado debe estar totalmente cargado y listo para solo ser mostrado.
-        //frag.setArguments(bun_usr);
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         ft.replace(R.id.framelayout_contdetalle,frag);
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);

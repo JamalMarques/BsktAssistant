@@ -13,8 +13,7 @@
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/linear1"
-            android:background="@color/Blanco">
+            android:id="@+id/linear1">
 
             <view
                 android:layout_width="wrap_content"
@@ -51,8 +50,7 @@
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/linear2"
-            android:background="@drawable/layout_bg_topline">
+            android:id="@+id/linear2">
 
             <view
                 android:layout_width="wrap_content"
@@ -89,8 +87,7 @@
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/linear3"
-            android:background="@drawable/layout_bg_topline">
+            android:id="@+id/linear3">
 
             <view
                 android:layout_width="wrap_content"

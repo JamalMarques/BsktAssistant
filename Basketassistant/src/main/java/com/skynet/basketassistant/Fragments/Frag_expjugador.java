@@ -37,6 +37,7 @@ import com.skynet.basketassistant.Modelo.Jugador;
 import com.skynet.basketassistant.Modelo.Lanzamiento;
 import com.skynet.basketassistant.Modelo.Rebote;
 import com.skynet.basketassistant.Modelo.Tapon;
+import com.skynet.basketassistant.Otros.Constants;
 import com.skynet.basketassistant.Otros.Manejo_Imagenes;
 import com.skynet.basketassistant.R;
 
@@ -87,7 +88,7 @@ public class Frag_expjugador extends Fragment implements View.OnClickListener {
     public static Frag_expjugador getInstance(int id_jug){
         Frag_expjugador fexpj = new Frag_expjugador();
         Bundle bun = new Bundle();
-        bun.putInt("id_jug",id_jug);
+        bun.putInt(Constants.PLAYER_ID,id_jug);
         fexpj.setArguments(bun);
         return fexpj;
     }
@@ -106,7 +107,7 @@ public class Frag_expjugador extends Fragment implements View.OnClickListener {
         //Bundle
         DBJugadores dbj = new DBJugadores(getActivity());
         dbj.Modolectura();
-        jugador = dbj.DameJugador(getArguments().getInt("id_jug"));
+        jugador = dbj.DameJugador(getArguments().getInt(Constants.PLAYER_ID));
         dbj.Cerrar();
 
         iv_fotoplayer = (ImageView)view.findViewById(R.id.iv_fotoplayer);

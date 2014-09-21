@@ -1,6 +1,7 @@
 package com.skynet.basketassistant.UI.Widgets;
 
 import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.skynet.basketassistant.Modelo.Jugador;
 import com.skynet.basketassistant.Otros.Manejo_Imagenes;
@@ -24,6 +26,7 @@ public class PlayerBoxWidget extends RelativeLayout {
     private ImageView playerImage;
     private TextView tvPlayerNumber;
     private Jugador player;
+    private boolean isPressed = false;
 
     public PlayerBoxWidget(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -66,4 +69,26 @@ public class PlayerBoxWidget extends RelativeLayout {
     }
 
     public LinearLayout getViewListener(){ return totalLayoutContainer; }
+
+    public boolean isPressed(){ return isPressed;}
+
+    public void statePressed(boolean state){
+
+        int sdk = android.os.Build.VERSION.SDK_INT;
+        if( state ){
+            if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+                totalLayoutContainer.setBackgroundDrawable(getResources().getDrawable(R.drawable.button_player_pressed_bg));
+            } else {
+               totalLayoutContainer.setBackground(getResources().getDrawable(R.drawable.button_player_pressed_bg));
+            }
+            isPressed = state;
+        }else {
+            if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+                totalLayoutContainer.setBackgroundDrawable(getResources().getDrawable(R.drawable.button_player_unpressed_bg));
+            } else {
+                totalLayoutContainer.setBackground(getResources().getDrawable(R.drawable.button_player_unpressed_bg));
+            }
+            isPressed = state;
+        }
+    }
 }

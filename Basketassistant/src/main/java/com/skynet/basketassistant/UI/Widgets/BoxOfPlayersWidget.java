@@ -8,6 +8,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.skynet.basketassistant.Modelo.Jugador;
+import com.skynet.basketassistant.Otros.Constants;
 import com.skynet.basketassistant.R;
 
 import java.util.ArrayList;
@@ -85,7 +86,8 @@ public class BoxOfPlayersWidget extends RelativeLayout {
             linear2.setVisibility(View.GONE);
         }
 
-        for (int i=0; i< listplayers.size(); i++){
+        int MAX = (listplayers.size() > 13)? 13 : listplayers.size();
+        for (int i=0; i< MAX; i++){
             listPlayerWidget.get(i).setPlayer(listplayers.get(i));  //Setting player to the diferents widgets
         }
     }

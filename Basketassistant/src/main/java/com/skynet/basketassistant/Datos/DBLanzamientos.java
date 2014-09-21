@@ -23,8 +23,8 @@ public class DBLanzamientos{
     //Como se llamaran las columnas
     public static final String CN_ID = "_id"; //necesario para los cursores
     public static final String CN_EFECTIVO = "efectivo";
-    public static final String CN_POSX = "posx";
-    public static final String CN_POSY = "posy";
+    //public static final String CN_POSX = "posx";
+   // public static final String CN_POSY = "posy";
     public static final String CN_TIPOLANZ = "tipolanz";
     public static final String CN_VALOR = "valor";
     public static final String CN_PARTIDO_ID = "partido_id";
@@ -34,8 +34,8 @@ public class DBLanzamientos{
         String query = "create table "+TABLE_NAME+"("+
                                                     CN_ID+" integer primary key not null,"+
                                                     CN_EFECTIVO+" integer not null,"+
-                                                    CN_POSX+" integer not null,"+
-                                                    CN_POSY+" integer not null,"+
+                                                   // CN_POSX+" integer not null,"+
+                                                  //  CN_POSY+" integer not null,"+
                                                     CN_TIPOLANZ+" text not null,"+  //simple,doble o triple.
                                                     CN_VALOR+" integer not null,"+
                                                     CN_PARTIDO_ID+" integer not null,"+
@@ -43,7 +43,7 @@ public class DBLanzamientos{
         return query;
     }
 
-    private String[] columnas = new String[]{CN_ID,CN_EFECTIVO,CN_POSX,CN_POSY,CN_TIPOLANZ,CN_VALOR,CN_PARTIDO_ID,CN_JUGADOR_ID};
+    private String[] columnas = new String[]{CN_ID,CN_EFECTIVO/*,CN_POSX,CN_POSY*/,CN_TIPOLANZ,CN_VALOR,CN_PARTIDO_ID,CN_JUGADOR_ID};
 
     private DBHelper helper;
     private SQLiteDatabase db;
@@ -64,11 +64,11 @@ public class DBLanzamientos{
             db.close();
     }
 
-    private ContentValues Contenedorvalores(int efectivo,int posx,int posy,String tipolanz,int valor,int part_id,int jug_id){
+    private ContentValues Contenedorvalores(int efectivo,String tipolanz,int valor,int part_id,int jug_id){
         ContentValues cont = new ContentValues();
         cont.put(CN_EFECTIVO,efectivo);
-        cont.put(CN_POSX,posx);
-        cont.put(CN_POSY,posy);
+        //cont.put(CN_POSX,posx);
+        //cont.put(CN_POSY,posy);
         cont.put(CN_TIPOLANZ,tipolanz);
         cont.put(CN_VALOR,valor);
         cont.put(CN_PARTIDO_ID,part_id);
@@ -77,8 +77,11 @@ public class DBLanzamientos{
     }
 
     //insercion mediante metodo android
-    public void insertar(int efectivo,int posx,int posy,String tipolanz,int valor,int part_id,int jug_id){
-        db.insert(TABLE_NAME,null, Contenedorvalores(efectivo,posx,posy,tipolanz,valor,part_id,jug_id));
+    public void insertar(int efectivo,String tipolanz,int valor,int part_id,int jug_id){
+        db.insert(TABLE_NAME,null, Contenedorvalores(efectivo,tipolanz,valor,part_id,jug_id));
+    }
+    public void insertar(Lanzamiento lanz){
+        this.insertar(lanz.getEfectivo(),lanz.getTipoLanzamiento(),lanz.getValor(),lanz.getPartido_id(),lanz.getJugador_id());
     }
 
     //eliminacion normal
@@ -114,13 +117,11 @@ public class DBLanzamientos{
             do {
                 int id = c.getColumnIndex(CN_ID);
                 int efect = c.getColumnIndex(CN_EFECTIVO);
-                int posx = c.getColumnIndex(CN_POSX);
-                int posy = c.getColumnIndex(CN_POSY);
                 int tiplanz = c.getColumnIndex(CN_TIPOLANZ);
                 int val = c.getColumnIndex(CN_VALOR);
                 int part_id = c.getColumnIndex(CN_PARTIDO_ID);
                 int jug_id = c.getColumnIndex(CN_JUGADOR_ID);
-                Lanzamiento lanz = new Lanzamiento(c.getInt(id),c.getInt(efect),c.getInt(posx),c.getInt(posy),c.getString(tiplanz),c.getInt(val),
+                Lanzamiento lanz = new Lanzamiento(c.getInt(id),c.getInt(efect),c.getString(tiplanz),c.getInt(val),
                                                     c.getInt(part_id),c.getInt(jug_id));
                 lista_lanz.add(lanz);
             }while (c.moveToNext());

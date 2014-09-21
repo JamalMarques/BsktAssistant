@@ -18,6 +18,7 @@ import com.skynet.basketassistant.Activities.JugadoresAct;
 import com.skynet.basketassistant.Modelo.Equipo;
 import com.skynet.basketassistant.Modelo.Partido;
 import com.skynet.basketassistant.Activities.PartidosAct;
+import com.skynet.basketassistant.Otros.Constants;
 import com.skynet.basketassistant.R;
 
 /**
@@ -39,7 +40,7 @@ public class Frag_expequip extends Fragment implements View.OnClickListener{
     public static Frag_expequip getInstance(int equipo_id){
         Frag_expequip fexp = new Frag_expequip();
         Bundle bun = new Bundle();
-        bun.putInt("equipo_id",equipo_id);
+        bun.putInt(Constants.TEAM_ID,equipo_id);
         fexp.setArguments(bun);
         return fexp;
     }
@@ -53,7 +54,7 @@ public class Frag_expequip extends Fragment implements View.OnClickListener{
         //bun_usr = getArguments();
         DBEquipos dbe = new DBEquipos(getActivity());
         dbe.Modolectura();
-        equipo = dbe.DameEquipo(getArguments().getInt("equipo_id"));
+        equipo = dbe.DameEquipo(getArguments().getInt(Constants.TEAM_ID));
         dbe.Cerrar();
 
         num_games = 0;
@@ -137,7 +138,7 @@ public class Frag_expequip extends Fragment implements View.OnClickListener{
 
             Intent intent = new Intent(getActivity(), PartidosAct.class);
             Bundle bun_equip = new Bundle();
-            bun_equip.putString("Nom_Equip", equipo.getNombre());
+            bun_equip.putString(Constants.TEAM_NAME, equipo.getNombre());
             intent.putExtras(bun_equip);
             startActivity(intent);
         }else
@@ -145,14 +146,14 @@ public class Frag_expequip extends Fragment implements View.OnClickListener{
 
                 Intent intent = new Intent(getActivity(), JugadoresAct.class);
                 Bundle bun_equip = new Bundle();
-                bun_equip.putString("Nom_Equip",equipo.getNombre());
+                bun_equip.putString(Constants.TEAM_NAME,equipo.getNombre());
                 intent.putExtras(bun_equip);
                 startActivity(intent);
             }else
                  if( view == b_play){
                      Intent intent = new Intent(getActivity(), GameActivity.class);
                      Bundle bun_equip = new Bundle();
-                     bun_equip.putString("Nom_Equip",equipo.getNombre());
+                     bun_equip.putString(Constants.TEAM_NAME,equipo.getNombre());
                      intent.putExtras(bun_equip);
                      startActivity(intent);
                  }

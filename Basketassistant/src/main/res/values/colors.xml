@@ -21,5 +21,8 @@
     <color name="CelesteFondopressButtonTransparent1">#6d7ecff1</color>
     <color name="RojoDeleteButton">#ffe1311c</color>
     <color name="RojoDeletePressButton">#ffe1311c</color>
+    <color name="Grey_border_players_box">#ffd5d5d5</color>
+    <color name="Background_pressed_button_player">#e97bdbff</color>
+    <color name="Border_pressed_button_player">#ff5288ff</color>
 
 </resources>

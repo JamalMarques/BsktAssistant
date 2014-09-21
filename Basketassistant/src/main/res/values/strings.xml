@@ -71,5 +71,8 @@
     <string name="title_activity_game">GameActivity</string>
     <string name="Points">Puntos</string>
     <string name="PlayerStatistics">Estadisticas</string>
+    <string name="Shoot">Lanzamiento</string>
+    <string name="Scored">Acertado</string>
+    <string name="Failed">Fallido</string>
 
 </resources>

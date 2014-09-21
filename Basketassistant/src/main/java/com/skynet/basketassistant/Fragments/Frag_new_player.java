@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.skynet.basketassistant.Datos.DBJugadores;
 import com.skynet.basketassistant.Activities.JugadoresAct;
 import com.skynet.basketassistant.Modelo.Equipo;
+import com.skynet.basketassistant.Otros.Constants;
 import com.skynet.basketassistant.R;
 
 /**
@@ -25,8 +26,7 @@ import com.skynet.basketassistant.R;
  */
 public class Frag_new_player extends Fragment implements View.OnClickListener{
 
-    private Equipo equipo;
-
+    private int equipo_id;
     private ImageButton b_back,b_add;
     private EditText et_apellido,et_nombre,et_altura,et_peso,et_numero;
     private TextView tv_hidden_url;
@@ -38,14 +38,22 @@ public class Frag_new_player extends Fragment implements View.OnClickListener{
     private Intent intent;
     private int codigo;*/
 
-    public Frag_new_player(Equipo eq){
-        equipo = eq;
+    public Frag_new_player(){  /*Empty constructor*/ }
+
+    public static Frag_new_player getInstance(int team_id){
+        Frag_new_player fnp = new Frag_new_player();
+        Bundle bun = new Bundle();
+        bun.putInt(Constants.TEAM_ID,team_id);
+        fnp.setArguments(bun);
+        return fnp;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view;
         view = inflater.inflate(R.layout.frag_new_player,container,false);
+
+        equipo_id = getArguments().getInt(Constants.TEAM_ID);
 
         b_back = (ImageButton)view.findViewById(R.id.b_back);
         b_add = (ImageButton)view.findViewById(R.id.b_add);
@@ -84,7 +92,7 @@ public class Frag_new_player extends Fragment implements View.OnClickListener{
                         DBJugadores dbj = new DBJugadores(getActivity());
                         dbj.Modoescritura();
                         dbj.insertar(et_apellido.getText().toString(),et_nombre.getText().toString(),Integer.valueOf(et_altura.getText().toString()),Integer.valueOf(et_peso.getText().toString()),Integer.valueOf(et_numero.getText().toString()),
-                                        spinner_roles.getSelectedItem().toString(),equipo.getId(),tv_hidden_url.getText().toString());
+                                        spinner_roles.getSelectedItem().toString(),equipo_id,tv_hidden_url.getText().toString());
                         dbj.Cerrar();
                     }
             }

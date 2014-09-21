@@ -19,6 +19,7 @@ import com.skynet.basketassistant.Datos.DBEquipos;
 import com.skynet.basketassistant.Datos.DBJugadores;
 import com.skynet.basketassistant.Modelo.Equipo;
 import com.skynet.basketassistant.Modelo.Jugador;
+import com.skynet.basketassistant.Otros.Constants;
 import com.skynet.basketassistant.R;
 
 import java.util.ArrayList;
@@ -44,7 +45,7 @@ public class Frag_jugadores extends Fragment implements AdapterView.OnItemClickL
     public static Frag_jugadores getInstance(int equipo_id){
         Frag_jugadores fjug = new Frag_jugadores();
         Bundle bun = new Bundle();
-        bun.putInt("equipo_id",equipo_id);
+        bun.putInt(Constants.TEAM_ID,equipo_id);
         fjug.setArguments(bun);
         return fjug;
     }
@@ -77,17 +78,17 @@ public class Frag_jugadores extends Fragment implements AdapterView.OnItemClickL
         //Bundle
         DBEquipos dbe = new DBEquipos(getActivity());
         dbe.Modolectura();
-        equipo = dbe.DameEquipo(getArguments().getInt("equipo_id"));
+        equipo = dbe.DameEquipo(getArguments().getInt(Constants.TEAM_ID));
         dbe.Cerrar();
 
         DBJugadores dbj = new DBJugadores(getActivity());
         dbj.Modolectura();
-        Cursor c = dbj.Cargarcursorjugadores(equipo);
+        //Cursor c = dbj.Cargarcursorjugadores(equipo.getId());
         //dbj.Cerrar()
 
         lista_jugadores = new ArrayList<Jugador>();
-
-        if(c.moveToFirst()){
+        lista_jugadores = dbj.DameListaJugadoresEquipo(equipo.getId());
+        /*if(c.moveToFirst()){
             do{
                 int id = c.getColumnIndex(dbj.CN_ID);
                 int apellido = c.getColumnIndex(dbj.CN_APELLIDO);
@@ -105,7 +106,7 @@ public class Frag_jugadores extends Fragment implements AdapterView.OnItemClickL
 
             }while(c.moveToNext());
         }
-        c.close();
+        c.close();*/
 
         new SetearAdaptador().execute();
         //ItemAdapterJugadores adapterjug = new ItemAdapterJugadores(getActivity().getApplicationContext(),lista_jugadores);
