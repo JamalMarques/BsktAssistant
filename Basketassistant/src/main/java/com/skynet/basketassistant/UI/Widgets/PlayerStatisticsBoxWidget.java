@@ -87,7 +87,7 @@ public class PlayerStatisticsBoxWidget extends RelativeLayout {
                 }
             }
         }
-        
+
         for (int i = 0; i < reboundsList.size(); i++) {
             if (reboundsList.get(i).getJugador_id() == player.getId())
                 rebounds++;

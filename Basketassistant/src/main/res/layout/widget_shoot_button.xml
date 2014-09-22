@@ -11,7 +11,7 @@
         <ImageButton
             android:layout_width="@dimen/width_image_shoot"
             android:layout_height="@dimen/height_image_shoot"
-            android:id="@+id/tvTotalPoints" />
+            android:id="@+id/iButton" />
 
     </LinearLayout>
 </RelativeLayout>
