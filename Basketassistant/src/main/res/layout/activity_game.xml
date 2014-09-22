@@ -83,7 +83,7 @@
     <view
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        class="com.skynet.basketassistant.UI.Widgets.StatisticsBoxWidget"
+        class="com.skynet.basketassistant.UI.Widgets.PlayerStatisticsBoxWidget"
         android:id="@+id/statisticsBox"
         android:layout_above="@+id/statisticsBox"
         android:layout_alignParentLeft="true"

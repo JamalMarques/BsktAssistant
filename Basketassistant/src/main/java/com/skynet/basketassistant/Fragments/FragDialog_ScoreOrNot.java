@@ -18,7 +18,6 @@ import com.skynet.basketassistant.R;
  */
 public class FragDialog_ScoreOrNot extends DialogFragment implements View.OnClickListener{
 
-    public static final int SCORED = 1, FAILED = 0;
     private OnCompleteDialogListener dListener;
     private Button bScored,bFailded;
     private int constant_shoot;
@@ -32,7 +31,8 @@ public class FragDialog_ScoreOrNot extends DialogFragment implements View.OnClic
     @Override
     public void onAttach(Activity activity) {
         try{
-            this.dListener = (OnCompleteDialogListener)getActivity();
+            this.dListener = (OnCompleteDialogListener)activity;
+            super.onAttach(activity);
         }catch(ClassCastException e){
             throw new ClassCastException(activity.toString() + " must implement OnCompleteListener");
         }
@@ -66,11 +66,11 @@ public class FragDialog_ScoreOrNot extends DialogFragment implements View.OnClic
     @Override
     public void onClick(View view) {
         if(view == bScored){
-            this.dListener.onComplete(SCORED,constant_shoot);
+            this.dListener.onComplete(Constants.SHOOT_SCORED,constant_shoot);
             this.dismiss();
         }else{
             if(bFailded == bFailded){
-                this.dListener.onComplete(FAILED,constant_shoot);
+                this.dListener.onComplete(Constants.SHOOT_FAILED,constant_shoot);
                 this.dismiss();
             }
         }

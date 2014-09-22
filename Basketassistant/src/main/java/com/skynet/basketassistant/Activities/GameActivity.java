@@ -8,7 +8,6 @@ import android.widget.Toast;
 
 import com.skynet.basketassistant.Datos.DBEquipos;
 import com.skynet.basketassistant.Datos.DBJugadores;
-import com.skynet.basketassistant.Datos.DBLanzamientos;
 import com.skynet.basketassistant.Fragments.FragDialog_ScoreOrNot;
 import com.skynet.basketassistant.Modelo.Equipo;
 import com.skynet.basketassistant.Modelo.Falta;
@@ -23,7 +22,7 @@ import com.skynet.basketassistant.UI.Widgets.AditionalButtonWidget;
 import com.skynet.basketassistant.UI.Widgets.BoxOfPlayersWidget;
 import com.skynet.basketassistant.UI.Widgets.PlayerBoxWidget;
 import com.skynet.basketassistant.UI.Widgets.ShootButtonWidget;
-import com.skynet.basketassistant.UI.Widgets.StatisticsBoxWidget;
+import com.skynet.basketassistant.UI.Widgets.PlayerStatisticsBoxWidget;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +36,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
 
     private BoxOfPlayersWidget boxOfPlayersW;
     private PlayerBoxWidget playerTouched = null;
-    private StatisticsBoxWidget statisticsWidget;
+    private PlayerStatisticsBoxWidget playerStatisticsWidget;
     private AditionalButtonWidget reboundButton,stealButton,blockButton,foulButton;
     private ShootButtonWidget simplePointWidget,doublePointWidget,triplePointWidget;
 
@@ -76,7 +75,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
         Toast.makeText(this,teamPlayers.size()+"",Toast.LENGTH_LONG).show();
 
         boxOfPlayersW = (BoxOfPlayersWidget)findViewById(R.id.playersBox);
-        statisticsWidget = (StatisticsBoxWidget)findViewById(R.id.statisticsBox);
+        playerStatisticsWidget = (PlayerStatisticsBoxWidget)findViewById(R.id.statisticsBox);
         reboundButton = (AditionalButtonWidget)findViewById(R.id.reboundButton);
         stealButton = (AditionalButtonWidget)findViewById(R.id.stealButton);
         blockButton = (AditionalButtonWidget)findViewById(R.id.blockButton);
@@ -143,9 +142,11 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
                                                }
                                                playerTouched = boxOfPlayersW.getListPlayerWidget().get(i);
                                                playerTouched.statePressed(true);
+                                               playerStatisticsWidget.changePlayer(playerTouched.getPlayer(),shootList,reboundList,stealList,blockList,foulList);
                                            }else {
                                                playerTouched.statePressed(false);
                                                playerTouched = null;
+                                               playerStatisticsWidget.reset();
                                            }
                                            i = boxOfPlayersW.getListPlayerWidget().size()-1; //Break for!
                                        }
@@ -166,8 +167,9 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
 
     private void showScoreOrNotDialog(int constant_shoot){
         FragDialog_ScoreOrNot fragdialog = FragDialog_ScoreOrNot.getInstance(constant_shoot);
-        fragdialog.show(getFragmentManager(),Constants.FRAGMENT_DIALOG_SCORE_OR_NOT);
+        fragdialog.show(getFragmentManager(), Constants.FRAGMENT_DIALOG_SCORE_OR_NOT);
     }
+
 
     private void reboundBehavior(){
         Toast.makeText(this,"rebound button toucked",Toast.LENGTH_SHORT).show();
@@ -208,9 +210,31 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
 
     @Override
     public void onComplete(int status, int constant_shoot) {
-
+        Lanzamiento shoot;
+        switch (constant_shoot){
+            case Constants.SIMPLE_SHOOT:
+                    shoot = new Lanzamiento(status,Constants.SHOOT_TYPE_SIMPLE,Constants.SIMPLE_SHOOT_VALUE,0,playerTouched.getPlayer().getId());
+                    shootList.add(shoot);
+                    if(status == Constants.SHOOT_SCORED)
+                        playerStatisticsWidget.addPoints(Constants.SIMPLE_SHOOT_VALUE);
+                break;
+            case Constants.DOUBLE_SHOOT:
+                    shoot = new Lanzamiento(status,Constants.SHOOT_TYPE_DOUBLE,Constants.DOUBLE_SHOOT_VALUE,0,playerTouched.getPlayer().getId());
+                    shootList.add(shoot);
+                    if(status == Constants.SHOOT_SCORED)
+                        playerStatisticsWidget.addPoints(Constants.DOUBLE_SHOOT_VALUE);
+                break;
+            case Constants.TRIPLE_SHOOT:
+                    shoot = new Lanzamiento(status,Constants.SHOOT_TYPE_TRIPLE,Constants.TRIPLE_SHOOT_VALUE,0,playerTouched.getPlayer().getId());
+                    shootList.add(shoot);
+                    if(status == Constants.SHOOT_SCORED)
+                        playerStatisticsWidget.addPoints(Constants.TRIPLE_SHOOT_VALUE);;
+                break;
+        }
     }
 
 
     // ------------------------------------
+
+
 }
