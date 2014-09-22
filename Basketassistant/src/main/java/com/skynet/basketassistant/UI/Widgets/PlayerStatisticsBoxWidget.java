@@ -86,25 +86,27 @@ public class PlayerStatisticsBoxWidget extends RelativeLayout {
                     points += shootsList.get(i).getValor();
                 }
             }
-            for (int i = 0; i < reboundsList.size(); i++) {
-                if (reboundsList.get(i).getJugador_id() == player.getId())
-                    rebounds++;
-            }
-            for (int i = 0; i < stealsList.size(); i++) {
-                if (stealsList.get(i).getJugador_id() == player.getId())
-                    steals++;
-            }
-            for (int i = 0; i < blocksList.size(); i++) {
-                if (blocksList.get(i).getJugador_id() == player.getId())
-                    blocks++;
-            }
-            for (int i = 0; i < foulsList.size(); i++) {
-                if (foulsList.get(i).getJugador_id() == player.getId())
-                    fouls++;
-            }
+        }
+        
+        for (int i = 0; i < reboundsList.size(); i++) {
+            if (reboundsList.get(i).getJugador_id() == player.getId())
+                rebounds++;
+        }
+        for (int i = 0; i < stealsList.size(); i++) {
+            if (stealsList.get(i).getJugador_id() == player.getId())
+                steals++;
+        }
+        for (int i = 0; i < blocksList.size(); i++) {
+            if (blocksList.get(i).getJugador_id() == player.getId())
+                blocks++;
+        }
+        for (int i = 0; i < foulsList.size(); i++) {
+            if (foulsList.get(i).getJugador_id() == player.getId())
+                fouls++;
+        }
 
             refresh();
-        }
+
     }
 
     public void addPoints(int points){
