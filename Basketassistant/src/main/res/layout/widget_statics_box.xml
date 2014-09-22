@@ -54,6 +54,19 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/tvPoints"
                     style="@style/Text_Style_S" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="/"
+                    android:id="@+id/spacer"
+                    style="@style/Text_Style_S" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvTotalPoints"
+                    style="@style/Text_Style_S" />
             </TableRow>
 
             <TableRow

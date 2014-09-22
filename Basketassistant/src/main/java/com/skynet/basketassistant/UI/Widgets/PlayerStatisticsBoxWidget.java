@@ -13,6 +13,7 @@ import com.skynet.basketassistant.Modelo.Lanzamiento;
 import com.skynet.basketassistant.Modelo.Rebote;
 import com.skynet.basketassistant.Modelo.Robo;
 import com.skynet.basketassistant.Modelo.Tapon;
+import com.skynet.basketassistant.Otros.Constants;
 import com.skynet.basketassistant.R;
 
 import java.util.List;
@@ -28,8 +29,10 @@ public class PlayerStatisticsBoxWidget extends RelativeLayout {
     private TextView tvSteals;
     private TextView tvBlocks;
     private TextView tvFouls;
+    private TextView tvTotalPoints;
 
     private int points=0;
+    private int totalPoints=0;
     private int rebounds=0;
     private int steals=0;
     private int blocks=0;
@@ -43,6 +46,8 @@ public class PlayerStatisticsBoxWidget extends RelativeLayout {
         tvSteals = (TextView)getRootView().findViewById(R.id.tvSteals);
         tvBlocks = (TextView)getRootView().findViewById(R.id.tvBlocks);
         tvFouls = (TextView)getRootView().findViewById(R.id.tvFouls);
+        tvTotalPoints = (TextView)getRootView().findViewById(R.id.tvTotalPoints);
+
 
         initiate();
     }
@@ -57,6 +62,7 @@ public class PlayerStatisticsBoxWidget extends RelativeLayout {
         getTvSteals().setText(String.valueOf(getSteals()));
         getTvBlocks().setText(String.valueOf(getBlocks()));
         getTvFouls().setText(String.valueOf(getFouls()));
+        getTvTotalPoints().setText(String.valueOf(getTotalPoints()));
     }
 
     public void reset(){
@@ -69,32 +75,36 @@ public class PlayerStatisticsBoxWidget extends RelativeLayout {
     }
 
     public void changePlayer(Jugador player,List<Lanzamiento> shootsList,List<Rebote> reboundsList,List<Robo> stealsList,
-                             List<Tapon> blocksList,List<Falta> foulsList){
+                             List<Tapon> blocksList,List<Falta> foulsList) {
 
         reset();
 
-        for (int i=0; i < shootsList.size();i++){
-            if(shootsList.get(i).getJugador_id() == player.getId())
-                points += shootsList.get(i).getValor();
-        }
-        for (int i=0; i < reboundsList.size();i++){
-            if(reboundsList.get(i).getJugador_id() == player.getId())
-                rebounds++;
-        }
-        for (int i=0; i < stealsList.size();i++){
-            if(stealsList.get(i).getJugador_id() == player.getId())
-                steals++;
-        }
-        for (int i=0; i < blocksList.size();i++){
-            if(blocksList.get(i).getJugador_id() == player.getId())
-                blocks++;
-        }
-        for (int i=0; i < foulsList.size();i++){
-            if(foulsList.get(i).getJugador_id() == player.getId())
-                fouls++;
-        }
+        for (int i = 0; i < shootsList.size(); i++) {
+            if (shootsList.get(i).getJugador_id() == player.getId()) {
+                totalPoints = getTotalPoints() + shootsList.get(i).getValor();
+                if (shootsList.get(i).getEfectivo() == Constants.SHOOT_SCORED) {
+                    points += shootsList.get(i).getValor();
+                }
+            }
+            for (int i = 0; i < reboundsList.size(); i++) {
+                if (reboundsList.get(i).getJugador_id() == player.getId())
+                    rebounds++;
+            }
+            for (int i = 0; i < stealsList.size(); i++) {
+                if (stealsList.get(i).getJugador_id() == player.getId())
+                    steals++;
+            }
+            for (int i = 0; i < blocksList.size(); i++) {
+                if (blocksList.get(i).getJugador_id() == player.getId())
+                    blocks++;
+            }
+            for (int i = 0; i < foulsList.size(); i++) {
+                if (foulsList.get(i).getJugador_id() == player.getId())
+                    fouls++;
+            }
 
-        refresh();
+            refresh();
+        }
     }
 
     public void addPoints(int points){
@@ -203,5 +213,13 @@ public class PlayerStatisticsBoxWidget extends RelativeLayout {
 
     public int getFouls() {
         return fouls;
+    }
+
+    public TextView getTvTotalPoints() {
+        return tvTotalPoints;
+    }
+
+    public int getTotalPoints() {
+        return totalPoints;
     }
 }

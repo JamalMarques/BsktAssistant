@@ -233,7 +233,6 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
         }
     }
 
-
     // ------------------------------------
 
 
