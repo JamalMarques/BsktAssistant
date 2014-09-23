@@ -160,7 +160,27 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
 
     @Override
     public boolean onLongClick(View view) {
-        return false;
+
+        if(isPlayerSelected()) {
+            if (view == reboundButton.getViewListener()) { //Press Rebound button
+                reboundBehaviorLong();
+            } else if (view == stealButton.getViewListener()) { //Press Steal button
+                stealBehaviorLong();
+            } else if (view == blockButton.getViewListener()) { //Press Block button
+                blockBehaviorLong();
+            } else if (view == foulButton.getViewListener()) { //Press Foul button
+                foulBehaviorLong();
+            } else if (view == simplePointWidget.getViewListener()) { //Press simpleShoot button
+                simpleshootBehaviorLong();
+            } else if (view == doublePointWidget.getViewListener()) { //Press doubleShoot button
+                doubleshootBehaviorLong();
+            } else if (view == triplePointWidget.getViewListener()) { //Press tripleShoot button
+                tripleshootBehaviorLong();
+            }
+        }else
+            Toast.makeText(this,getString(R.string.SelectPlayerError),Toast.LENGTH_SHORT).show();
+
+        return true;
     }
 
     private boolean isPlayerSelected(){
@@ -186,6 +206,9 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
             Toast.makeText(this,getString(R.string.SelectPlayerError),Toast.LENGTH_SHORT).show();
         }
     }
+    private void reboundBehaviorLong(){
+        removeFromRebounds(playerTouched.getPlayer());
+    }
     private void stealBehavior(){
         if(isPlayerSelected()){
             Robo newSteal = new Robo(0,playerTouched.getPlayer().getId(),0);
@@ -194,6 +217,9 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
         }else {
             Toast.makeText(this,getString(R.string.SelectPlayerError),Toast.LENGTH_SHORT).show();
         }
+    }
+    private void stealBehaviorLong(){
+
     }
     private void blockBehavior(){
         if(isPlayerSelected()){
@@ -282,6 +308,23 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
         }
 
 
+    }
+
+    private void removeFromRebounds(Jugador player){
+        int flag = 0;
+        for(int j=reboundList.size();j >= 0;j--){
+            if(reboundList.get(j).getJugador_id() == player.getId()){
+                flag = 1;
+                reboundList.remove(j);
+                j = -1; //Break for
+            }
+        }
+        if(flag == 0)
+            Toast.makeText(this,getString(R.string.NoHaveRebounds),Toast.LENGTH_SHORT).show();
+    }
+
+    private void removeFromSteals(){
+        
     }
 
 
