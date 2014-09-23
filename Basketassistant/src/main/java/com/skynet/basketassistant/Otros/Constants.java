@@ -38,6 +38,7 @@ public class Constants {
     public static final String WHO_CALL = "WHO_CALL";
 
     //REBOUNDS CONSTANT
-    public static final String REBOUND = "REBOUND";  //Used in WHO_CALL BUNDLE
+    public static final String REBOUND_CALL = "REBOUND";  //Used in WHO_CALL BUNDLE
+    public static final String FOUL_CALL = "FOUL";   //Used in WHO_CALL BUNDLE
 
 }

@@ -175,25 +175,41 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
 
     private void showOfensiveDefensiveDialog(String title,String whoCall){
         FragDialog_OfensiveDefensive fragd = FragDialog_OfensiveDefensive.getInstance(title,whoCall);
-        fragd.show(getSupportFragmentManager(),Constants.FRAGMENT_DIALOG_OFENSIVE_DEFENSIVE);
+        fragd.show(getSupportFragmentManager(), Constants.FRAGMENT_DIALOG_OFENSIVE_DEFENSIVE);
     }
 
 
     private void reboundBehavior(){
         if(isPlayerSelected()){
-            showScoreOrNotDialog(Constants.DOUBLE_SHOOT);
+            showOfensiveDefensiveDialog(getString(R.string.Rebound),Constants.REBOUND_CALL);
         }else {
             Toast.makeText(this,getString(R.string.SelectPlayerError),Toast.LENGTH_SHORT).show();
         }
     }
     private void stealBehavior(){
-        Toast.makeText(this,"steal button toucked",Toast.LENGTH_SHORT).show();
+        if(isPlayerSelected()){
+            Robo newSteal = new Robo(0,playerTouched.getPlayer().getId(),0);
+            stealList.add(newSteal);
+            playerStatisticsWidget.addSteals(1);
+        }else {
+            Toast.makeText(this,getString(R.string.SelectPlayerError),Toast.LENGTH_SHORT).show();
+        }
     }
     private void blockBehavior(){
-        Toast.makeText(this,"block button toucked",Toast.LENGTH_SHORT).show();
+        if(isPlayerSelected()){
+            Tapon newBlock = new Tapon(0,playerTouched.getPlayer().getId(),0);
+            blockList.add(newBlock);
+            playerStatisticsWidget.addBlocks(1);
+        }else {
+            Toast.makeText(this,getString(R.string.SelectPlayerError),Toast.LENGTH_SHORT).show();
+        }
     }
     private void foulBehavior(){
-        Toast.makeText(this,"foul button toucked",Toast.LENGTH_SHORT).show();
+        if(isPlayerSelected()){
+            showOfensiveDefensiveDialog(getString(R.string.Foul),Constants.FOUL_CALL);
+        }else {
+            Toast.makeText(this,getString(R.string.SelectPlayerError),Toast.LENGTH_SHORT).show();
+        }
     }
 
     // -------------  SHOOTS --------------
@@ -229,18 +245,21 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
                     shootList.add(shoot);
                     if(status == Constants.SHOOT_SCORED)
                         playerStatisticsWidget.addPoints(Constants.SIMPLE_SHOOT_VALUE);
+                    playerStatisticsWidget.addTotalPoints(Constants.SIMPLE_SHOOT_VALUE);
                 break;
             case Constants.DOUBLE_SHOOT:
                     shoot = new Lanzamiento(status,Constants.SHOOT_TYPE_DOUBLE,Constants.DOUBLE_SHOOT_VALUE,0,playerTouched.getPlayer().getId());
                     shootList.add(shoot);
                     if(status == Constants.SHOOT_SCORED)
                         playerStatisticsWidget.addPoints(Constants.DOUBLE_SHOOT_VALUE);
+                    playerStatisticsWidget.addTotalPoints(Constants.DOUBLE_SHOOT_VALUE);
                 break;
             case Constants.TRIPLE_SHOOT:
                     shoot = new Lanzamiento(status,Constants.SHOOT_TYPE_TRIPLE,Constants.TRIPLE_SHOOT_VALUE,0,playerTouched.getPlayer().getId());
                     shootList.add(shoot);
                     if(status == Constants.SHOOT_SCORED)
-                        playerStatisticsWidget.addPoints(Constants.TRIPLE_SHOOT_VALUE);;
+                        playerStatisticsWidget.addPoints(Constants.TRIPLE_SHOOT_VALUE);
+                    playerStatisticsWidget.addTotalPoints(Constants.TRIPLE_SHOOT_VALUE);
                 break;
         }
     }
@@ -250,11 +269,18 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
     @Override
     public void onCompleteOfDefDialog(String type,String whoCall) {
 
-        if(whoCall.equals(Constants.REBOUND)) { //Come from REBOUND
+        if(whoCall.equals(Constants.REBOUND_CALL)) { //Come from REBOUND_CALL
             Rebote rebound = new Rebote(0,playerTouched.getPlayer().getId(),0,type); //TYPE HAVE : OFENSIVE OR DEFENSIVE CONSTANTS COMMING FROM DIALOG
             reboundList.add(rebound);
             playerStatisticsWidget.addRebounds(1);
+        }else {
+            if(whoCall.equals(Constants.FOUL_CALL)){ //Come from FOUL_CALL
+                Falta foul = new Falta(0,0,playerTouched.getPlayer().getId(),type); //TYPE HAVE : OFENSIVE OR DEFENSIVE CONSTANTS COMMING FROM DIALOG
+                foulList.add(foul);
+                playerStatisticsWidget.addFouls(1);
+            }
         }
+
 
     }
 

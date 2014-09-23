@@ -50,7 +50,8 @@
     <string name="Robos">Robos</string>
     <string name="Tapas">Tapas</string>
     <string name="Asistencias">Asist.</string>
-    <string name="Rebotes">Rebotes</string>
+    <string name="Rebounds">Rebotes</string>
+    <string name="Rebound">Rebote</string>
     <string name="Def">Def</string>
     <string name="Ofen">Ofen</string>
     <string name="Rol">Rol</string>
@@ -77,5 +78,6 @@
     <string name="SelectPlayerError">Debe seleccionar un jugador</string>
     <string name="Defensive">Defensivo</string>
     <string name="Ofensive">Ofensivo</string>
+    <string name="Foul">Falta</string>
 
 </resources>

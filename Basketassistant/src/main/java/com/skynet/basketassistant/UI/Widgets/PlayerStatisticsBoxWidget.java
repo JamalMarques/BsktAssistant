@@ -114,6 +114,10 @@ public class PlayerStatisticsBoxWidget extends RelativeLayout {
         this.points += points;
         refresh();
     }
+    public void addTotalPoints(int points){
+        this.totalPoints += points;
+        refresh();
+    }
     public void addRebounds(int rebounds){
         this.rebounds += rebounds;
         refresh();
@@ -135,6 +139,13 @@ public class PlayerStatisticsBoxWidget extends RelativeLayout {
             this.points = 0;
         else
             this.points -= points;
+        refresh();
+    }
+    public void removeTotalPoints(int points){
+        if( (this.totalPoints - points) <= 0)
+            this.totalPoints = 0;
+        else
+            this.totalPoints -= points;
         refresh();
     }
     public void removeRebounds(int rebounds){
