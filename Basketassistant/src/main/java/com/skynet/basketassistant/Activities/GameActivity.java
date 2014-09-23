@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.skynet.basketassistant.Datos.DBEquipos;
 import com.skynet.basketassistant.Datos.DBJugadores;
+import com.skynet.basketassistant.Fragments.FragDialog_OfensiveDefensive;
 import com.skynet.basketassistant.Fragments.FragDialog_ScoreOrNot;
 import com.skynet.basketassistant.Modelo.Equipo;
 import com.skynet.basketassistant.Modelo.Falta;
@@ -27,7 +28,9 @@ import com.skynet.basketassistant.UI.Widgets.PlayerStatisticsBoxWidget;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameActivity extends BaseActivity implements View.OnClickListener,View.OnLongClickListener,FragDialog_ScoreOrNot.OnCompleteDialogListener {
+public class GameActivity extends BaseActivity implements View.OnClickListener,View.OnLongClickListener,FragDialog_ScoreOrNot.OnCompleteShootDialogListener,
+                                                            FragDialog_OfensiveDefensive.onCompleteOfDefDialogListener
+{
 
     //Necesary data
     private Equipo myTeam;
@@ -142,7 +145,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
                                                }
                                                playerTouched = boxOfPlayersW.getListPlayerWidget().get(i);
                                                playerTouched.statePressed(true);
-                                               playerStatisticsWidget.changePlayer(playerTouched.getPlayer(),shootList,reboundList,stealList,blockList,foulList);
+                                               playerStatisticsWidget.changePlayer(playerTouched.getPlayer(), shootList, reboundList, stealList, blockList, foulList);
                                            }else {
                                                playerTouched.statePressed(false);
                                                playerTouched = null;
@@ -167,12 +170,21 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
 
     private void showScoreOrNotDialog(int constant_shoot){
         FragDialog_ScoreOrNot fragdialog = FragDialog_ScoreOrNot.getInstance(constant_shoot);
-        fragdialog.show(getFragmentManager(), Constants.FRAGMENT_DIALOG_SCORE_OR_NOT);
+        fragdialog.show(getSupportFragmentManager(), Constants.FRAGMENT_DIALOG_SCORE_OR_NOT);
+    }
+
+    private void showOfensiveDefensiveDialog(String title,String whoCall){
+        FragDialog_OfensiveDefensive fragd = FragDialog_OfensiveDefensive.getInstance(title,whoCall);
+        fragd.show(getSupportFragmentManager(),Constants.FRAGMENT_DIALOG_OFENSIVE_DEFENSIVE);
     }
 
 
     private void reboundBehavior(){
-        Toast.makeText(this,"rebound button toucked",Toast.LENGTH_SHORT).show();
+        if(isPlayerSelected()){
+            showScoreOrNotDialog(Constants.DOUBLE_SHOOT);
+        }else {
+            Toast.makeText(this,getString(R.string.SelectPlayerError),Toast.LENGTH_SHORT).show();
+        }
     }
     private void stealBehavior(){
         Toast.makeText(this,"steal button toucked",Toast.LENGTH_SHORT).show();
@@ -209,7 +221,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
     }
 
     @Override
-    public void onComplete(int status, int constant_shoot) {
+    public void onCompleteShootDialog(int status, int constant_shoot) {
         Lanzamiento shoot;
         switch (constant_shoot){
             case Constants.SIMPLE_SHOOT:
@@ -234,6 +246,18 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
     }
 
     // ------------------------------------
+
+    @Override
+    public void onCompleteOfDefDialog(String type,String whoCall) {
+
+        if(whoCall.equals(Constants.REBOUND)) { //Come from REBOUND
+            Rebote rebound = new Rebote(0,playerTouched.getPlayer().getId(),0,type); //TYPE HAVE : OFENSIVE OR DEFENSIVE CONSTANTS COMMING FROM DIALOG
+            reboundList.add(rebound);
+            playerStatisticsWidget.addRebounds(1);
+        }
+
+    }
+
 
 
 }

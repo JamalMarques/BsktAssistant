@@ -1,9 +1,10 @@
 package com.skynet.basketassistant.Fragments;
 
 import android.app.Activity;
-import android.app.DialogFragment;
+
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,23 +19,23 @@ import com.skynet.basketassistant.R;
  */
 public class FragDialog_ScoreOrNot extends DialogFragment implements View.OnClickListener{
 
-    private OnCompleteDialogListener dListener;
+    private OnCompleteShootDialogListener dListener;
     private Button bScored,bFailded;
     private int constant_shoot;
 
     public FragDialog_ScoreOrNot(){/*Empty constructor*/}
 
-    public static interface OnCompleteDialogListener{
-        public abstract void onComplete(int status,int constant_shoot);
+    public static interface OnCompleteShootDialogListener {
+        public abstract void onCompleteShootDialog(int status,int constant_shoot);
     }
 
     @Override
     public void onAttach(Activity activity) {
         try{
-            this.dListener = (OnCompleteDialogListener)activity;
+            this.dListener = (OnCompleteShootDialogListener)activity;
             super.onAttach(activity);
         }catch(ClassCastException e){
-            throw new ClassCastException(activity.toString() + " must implement OnCompleteListener");
+            throw new ClassCastException(activity.toString() + " must implement OnCompleteShootDialogListener");
         }
     }
 
@@ -66,11 +67,11 @@ public class FragDialog_ScoreOrNot extends DialogFragment implements View.OnClic
     @Override
     public void onClick(View view) {
         if(view == bScored){
-            this.dListener.onComplete(Constants.SHOOT_SCORED,constant_shoot);
+            this.dListener.onCompleteShootDialog(Constants.SHOOT_SCORED, constant_shoot);
             this.dismiss();
         }else{
             if(bFailded == bFailded){
-                this.dListener.onComplete(Constants.SHOOT_FAILED,constant_shoot);
+                this.dListener.onCompleteShootDialog(Constants.SHOOT_FAILED, constant_shoot);
                 this.dismiss();
             }
         }

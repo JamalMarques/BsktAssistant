@@ -75,5 +75,7 @@
     <string name="Scored">Acertado</string>
     <string name="Failed">Fallido</string>
     <string name="SelectPlayerError">Debe seleccionar un jugador</string>
+    <string name="Defensive">Defensivo</string>
+    <string name="Ofensive">Ofensivo</string>
 
 </resources>

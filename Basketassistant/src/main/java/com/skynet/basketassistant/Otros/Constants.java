@@ -30,4 +30,14 @@ public class Constants {
     public static final int SHOOT_SCORED = 1;
     public static final int SHOOT_FAILED = 0;
 
+    //OFENSIVE DEFENSIVE DIALOG
+    public static final String FRAGMENT_DIALOG_OFENSIVE_DEFENSIVE = "FRAGMENT_DIALOG_OFENSIVE_DEFENSIVE";
+    public static final String OFENSIVE = "OFENSIVE";
+    public static final String DEFENSIVE = "DEFENSIVE";
+    public static final String FRAGDIALOG_TITLE = "FRAGDIALOG_TITLE";
+    public static final String WHO_CALL = "WHO_CALL";
+
+    //REBOUNDS CONSTANT
+    public static final String REBOUND = "REBOUND";  //Used in WHO_CALL BUNDLE
+
 }
