@@ -71,6 +71,7 @@ public class PlayerStatisticsBoxWidget extends RelativeLayout {
         steals=0;
         blocks=0;
         fouls=0;
+        totalPoints=0;
         refresh();
     }
 
