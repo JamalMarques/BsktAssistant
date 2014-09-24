@@ -207,7 +207,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
         }
     }
     private void reboundBehaviorLong(){
-        removeFromRebounds(playerTouched.getPlayer());
+        removeFromRebounds(playerTouched.getPlayer().getId());
     }
     private void stealBehavior(){
         if(isPlayerSelected()){
@@ -219,7 +219,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
         }
     }
     private void stealBehaviorLong(){
-
+        removeFromSteals(playerTouched.getPlayer().getId());
     }
     private void blockBehavior(){
         if(isPlayerSelected()){
@@ -230,12 +230,19 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
             Toast.makeText(this,getString(R.string.SelectPlayerError),Toast.LENGTH_SHORT).show();
         }
     }
+    private void blockBehaviorLong(){
+        removeFromBlocks(playerTouched.getPlayer().getId());
+    }
+
     private void foulBehavior(){
         if(isPlayerSelected()){
             showOfensiveDefensiveDialog(getString(R.string.Foul),Constants.FOUL_CALL);
         }else {
             Toast.makeText(this,getString(R.string.SelectPlayerError),Toast.LENGTH_SHORT).show();
         }
+    }
+    private void foulBehaviorLong(){
+        removeFromFouls(playerTouched.getPlayer().getId());
     }
 
     // -------------  SHOOTS --------------
@@ -247,6 +254,10 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
             Toast.makeText(this,getString(R.string.SelectPlayerError),Toast.LENGTH_SHORT).show();
         }
     }
+    private void simpleshootBehaviorLong(){
+        
+    }
+
     private void doubleshootBehavior(){
         if(isPlayerSelected()){
             showScoreOrNotDialog(Constants.DOUBLE_SHOOT);
@@ -254,12 +265,19 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
             Toast.makeText(this,getString(R.string.SelectPlayerError),Toast.LENGTH_SHORT).show();
         }
     }
+    private void doubleshootBehaviorLong(){
+
+    }
+
     private void tripleshootBehavior(){
         if(isPlayerSelected()){
             showScoreOrNotDialog(Constants.TRIPLE_SHOOT);
         }else {
             Toast.makeText(this,getString(R.string.SelectPlayerError),Toast.LENGTH_SHORT).show();
         }
+    }
+    private void tripleshootBehaviorLong(){
+
     }
 
     @Override
@@ -306,14 +324,12 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
                 playerStatisticsWidget.addFouls(1);
             }
         }
-
-
     }
 
-    private void removeFromRebounds(Jugador player){
+    private void removeFromRebounds(int player_id){
         int flag = 0;
         for(int j=reboundList.size();j >= 0;j--){
-            if(reboundList.get(j).getJugador_id() == player.getId()){
+            if(reboundList.get(j).getJugador_id() == player_id){
                 flag = 1;
                 reboundList.remove(j);
                 j = -1; //Break for
@@ -323,10 +339,63 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
             Toast.makeText(this,getString(R.string.NoHaveRebounds),Toast.LENGTH_SHORT).show();
     }
 
-    private void removeFromSteals(){
-        
+    private void removeFromSteals(int player_id){
+        int flag=0;
+        for(int i=stealList.size(); i>=0 ;i--){
+            if(stealList.get(i).getJugador_id() == player_id){
+                flag=1;
+                stealList.remove(i);
+                i = -1; //Break for
+            }
+        }
+        if(flag == 0)
+            Toast.makeText(this,getString(R.string.NoHaveRebounds),Toast.LENGTH_SHORT).show();
     }
 
+    private void removeFromBlocks(int player_id){
+        int flag=0;
+        for(int i=blockList.size(); i>=0 ;i--){
+            if(blockList.get(i).getJugador_id() == player_id){
+                flag=1;
+                blockList.remove(i);
+                i = -1; //Break for
+            }
+        }
+        if(flag == 0)
+            Toast.makeText(this,getString(R.string.NoHaveRebounds),Toast.LENGTH_SHORT).show();
+    }
 
+    private void removeFromFouls(int player_id){
+        int flag=0;
+        for(int i=foulList.size(); i>=0 ;i--){
+            if(foulList.get(i).getJugador_id() == player_id){
+                flag=1;
+                foulList.remove(i);
+                i = -1; //Break for
+            }
+        }
+        if(flag == 0)
+            Toast.makeText(this,getString(R.string.NoHaveRebounds),Toast.LENGTH_SHORT).show();
+    }
+
+    private void removeFromShoots(int player_id,String type_shoot,int scoredOrNot){  //typle_shoot = constant shoot simple double o triple
+        int flag=0;
+        for(int i=shootList.size(); i>=0 ; i--){
+            if(shootList.get(i).getJugador_id() == player_id && shootList.get(i).getTipoLanzamiento().equals(type_shoot) && shootList.get(i).getEfectivo() == scoredOrNot){
+                flag = 1;
+                shootList.remove(i);
+                if(type_shoot.equals(Constants.SHOOT_TYPE_SIMPLE))
+                    playerStatisticsWidget.removePoints(Constants.SIMPLE_SHOOT_VALUE);
+                else
+                    if(type_shoot.equals(Constants.SHOOT_TYPE_DOUBLE))
+                        playerStatisticsWidget.removePoints(Constants.DOUBLE_SHOOT_VALUE);
+                    else
+                        playerStatisticsWidget.removePoints(Constants.TRIPLE_SHOOT_VALUE);
+                i = -1;  //For Breaker
+            }
+        }
+        if(flag == 0)
+            Toast.makeText(this,getString(R.string.NoHaveThisShot),Toast.LENGTH_SHORT).show();
+    }
 
 }

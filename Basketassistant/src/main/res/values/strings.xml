@@ -80,5 +80,6 @@
     <string name="Ofensive">Ofensivo</string>
     <string name="Foul">Falta</string>
     <string name="NoHaveRebounds">No existen rebotes para ese jugador</string>
+    <string name="NoHaveThisShot">No existen lanzamientos de ese tipo para eliminar</string>
 
 </resources>
