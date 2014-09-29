@@ -93,6 +93,9 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
         simplePointWidget.getViewListener().setOnClickListener(this);
         doublePointWidget.getViewListener().setOnClickListener(this);
         triplePointWidget.getViewListener().setOnClickListener(this);
+        simplePointWidget.getViewListener().setOnLongClickListener(this);
+        doublePointWidget.getViewListener().setOnLongClickListener(this);
+        triplePointWidget.getViewListener().setOnLongClickListener(this);
         simplePointWidget.setButtonProperties(1, BitmapFactory.decodeResource(Resources.getSystem(),R.drawable.ic_launcher));
         doublePointWidget.setButtonProperties(2, BitmapFactory.decodeResource(Resources.getSystem(), R.drawable.ic_launcher));
         triplePointWidget.setButtonProperties(3, BitmapFactory.decodeResource(Resources.getSystem(), R.drawable.ic_launcher));
@@ -102,6 +105,11 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
         stealButton.getViewListener().setOnClickListener(this);
         blockButton.getViewListener().setOnClickListener(this);
         foulButton.getViewListener().setOnClickListener(this);
+        //---
+        reboundButton.getViewListener().setOnLongClickListener(this);
+        stealButton.getViewListener().setOnLongClickListener(this);
+        blockButton.getViewListener().setOnLongClickListener(this);
+        foulButton.getViewListener().setOnLongClickListener(this);
 
     }
 
@@ -328,11 +336,14 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
 
     private void removeFromRebounds(int player_id){
         int flag = 0;
-        for(int j=reboundList.size();j >= 0;j--){
-            if(reboundList.get(j).getJugador_id() == player_id){
-                flag = 1;
-                reboundList.remove(j);
-                j = -1; //Break for
+        if(reboundList.size() > 0) {
+            for (int j = reboundList.size()-1; j >= 0; j--) {
+                if (reboundList.get(j).getJugador_id() == player_id) {
+                    flag = 1;
+                    reboundList.remove(j);
+                    playerStatisticsWidget.removeRebounds(1);
+                    j = -1; //Break for
+                }
             }
         }
         if(flag == 0)
@@ -341,11 +352,14 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
 
     private void removeFromSteals(int player_id){
         int flag=0;
-        for(int i=stealList.size(); i>=0 ;i--){
-            if(stealList.get(i).getJugador_id() == player_id){
-                flag=1;
-                stealList.remove(i);
-                i = -1; //Break for
+        if(stealList.size() > 0) {
+            for (int i = stealList.size()-1; i >= 0; i--) {
+                if (stealList.get(i).getJugador_id() == player_id) {
+                    flag = 1;
+                    stealList.remove(i);
+                    playerStatisticsWidget.removeSteals(1);
+                    i = -1; //Break for
+                }
             }
         }
         if(flag == 0)
@@ -354,11 +368,14 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
 
     private void removeFromBlocks(int player_id){
         int flag=0;
-        for(int i=blockList.size(); i>=0 ;i--){
-            if(blockList.get(i).getJugador_id() == player_id){
-                flag=1;
-                blockList.remove(i);
-                i = -1; //Break for
+        if(blockList.size() > 0) {
+            for (int i = blockList.size()-1; i >= 0; i--) {
+                if (blockList.get(i).getJugador_id() == player_id) {
+                    flag = 1;
+                    blockList.remove(i);
+                    playerStatisticsWidget.removeBlocks(1);
+                    i = -1; //Break for
+                }
             }
         }
         if(flag == 0)
@@ -367,11 +384,14 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
 
     private void removeFromFouls(int player_id){
         int flag=0;
-        for(int i=foulList.size(); i>=0 ;i--){
-            if(foulList.get(i).getJugador_id() == player_id){
-                flag=1;
-                foulList.remove(i);
-                i = -1; //Break for
+        if(foulList.size() > 0) {
+            for (int i = foulList.size()-1; i >= 0; i--) {
+                if (foulList.get(i).getJugador_id() == player_id) {
+                    flag = 1;
+                    foulList.remove(i);
+                    playerStatisticsWidget.removeFouls(1);
+                    i = -1; //Break for
+                }
             }
         }
         if(flag == 0)

@@ -55,7 +55,11 @@ public class Manejo_Imagenes {
     public static void Grabar_Imagen(Bitmap bitmap,String imagename){  //Lo va a guardar en el directorio de Imagenes!!
 
         FileOutputStream Foutp = null;
-        File f = new File(Url,imagename);
+
+        File dir = new File(Url);
+        dir.mkdirs();
+
+        File f = new File(dir,imagename);
         try{
             Foutp = new FileOutputStream(f);
             bitmap.compress(Bitmap.CompressFormat.JPEG,100,Foutp);
