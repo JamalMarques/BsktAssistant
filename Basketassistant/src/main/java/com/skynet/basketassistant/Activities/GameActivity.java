@@ -24,6 +24,7 @@ import com.skynet.basketassistant.UI.Widgets.BoxOfPlayersWidget;
 import com.skynet.basketassistant.UI.Widgets.PlayerBoxWidget;
 import com.skynet.basketassistant.UI.Widgets.ShootButtonWidget;
 import com.skynet.basketassistant.UI.Widgets.PlayerStatisticsBoxWidget;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
