@@ -23,7 +23,8 @@
                 android:orientation="vertical"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:background="@drawable/layout_bg_standard">
+                android:background="@drawable/layout_bg_standard"
+                android:visibility="visible">
 
                 <LinearLayout
                     android:orientation="horizontal"
@@ -171,12 +172,11 @@
                         android:layout_height="wrap_content">
 
                         <TextView
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceLarge"
                             android:text="@string/Rol"
                             android:id="@+id/static_rol"
-                            android:layout_weight="1"
                             android:textColor="@color/Gris_Negro" />
 
                         <TextView
@@ -187,7 +187,7 @@
                             android:id="@+id/tv_rol"
                             android:textColor="@color/VerdeClaro_1"
                             android:gravity="center"
-                            android:layout_weight="0.2" />
+                            android:layout_weight="1" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -196,12 +196,11 @@
                         android:layout_height="fill_parent">
 
                         <TextView
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceLarge"
                             android:text="@string/Numero"
                             android:id="@+id/static_numero"
-                            android:layout_weight="1"
                             android:textColor="@color/Gris_Negro" />
 
                         <TextView
@@ -211,7 +210,8 @@
                             android:text="27"
                             android:id="@+id/tv_numero"
                             android:layout_weight="1"
-                            android:textColor="@color/Rojo_1" />
+                            android:textColor="@color/Rojo_1"
+                            android:gravity="center" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -238,12 +238,11 @@
                         android:layout_height="fill_parent" >
 
                         <TextView
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceLarge"
                             android:text="@string/Juegos"
                             android:id="@+id/static_juegos"
-                            android:layout_weight="1"
                             android:textColor="@color/Gris_Negro" />
 
                         <TextView
@@ -253,7 +252,7 @@
                             android:text="15"
                             android:id="@+id/tv_juegos"
                             android:layout_weight="1"
-                            android:gravity="center"
+                            android:gravity="center|right"
                             android:textColor="@color/Celeste_Letras" />
                     </LinearLayout>
 
@@ -263,12 +262,11 @@
                         android:layout_height="fill_parent" >
 
                         <TextView
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceLarge"
                             android:text="@string/Anotaciones"
                             android:id="@+id/static_anotacion"
-                            android:layout_weight="1"
                             android:textColor="@color/Gris_Negro" />
 
                         <TextView
@@ -278,7 +276,7 @@
                             android:id="@+id/tv_anotaciones"
                             android:layout_weight="1"
                             android:text="120"
-                            android:gravity="center"
+                            android:gravity="center|right"
                             android:textColor="@color/Celeste_Letras" />
                     </LinearLayout>
 
@@ -288,12 +286,11 @@
                         android:layout_height="fill_parent">
 
                         <TextView
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceLarge"
                             android:text="@string/Disparos"
                             android:id="@+id/static_disparos"
-                            android:layout_weight="1"
                             android:textColor="@color/Gris_Negro" />
 
                         <TextView
@@ -303,7 +300,7 @@
                             android:text="180"
                             android:id="@+id/tv_disparos"
                             android:layout_weight="1"
-                            android:gravity="center"
+                            android:gravity="center|right"
                             android:textColor="@color/Celeste_Letras" />
                     </LinearLayout>
                 </LinearLayout>
@@ -346,7 +343,8 @@
                                 android:text="30"
                                 android:id="@+id/tv_triples"
                                 android:layout_weight="1"
-                                android:textColor="@color/Gris_Negro" />
+                                android:textColor="@color/Gris_Negro"
+                                android:gravity="center" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -370,7 +368,8 @@
                                 android:text="45"
                                 android:id="@+id/tv_dobles"
                                 android:layout_weight="1"
-                                android:textColor="@color/Gris_Negro" />
+                                android:textColor="@color/Gris_Negro"
+                                android:gravity="center" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -394,7 +393,8 @@
                                 android:text="15"
                                 android:id="@+id/tv_simples"
                                 android:layout_weight="1"
-                                android:textColor="@color/Gris_Negro" />
+                                android:textColor="@color/Gris_Negro"
+                                android:gravity="center" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -404,7 +404,8 @@
                         android:layout_height="fill_parent"
                         android:background="@drawable/layout_bg_standard"
                         android:layout_marginTop="13dp"
-                        android:paddingLeft="5dp">
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp">
 
                         <TextView
                             android:layout_width="match_parent"
@@ -451,12 +452,11 @@
                         android:layout_height="fill_parent">
 
                         <TextView
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceLarge"
                             android:text="@string/Robos"
                             android:id="@+id/static_robos"
-                            android:layout_weight="1"
                             android:textColor="@color/Gris_Negro" />
 
                         <TextView
@@ -466,7 +466,7 @@
                             android:text="15"
                             android:id="@+id/tv_robos"
                             android:layout_weight="1"
-                            android:gravity="center"
+                            android:gravity="center|right"
                             android:textColor="@color/Celeste_Letras" />
                     </LinearLayout>
 
@@ -476,12 +476,11 @@
                         android:layout_height="fill_parent">
 
                         <TextView
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceLarge"
                             android:text="@string/Tapas"
                             android:id="@+id/static_tapas"
-                            android:layout_weight="1"
                             android:textColor="@color/Gris_Negro" />
 
                         <TextView
@@ -491,7 +490,7 @@
                             android:text="21"
                             android:id="@+id/tv_tapas"
                             android:layout_weight="1"
-                            android:gravity="center"
+                            android:gravity="center|right"
                             android:textColor="@color/Celeste_Letras" />
                     </LinearLayout>
 
@@ -501,12 +500,11 @@
                         android:layout_height="fill_parent">
 
                         <TextView
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceLarge"
                             android:text="@string/Asistencias"
                             android:id="@+id/static_asistencias"
-                            android:layout_weight="1"
                             android:textColor="@color/Gris_Negro" />
 
                         <TextView
@@ -516,7 +514,7 @@
                             android:text="18"
                             android:id="@+id/tv_asistencias"
                             android:layout_weight="1"
-                            android:gravity="center"
+                            android:gravity="center|right"
                             android:textColor="@color/Celeste_Letras" />
                     </LinearLayout>
                 </LinearLayout>
@@ -535,12 +533,11 @@
                         android:layout_height="match_parent">
 
                         <TextView
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceLarge"
                             android:text="@string/Rebounds"
                             android:id="@+id/static_rebotes"
-                            android:layout_weight="1"
                             android:textColor="@color/Gris_Negro" />
 
                         <TextView
@@ -550,8 +547,9 @@
                             android:text="8"
                             android:id="@+id/tv_rebotes"
                             android:layout_weight="1"
-                            android:gravity="center"
-                            android:textColor="#ed77ff" />
+                            android:gravity="center|right"
+                            android:textColor="#ed77ff"
+                            android:layout_marginRight="20dp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -561,12 +559,11 @@
                         android:paddingTop="5dp">
 
                         <TextView
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:text="@string/Def"
                             android:id="@+id/static_def"
-                            android:layout_weight="1"
                             android:layout_marginLeft="20dp"
                             android:textColor="@color/Celeste_Letras" />
 
@@ -577,8 +574,9 @@
                             android:text="3"
                             android:id="@+id/tv_def"
                             android:layout_weight="1"
-                            android:gravity="center"
-                            android:textColor="@color/Gris_Negro" />
+                            android:gravity="center|right"
+                            android:textColor="@color/Gris_Negro"
+                            android:layout_marginRight="20dp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -588,12 +586,11 @@
                         android:paddingTop="5dp">
 
                         <TextView
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:text="@string/Ofen"
                             android:id="@+id/static_ofen"
-                            android:layout_weight="1"
                             android:layout_marginLeft="20dp"
                             android:textColor="@color/VerdeClaro_1" />
 
@@ -604,8 +601,9 @@
                             android:text="5"
                             android:id="@+id/tv_ofen"
                             android:layout_weight="1"
-                            android:gravity="center"
-                            android:textColor="@color/Gris_Negro" />
+                            android:gravity="center|right"
+                            android:textColor="@color/Gris_Negro"
+                            android:layout_marginRight="20dp" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
