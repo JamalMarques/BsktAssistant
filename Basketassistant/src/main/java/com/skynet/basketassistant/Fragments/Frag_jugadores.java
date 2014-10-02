@@ -88,25 +88,6 @@ public class Frag_jugadores extends Fragment implements AdapterView.OnItemClickL
 
         lista_jugadores = new ArrayList<Jugador>();
         lista_jugadores = dbj.DameListaJugadoresEquipo(equipo.getId());
-        /*if(c.moveToFirst()){
-            do{
-                int id = c.getColumnIndex(dbj.CN_ID);
-                int apellido = c.getColumnIndex(dbj.CN_APELLIDO);
-                int nombre = c.getColumnIndex(dbj.CN_NOMBRE);
-                int altura = c.getColumnIndex(dbj.CN_ALTURA);
-                int peso = c.getColumnIndex(dbj.CN_PESO);
-                int numero = c.getColumnIndex(dbj.CN_NUMERO);
-                int rol = c.getColumnIndex(dbj.CN_ROL);
-                int equipo_id = c.getColumnIndex(dbj.CN_EQUIPO_ID);
-                int imagen_url = c.getColumnIndex(dbj.CN_IMAGEN_URL);
-
-                Jugador jug = new Jugador(c.getInt(id),c.getString(apellido),c.getString(nombre),c.getInt(altura),c.getInt(peso),c.getInt(numero),
-                                            c.getString(rol),c.getInt(equipo_id),c.getString(imagen_url));
-                lista_jugadores.add(jug);
-
-            }while(c.moveToNext());
-        }
-        c.close();*/
 
         new SetearAdaptador().execute();
         //ItemAdapterJugadores adapterjug = new ItemAdapterJugadores(getActivity().getApplicationContext(),lista_jugadores);

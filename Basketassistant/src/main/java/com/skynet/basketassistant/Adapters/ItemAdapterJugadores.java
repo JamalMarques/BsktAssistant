@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.skynet.basketassistant.Modelo.Jugador;
+import com.skynet.basketassistant.Otros.GraphicsUtil;
 import com.skynet.basketassistant.Otros.Manejo_Imagenes;
 import com.skynet.basketassistant.R;
 
@@ -119,7 +120,9 @@ public class ItemAdapterJugadores extends BaseAdapter {
                 File file = new File(Manejo_Imagenes.Url + lista_jugadores.get(i).getImagen_url());
                 if( file.exists()){
                     try {
-                        Bitmap bitmap = Bitmap.createScaledBitmap(Manejo_Imagenes.Cubo_Rotar_Rotacion(lista_jugadores.get(i).getImagen_url()),250,250,true);
+                        //Bitmap bitmap = Bitmap.createScaledBitmap(Manejo_Imagenes.Cubo_Rotar_Rotacion(lista_jugadores.get(i).getImagen_url()),250,250,true);
+                        Bitmap bitmap = Manejo_Imagenes.getRoundedShape((Manejo_Imagenes.Cubo_Rotar_Rotacion2(lista_jugadores.get(i).getImagen_url(),250,250)),250);
+                        //list.add(GraphicsUtil.getRoundedShape(bitmap,150));
                         list.add(bitmap);
                     }catch (Exception e){ /*Excepcion no controlada*/ }
                 }

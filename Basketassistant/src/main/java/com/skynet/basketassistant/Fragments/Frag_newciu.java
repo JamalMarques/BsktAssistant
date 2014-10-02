@@ -40,18 +40,20 @@ public class Frag_newciu extends Fragment implements View.OnClickListener{
     public void onClick(View view) {
 
         if(view.getId() == btncrear.getId()){ //se realiza la insercion de la nueva ciudad
-            DBCiudades dbc = new DBCiudades(getActivity());
-            dbc.Modolectura();
-            if(dbc.Existe(nomciu.getText().toString()) == false ){
+            if(!nomciu.equals("") && !nomprov.equals("")) {
+                DBCiudades dbc = new DBCiudades(getActivity());
+                dbc.Modolectura();
+                if (dbc.Existe(nomciu.getText().toString()) == false) {
 
-                dbc.Modoescritura();
-                dbc.insertar(nomciu.getText().toString(),nomprov.getText().toString());
-               
-                Toast.makeText(getActivity(), "Ciudad agregada correctamente", Toast.LENGTH_SHORT).show();
-                GoNew_team();
-            }
-            else
-                Toast.makeText(getActivity(), "Esa ciudad ya existe", Toast.LENGTH_SHORT).show();
+                    dbc.Modoescritura();
+                    dbc.insertar(nomciu.getText().toString(), nomprov.getText().toString());
+
+                    Toast.makeText(getActivity(), "Ciudad agregada correctamente", Toast.LENGTH_SHORT).show();
+                    GoNew_team();
+                } else
+                    Toast.makeText(getActivity(), "Esa ciudad ya existe", Toast.LENGTH_SHORT).show();
+            }else
+                Toast.makeText(getActivity(),getString(R.string.CompleteFields),Toast.LENGTH_SHORT).show();
         }
         else
             if(view.getId() == btncancelar.getId()){

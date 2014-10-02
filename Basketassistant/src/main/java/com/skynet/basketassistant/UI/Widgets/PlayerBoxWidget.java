@@ -40,7 +40,7 @@ public class PlayerBoxWidget extends RelativeLayout {
     public void setPlayer(Jugador player){
         this.player = player;
         try {
-            playerImage.setImageBitmap(Manejo_Imagenes.Cubo_Rotar_Rotacion2(player.getImagen_url(),60,60)/*Cubo_Rotar_Rotacion(player.getImagen_url())*/);
+            playerImage.setImageBitmap(Manejo_Imagenes.Cubo_Rotar_Rotacion2(player.getImagen_url(),100,100)/*Cubo_Rotar_Rotacion(player.getImagen_url())*/);
         }catch (Exception e){
             Log.e("Error",e.getMessage());
         }

@@ -107,7 +107,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/spinner_cate"
-                android:popupBackground="@color/Celeste_Letras"
                 android:gravity="center"
                 android:paddingLeft="5dp"
                 android:paddingRight="10dp" />

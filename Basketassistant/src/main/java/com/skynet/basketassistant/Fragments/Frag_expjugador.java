@@ -374,7 +374,8 @@ public class Frag_expjugador extends Fragment implements View.OnClickListener {
             File file = new File(Url + jugador.getImagen_url());
             if( file.exists()){
             try {
-                bitmap = Bitmap.createScaledBitmap(Manejo_Imagenes.Cubo_Rotar_Rotacion(jugador.getImagen_url()),350,350,true);
+                //bitmap = Bitmap.createScaledBitmap(Manejo_Imagenes.Cubo_Rotar_Rotacion(jugador.getImagen_url()),350,350,true);
+                bitmap = Manejo_Imagenes.Cubo_Rotar_Rotacion2(jugador.getImagen_url(),250,250);
             }catch (Exception e){
                 System.out.println(e.getMessage().toString());
             }

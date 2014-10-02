@@ -2,6 +2,11 @@ package com.skynet.basketassistant.Otros;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
 import android.media.ExifInterface;
 import android.os.Environment;
 import android.util.Log;
@@ -140,6 +145,38 @@ public class Manejo_Imagenes {
         }
 
         return inSampleSize;
+    }
+
+
+    public static Bitmap getRoundedShape(Bitmap scaleBitmapImage,int targetRes)
+    {
+        Bitmap bitmap = null;
+        try
+        {
+            //int targetSide = (MfsApp.getInstance().getScreenSize().x * 3) / 4;
+            int targetSide = targetRes;
+
+            bitmap = Bitmap.createBitmap(targetSide,targetSide, Bitmap.Config.ARGB_8888);
+
+            Canvas canvas = new Canvas(bitmap);
+            Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+            paint.setAntiAlias(true);
+            paint.setFilterBitmap(true);
+            paint.setDither(true);
+
+            canvas.drawARGB(0, 0, 0, 0);
+            paint.setColor(0xff424242);
+
+            canvas.drawCircle((float) bitmap.getWidth() / 2, (float) bitmap.getHeight() / 2, (float) bitmap.getWidth() / 2, paint);
+
+            paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+            canvas.drawBitmap(scaleBitmapImage, new Rect(0, 0, scaleBitmapImage.getWidth(), scaleBitmapImage.getHeight()), new Rect(0, 0, targetSide, targetSide), paint);
+
+        } catch (Exception e)
+        {
+            Log.e("GraphicsUtil - Method rounded bitmap", e.getMessage());
+        }
+        return bitmap;
     }
 
 }
