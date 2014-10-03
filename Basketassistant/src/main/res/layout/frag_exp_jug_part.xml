@@ -522,7 +522,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
                 android:layout_gravity="right"
-                android:padding="5dp"
+                android:padding="1dp"
                 android:background="@color/Gris_Negro"
                 android:visibility="gone" />
 
