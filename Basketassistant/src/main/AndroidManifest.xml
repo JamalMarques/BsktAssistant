@@ -13,7 +13,8 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".Activities.MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:windowSoftInputMode="adjustResize" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,7 +25,8 @@
             android:name=".Activities.SelecTeamAct"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_selec_team"
-            android:screenOrientation="landscape" >
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustResize">
         </activity>
         <activity
             android:name=".Activities.NewUserAct"
@@ -42,7 +44,10 @@
             android:name=".Activities.JugadoresAct"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_jugadores"
-            android:screenOrientation="landscape" >
+            android:screenOrientation="landscape"
+            android:imeOptions="flagNoExtractUi" >
+            <!--android:windowSoftInputMode="adjustResize"-->
+
         </activity>
         <activity
             android:name=".Activities.GameActivity"
