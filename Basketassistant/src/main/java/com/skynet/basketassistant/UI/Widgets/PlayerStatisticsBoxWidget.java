@@ -142,6 +142,7 @@ public class PlayerStatisticsBoxWidget extends RelativeLayout {
         refresh();
     }
     public void removeTotalPoints(int points){
+        int asd = totalPoints;
         if( (this.totalPoints - points) <= 0)
             this.totalPoints = 0;
         else

@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.skynet.basketassistant.Otros.Constants;
 import com.skynet.basketassistant.R;
@@ -21,12 +22,14 @@ public class FragDialog_ScoreOrNot extends DialogFragment implements View.OnClic
 
     private OnCompleteShootDialogListener dListener;
     private Button bScored,bFailded;
-    private int constant_shoot;
+    private int constant_shoot,add_or_remove_shoot;
+    private String title;
 
     public FragDialog_ScoreOrNot(){/*Empty constructor*/}
 
     public static interface OnCompleteShootDialogListener {
-        public abstract void onCompleteShootDialog(int status,int constant_shoot);
+        public abstract void onCompleteShootDialog_Add(int status,int constant_shoot);
+        public abstract void onCompleteShootDialogRemove(int status,int constant_shoot);
     }
 
     @Override
@@ -39,10 +42,12 @@ public class FragDialog_ScoreOrNot extends DialogFragment implements View.OnClic
         }
     }
 
-    public static FragDialog_ScoreOrNot getInstance(int constant_shoot){
+    public static FragDialog_ScoreOrNot getInstance(String title,int constant_shoot,int add_or_remove_shoot){
         FragDialog_ScoreOrNot fsn = new FragDialog_ScoreOrNot();
         Bundle bun = new Bundle();
         bun.putInt(Constants.CONSTANT_SHOOT,constant_shoot);
+        bun.putInt(Constants.ADD_OR_REMOVE_SHOOT, add_or_remove_shoot);
+        bun.putString(Constants.FRAGDIALOG_TITLE,title);
         fsn.setArguments(bun);
         return fsn;
     }
@@ -58,7 +63,10 @@ public class FragDialog_ScoreOrNot extends DialogFragment implements View.OnClic
         bFailded.setOnClickListener(this);
 
         this.constant_shoot = getArguments().getInt(Constants.CONSTANT_SHOOT);
-
+        this.add_or_remove_shoot = getArguments().getInt(Constants.ADD_OR_REMOVE_SHOOT);
+        this.title = getArguments().getString(Constants.FRAGDIALOG_TITLE);
+        TextView tvTitle = (TextView)view.findViewById(R.id.tvTitle);
+        tvTitle.setText(title);
 
         return view;
     }
@@ -66,13 +74,30 @@ public class FragDialog_ScoreOrNot extends DialogFragment implements View.OnClic
 
     @Override
     public void onClick(View view) {
-        if(view == bScored){
-            this.dListener.onCompleteShootDialog(Constants.SHOOT_SCORED, constant_shoot);
-            this.dismiss();
-        }else{
-            if(bFailded == bFailded){
-                this.dListener.onCompleteShootDialog(Constants.SHOOT_FAILED, constant_shoot);
+
+        if(add_or_remove_shoot == Constants.MODE_ADD_SHOOT) {
+
+            if (view == bScored) {
+                this.dListener.onCompleteShootDialog_Add(Constants.SHOOT_SCORED, constant_shoot);
                 this.dismiss();
+            } else {
+                if (view == bFailded) {
+                    this.dListener.onCompleteShootDialog_Add(Constants.SHOOT_FAILED, constant_shoot);
+                    this.dismiss();
+                }
+            }
+        }else{
+            if(add_or_remove_shoot == Constants.MODE_REMOVE_SHOOT){
+                if(view == bScored){
+                    this.dListener.onCompleteShootDialogRemove(Constants.SHOOT_SCORED, constant_shoot);
+                    this.dismiss();
+                }else{
+                    if( view == bFailded){
+                        this.dListener.onCompleteShootDialogRemove(Constants.SHOOT_FAILED,constant_shoot);
+                        this.dismiss();
+                    }
+                }
+
             }
         }
     }

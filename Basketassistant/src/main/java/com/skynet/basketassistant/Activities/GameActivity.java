@@ -197,8 +197,8 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
         return is;
     }
 
-    private void showScoreOrNotDialog(int constant_shoot){
-        FragDialog_ScoreOrNot fragdialog = FragDialog_ScoreOrNot.getInstance(constant_shoot);
+    private void showScoreOrNotDialog(String title,int constant_shoot,int add_or_remove_shoot){
+        FragDialog_ScoreOrNot fragdialog = FragDialog_ScoreOrNot.getInstance(title,constant_shoot,add_or_remove_shoot);
         fragdialog.show(getSupportFragmentManager(), Constants.FRAGMENT_DIALOG_SCORE_OR_NOT);
     }
 
@@ -218,6 +218,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
     private void reboundBehaviorLong(){
         removeFromRebounds(playerTouched.getPlayer().getId());
     }
+
     private void stealBehavior(){
         if(isPlayerSelected()){
             Robo newSteal = new Robo(0,playerTouched.getPlayer().getId(),0);
@@ -230,6 +231,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
     private void stealBehaviorLong(){
         removeFromSteals(playerTouched.getPlayer().getId());
     }
+
     private void blockBehavior(){
         if(isPlayerSelected()){
             Tapon newBlock = new Tapon(0,playerTouched.getPlayer().getId(),0);
@@ -258,39 +260,51 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
 
     private void simpleshootBehavior(){
         if(isPlayerSelected()){
-            showScoreOrNotDialog(Constants.SIMPLE_SHOOT);
+            showScoreOrNotDialog(getString(R.string.Shoot),Constants.SIMPLE_SHOOT,Constants.MODE_ADD_SHOOT);
         }else {
             Toast.makeText(this,getString(R.string.SelectPlayerError),Toast.LENGTH_SHORT).show();
         }
     }
     private void simpleshootBehaviorLong(){
-        
+        if(isPlayerSelected()){
+            showScoreOrNotDialog(getString(R.string.RemoveShoot),Constants.SIMPLE_SHOOT,Constants.MODE_REMOVE_SHOOT);
+        }else {
+            Toast.makeText(this,getString(R.string.SelectPlayerError),Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void doubleshootBehavior(){
         if(isPlayerSelected()){
-            showScoreOrNotDialog(Constants.DOUBLE_SHOOT);
+            showScoreOrNotDialog(getString(R.string.Shoot),Constants.DOUBLE_SHOOT,Constants.MODE_ADD_SHOOT);
         }else {
             Toast.makeText(this,getString(R.string.SelectPlayerError),Toast.LENGTH_SHORT).show();
         }
     }
     private void doubleshootBehaviorLong(){
-
+        if(isPlayerSelected()){
+            showScoreOrNotDialog(getString(R.string.RemoveShoot),Constants.DOUBLE_SHOOT,Constants.MODE_REMOVE_SHOOT);
+        }else {
+            Toast.makeText(this,getString(R.string.SelectPlayerError),Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void tripleshootBehavior(){
         if(isPlayerSelected()){
-            showScoreOrNotDialog(Constants.TRIPLE_SHOOT);
+            showScoreOrNotDialog(getString(R.string.Shoot),Constants.TRIPLE_SHOOT,Constants.MODE_ADD_SHOOT);
         }else {
             Toast.makeText(this,getString(R.string.SelectPlayerError),Toast.LENGTH_SHORT).show();
         }
     }
     private void tripleshootBehaviorLong(){
-
+        if(isPlayerSelected()){
+            showScoreOrNotDialog(getString(R.string.RemoveShoot),Constants.TRIPLE_SHOOT,Constants.MODE_REMOVE_SHOOT);
+        }else {
+            Toast.makeText(this,getString(R.string.SelectPlayerError),Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
-    public void onCompleteShootDialog(int status, int constant_shoot) {
+    public void onCompleteShootDialog_Add(int status, int constant_shoot) {
         Lanzamiento shoot;
         switch (constant_shoot){
             case Constants.SIMPLE_SHOOT:
@@ -315,6 +329,52 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
                     playerStatisticsWidget.addTotalPoints(Constants.TRIPLE_SHOOT_VALUE);
                 break;
         }
+    }
+
+
+    @Override
+    public void onCompleteShootDialogRemove(int status, int constant_shoot) {
+        int deleteflag=0;
+        switch (constant_shoot){
+            case Constants.SIMPLE_SHOOT:
+                for (int i=0; i < shootList.size() ; i++){
+                    if(shootList.get(i).getEfectivo() == status && shootList.get(i).getTipoLanzamiento().equals(Constants.SHOOT_TYPE_SIMPLE) && shootList.get(i).getJugador_id() == playerTouched.getPlayer().getId()){
+                        if(shootList.get(i).getEfectivo() == Constants.SHOOT_SCORED)
+                            playerStatisticsWidget.removePoints(Constants.SIMPLE_SHOOT_VALUE);
+                        shootList.remove(i);
+                        playerStatisticsWidget.removeTotalPoints(Constants.SIMPLE_SHOOT_VALUE);
+                        deleteflag=1;
+                        break;
+                    }
+                }
+                break;
+            case Constants.DOUBLE_SHOOT:
+                for (int i=0; i < shootList.size() ; i++){
+                    if(shootList.get(i).getEfectivo() == status && shootList.get(i).getTipoLanzamiento().equals(Constants.SHOOT_TYPE_DOUBLE) && shootList.get(i).getJugador_id() == playerTouched.getPlayer().getId()){
+                        if(shootList.get(i).getEfectivo() == Constants.SHOOT_SCORED)
+                            playerStatisticsWidget.removePoints(Constants.DOUBLE_SHOOT_VALUE);
+                        shootList.remove(i);
+                        playerStatisticsWidget.removeTotalPoints(Constants.DOUBLE_SHOOT_VALUE);
+                        deleteflag = 1;
+                        break;
+                    }
+                }
+                break;
+            case Constants.TRIPLE_SHOOT:
+                for (int i=0; i < shootList.size() ; i++){
+                    if(shootList.get(i).getEfectivo() == status && shootList.get(i).getTipoLanzamiento().equals(Constants.SHOOT_TYPE_TRIPLE) && shootList.get(i).getJugador_id() == playerTouched.getPlayer().getId()){
+                        if(shootList.get(i).getEfectivo() == Constants.SHOOT_SCORED)
+                            playerStatisticsWidget.removePoints(Constants.TRIPLE_SHOOT_VALUE);
+                        shootList.remove(i);
+                        playerStatisticsWidget.removeTotalPoints(Constants.TRIPLE_SHOOT_VALUE);
+                        deleteflag = 1;
+                        break;
+                    }
+                }
+                break;
+        }
+        if(deleteflag == 0)
+            Toast.makeText(this,getString(R.string.NoShootToDelete),Toast.LENGTH_SHORT).show();
     }
 
     // ------------------------------------

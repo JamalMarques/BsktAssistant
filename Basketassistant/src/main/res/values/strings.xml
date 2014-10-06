@@ -73,6 +73,7 @@
     <string name="Points">Puntos</string>
     <string name="PlayerStatistics">Estadisticas</string>
     <string name="Shoot">Lanzamiento</string>
+    <string name="RemoveShoot">Eliminar Lanzamiento</string>
     <string name="Scored">Acertado</string>
     <string name="Failed">Fallido</string>
     <string name="SelectPlayerError">Debe seleccionar un jugador</string>
@@ -82,5 +83,6 @@
     <string name="NoHaveRebounds">No existen rebotes para ese jugador</string>
     <string name="NoHaveThisShot">No existen lanzamientos de ese tipo para eliminar</string>
     <string name="CompleteFields">Los campos deben estar completos</string>
+    <string name="NoShootToDelete">No existe lanzamiento para borrar de ese jugador</string>
 
 </resources>
