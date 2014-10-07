@@ -202,15 +202,15 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
         fragdialog.show(getSupportFragmentManager(), Constants.FRAGMENT_DIALOG_SCORE_OR_NOT);
     }
 
-    private void showOfensiveDefensiveDialog(String title,String whoCall){
-        FragDialog_OfensiveDefensive fragd = FragDialog_OfensiveDefensive.getInstance(title,whoCall);
+    private void showOfensiveDefensiveDialog(String title,String whoCall,int add_or_remove){
+        FragDialog_OfensiveDefensive fragd = FragDialog_OfensiveDefensive.getInstance(title,whoCall,add_or_remove);
         fragd.show(getSupportFragmentManager(), Constants.FRAGMENT_DIALOG_OFENSIVE_DEFENSIVE);
     }
 
 
     private void reboundBehavior(){
         if(isPlayerSelected()){
-            showOfensiveDefensiveDialog(getString(R.string.Rebound),Constants.REBOUND_CALL);
+            showOfensiveDefensiveDialog(getString(R.string.Rebound),Constants.REBOUND_CALL,Constants.MODE_ADD);
         }else {
             Toast.makeText(this,getString(R.string.SelectPlayerError),Toast.LENGTH_SHORT).show();
         }
@@ -247,7 +247,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
 
     private void foulBehavior(){
         if(isPlayerSelected()){
-            showOfensiveDefensiveDialog(getString(R.string.Foul),Constants.FOUL_CALL);
+            showOfensiveDefensiveDialog(getString(R.string.Foul),Constants.FOUL_CALL,Constants.MODE_ADD);
         }else {
             Toast.makeText(this,getString(R.string.SelectPlayerError),Toast.LENGTH_SHORT).show();
         }
@@ -260,14 +260,14 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
 
     private void simpleshootBehavior(){
         if(isPlayerSelected()){
-            showScoreOrNotDialog(getString(R.string.Shoot),Constants.SIMPLE_SHOOT,Constants.MODE_ADD_SHOOT);
+            showScoreOrNotDialog(getString(R.string.Shoot),Constants.SIMPLE_SHOOT,Constants.MODE_ADD);
         }else {
             Toast.makeText(this,getString(R.string.SelectPlayerError),Toast.LENGTH_SHORT).show();
         }
     }
     private void simpleshootBehaviorLong(){
         if(isPlayerSelected()){
-            showScoreOrNotDialog(getString(R.string.RemoveShoot),Constants.SIMPLE_SHOOT,Constants.MODE_REMOVE_SHOOT);
+            showScoreOrNotDialog(getString(R.string.RemoveShoot),Constants.SIMPLE_SHOOT,Constants.MODE_REMOVE);
         }else {
             Toast.makeText(this,getString(R.string.SelectPlayerError),Toast.LENGTH_SHORT).show();
         }
@@ -275,14 +275,14 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
 
     private void doubleshootBehavior(){
         if(isPlayerSelected()){
-            showScoreOrNotDialog(getString(R.string.Shoot),Constants.DOUBLE_SHOOT,Constants.MODE_ADD_SHOOT);
+            showScoreOrNotDialog(getString(R.string.Shoot),Constants.DOUBLE_SHOOT,Constants.MODE_ADD);
         }else {
             Toast.makeText(this,getString(R.string.SelectPlayerError),Toast.LENGTH_SHORT).show();
         }
     }
     private void doubleshootBehaviorLong(){
         if(isPlayerSelected()){
-            showScoreOrNotDialog(getString(R.string.RemoveShoot),Constants.DOUBLE_SHOOT,Constants.MODE_REMOVE_SHOOT);
+            showScoreOrNotDialog(getString(R.string.RemoveShoot),Constants.DOUBLE_SHOOT,Constants.MODE_REMOVE);
         }else {
             Toast.makeText(this,getString(R.string.SelectPlayerError),Toast.LENGTH_SHORT).show();
         }
@@ -290,14 +290,14 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
 
     private void tripleshootBehavior(){
         if(isPlayerSelected()){
-            showScoreOrNotDialog(getString(R.string.Shoot),Constants.TRIPLE_SHOOT,Constants.MODE_ADD_SHOOT);
+            showScoreOrNotDialog(getString(R.string.Shoot),Constants.TRIPLE_SHOOT,Constants.MODE_ADD);
         }else {
             Toast.makeText(this,getString(R.string.SelectPlayerError),Toast.LENGTH_SHORT).show();
         }
     }
     private void tripleshootBehaviorLong(){
         if(isPlayerSelected()){
-            showScoreOrNotDialog(getString(R.string.RemoveShoot),Constants.TRIPLE_SHOOT,Constants.MODE_REMOVE_SHOOT);
+            showScoreOrNotDialog(getString(R.string.RemoveShoot),Constants.TRIPLE_SHOOT,Constants.MODE_REMOVE);
         }else {
             Toast.makeText(this,getString(R.string.SelectPlayerError),Toast.LENGTH_SHORT).show();
         }
@@ -380,7 +380,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
     // ------------------------------------
 
     @Override
-    public void onCompleteOfDefDialog(String type,String whoCall) {
+    public void onCompleteOfDefDialog_add(String type,String whoCall) {
 
         if(whoCall.equals(Constants.REBOUND_CALL)) { //Come from REBOUND_CALL
             Rebote rebound = new Rebote(0,playerTouched.getPlayer().getId(),0,type); //TYPE HAVE : OFENSIVE OR DEFENSIVE CONSTANTS COMMING FROM DIALOG
@@ -394,6 +394,15 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
             }
         }
     }
+
+    @Override
+    public void onCompleteOfDefDialog_remove(String type, String whoCall) {
+        //filter "who call" to know from who list remove it
+        if(whoCall.equals(Constants.REBOUND_CALL)){
+
+        }
+    }
+
 
     private void removeFromRebounds(int player_id){
         int flag = 0;

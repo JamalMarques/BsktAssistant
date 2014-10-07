@@ -31,9 +31,11 @@ public class Constants {
     public static final int SHOOT_FAILED = 0;
 
     //Shoot Dialog Fragment
-    public static final String ADD_OR_REMOVE_SHOOT = "ADD_OR_REMOVE_SHOOT";
-    public static final int MODE_ADD_SHOOT = 0;
-    public static final int MODE_REMOVE_SHOOT = 1;
+    public static final String ADD_OR_REMOVE = "ADD_OR_REMOVE";
+
+    //Mode for Dialog Fragments
+    public static final int MODE_ADD = 0;
+    public static final int MODE_REMOVE = 1;
 
 
     //OFENSIVE DEFENSIVE DIALOG

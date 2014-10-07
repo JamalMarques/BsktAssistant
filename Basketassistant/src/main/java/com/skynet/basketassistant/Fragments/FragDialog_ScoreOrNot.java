@@ -46,7 +46,7 @@ public class FragDialog_ScoreOrNot extends DialogFragment implements View.OnClic
         FragDialog_ScoreOrNot fsn = new FragDialog_ScoreOrNot();
         Bundle bun = new Bundle();
         bun.putInt(Constants.CONSTANT_SHOOT,constant_shoot);
-        bun.putInt(Constants.ADD_OR_REMOVE_SHOOT, add_or_remove_shoot);
+        bun.putInt(Constants.ADD_OR_REMOVE, add_or_remove_shoot);
         bun.putString(Constants.FRAGDIALOG_TITLE,title);
         fsn.setArguments(bun);
         return fsn;
@@ -63,7 +63,7 @@ public class FragDialog_ScoreOrNot extends DialogFragment implements View.OnClic
         bFailded.setOnClickListener(this);
 
         this.constant_shoot = getArguments().getInt(Constants.CONSTANT_SHOOT);
-        this.add_or_remove_shoot = getArguments().getInt(Constants.ADD_OR_REMOVE_SHOOT);
+        this.add_or_remove_shoot = getArguments().getInt(Constants.ADD_OR_REMOVE);
         this.title = getArguments().getString(Constants.FRAGDIALOG_TITLE);
         TextView tvTitle = (TextView)view.findViewById(R.id.tvTitle);
         tvTitle.setText(title);
@@ -75,7 +75,7 @@ public class FragDialog_ScoreOrNot extends DialogFragment implements View.OnClic
     @Override
     public void onClick(View view) {
 
-        if(add_or_remove_shoot == Constants.MODE_ADD_SHOOT) {
+        if(add_or_remove_shoot == Constants.MODE_ADD) {
 
             if (view == bScored) {
                 this.dListener.onCompleteShootDialog_Add(Constants.SHOOT_SCORED, constant_shoot);
@@ -87,7 +87,7 @@ public class FragDialog_ScoreOrNot extends DialogFragment implements View.OnClic
                 }
             }
         }else{
-            if(add_or_remove_shoot == Constants.MODE_REMOVE_SHOOT){
+            if(add_or_remove_shoot == Constants.MODE_REMOVE){
                 if(view == bScored){
                     this.dListener.onCompleteShootDialogRemove(Constants.SHOOT_SCORED, constant_shoot);
                     this.dismiss();

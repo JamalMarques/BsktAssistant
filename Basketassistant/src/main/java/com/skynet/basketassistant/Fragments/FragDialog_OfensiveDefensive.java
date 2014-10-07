@@ -24,20 +24,23 @@ public class FragDialog_OfensiveDefensive extends DialogFragment implements View
     private String whoCall;
     private Button bOfensive,bDefensive;
     private TextView tvTitle;
+    private int add_or_remove;
 
     private onCompleteOfDefDialogListener dialogListener;
 
     public static interface onCompleteOfDefDialogListener{
-        public void onCompleteOfDefDialog(String type,String whoCall);
+        public void onCompleteOfDefDialog_add(String type,String whoCall);
+        public void onCompleteOfDefDialog_remove(String type,String whoCall);
     }
 
     public FragDialog_OfensiveDefensive(){/**Empty constructor*/}
 
-    public static FragDialog_OfensiveDefensive getInstance(String fragDialogTitle,String whoCall){
+    public static FragDialog_OfensiveDefensive getInstance(String fragDialogTitle,String whoCall,int add_or_remove){
         FragDialog_OfensiveDefensive fragDialog = new FragDialog_OfensiveDefensive();
         Bundle bun = new Bundle();
         bun.putString(Constants.FRAGDIALOG_TITLE,fragDialogTitle);
         bun.putString(Constants.WHO_CALL,whoCall);
+        bun.putInt(Constants.ADD_OR_REMOVE,add_or_remove);
         fragDialog.setArguments(bun);
         return fragDialog;
     }
@@ -66,19 +69,31 @@ public class FragDialog_OfensiveDefensive extends DialogFragment implements View
         title = getArguments().getString(Constants.FRAGDIALOG_TITLE);
         tvTitle.setText(title);
         whoCall = getArguments().getString(Constants.WHO_CALL);
+        add_or_remove = getArguments().getInt(Constants.ADD_OR_REMOVE);
 
         return view;
     }
 
     @Override
     public void onClick(View view) {
-        if(view == bOfensive){
-            this.dialogListener.onCompleteOfDefDialog(Constants.OFENSIVE,whoCall);
-            this.dismiss();
-        }else
-            if(view == bDefensive){
-                this.dialogListener.onCompleteOfDefDialog(Constants.DEFENSIVE,whoCall);
+        if(add_or_remove == Constants.MODE_ADD) {
+            if (view == bOfensive) {
+                this.dialogListener.onCompleteOfDefDialog_add(Constants.OFENSIVE, whoCall);
+                this.dismiss();
+            } else if (view == bDefensive) {
+                this.dialogListener.onCompleteOfDefDialog_add(Constants.DEFENSIVE, whoCall);
                 this.dismiss();
             }
+        }else{
+            if(add_or_remove == Constants.MODE_REMOVE){
+                if(view == bOfensive) {
+                    this.dialogListener.onCompleteOfDefDialog_remove(Constants.OFENSIVE, whoCall);
+                    this.dismiss();
+                }else if(view == bDefensive){
+                    this.dialogListener.onCompleteOfDefDialog_remove(Constants.DEFENSIVE, whoCall);
+                    this.dismiss();
+                }
+            }
+        }
     }
 }
