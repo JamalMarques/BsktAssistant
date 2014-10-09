@@ -216,7 +216,8 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
         }
     }
     private void reboundBehaviorLong(){
-        removeFromRebounds(playerTouched.getPlayer().getId());
+        //removeFromRebounds(playerTouched.getPlayer().getId());
+        showOfensiveDefensiveDialog(getString(R.string.DeleteRebound),Constants.REBOUND_CALL,Constants.MODE_REMOVE);
     }
 
     private void stealBehavior(){
@@ -253,7 +254,8 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
         }
     }
     private void foulBehaviorLong(){
-        removeFromFouls(playerTouched.getPlayer().getId());
+        //removeFromFouls(playerTouched.getPlayer().getId());
+        showOfensiveDefensiveDialog(getString(R.string.DeleteFoul),Constants.FOUL_CALL,Constants.MODE_REMOVE);
     }
 
     // -------------  SHOOTS --------------
@@ -399,7 +401,23 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
     public void onCompleteOfDefDialog_remove(String type, String whoCall) {
         //filter "who call" to know from who list remove it
         if(whoCall.equals(Constants.REBOUND_CALL)){
-
+            for(int i=reboundList.size()-1; i >= 0; i--){
+                if(reboundList.get(i).getTiporeb().equals(type) && reboundList.get(i).getJugador_id() == playerTouched.getPlayer().getId()) {
+                    reboundList.remove(i);
+                    playerStatisticsWidget.removeRebounds(1);
+                    i = -1;
+                }
+            }
+        }else{
+            if(whoCall.equals(Constants.FOUL_CALL)){
+                for(int i=foulList.size()-1; i >= 0; i--){
+                    if(foulList.get(i).getTipo().equals(type) && foulList.get(i).getJugador_id() == playerTouched.getPlayer().getId()){
+                        foulList.remove(i);
+                        playerStatisticsWidget.removeFouls(1);
+                        i = -1;
+                    }
+                }
+            }
         }
     }
 

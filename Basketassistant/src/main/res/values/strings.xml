@@ -84,5 +84,7 @@
     <string name="NoHaveThisShot">No existen lanzamientos de ese tipo para eliminar</string>
     <string name="CompleteFields">Los campos deben estar completos</string>
     <string name="NoShootToDelete">No existe lanzamiento para borrar de ese jugador</string>
+    <string name="DeleteRebound">Eliminar rebote</string>
+    <string name="DeleteFoul">Eliminar falta</string>
 
 </resources>
