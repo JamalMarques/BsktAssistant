@@ -21,6 +21,7 @@ import com.skynet.basketassistant.Otros.Constants;
 import com.skynet.basketassistant.R;
 import com.skynet.basketassistant.UI.Widgets.AditionalButtonWidget;
 import com.skynet.basketassistant.UI.Widgets.BoxOfPlayersWidget;
+import com.skynet.basketassistant.UI.Widgets.MainMarkerWidget;
 import com.skynet.basketassistant.UI.Widgets.PlayerBoxWidget;
 import com.skynet.basketassistant.UI.Widgets.ShootButtonWidget;
 import com.skynet.basketassistant.UI.Widgets.PlayerStatisticsBoxWidget;
@@ -43,6 +44,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
     private PlayerStatisticsBoxWidget playerStatisticsWidget;
     private AditionalButtonWidget reboundButton,stealButton,blockButton,foulButton;
     private ShootButtonWidget simplePointWidget,doublePointWidget,triplePointWidget;
+    private MainMarkerWidget mainMarkerWidget;
 
     //Statistics
     private List<Lanzamiento> shootList = new ArrayList<Lanzamiento>();
@@ -80,6 +82,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
 
         boxOfPlayersW = (BoxOfPlayersWidget)findViewById(R.id.playersBox);
         playerStatisticsWidget = (PlayerStatisticsBoxWidget)findViewById(R.id.statisticsBox);
+        mainMarkerWidget = (MainMarkerWidget)findViewById(R.id.mainMarkerWidget);
         reboundButton = (AditionalButtonWidget)findViewById(R.id.reboundButton);
         stealButton = (AditionalButtonWidget)findViewById(R.id.stealButton);
         blockButton = (AditionalButtonWidget)findViewById(R.id.blockButton);
@@ -422,7 +425,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
     }
 
 
-    private void removeFromRebounds(int player_id){
+    /*private void removeFromRebounds(int player_id){
         int flag = 0;
         if(reboundList.size() > 0) {
             for (int j = reboundList.size()-1; j >= 0; j--) {
@@ -436,7 +439,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
         }
         if(flag == 0)
             Toast.makeText(this,getString(R.string.NoHaveRebounds),Toast.LENGTH_SHORT).show();
-    }
+    }*/
 
     private void removeFromSteals(int player_id){
         int flag=0;
@@ -470,7 +473,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
             Toast.makeText(this,getString(R.string.NoHaveRebounds),Toast.LENGTH_SHORT).show();
     }
 
-    private void removeFromFouls(int player_id){
+    /*private void removeFromFouls(int player_id){
         int flag=0;
         if(foulList.size() > 0) {
             for (int i = foulList.size()-1; i >= 0; i--) {
@@ -484,9 +487,9 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
         }
         if(flag == 0)
             Toast.makeText(this,getString(R.string.NoHaveRebounds),Toast.LENGTH_SHORT).show();
-    }
+    }*/
 
-    private void removeFromShoots(int player_id,String type_shoot,int scoredOrNot){  //typle_shoot = constant shoot simple double o triple
+    /*private void removeFromShoots(int player_id,String type_shoot,int scoredOrNot){  //typle_shoot = constant shoot simple double o triple
         int flag=0;
         for(int i=shootList.size(); i>=0 ; i--){
             if(shootList.get(i).getJugador_id() == player_id && shootList.get(i).getTipoLanzamiento().equals(type_shoot) && shootList.get(i).getEfectivo() == scoredOrNot){
@@ -504,6 +507,11 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
         }
         if(flag == 0)
             Toast.makeText(this,getString(R.string.NoHaveThisShot),Toast.LENGTH_SHORT).show();
+    }*/
+
+    public void changeQuarter(){
+        //all logic to change the quearter
     }
+
 
 }

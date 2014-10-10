@@ -86,5 +86,8 @@
     <string name="NoShootToDelete">No existe lanzamiento para borrar de ese jugador</string>
     <string name="DeleteRebound">Eliminar rebote</string>
     <string name="DeleteFoul">Eliminar falta</string>
+    <string name="TeamPointsMarker">Puntos</string>
+    <string name="FoulsMarker">F</string>
+    <string name="Quarter_control_widget">Cuarto</string>
 
 </resources>
