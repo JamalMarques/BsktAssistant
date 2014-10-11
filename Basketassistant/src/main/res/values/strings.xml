@@ -89,5 +89,6 @@
     <string name="TeamPointsMarker">Puntos</string>
     <string name="FoulsMarker">F</string>
     <string name="Quarter_control_widget">Cuarto</string>
+    <string name="QuarterExtension">EXT</string>
 
 </resources>

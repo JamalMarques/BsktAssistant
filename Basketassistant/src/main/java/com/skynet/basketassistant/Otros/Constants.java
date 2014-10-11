@@ -49,4 +49,6 @@ public class Constants {
     public static final String REBOUND_CALL = "REBOUND";  //Used in WHO_CALL BUNDLE
     public static final String FOUL_CALL = "FOUL";   //Used in WHO_CALL BUNDLE
 
+    public static final int MAX_NUMER_OF_QUARTERS = 5;
+
 }

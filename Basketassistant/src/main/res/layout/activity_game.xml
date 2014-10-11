@@ -20,7 +20,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/layout_bg_bottomline">
+        android:background="@drawable/layout_bg_bottomline"
+        android:id="@+id/linearLayout2">
 
         <view
             android:layout_width="wrap_content"
@@ -94,9 +95,18 @@
     <view
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        class="com.skynet.basketassistant.UI.Widgets.QuarterControlWidget"
+        android:id="@+id/QuarterControlWidget"
+        android:layout_alignBottom="@+id/playersBox"
+        android:layout_alignRight="@+id/statisticsBox"
+        android:layout_alignEnd="@+id/statisticsBox" />
+
+    <view
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         class="com.skynet.basketassistant.UI.Widgets.MainMarkerWidget"
-        android:id="@+id/tvQuarter"
-        android:layout_alignBottom="@+id/linearLayout"
+        android:id="@+id/mainMarkerWidget"
+        android:layout_alignTop="@+id/linearLayout2"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 

@@ -23,6 +23,7 @@ import com.skynet.basketassistant.UI.Widgets.AditionalButtonWidget;
 import com.skynet.basketassistant.UI.Widgets.BoxOfPlayersWidget;
 import com.skynet.basketassistant.UI.Widgets.MainMarkerWidget;
 import com.skynet.basketassistant.UI.Widgets.PlayerBoxWidget;
+import com.skynet.basketassistant.UI.Widgets.QuarterControlWidget;
 import com.skynet.basketassistant.UI.Widgets.ShootButtonWidget;
 import com.skynet.basketassistant.UI.Widgets.PlayerStatisticsBoxWidget;
 import com.squareup.picasso.Picasso;
@@ -45,6 +46,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
     private AditionalButtonWidget reboundButton,stealButton,blockButton,foulButton;
     private ShootButtonWidget simplePointWidget,doublePointWidget,triplePointWidget;
     private MainMarkerWidget mainMarkerWidget;
+    private QuarterControlWidget quarterControlWidget;
 
     //Statistics
     private List<Lanzamiento> shootList = new ArrayList<Lanzamiento>();
@@ -83,6 +85,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
         boxOfPlayersW = (BoxOfPlayersWidget)findViewById(R.id.playersBox);
         playerStatisticsWidget = (PlayerStatisticsBoxWidget)findViewById(R.id.statisticsBox);
         mainMarkerWidget = (MainMarkerWidget)findViewById(R.id.mainMarkerWidget);
+        quarterControlWidget = (QuarterControlWidget)findViewById(R.id.QuarterControlWidget);
         reboundButton = (AditionalButtonWidget)findViewById(R.id.reboundButton);
         stealButton = (AditionalButtonWidget)findViewById(R.id.stealButton);
         blockButton = (AditionalButtonWidget)findViewById(R.id.blockButton);
