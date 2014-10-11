@@ -46,12 +46,12 @@
     </style>
 
     <style name="ButtonQuarterLeft">
-        <item name="android:background">@drawable/button_quarter_left</item>
+        <item name="android:background">@drawable/button_quarter_top</item>
         <!--icon!-->
     </style>
 
     <style name="ButtonQuarterRight">
-        <item name="android:background">@drawable/button_quarter_right</item>
+        <item name="android:background">@drawable/button_quarter_bottom</item>
         <!--icon!-->
     </style>
 

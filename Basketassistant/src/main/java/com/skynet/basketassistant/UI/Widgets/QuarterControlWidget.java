@@ -14,19 +14,22 @@ import com.skynet.basketassistant.R;
 /**
  * Created by USUARIO on 09/10/2014.
  */
-public class QuarterControlWidget extends LinearLayout {
+public class QuarterControlWidget extends LinearLayout implements View.OnClickListener {
 
     private View rootView;
-    private ImageButton ibRightButton,ibLeftButton;
+    private ImageButton ibBottomButton, ibTopButton;
     private TextView tvQuarter;
     private int quarter = 1;
 
     public QuarterControlWidget(Context context, AttributeSet attrs) {
         super(context, attrs);
-        setRootView(LayoutInflater.from(context).inflate(R.layout.widget_quarter_control,this));
-        ibRightButton = (ImageButton)getRootView().findViewById(R.id.ibRightButton);
-        ibLeftButton = (ImageButton)getRootView().findViewById(R.id.ibLeftButton);
+        setRootView(LayoutInflater.from(context).inflate(R.layout.widget_quarter_control, this));
+        ibBottomButton = (ImageButton)getRootView().findViewById(R.id.ibBottomButton);
+        ibTopButton = (ImageButton)getRootView().findViewById(R.id.ibTopButton);
         tvQuarter = (TextView)getRootView().findViewById(R.id.tvQuarter);
+        ibBottomButton.setOnClickListener(this);
+        ibTopButton.setOnClickListener(this);
+        refresh();
     }
 
     @Override
@@ -39,14 +42,18 @@ public class QuarterControlWidget extends LinearLayout {
     }
 
     private void refresh(){
-        if(quarter == Constants.MAX_NUMER_OF_QUARTERS)
+        if(quarter == Constants.MAX_NUMER_OF_QUARTERS) {
             tvQuarter.setText(getContext().getString(R.string.QuarterExtension));
-        else
+            tvQuarter.setTextColor(getResources().getColor(R.color.Verde_oscuro_1));
+        }
+        else{
             tvQuarter.setText(String.valueOf(quarter));
+            tvQuarter.setTextColor(getResources().getColor(R.color.Gris_Negro));
+        }
     }
 
     public void addQuarter(){
-        if(quarter++ > 4){
+        if((quarter+1) > 4){
             quarter = Constants.MAX_NUMER_OF_QUARTERS;
         }else {
             quarter++;
@@ -55,7 +62,7 @@ public class QuarterControlWidget extends LinearLayout {
     }
 
     public void subtractQuarter(){
-        if (quarter-- < 1)
+        if ((quarter-1) < 1)
             quarter = 1;
         else
             quarter--;
@@ -64,5 +71,14 @@ public class QuarterControlWidget extends LinearLayout {
 
     public int getActualQuarter(){
         return quarter;
+    }
+
+    @Override
+    public void onClick(View view) {
+        if(view == ibBottomButton)
+            subtractQuarter();
+        else
+            if(view == ibTopButton)
+                addQuarter();
     }
 }

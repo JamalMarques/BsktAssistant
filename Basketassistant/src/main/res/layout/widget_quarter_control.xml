@@ -7,7 +7,7 @@
     <ImageButton
         android:layout_width="match_parent"
         android:layout_height="20dp"
-        android:id="@+id/ibLeftButton"
+        android:id="@+id/ibTopButton"
         style="@style/ButtonQuarterLeft" />
 
     <LinearLayout
@@ -28,7 +28,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="2"
+            android:text="X"
             android:id="@+id/tvQuarter"
             style="@style/Text_Style_S" />
     </LinearLayout>
@@ -36,7 +36,7 @@
     <ImageButton
         android:layout_width="match_parent"
         android:layout_height="20dp"
-        android:id="@+id/ibRightButton"
-        android:background="@drawable/button_quarter_right" />
+        android:id="@+id/ibBottomButton"
+        android:background="@drawable/button_quarter_bottom" />
 
 </LinearLayout>
