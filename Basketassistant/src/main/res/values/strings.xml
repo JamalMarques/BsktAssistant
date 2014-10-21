@@ -91,4 +91,14 @@
     <string name="Quarter_control_widget">Cuarto</string>
     <string name="QuarterExtension">EXT</string>
 
+    <!-- Messages-->
+    <string name="FoulAddedMessage">Falta agregada</string>
+    <string name="StealAddedMessage">Robo agregado</string>
+    <string name="ReboundAddedMessage">Rebote agregado</string>
+    <string name="BlockAddedMessage">Tapa agregada</string>
+    <string name="AllDeleteMessage">Eliminado</string>
+    <string name="SimpleDeleteMessage">Simple Eliminado</string>
+    <string name="DoubleDeleteMessage">Doble Eliminado</string>
+    <string name="TripleDeleteMessage">Triple Eliminado</string>
+
 </resources>

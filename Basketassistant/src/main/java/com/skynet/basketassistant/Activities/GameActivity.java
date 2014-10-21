@@ -231,6 +231,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
             Robo newSteal = new Robo(0,playerTouched.getPlayer().getId(),0);
             stealList.add(newSteal);
             playerStatisticsWidget.addSteals(1);
+            Toast.makeText(this,getString(R.string.StealAddedMessage),Toast.LENGTH_SHORT).show();
         }else {
             Toast.makeText(this,getString(R.string.SelectPlayerError),Toast.LENGTH_SHORT).show();
         }
@@ -244,6 +245,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
             Tapon newBlock = new Tapon(0,playerTouched.getPlayer().getId(),0);
             blockList.add(newBlock);
             playerStatisticsWidget.addBlocks(1);
+            Toast.makeText(this,getString(R.string.BlockAddedMessage),Toast.LENGTH_SHORT).show();
         }else {
             Toast.makeText(this,getString(R.string.SelectPlayerError),Toast.LENGTH_SHORT).show();
         }
@@ -352,6 +354,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
                         shootList.remove(i);
                         playerStatisticsWidget.removeTotalPoints(Constants.SIMPLE_SHOOT_VALUE);
                         deleteflag=1;
+                        Toast.makeText(this,getString(R.string.SimpleDeleteMessage),Toast.LENGTH_SHORT).show();
                         break;
                     }
                 }
@@ -364,6 +367,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
                         shootList.remove(i);
                         playerStatisticsWidget.removeTotalPoints(Constants.DOUBLE_SHOOT_VALUE);
                         deleteflag = 1;
+                        Toast.makeText(this,getString(R.string.DoubleDeleteMessage),Toast.LENGTH_SHORT).show();
                         break;
                     }
                 }
@@ -376,6 +380,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
                         shootList.remove(i);
                         playerStatisticsWidget.removeTotalPoints(Constants.TRIPLE_SHOOT_VALUE);
                         deleteflag = 1;
+                        Toast.makeText(this,getString(R.string.TripleDeleteMessage),Toast.LENGTH_SHORT).show();
                         break;
                     }
                 }
@@ -394,11 +399,13 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
             Rebote rebound = new Rebote(0,playerTouched.getPlayer().getId(),0,type); //TYPE HAVE : OFENSIVE OR DEFENSIVE CONSTANTS COMMING FROM DIALOG
             reboundList.add(rebound);
             playerStatisticsWidget.addRebounds(1);
+            Toast.makeText(this,getString(R.string.ReboundAddedMessage),Toast.LENGTH_SHORT).show();
         }else {
             if(whoCall.equals(Constants.FOUL_CALL)){ //Come from FOUL_CALL
                 Falta foul = new Falta(0,0,playerTouched.getPlayer().getId(),type,quarterControlWidget.getActualQuarter()); //TYPE HAVE : OFENSIVE OR DEFENSIVE CONSTANTS COMMING FROM DIALOG
                 foulList.add(foul);
                 playerStatisticsWidget.addFouls(1);
+                Toast.makeText(this,getString(R.string.FoulAddedMessage),Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -412,6 +419,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
                     reboundList.remove(i);
                     playerStatisticsWidget.removeRebounds(1);
                     i = -1;
+                    Toast.makeText(this,getString(R.string.AllDeleteMessage),Toast.LENGTH_SHORT).show();
                 }
             }
         }else{
@@ -421,6 +429,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
                         foulList.remove(i);
                         playerStatisticsWidget.removeFouls(1);
                         i = -1;
+                        Toast.makeText(this,getString(R.string.AllDeleteMessage),Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -458,6 +467,8 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
         }
         if(flag == 0)
             Toast.makeText(this,getString(R.string.NoHaveRebounds),Toast.LENGTH_SHORT).show();
+        else
+            Toast.makeText(this,getString(R.string.AllDeleteMessage),Toast.LENGTH_SHORT).show();
     }
 
     private void removeFromBlocks(int player_id){
@@ -474,6 +485,8 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
         }
         if(flag == 0)
             Toast.makeText(this,getString(R.string.NoHaveRebounds),Toast.LENGTH_SHORT).show();
+        else
+            Toast.makeText(this,getString(R.string.AllDeleteMessage),Toast.LENGTH_SHORT).show();
     }
 
     /*private void removeFromFouls(int player_id){
