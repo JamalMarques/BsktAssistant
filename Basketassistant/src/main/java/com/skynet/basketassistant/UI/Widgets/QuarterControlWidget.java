@@ -16,10 +16,16 @@ import com.skynet.basketassistant.R;
  */
 public class QuarterControlWidget extends LinearLayout implements View.OnClickListener {
 
+    private OnChangeQuarterListener quarterListener;
+
     private View rootView;
     private ImageButton ibBottomButton, ibTopButton;
     private TextView tvQuarter;
     private int quarter = 1;
+
+    public static interface OnChangeQuarterListener{
+        public abstract void onChangeQuarter();
+    }
 
     public QuarterControlWidget(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -29,6 +35,13 @@ public class QuarterControlWidget extends LinearLayout implements View.OnClickLi
         tvQuarter = (TextView)getRootView().findViewById(R.id.tvQuarter);
         ibBottomButton.setOnClickListener(this);
         ibTopButton.setOnClickListener(this);
+
+        try{
+            this.quarterListener = (OnChangeQuarterListener)context;
+        }catch(ClassCastException e){
+            throw new ClassCastException("the activity that contains this widget must implement OnChangeQuarterListener interface");
+        }
+
         refresh();
     }
 
@@ -42,7 +55,7 @@ public class QuarterControlWidget extends LinearLayout implements View.OnClickLi
     }
 
     private void refresh(){
-        if(quarter == Constants.MAX_NUMER_OF_QUARTERS) {
+        if(quarter == Constants.MAX_NUMBER_OF_QUARTERS) {
             tvQuarter.setText(getContext().getString(R.string.QuarterExtension));
             tvQuarter.setTextColor(getResources().getColor(R.color.Verde_oscuro_1));
         }
@@ -53,8 +66,8 @@ public class QuarterControlWidget extends LinearLayout implements View.OnClickLi
     }
 
     public void addQuarter(){
-        if((quarter+1) > 4){
-            quarter = Constants.MAX_NUMER_OF_QUARTERS;
+        if((quarter+1) > (Constants.MAX_NUMBER_OF_QUARTERS-1)){
+            quarter = Constants.MAX_NUMBER_OF_QUARTERS;
         }else {
             quarter++;
         }
@@ -75,10 +88,15 @@ public class QuarterControlWidget extends LinearLayout implements View.OnClickLi
 
     @Override
     public void onClick(View view) {
-        if(view == ibBottomButton)
+        if(view == ibBottomButton) {
             subtractQuarter();
-        else
-            if(view == ibTopButton)
+            quarterListener.onChangeQuarter();
+        }
+        else {
+            if (view == ibTopButton) {
                 addQuarter();
+                quarterListener.onChangeQuarter();
+            }
+        }
     }
 }

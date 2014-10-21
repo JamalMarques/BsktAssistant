@@ -32,7 +32,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameActivity extends BaseActivity implements View.OnClickListener,View.OnLongClickListener,FragDialog_ScoreOrNot.OnCompleteShootDialogListener,
-                                                            FragDialog_OfensiveDefensive.onCompleteOfDefDialogListener
+                                                            FragDialog_OfensiveDefensive.onCompleteOfDefDialogListener,QuarterControlWidget.OnChangeQuarterListener
 {
 
     //Necesary data
@@ -316,21 +316,21 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
         Lanzamiento shoot;
         switch (constant_shoot){
             case Constants.SIMPLE_SHOOT:
-                    shoot = new Lanzamiento(status,Constants.SHOOT_TYPE_SIMPLE,Constants.SIMPLE_SHOOT_VALUE,0,playerTouched.getPlayer().getId());
+                    shoot = new Lanzamiento(status,Constants.SHOOT_TYPE_SIMPLE,Constants.SIMPLE_SHOOT_VALUE,0,playerTouched.getPlayer().getId(), quarterControlWidget.getActualQuarter());
                     shootList.add(shoot);
                     if(status == Constants.SHOOT_SCORED)
                         playerStatisticsWidget.addPoints(Constants.SIMPLE_SHOOT_VALUE);
                     playerStatisticsWidget.addTotalPoints(Constants.SIMPLE_SHOOT_VALUE);
                 break;
             case Constants.DOUBLE_SHOOT:
-                    shoot = new Lanzamiento(status,Constants.SHOOT_TYPE_DOUBLE,Constants.DOUBLE_SHOOT_VALUE,0,playerTouched.getPlayer().getId());
+                    shoot = new Lanzamiento(status,Constants.SHOOT_TYPE_DOUBLE,Constants.DOUBLE_SHOOT_VALUE,0,playerTouched.getPlayer().getId(), quarterControlWidget.getActualQuarter());
                     shootList.add(shoot);
                     if(status == Constants.SHOOT_SCORED)
                         playerStatisticsWidget.addPoints(Constants.DOUBLE_SHOOT_VALUE);
                     playerStatisticsWidget.addTotalPoints(Constants.DOUBLE_SHOOT_VALUE);
                 break;
             case Constants.TRIPLE_SHOOT:
-                    shoot = new Lanzamiento(status,Constants.SHOOT_TYPE_TRIPLE,Constants.TRIPLE_SHOOT_VALUE,0,playerTouched.getPlayer().getId());
+                    shoot = new Lanzamiento(status,Constants.SHOOT_TYPE_TRIPLE,Constants.TRIPLE_SHOOT_VALUE,0,playerTouched.getPlayer().getId(), quarterControlWidget.getActualQuarter());
                     shootList.add(shoot);
                     if(status == Constants.SHOOT_SCORED)
                         playerStatisticsWidget.addPoints(Constants.TRIPLE_SHOOT_VALUE);
@@ -346,7 +346,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
         switch (constant_shoot){
             case Constants.SIMPLE_SHOOT:
                 for (int i=0; i < shootList.size() ; i++){
-                    if(shootList.get(i).getEfectivo() == status && shootList.get(i).getTipoLanzamiento().equals(Constants.SHOOT_TYPE_SIMPLE) && shootList.get(i).getJugador_id() == playerTouched.getPlayer().getId()){
+                    if(shootList.get(i).getEfectivo() == status && shootList.get(i).getTipoLanzamiento().equals(Constants.SHOOT_TYPE_SIMPLE) && shootList.get(i).getJugador_id() == playerTouched.getPlayer().getId() && shootList.get(i).getQuarter_number() == quarterControlWidget.getActualQuarter()){
                         if(shootList.get(i).getEfectivo() == Constants.SHOOT_SCORED)
                             playerStatisticsWidget.removePoints(Constants.SIMPLE_SHOOT_VALUE);
                         shootList.remove(i);
@@ -358,7 +358,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
                 break;
             case Constants.DOUBLE_SHOOT:
                 for (int i=0; i < shootList.size() ; i++){
-                    if(shootList.get(i).getEfectivo() == status && shootList.get(i).getTipoLanzamiento().equals(Constants.SHOOT_TYPE_DOUBLE) && shootList.get(i).getJugador_id() == playerTouched.getPlayer().getId()){
+                    if(shootList.get(i).getEfectivo() == status && shootList.get(i).getTipoLanzamiento().equals(Constants.SHOOT_TYPE_DOUBLE) && shootList.get(i).getJugador_id() == playerTouched.getPlayer().getId() && shootList.get(i).getQuarter_number() == quarterControlWidget.getActualQuarter()){
                         if(shootList.get(i).getEfectivo() == Constants.SHOOT_SCORED)
                             playerStatisticsWidget.removePoints(Constants.DOUBLE_SHOOT_VALUE);
                         shootList.remove(i);
@@ -370,7 +370,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
                 break;
             case Constants.TRIPLE_SHOOT:
                 for (int i=0; i < shootList.size() ; i++){
-                    if(shootList.get(i).getEfectivo() == status && shootList.get(i).getTipoLanzamiento().equals(Constants.SHOOT_TYPE_TRIPLE) && shootList.get(i).getJugador_id() == playerTouched.getPlayer().getId()){
+                    if(shootList.get(i).getEfectivo() == status && shootList.get(i).getTipoLanzamiento().equals(Constants.SHOOT_TYPE_TRIPLE) && shootList.get(i).getJugador_id() == playerTouched.getPlayer().getId() && shootList.get(i).getQuarter_number() == quarterControlWidget.getActualQuarter()){
                         if(shootList.get(i).getEfectivo() == Constants.SHOOT_SCORED)
                             playerStatisticsWidget.removePoints(Constants.TRIPLE_SHOOT_VALUE);
                         shootList.remove(i);
@@ -396,7 +396,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
             playerStatisticsWidget.addRebounds(1);
         }else {
             if(whoCall.equals(Constants.FOUL_CALL)){ //Come from FOUL_CALL
-                Falta foul = new Falta(0,0,playerTouched.getPlayer().getId(),type); //TYPE HAVE : OFENSIVE OR DEFENSIVE CONSTANTS COMMING FROM DIALOG
+                Falta foul = new Falta(0,0,playerTouched.getPlayer().getId(),type,quarterControlWidget.getActualQuarter()); //TYPE HAVE : OFENSIVE OR DEFENSIVE CONSTANTS COMMING FROM DIALOG
                 foulList.add(foul);
                 playerStatisticsWidget.addFouls(1);
             }
@@ -417,7 +417,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
         }else{
             if(whoCall.equals(Constants.FOUL_CALL)){
                 for(int i=foulList.size()-1; i >= 0; i--){
-                    if(foulList.get(i).getTipo().equals(type) && foulList.get(i).getJugador_id() == playerTouched.getPlayer().getId()){
+                    if(foulList.get(i).getTipo().equals(type) && foulList.get(i).getJugador_id() == playerTouched.getPlayer().getId() && foulList.get(i).getQuarter_number() == quarterControlWidget.getActualQuarter()){
                         foulList.remove(i);
                         playerStatisticsWidget.removeFouls(1);
                         i = -1;
@@ -512,9 +512,24 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
             Toast.makeText(this,getString(R.string.NoHaveThisShot),Toast.LENGTH_SHORT).show();
     }*/
 
-    public void changeQuarter(){
-        //all logic to change the quearter
+    private int foulCount(int quarter_number){
+        int count_of_fouls = 0;
+        for (int i=0; i < foulList.size(); i++){
+            if(foulList.get(i).getQuarter_number() == quarter_number){
+                if((count_of_fouls + 1) >= Constants.MAX_NUMBER_OF_FOULS_PER_QUARTER)
+                    return Constants.MAX_NUMBER_OF_FOULS_PER_QUARTER;
+                else
+                    count_of_fouls++;
+            }
+        }
+        return count_of_fouls;
     }
+
+    @Override
+    public void onChangeQuarter() {
+        mainMarkerWidget.addFouls(foulCount(quarterControlWidget.getActualQuarter()));
+    }
+
 
 
 }

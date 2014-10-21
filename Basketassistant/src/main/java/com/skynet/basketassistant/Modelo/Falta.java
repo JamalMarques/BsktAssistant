@@ -1,5 +1,7 @@
 package com.skynet.basketassistant.Modelo;
 
+import com.skynet.basketassistant.Otros.Constants;
+
 /**
  * Created by jamal on 06/04/14.
  */
@@ -9,12 +11,14 @@ public class Falta {
     private int Partido_id;
     private int Jugador_id;
     private String tipo;
+    private int quarter_number;
 
-    public Falta(int id,int par_id,int jug_id,String tip){
+    public Falta(int id,int par_id,int jug_id,String tip,int quarter){
         Id = id;
         Partido_id = par_id;
         Jugador_id = jug_id;
         tipo = tip;
+        setQuarter_number(quarter);
     }
 
 
@@ -44,5 +48,16 @@ public class Falta {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+
+    public int getQuarter_number() {
+        return quarter_number;
+    }
+
+    public void setQuarter_number(int quarter_number) {
+        if( quarter_number >= Constants.MAX_NUMBER_OF_QUARTERS)
+            quarter_number = Constants.MAX_NUMBER_OF_QUARTERS;
+        else
+            this.quarter_number = quarter_number;
     }
 }

@@ -23,6 +23,7 @@ public class MainMarkerWidget extends LinearLayout {
         setRootView(LayoutInflater.from(context).inflate(R.layout.widget_main_marker,this));
         tvGlobalPoints = (TextView) getRootView().findViewById(R.id.tvGlobalPoints);
         tvGlobalFoulsInQuarter = (TextView) getRootView().findViewById(R.id.tvGlobalFoulsInQuarter);
+        Refresh();
     }
 
     @Override
