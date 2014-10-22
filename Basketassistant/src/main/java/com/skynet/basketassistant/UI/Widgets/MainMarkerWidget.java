@@ -45,6 +45,7 @@ public class MainMarkerWidget extends LinearLayout {
         Refresh();
     }
 
+
     public void removePoints(int points){
         if(this.points-points < 0)
             this.points = 0;

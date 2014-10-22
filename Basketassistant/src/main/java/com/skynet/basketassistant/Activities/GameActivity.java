@@ -540,7 +540,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
 
     @Override
     public void onChangeQuarter() {
-        mainMarkerWidget.addFouls(foulCount(quarterControlWidget.getActualQuarter()));
+        mainMarkerWidget.changeQuarter(foulCount(quarterControlWidget.getActualQuarter()));
     }
 
 
