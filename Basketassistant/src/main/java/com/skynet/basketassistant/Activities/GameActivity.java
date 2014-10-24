@@ -316,26 +316,36 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
     @Override
     public void onCompleteShootDialog_Add(int status, int constant_shoot) {
         Lanzamiento shoot;
+        int value;
         switch (constant_shoot){
             case Constants.SIMPLE_SHOOT:
-                    shoot = new Lanzamiento(status,Constants.SHOOT_TYPE_SIMPLE,Constants.SIMPLE_SHOOT_VALUE,0,playerTouched.getPlayer().getId(), quarterControlWidget.getActualQuarter());
+                    value = Constants.SIMPLE_SHOOT_VALUE;
+                    shoot = new Lanzamiento(status,Constants.SHOOT_TYPE_SIMPLE,value,0,playerTouched.getPlayer().getId(), quarterControlWidget.getActualQuarter());
                     shootList.add(shoot);
-                    if(status == Constants.SHOOT_SCORED)
-                        playerStatisticsWidget.addPoints(Constants.SIMPLE_SHOOT_VALUE);
-                    playerStatisticsWidget.addTotalPoints(Constants.SIMPLE_SHOOT_VALUE);
+                    if(status == Constants.SHOOT_SCORED) {
+                        playerStatisticsWidget.addPoints(value);
+                        mainMarkerWidget.addPoints(value);
+                    }
+                    playerStatisticsWidget.addTotalPoints(value);
                 break;
             case Constants.DOUBLE_SHOOT:
-                    shoot = new Lanzamiento(status,Constants.SHOOT_TYPE_DOUBLE,Constants.DOUBLE_SHOOT_VALUE,0,playerTouched.getPlayer().getId(), quarterControlWidget.getActualQuarter());
+                    value = Constants.DOUBLE_SHOOT_VALUE;
+                    shoot = new Lanzamiento(status,Constants.SHOOT_TYPE_DOUBLE,value,0,playerTouched.getPlayer().getId(), quarterControlWidget.getActualQuarter());
                     shootList.add(shoot);
-                    if(status == Constants.SHOOT_SCORED)
-                        playerStatisticsWidget.addPoints(Constants.DOUBLE_SHOOT_VALUE);
-                    playerStatisticsWidget.addTotalPoints(Constants.DOUBLE_SHOOT_VALUE);
+                    if(status == Constants.SHOOT_SCORED) {
+                        playerStatisticsWidget.addPoints(value);
+                        mainMarkerWidget.addPoints(value);
+                    }
+                    playerStatisticsWidget.addTotalPoints(value);
                 break;
             case Constants.TRIPLE_SHOOT:
-                    shoot = new Lanzamiento(status,Constants.SHOOT_TYPE_TRIPLE,Constants.TRIPLE_SHOOT_VALUE,0,playerTouched.getPlayer().getId(), quarterControlWidget.getActualQuarter());
+                    value = Constants.TRIPLE_SHOOT_VALUE;
+                    shoot = new Lanzamiento(status,Constants.SHOOT_TYPE_TRIPLE,value,0,playerTouched.getPlayer().getId(), quarterControlWidget.getActualQuarter());
                     shootList.add(shoot);
-                    if(status == Constants.SHOOT_SCORED)
+                    if(status == Constants.SHOOT_SCORED) {
                         playerStatisticsWidget.addPoints(Constants.TRIPLE_SHOOT_VALUE);
+                        mainMarkerWidget.addPoints(value);
+                    }
                     playerStatisticsWidget.addTotalPoints(Constants.TRIPLE_SHOOT_VALUE);
                 break;
         }
@@ -405,6 +415,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
                 Falta foul = new Falta(0,0,playerTouched.getPlayer().getId(),type,quarterControlWidget.getActualQuarter()); //TYPE HAVE : OFENSIVE OR DEFENSIVE CONSTANTS COMMING FROM DIALOG
                 foulList.add(foul);
                 playerStatisticsWidget.addFouls(1);
+                mainMarkerWidget.addFouls(1);
                 Toast.makeText(this,getString(R.string.FoulAddedMessage),Toast.LENGTH_SHORT).show();
             }
         }
@@ -540,6 +551,8 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
 
     @Override
     public void onChangeQuarter() {
+        int q = quarterControlWidget.getActualQuarter();
+        int fouln = foulCount(q);
         mainMarkerWidget.changeQuarter(foulCount(quarterControlWidget.getActualQuarter()));
     }
 

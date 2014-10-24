@@ -56,7 +56,7 @@ public class Falta {
 
     public void setQuarter_number(int quarter_number) {
         if( quarter_number >= Constants.MAX_NUMBER_OF_QUARTERS)
-            quarter_number = Constants.MAX_NUMBER_OF_QUARTERS;
+            this.quarter_number = Constants.MAX_NUMBER_OF_QUARTERS;
         else
             this.quarter_number = quarter_number;
     }
