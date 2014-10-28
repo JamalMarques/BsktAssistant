@@ -100,5 +100,8 @@
     <string name="SimpleDeleteMessage">Simple Eliminado</string>
     <string name="DoubleDeleteMessage">Doble Eliminado</string>
     <string name="TripleDeleteMessage">Triple Eliminado</string>
+    <string name="FinishGame">Finalizar</string>
+    <string name="Yes">Si</string>
+    <string name="No">No</string>
 
 </resources>

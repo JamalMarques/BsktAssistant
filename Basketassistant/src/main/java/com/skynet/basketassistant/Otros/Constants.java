@@ -33,6 +33,13 @@ public class Constants {
     //Shoot Dialog Fragment
     public static final String ADD_OR_REMOVE = "ADD_OR_REMOVE";
 
+    //Yes-No Dialog Fragment
+    public static final int YES = 1;
+    public static final int NO = 0;
+    //called by:
+    public static final int YES_NO_ASSISTANCE = 0;
+    public static final int YES_NO_FINAL_GAME = 1;
+
     //Mode for Dialog Fragments
     public static final int MODE_ADD = 0;
     public static final int MODE_REMOVE = 1;

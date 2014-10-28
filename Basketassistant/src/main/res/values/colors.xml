@@ -25,4 +25,10 @@
     <color name="Background_pressed_button_player">#e97bdbff</color>
     <color name="Border_pressed_button_player">#ff5288ff</color>
 
+    <!--Android SDK 21 colors-->
+    <color name="Lime500">#cddc39</color>
+    <color name="Lime700">#afb42b</color>
+    <color name="Lime800">#9e9d24</color>
+    <color name="Line900">#827717</color>
+
 </resources>

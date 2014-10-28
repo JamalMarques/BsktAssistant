@@ -4,12 +4,14 @@ import android.content.res.Resources;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.skynet.basketassistant.Datos.DBEquipos;
 import com.skynet.basketassistant.Datos.DBJugadores;
 import com.skynet.basketassistant.Fragments.FragDialog_OfensiveDefensive;
 import com.skynet.basketassistant.Fragments.FragDialog_ScoreOrNot;
+import com.skynet.basketassistant.Fragments.FragDialog_YesNo;
 import com.skynet.basketassistant.Modelo.Equipo;
 import com.skynet.basketassistant.Modelo.Falta;
 import com.skynet.basketassistant.Modelo.Jugador;
@@ -32,7 +34,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameActivity extends BaseActivity implements View.OnClickListener,View.OnLongClickListener,FragDialog_ScoreOrNot.OnCompleteShootDialogListener,
-                                                            FragDialog_OfensiveDefensive.onCompleteOfDefDialogListener,QuarterControlWidget.OnChangeQuarterListener
+                                                            FragDialog_OfensiveDefensive.onCompleteOfDefDialogListener,QuarterControlWidget.OnChangeQuarterListener,
+                                                            FragDialog_YesNo.OnCompleteYesNoDialogListener
 {
 
     //Necesary data
@@ -47,6 +50,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
     private ShootButtonWidget simplePointWidget,doublePointWidget,triplePointWidget;
     private MainMarkerWidget mainMarkerWidget;
     private QuarterControlWidget quarterControlWidget;
+    private Button finishButton;
 
     //Statistics
     private List<Lanzamiento> shootList = new ArrayList<Lanzamiento>();
@@ -93,6 +97,8 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
         simplePointWidget = (ShootButtonWidget)findViewById(R.id.simplePointWidget);
         doublePointWidget = (ShootButtonWidget)findViewById(R.id.doublePointWidget);
         triplePointWidget = (ShootButtonWidget)findViewById(R.id.triplePointWidget);
+        finishButton = (Button)findViewById(R.id.finishButton);
+        finishButton.setOnClickListener(this);
 
         boxOfPlayersW.setOnPlayersWidgetsClickListener(this);
 
@@ -150,26 +156,30 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
                            }else
                                if( view == triplePointWidget.getViewListener()){ //Press tripleShoot button
                                    tripleshootBehavior();
-                               }else { //Search for player touched!
-                                   for (int i=0;i < boxOfPlayersW.getListPlayerWidget().size(); i++){
-                                       if( view == boxOfPlayersW.getListPlayerWidget().get(i).getViewListener()){ //Player has been touched!
-                                           if(boxOfPlayersW.getListPlayerWidget().get(i) != playerTouched ) {
-                                               if (isPlayerSelected()) {
-                                                   playerTouched.statePressed(false);
-                                                   playerTouched = null;
+                               }else
+                                    if( view == finishButton ){
+                                        finishGame();
+                                    }else
+                                       { //Search for player touched!
+                                           for (int i=0;i < boxOfPlayersW.getListPlayerWidget().size(); i++){
+                                               if( view == boxOfPlayersW.getListPlayerWidget().get(i).getViewListener()){ //Player has been touched!
+                                                   if(boxOfPlayersW.getListPlayerWidget().get(i) != playerTouched ) {
+                                                       if (isPlayerSelected()) {
+                                                           playerTouched.statePressed(false);
+                                                           playerTouched = null;
+                                                       }
+                                                       playerTouched = boxOfPlayersW.getListPlayerWidget().get(i);
+                                                       playerTouched.statePressed(true);
+                                                       playerStatisticsWidget.changePlayer(playerTouched.getPlayer(), shootList, reboundList, stealList, blockList, foulList);
+                                                   }else {
+                                                       playerTouched.statePressed(false);
+                                                       playerTouched = null;
+                                                       playerStatisticsWidget.reset();
+                                                   }
+                                                   i = boxOfPlayersW.getListPlayerWidget().size()-1; //Break for!
                                                }
-                                               playerTouched = boxOfPlayersW.getListPlayerWidget().get(i);
-                                               playerTouched.statePressed(true);
-                                               playerStatisticsWidget.changePlayer(playerTouched.getPlayer(), shootList, reboundList, stealList, blockList, foulList);
-                                           }else {
-                                               playerTouched.statePressed(false);
-                                               playerTouched = null;
-                                               playerStatisticsWidget.reset();
                                            }
-                                           i = boxOfPlayersW.getListPlayerWidget().size()-1; //Break for!
                                        }
-                                   }
-                               }
 
     }
 
@@ -556,6 +566,19 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
         mainMarkerWidget.changeQuarter(foulCount(quarterControlWidget.getActualQuarter()));
     }
 
+    @Override
+    public void onCompleteYesNoDialog(int response, int whocall) {
+        switch (whocall){
+            case Constants.YES_NO_ASSISTANCE:
+                if(response == Constants.YES){
+                    
+                }//else do nothing...
+                break;
+        }
+    }
 
 
+    private void finishGame(){
+        //Save Assistants
+    }
 }

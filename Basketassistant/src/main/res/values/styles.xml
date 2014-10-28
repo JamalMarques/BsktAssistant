@@ -45,6 +45,13 @@
         <item name="android:paddingRight">5dp</item>
     </style>
 
+    <style name="ButtonFinishGame">
+        <item name="android:background">@drawable/finish_game_button_bg</item>
+        <item name="android:textColor">@color/Blanco</item>
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:paddingRight">5dp</item>
+    </style>
+
     <style name="ButtonQuarterLeft">
         <item name="android:background">@drawable/button_quarter_top</item>
         <!--icon!-->

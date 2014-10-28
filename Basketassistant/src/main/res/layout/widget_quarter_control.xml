@@ -7,7 +7,7 @@
     <ImageButton
         android:layout_width="match_parent"
         android:layout_height="20dp"
-        android:id="@+id/ibTopButton"
+        android:id="@+id/finishButton"
         style="@style/ButtonQuarterLeft" />
 
     <LinearLayout
