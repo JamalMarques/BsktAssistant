@@ -571,7 +571,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
         switch (whocall){
             case Constants.YES_NO_ASSISTANCE:
                 if(response == Constants.YES){
-                    
+
                 }//else do nothing...
                 break;
         }
