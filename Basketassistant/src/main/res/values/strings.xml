@@ -90,6 +90,11 @@
     <string name="FoulsMarker">F</string>
     <string name="Quarter_control_widget">Cuarto</string>
     <string name="QuarterExtension">EXT</string>
+    <string name="FinishGame">Finalizar</string>
+    <string name="Yes">Si</string>
+    <string name="No">No</string>
+    <string name="Select_player">Seleccione Jugador</string>
+    <string name="Was_assisted">Fue asistido?</string>
 
     <!-- Messages-->
     <string name="FoulAddedMessage">Falta agregada</string>
@@ -100,8 +105,6 @@
     <string name="SimpleDeleteMessage">Simple Eliminado</string>
     <string name="DoubleDeleteMessage">Doble Eliminado</string>
     <string name="TripleDeleteMessage">Triple Eliminado</string>
-    <string name="FinishGame">Finalizar</string>
-    <string name="Yes">Si</string>
-    <string name="No">No</string>
+    <string name="Assistance_added">Asistencia agregada</string>
 
 </resources>

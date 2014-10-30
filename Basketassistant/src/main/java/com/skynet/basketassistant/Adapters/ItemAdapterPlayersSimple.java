@@ -6,8 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
 
 import com.skynet.basketassistant.Modelo.Jugador;
+import com.skynet.basketassistant.R;
 
 import java.util.List;
 
@@ -16,23 +18,42 @@ import java.util.List;
  */
 public class ItemAdapterPlayersSimple extends ArrayAdapter<Jugador> {
 
-    private final int resource = 0;
+    private final int resource;
     private Context context;
     private List<Jugador> playersList;
 
     public ItemAdapterPlayersSimple(Context context, List<Jugador> playersList) {
-        super(context, resource, playersList); //resourse will be hardcoded
-        this.resource = ****;
+        super(context, R.layout.list_item_player, playersList); //resourse will be hardcoded
+        this.resource = R.layout.list_item_player;
         this.context = context;
         this.playersList = playersList;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater inflater = (LayoutInflater) context .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View rowView = inflater.inflate(resource, parent, false);
+        View rowView = convertView;
 
+        if(rowView == null) {
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            rowView = inflater.inflate(resource, parent, false);
+
+            ViewHolder holder = new ViewHolder();
+            holder.playerName = (TextView)rowView.findViewById(R.id.tvNamePlayer);
+            holder.playerNumber = (TextView)rowView.findViewById(R.id.tvPlayerNumer);
+            rowView.setTag(holder);
+        }
+
+        ViewHolder holder = (ViewHolder)rowView.getTag();
+
+        Jugador player = playersList.get(position);
+        holder.playerNumber.setText(player.getNumero()+"");
+        holder.playerName.setText(player.getApellido()+", "+player.getNombre());
 
         return rowView;
+    }
+
+    static class ViewHolder{
+        public TextView playerNumber;
+        public TextView playerName;
     }
 }

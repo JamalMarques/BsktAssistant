@@ -50,7 +50,7 @@ public class ItemAdapterJugadores extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertview, ViewGroup parent) {  //Crear esto sin el holder de mierda
+    public View getView(int position, View convertview, ViewGroup parent) {
 
         View rowview = convertview;
 

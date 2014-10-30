@@ -10,8 +10,10 @@ import android.widget.Toast;
 import com.skynet.basketassistant.Datos.DBEquipos;
 import com.skynet.basketassistant.Datos.DBJugadores;
 import com.skynet.basketassistant.Fragments.FragDialog_OfensiveDefensive;
+import com.skynet.basketassistant.Fragments.FragDialog_PlayersList;
 import com.skynet.basketassistant.Fragments.FragDialog_ScoreOrNot;
 import com.skynet.basketassistant.Fragments.FragDialog_YesNo;
+import com.skynet.basketassistant.Modelo.Asistencia;
 import com.skynet.basketassistant.Modelo.Equipo;
 import com.skynet.basketassistant.Modelo.Falta;
 import com.skynet.basketassistant.Modelo.Jugador;
@@ -35,11 +37,12 @@ import java.util.List;
 
 public class GameActivity extends BaseActivity implements View.OnClickListener,View.OnLongClickListener,FragDialog_ScoreOrNot.OnCompleteShootDialogListener,
                                                             FragDialog_OfensiveDefensive.onCompleteOfDefDialogListener,QuarterControlWidget.OnChangeQuarterListener,
-                                                            FragDialog_YesNo.OnCompleteYesNoDialogListener
+                                                            FragDialog_YesNo.OnCompleteYesNoDialogListener, FragDialog_PlayersList.OnItemClicked
 {
 
     //Necesary data
     private Equipo myTeam;
+    private int gameId;
     private String enemyTeam;
     private List<Jugador> teamPlayers = new ArrayList<Jugador>();
 
@@ -58,6 +61,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
     private List<Robo> stealList = new ArrayList<Robo>();
     private List<Tapon> blockList = new ArrayList<Tapon>();
     private List<Falta> foulList = new ArrayList<Falta>();
+    private List<Asistencia> assistancesList = new ArrayList<Asistencia>();
 
 
     @Override
@@ -345,6 +349,8 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
                     if(status == Constants.SHOOT_SCORED) {
                         playerStatisticsWidget.addPoints(value);
                         mainMarkerWidget.addPoints(value);
+                        FragDialog_YesNo fdYN = FragDialog_YesNo.getInstance(getString(R.string.Was_assisted),Constants.YES_NO_ASSISTANCE);
+                        fdYN.show(getSupportFragmentManager(), Constants.FRAGMENT_DIALOG_YES_NO);
                     }
                     playerStatisticsWidget.addTotalPoints(value);
                 break;
@@ -571,9 +577,20 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
         switch (whocall){
             case Constants.YES_NO_ASSISTANCE:
                 if(response == Constants.YES){
-
+                    FragDialog_PlayersList fd = FragDialog_PlayersList.getInstance(getString(R.string.Select_player),myTeam.getId(),FragDialog_PlayersList.ADD_ASSISTANCE);
+                    fd.show(getSupportFragmentManager(), Constants.FRAGMENT_DIALOG_PLAYERS_LIST);
                 }//else do nothing...
                 break;
+        }
+    }
+
+
+    @Override
+    public void onItemClicked(int player_id, String action) { //That comes from the Players List Fragment Dialog
+        if(action.equals(FragDialog_PlayersList.ADD_ASSISTANCE)){
+            Asistencia asist = new Asistencia(0,player_id,gameId);
+            assistancesList.add(asist);
+            Toast.makeText(this,getString(R.string.Assistance_added),Toast.LENGTH_SHORT).show();
         }
     }
 

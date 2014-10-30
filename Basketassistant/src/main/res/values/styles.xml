@@ -68,4 +68,29 @@
         <item name="android:textColor">@color/Gris_Negro</item>
     </style>
 
+    <style name="Text_Style_M">
+        <item name="android:textSize">@dimen/text_M</item>
+        <item name="android:textColor">@color/Gris_2_score</item>
+    </style>
+
+    <style name="Text_Style_L">
+        <item name="android:textSize">@dimen/text_L</item>
+        <item name="android:textColor">@color/Gris_2_score</item>
+    </style>
+
+    <style name="Text_Style_X">
+        <item name="android:textSize">@dimen/text_X</item>
+        <item name="android:textColor">@color/Gris_2_score</item>
+    </style>
+
+    <style name="Text_Style_XL">
+        <item name="android:textSize">@dimen/text_XL</item>
+        <item name="android:textColor">@color/Gris_2_score</item>
+    </style>
+
+    <style name="Text_Style_XXL">
+        <item name="android:textSize">@dimen/text_XXL</item>
+        <item name="android:textColor">@color/Gris_2_score</item>
+    </style>
+
 </resources>

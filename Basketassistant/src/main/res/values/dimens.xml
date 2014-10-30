@@ -6,7 +6,14 @@
     <!-- PlayerBoxWidget-->
     <dimen name="image_player_height_width">50dp</dimen>
     <dimen name="totalLayout_padding">5dp</dimen>
+
+    <!--Text dimens-->
     <dimen name="text_S">15dp</dimen>
+    <dimen name="text_M">17dp</dimen>
+    <dimen name="text_L">19dp</dimen>
+    <dimen name="text_X">21dp</dimen>
+    <dimen name="text_XL">23dp</dimen>
+    <dimen name="text_XXL">25dp</dimen>
 
     <!-- Padding StaticBoxWidget-->
     <dimen name="height_width_right_padding_staticsBoxW">5dp</dimen>
@@ -21,6 +28,6 @@
     <dimen name="width_icon_button">50dp</dimen>
     <dimen name="height_icon_button">70dp</dimen>
     <dimen name="height_width_aditional_circular_button">50dp</dimen>
-    <dimen name="text_M">17dp</dimen>
+
 
 </resources>

@@ -9,7 +9,6 @@ public class Constants {
     public static final String TEAM_ID = "TEAM_ID";
     public static final String GAME_ID = "GAME_ID";
     public static final String PLAYER_ID = "PLAYER_ID";
-    public static final String FRAGMENT_DIALOG_SCORE_OR_NOT = "FRAGMENT_DIALOG_SCORE_OR_NOT";
     public static final String CONSTANT_SHOOT = "CONSTANT_SHOOT";
 
     //SHOOTS TYPE
@@ -61,6 +60,14 @@ public class Constants {
 
     //Fouls Constants
     public static final int MAX_NUMBER_OF_FOULS_PER_QUARTER = 5;
+
+    //Fragments Dialogs
+    public static final String FRAGMENT_DIALOG_SCORE_OR_NOT = "FRAGMENT_DIALOG_SCORE_OR_NOT";
+    public static final String FRAGMENT_DIALOG_PLAYERS_LIST = "FRAGMENT_DIALOG_PLAYERS_LIST";
+    public static final String FRAGMENT_DIALOG_YES_NO = "FRAGMENT_DIALOG_YES_NO";
+    public static final String FRAGMENT_DIALOG_ACTION = "FRAGMENT_DIALOG_ACTION";
+        //ACTIONS
+            public static final String FRAGMENT_DIALOG_ACTION_ADD_ASSISTANCE = "ADD_ASSISTANCE";
 
 
 }

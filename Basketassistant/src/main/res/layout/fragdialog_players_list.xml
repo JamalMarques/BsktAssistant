@@ -6,16 +6,18 @@
     android:gravity="top|center">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Test Text"
         android:id="@+id/tvTitle"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
-        style="@style/Text_Style_S" />
+        style="@style/Text_Style_XL"
+        android:textColor="@color/Border_pressed_button_player"
+        android:gravity="center" />
 
     <ListView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/lvPlayers" />
 
