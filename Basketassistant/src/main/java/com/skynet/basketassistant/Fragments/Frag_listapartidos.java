@@ -4,15 +4,12 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.provider.Telephony;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.skynet.basketassistant.Adapters.ItemAdapterPartidos;
 import com.skynet.basketassistant.Datos.DBEquipos;
@@ -80,11 +77,10 @@ public class Frag_listapartidos extends Fragment implements AdapterView.OnItemCl
 
         DBPartidos dbp = new DBPartidos(getActivity());
         dbp.Modolectura();
-        Cursor c = dbp.Cargarcursorpartidos(equipo.getId());
-
-        List<Partido> listapart = new ArrayList<Partido>();
-
-        if(c.moveToFirst()){
+        //Cursor c = dbp.giveMeGamesOf(equipo.getId());
+        List<Partido> listapart = dbp.giveMeGamesOf(equipo.getId());
+        dbp.Cerrar();
+        /*if(c.moveToFirst()){
             do {
                 int id = c.getColumnIndex(dbp.CN_ID);
                 int fecha = c.getColumnIndex(dbp.CN_FECHA);
@@ -112,7 +108,8 @@ public class Frag_listapartidos extends Fragment implements AdapterView.OnItemCl
 
             }while (c.moveToNext());
         }
-        c.close();
+        c.close();*/
+
 
         adapterpart = new ItemAdapterPartidos(getActivity().getApplicationContext(),listapart);
         lvpartidos.setAdapter(adapterpart);

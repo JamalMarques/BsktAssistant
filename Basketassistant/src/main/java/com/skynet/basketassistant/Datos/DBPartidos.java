@@ -111,14 +111,18 @@ public class DBPartidos{
 
     //Inserto nuevo equipo mediante el metodo de SQLiteDatabase
     //Si se le manda un STRING como fecha el sqlite lo interpreta perfectamente siempre y cuando
-    //se lo envie de la siguiente forma "1992-01-03" [anio,mes,dia] por ende es posible usar el db.insert si el String fecha esta
+    //se lo envie de la siguiente forma "1992-01-03" [año,mes,dia] por ende es posible usar el db.insert si el String fecha esta
     //escrito de la forma correcta
-    public void insertar(String fecha,String cancha,int equipo1_id,String equipo2_nom,int puntos_e1,int puntos_e2,
+    public int insertar(String fecha,String cancha,int equipo1_id,String equipo2_nom,int puntos_e1,int puntos_e2,
                           int punt_q1_e1,int punt_q2_e1,int punt_q3_e1,int punt_q4_e1,int punt_q1_e2,int punt_q2_e2,int punt_q3_e2,int punt_q4_e2,
                           int punt_ext_e1,int punt_ext_e2){
 
         db.insert(TABLE_NAME,null, Contenedorvalores(fecha,cancha,equipo1_id,equipo2_nom,puntos_e1,puntos_e2,punt_q1_e1,punt_q2_e1,punt_q3_e1,punt_q4_e1,
                                                         punt_q1_e2,punt_q2_e2,punt_q3_e2,punt_q4_e2,punt_ext_e1,punt_ext_e2));
+
+        List<Partido> listp = giveMeGamesOf(equipo1_id);
+        Partido part = listp.get(listp.size()-1);
+        return part.getId();
     }
 
 
@@ -131,51 +135,72 @@ public class DBPartidos{
         }
     }
 
-    //Carga de cursor
-    public Cursor Cargarcursorpartidos(){
-        return db.query(TABLE_NAME,columnas,null,null,null,null,null);
+
+
+    /*public Cursor CargarCursorPartidos(int id_equip){
+        return db.query(TABLE_NAME,columnas,CN_EQUIPO1_ID+" = "+id_equip,null,null,null,null);
+    }*/
+
+
+    private List<Partido> CrearLista(Cursor c){
+        List<Partido> list_part = new ArrayList<Partido>();
+        if(c.moveToFirst()){
+            do {
+                int id = c.getColumnIndex(CN_ID);
+                int fecha = c.getColumnIndex(CN_FECHA);
+                int cancha = c.getColumnIndex(CN_CANCHA);
+                int puntos_e1 = c.getColumnIndex(CN_PUNTOS_E1);
+                int puntos_e2 = c.getColumnIndex(CN_PUNTOS_E2);
+                int equipo1_id = c.getColumnIndex(CN_EQUIPO1_ID);
+                int equipo2_nom = c.getColumnIndex(CN_EQUIPO2_NOM);
+                int punt_q1_e1 = c.getColumnIndex(CN_PUNTOS_Q1_E1);
+                int punt_q2_e1 = c.getColumnIndex(CN_PUNTOS_Q2_E1);
+                int punt_q3_e1 = c.getColumnIndex(CN_PUNTOS_Q3_E1);
+                int punt_q4_e1 = c.getColumnIndex(CN_PUNTOS_Q4_E1);
+                int punt_q1_e2 = c.getColumnIndex(CN_PUNTOS_Q1_E2);
+                int punt_q2_e2 = c.getColumnIndex(CN_PUNTOS_Q2_E2);
+                int punt_q3_e2 = c.getColumnIndex(CN_PUNTOS_Q3_E2);
+                int punt_q4_e2 = c.getColumnIndex(CN_PUNTOS_Q4_E2);
+                int punt_ext_e1 = c.getColumnIndex(CN_PUNTOS_EXT_E1);
+                int punt_ext_e2 = c.getColumnIndex(CN_PUNTOS_EXT_E2);
+
+                Partido part = new Partido(c.getInt(id),c.getString(fecha),c.getString(cancha),c.getInt(puntos_e1),c.getInt(puntos_e2),c.getInt(equipo1_id),c.getString(equipo2_nom),
+                        c.getInt(punt_q1_e1),c.getInt(punt_q2_e1),c.getInt(punt_q3_e1),c.getInt(punt_q4_e1),c.getInt(punt_q1_e2),c.getInt(punt_q2_e2),c.getInt(punt_q3_e2),
+                        c.getInt(punt_q4_e2),c.getInt(punt_ext_e1),c.getInt(punt_ext_e2));
+                list_part.add(part);
+
+            }while(c.moveToNext());
+        }
+        c.close();
+        return list_part;
     }
 
-    public Cursor Cargarcursorpartidos(int id_equip){
-        return db.query(TABLE_NAME,columnas,CN_EQUIPO1_ID+" = "+id_equip,null,null,null,null);
+
+    public List<Partido> giveMeAllGames(){
+        Cursor c = db.query(TABLE_NAME,columnas,null,null,null,null,null);
+        return CrearLista(c);
     }
 
     public Partido DamePartido(int idpartido){
 
         Cursor c = db.query(TABLE_NAME,columnas,CN_ID+" = "+idpartido,null,null,null,null);
+        List<Partido> listPart = CrearLista(c);
 
-        try{
-            if(c.moveToFirst()){
+        if(listPart.size() == 1)
+            return listPart.get(0);
+        else
+            return null;
+    }
 
-                    int id = c.getColumnIndex(CN_ID);
-                    int fecha = c.getColumnIndex(CN_FECHA);
-                    int cancha = c.getColumnIndex(CN_CANCHA);
-                    int puntos_e1 = c.getColumnIndex(CN_PUNTOS_E1);
-                    int puntos_e2 = c.getColumnIndex(CN_PUNTOS_E2);
-                    int equipo1_id = c.getColumnIndex(CN_EQUIPO1_ID);
-                    int equipo2_nom = c.getColumnIndex(CN_EQUIPO2_NOM);
-                    int punt_q1_e1 = c.getColumnIndex(CN_PUNTOS_Q1_E1);
-                    int punt_q2_e1 = c.getColumnIndex(CN_PUNTOS_Q2_E1);
-                    int punt_q3_e1 = c.getColumnIndex(CN_PUNTOS_Q3_E1);
-                    int punt_q4_e1 = c.getColumnIndex(CN_PUNTOS_Q4_E1);
-                    int punt_q1_e2 = c.getColumnIndex(CN_PUNTOS_Q1_E2);
-                    int punt_q2_e2 = c.getColumnIndex(CN_PUNTOS_Q2_E2);
-                    int punt_q3_e2 = c.getColumnIndex(CN_PUNTOS_Q3_E2);
-                    int punt_q4_e2 = c.getColumnIndex(CN_PUNTOS_Q4_E2);
-                    int punt_ext_e1 = c.getColumnIndex(CN_PUNTOS_EXT_E1);
-                    int punt_ext_e2 = c.getColumnIndex(CN_PUNTOS_EXT_E2);
+    public List<Partido> giveMeGamesOf(int id_equip){
+        Cursor c = db.query(TABLE_NAME,columnas,CN_EQUIPO1_ID+" = "+id_equip,null,null,null,null);
+        return CrearLista(c);
+    }
 
-                    Partido part = new Partido(c.getInt(id),c.getString(fecha),c.getString(cancha),c.getInt(puntos_e1),c.getInt(puntos_e2),c.getInt(equipo1_id),c.getString(equipo2_nom),
-                            c.getInt(punt_q1_e1),c.getInt(punt_q2_e1),c.getInt(punt_q3_e1),c.getInt(punt_q4_e1),c.getInt(punt_q1_e2),c.getInt(punt_q2_e2),c.getInt(punt_q3_e2),
-                            c.getInt(punt_q4_e2),c.getInt(punt_ext_e1),c.getInt(punt_ext_e2));
-
-                    return part;
-            }
-            else
-                return null;
-        }finally {
-            c.close();
-        }
+    public void updateGame(Partido game){
+        ContentValues cv = Contenedorvalores(game.getFecha(),game.getCancha(),game.getEquipo1_id(),game.getEquipo2_nom(),game.getPuntos_E1(),game.getPuntos_E2(),game.getPunt_q1_e1(),game.getPunt_q2_e1(),
+                                            game.getPunt_q3_e1(),game.getPunt_q4_e1(),game.getPunt_q1_e2(),game.getPunt_q2_e2(),game.getPunt_q3_e2(),game.getPunt_q4_e2(),game.getPunt_ext_e1(),game.getPunt_ext_e2());
+        db.update(TABLE_NAME,cv,CN_ID+" = "+game.getId(),null);
     }
 
 }

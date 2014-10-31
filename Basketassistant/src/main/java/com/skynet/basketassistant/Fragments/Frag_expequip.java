@@ -21,6 +21,8 @@ import com.skynet.basketassistant.Activities.PartidosAct;
 import com.skynet.basketassistant.Otros.Constants;
 import com.skynet.basketassistant.R;
 
+import java.util.List;
+
 /**
  * Created by jamal on 22/04/14.
  */
@@ -85,9 +87,10 @@ public class Frag_expequip extends Fragment implements View.OnClickListener{
 
         DBPartidos dbp = new DBPartidos(getActivity());
         dbp.Modolectura();
-        Cursor c = dbp.Cargarcursorpartidos(equipo.getId());
+       // Cursor c = dbp.giveMeGamesOf(equipo.getId());
 
-        if(c.moveToFirst()){
+        List<Partido> gamesList = dbp.giveMeGamesOf(equipo.getId());
+        /*if(c.moveToFirst()){
            do {
                int id = c.getColumnIndex(dbp.CN_ID);
                int fecha = c.getColumnIndex(dbp.CN_FECHA);
@@ -120,7 +123,17 @@ public class Frag_expequip extends Fragment implements View.OnClickListener{
                 }
             }while(c.moveToNext());
         }
-        c.close();
+        c.close();*/
+
+        for (int i=0; i < gamesList.size() ; i++) {
+            num_games++;
+            if (gamesList.get(i).getEquipo1_id() == equipo.getId()) {
+                if (gamesList.get(i).getPuntos_E1() > gamesList.get(i).getPuntos_E2())
+                    num_wins++;
+                else
+                    num_loses++;
+            }
+        }
 
         tv_games.setText(String.valueOf(num_games));
         tv_wins.setText(String.valueOf(num_wins));
