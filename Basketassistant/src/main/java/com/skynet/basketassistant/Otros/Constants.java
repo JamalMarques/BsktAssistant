@@ -5,6 +5,8 @@ package com.skynet.basketassistant.Otros;
  */
 public class Constants {
 
+    public static final String DATE_FORMAT = "yyyy-MM-dd";
+
     public static final String TEAM_NAME = "TEAM_NAME";
     public static final String TEAM_ID = "TEAM_ID";
     public static final String GAME_ID = "GAME_ID";
@@ -66,6 +68,7 @@ public class Constants {
     public static final String FRAGMENT_DIALOG_PLAYERS_LIST = "FRAGMENT_DIALOG_PLAYERS_LIST";
     public static final String FRAGMENT_DIALOG_YES_NO = "FRAGMENT_DIALOG_YES_NO";
     public static final String FRAGMENT_DIALOG_ACTION = "FRAGMENT_DIALOG_ACTION";
+    public static final String FRAGMENT_DIALOG_GAME_INFORMATION = "FRAGMENT_DIALOG_GAME_INFORMATION";
         //ACTIONS
             public static final String FRAGMENT_DIALOG_ACTION_ADD_ASSISTANCE = "ADD_ASSISTANCE";
 

@@ -67,7 +67,6 @@ public class FragDialog_PlayersList extends DialogFragment implements ListView.O
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragdialog_players_list, container, false);
         getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-        //getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         TextView tvTitle = (TextView)view.findViewById(R.id.tvTitle);
         tvTitle.setText(getArguments().getString(Constants.FRAGDIALOG_TITLE));
         teamId = getArguments().getInt(Constants.TEAM_ID);

@@ -9,6 +9,8 @@ import android.widget.Toast;
 
 import com.skynet.basketassistant.Datos.DBEquipos;
 import com.skynet.basketassistant.Datos.DBJugadores;
+import com.skynet.basketassistant.Datos.DBPartidos;
+import com.skynet.basketassistant.Fragments.FragDialog_GameInformation;
 import com.skynet.basketassistant.Fragments.FragDialog_OfensiveDefensive;
 import com.skynet.basketassistant.Fragments.FragDialog_PlayersList;
 import com.skynet.basketassistant.Fragments.FragDialog_ScoreOrNot;
@@ -30,20 +32,21 @@ import com.skynet.basketassistant.UI.Widgets.PlayerBoxWidget;
 import com.skynet.basketassistant.UI.Widgets.QuarterControlWidget;
 import com.skynet.basketassistant.UI.Widgets.ShootButtonWidget;
 import com.skynet.basketassistant.UI.Widgets.PlayerStatisticsBoxWidget;
-import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class GameActivity extends BaseActivity implements View.OnClickListener,View.OnLongClickListener,FragDialog_ScoreOrNot.OnCompleteShootDialogListener,
                                                             FragDialog_OfensiveDefensive.onCompleteOfDefDialogListener,QuarterControlWidget.OnChangeQuarterListener,
-                                                            FragDialog_YesNo.OnCompleteYesNoDialogListener, FragDialog_PlayersList.OnItemClicked
+                                                            FragDialog_YesNo.OnCompleteYesNoDialogListener, FragDialog_PlayersList.OnItemClicked, FragDialog_GameInformation.OnCompleteInformation
 {
 
     //Necesary data
     private Equipo myTeam;
     private int gameId;
-    private String enemyTeam;
+    private String opponentTeamName;
     private List<Jugador> teamPlayers = new ArrayList<Jugador>();
 
     private BoxOfPlayersWidget boxOfPlayersW;
@@ -62,6 +65,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
     private List<Tapon> blockList = new ArrayList<Tapon>();
     private List<Falta> foulList = new ArrayList<Falta>();
     private List<Asistencia> assistancesList = new ArrayList<Asistencia>();
+    private int[] enemyPointsInQuarter = new int[4];
 
 
     @Override
@@ -71,6 +75,12 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
 
         loadAtributtes();
         loadPlayers();
+        showInformationDialog();
+    }
+
+    private void showInformationDialog(){
+        FragDialog_GameInformation df = FragDialog_GameInformation.getInstance();
+        df.show(getSupportFragmentManager(),Constants.FRAGMENT_DIALOG_GAME_INFORMATION);
     }
 
     private void loadAtributtes(){
@@ -111,7 +121,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
         simplePointWidget.getViewListener().setOnLongClickListener(this);
         doublePointWidget.getViewListener().setOnLongClickListener(this);
         triplePointWidget.getViewListener().setOnLongClickListener(this);
-        simplePointWidget.setButtonProperties(1, BitmapFactory.decodeResource(Resources.getSystem(),R.drawable.ic_launcher));
+        simplePointWidget.setButtonProperties(1, BitmapFactory.decodeResource(Resources.getSystem(), R.drawable.ic_launcher));
         doublePointWidget.setButtonProperties(2, BitmapFactory.decodeResource(Resources.getSystem(), R.drawable.ic_launcher));
         triplePointWidget.setButtonProperties(3, BitmapFactory.decodeResource(Resources.getSystem(), R.drawable.ic_launcher));
 
@@ -126,7 +136,23 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
         blockButton.getViewListener().setOnLongClickListener(this);
         foulButton.getViewListener().setOnLongClickListener(this);
 
-        //
+
+    }
+
+    @Override
+    public void onCompleteInfo(String opponentName, boolean isLocal) {
+        loadGame(opponentName,isLocal);
+    }
+
+    private void loadGame(String oponentName,boolean isLocal){
+        String stadium = (isLocal)? getString(R.string.Local) : getString(R.string.Visitor);
+        opponentTeamName = oponentName;
+        //Create the new Game in DataBase
+        SimpleDateFormat sdf = new SimpleDateFormat(Constants.DATE_FORMAT);
+        DBPartidos dbg = new DBPartidos(this);
+        dbg.Modoescritura();
+        gameId = dbg.insertar(sdf.format(Calendar.getInstance().getTime()),stadium,myTeam.getId(),oponentName,0,0,0,0,0,0,0,0,0,0,0,0);  //Create it and return the id from database
+        dbg.Cerrar();
 
     }
 
@@ -552,4 +578,6 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
     private void finishGame(){
         //Save Assistants
     }
+
+
 }

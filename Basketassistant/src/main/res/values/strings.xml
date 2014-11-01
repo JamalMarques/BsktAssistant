@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!--Stadium Types-->
+    <string name="Local">Local</string>
+    <string name="Visitor">Visitante</string>
+
     <string name="app_name">Basket Assistant</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
@@ -99,6 +103,7 @@
     <string name="No">No</string>
     <string name="Select_player">Seleccione Jugador</string>
     <string name="Was_assisted">Fue asistido?</string>
+    <string name="Stadium">Estadio :</string>
 
     <!-- Messages-->
     <string name="FoulAddedMessage">Falta agregada</string>
@@ -110,5 +115,10 @@
     <string name="DoubleDeleteMessage">Doble Eliminado</string>
     <string name="TripleDeleteMessage">Triple Eliminado</string>
     <string name="Assistance_added">Asistencia agregada</string>
+    <string name="Game_Information">Informacion del Partido</string>
+    <string name="Opponent_Name">Contrincante</string>
+    <string name="Continue">Continuar</string>
+    <string name="Name_must_more_or_equal_3_to_10">El nombre debe tener entre 3 y 10 caracteres</string>
+
 
 </resources>
