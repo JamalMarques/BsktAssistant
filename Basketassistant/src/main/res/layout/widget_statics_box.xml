@@ -144,6 +144,25 @@
                     android:id="@+id/tvFouls"
                     style="@style/Text_Style_S" />
             </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Assistances"
+                    android:id="@+id/textView5"
+                    style="@style/Text_Style_S"
+                    android:layout_marginRight="@dimen/right_margin_text_staticsBoxW" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvAssistances"
+                    style="@style/Text_Style_S" />
+            </TableRow>
         </TableLayout>
     </LinearLayout>
 

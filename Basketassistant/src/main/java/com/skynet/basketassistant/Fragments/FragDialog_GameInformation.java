@@ -1,6 +1,7 @@
 package com.skynet.basketassistant.Fragments;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
@@ -16,7 +17,7 @@ import android.widget.Toast;
 import com.skynet.basketassistant.R;
 
 /**
- * Created by USUARIO on 31/10/2014.
+ * Created by jamal on 31/10/2014.
  */
 public class FragDialog_GameInformation extends DialogFragment implements View.OnClickListener {
 
@@ -70,6 +71,14 @@ public class FragDialog_GameInformation extends DialogFragment implements View.O
                 this.dismiss();
             }else
                 Toast.makeText(getActivity(),getString(R.string.Name_must_more_or_equal_3_to_10),Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onDismiss(DialogInterface dialog) {
+        if(etOpponentName.getText().length() < 3) {
+            Toast.makeText(getActivity(), getString(R.string.CompleteFields), Toast.LENGTH_SHORT).show();
+            //show it again
         }
     }
 }

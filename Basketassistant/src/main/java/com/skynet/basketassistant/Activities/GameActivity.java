@@ -52,7 +52,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
     private BoxOfPlayersWidget boxOfPlayersW;
     private PlayerBoxWidget playerTouched = null;
     private PlayerStatisticsBoxWidget playerStatisticsWidget;
-    private AditionalButtonWidget reboundButton,stealButton,blockButton,foulButton;
+    private AditionalButtonWidget reboundButton,stealButton,blockButton,foulButton, assistanceButton;
     private ShootButtonWidget simplePointWidget,doublePointWidget,triplePointWidget;
     private MainMarkerWidget mainMarkerWidget;
     private QuarterControlWidget quarterControlWidget;
@@ -65,7 +65,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
     private List<Tapon> blockList = new ArrayList<Tapon>();
     private List<Falta> foulList = new ArrayList<Falta>();
     private List<Asistencia> assistancesList = new ArrayList<Asistencia>();
-    private int[] enemyPointsInQuarter = new int[4];
+    private int[] opponentPointsInQuarter = new int[4];
 
 
     @Override
@@ -106,6 +106,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
         stealButton = (AditionalButtonWidget)findViewById(R.id.stealButton);
         blockButton = (AditionalButtonWidget)findViewById(R.id.blockButton);
         foulButton = (AditionalButtonWidget)findViewById(R.id.foulButton);
+        assistanceButton = (AditionalButtonWidget)findViewById(R.id.assistanceButton);
         simplePointWidget = (ShootButtonWidget)findViewById(R.id.simplePointWidget);
         doublePointWidget = (ShootButtonWidget)findViewById(R.id.doublePointWidget);
         triplePointWidget = (ShootButtonWidget)findViewById(R.id.triplePointWidget);
@@ -130,11 +131,13 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
         stealButton.getViewListener().setOnClickListener(this);
         blockButton.getViewListener().setOnClickListener(this);
         foulButton.getViewListener().setOnClickListener(this);
+        assistanceButton.getViewListener().setOnClickListener(this);
         //---
         reboundButton.getViewListener().setOnLongClickListener(this);
         stealButton.getViewListener().setOnLongClickListener(this);
         blockButton.getViewListener().setOnLongClickListener(this);
         foulButton.getViewListener().setOnLongClickListener(this);
+        assistanceButton.getViewListener().setOnLongClickListener(this);
 
 
     }
@@ -178,38 +181,41 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
                    if( view == foulButton.getViewListener()){ //Press Foul button
                        foulBehavior();
                    }else
-                       if( view == simplePointWidget.getViewListener()){ //Press simpleShoot button
-                           simpleshootBehavior();
+                       if( view == assistanceButton.getViewListener()){  //Press Assistance button
+                            assistanceBehaviour();
                        }else
-                           if( view == doublePointWidget.getViewListener()){ //Press doubleShoot button
-                               doubleshootBehavior();
+                           if( view == simplePointWidget.getViewListener()){ //Press simpleShoot button
+                               simpleshootBehavior();
                            }else
-                               if( view == triplePointWidget.getViewListener()){ //Press tripleShoot button
-                                   tripleshootBehavior();
+                               if( view == doublePointWidget.getViewListener()){ //Press doubleShoot button
+                                   doubleshootBehavior();
                                }else
-                                    if( view == finishButton ){
-                                        finishGame();
-                                    }else
-                                       { //Search for player touched!
-                                           for (int i=0;i < boxOfPlayersW.getListPlayerWidget().size(); i++){
-                                               if( view == boxOfPlayersW.getListPlayerWidget().get(i).getViewListener()){ //Player has been touched!
-                                                   if(boxOfPlayersW.getListPlayerWidget().get(i) != playerTouched ) {
-                                                       if (isPlayerSelected()) {
+                                   if( view == triplePointWidget.getViewListener()){ //Press tripleShoot button
+                                       tripleshootBehavior();
+                                   }else
+                                        if( view == finishButton ){
+                                            finishGame();
+                                        }else
+                                           { //Search for player touched!
+                                               for (int i=0;i < boxOfPlayersW.getListPlayerWidget().size(); i++){
+                                                   if( view == boxOfPlayersW.getListPlayerWidget().get(i).getViewListener()){ //Player has been touched!
+                                                       if(boxOfPlayersW.getListPlayerWidget().get(i) != playerTouched ) {
+                                                           if (isPlayerSelected()) {
+                                                               playerTouched.statePressed(false);
+                                                               playerTouched = null;
+                                                           }
+                                                           playerTouched = boxOfPlayersW.getListPlayerWidget().get(i);
+                                                           playerTouched.statePressed(true);
+                                                           playerStatisticsWidget.changePlayer(playerTouched.getPlayer(), shootList, reboundList, stealList, blockList, foulList, assistancesList);
+                                                       }else {
                                                            playerTouched.statePressed(false);
                                                            playerTouched = null;
+                                                           playerStatisticsWidget.reset();
                                                        }
-                                                       playerTouched = boxOfPlayersW.getListPlayerWidget().get(i);
-                                                       playerTouched.statePressed(true);
-                                                       playerStatisticsWidget.changePlayer(playerTouched.getPlayer(), shootList, reboundList, stealList, blockList, foulList);
-                                                   }else {
-                                                       playerTouched.statePressed(false);
-                                                       playerTouched = null;
-                                                       playerStatisticsWidget.reset();
+                                                       i = boxOfPlayersW.getListPlayerWidget().size()-1; //Break for!
                                                    }
-                                                   i = boxOfPlayersW.getListPlayerWidget().size()-1; //Break for!
                                                }
                                            }
-                                       }
 
     }
 
@@ -225,6 +231,8 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
                 blockBehaviorLong();
             } else if (view == foulButton.getViewListener()) { //Press Foul button
                 foulBehaviorLong();
+            } else if (view == assistanceButton.getViewListener()) { //Press Assistance button
+                assistanceBehaviourLong();
             } else if (view == simplePointWidget.getViewListener()) { //Press simpleShoot button
                 simpleshootBehaviorLong();
             } else if (view == doublePointWidget.getViewListener()) { //Press doubleShoot button
@@ -262,13 +270,12 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
         }
     }
     private void reboundBehaviorLong(){
-        //removeFromRebounds(playerTouched.getPlayer().getId());
         showOfensiveDefensiveDialog(getString(R.string.DeleteRebound),Constants.REBOUND_CALL,Constants.MODE_REMOVE);
     }
 
     private void stealBehavior(){
         if(isPlayerSelected()){
-            Robo newSteal = new Robo(0,playerTouched.getPlayer().getId(),0);
+            Robo newSteal = new Robo(0,playerTouched.getPlayer().getId(),gameId);
             stealList.add(newSteal);
             playerStatisticsWidget.addSteals(1);
             Toast.makeText(this,getString(R.string.StealAddedMessage),Toast.LENGTH_SHORT).show();
@@ -282,7 +289,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
 
     private void blockBehavior(){
         if(isPlayerSelected()){
-            Tapon newBlock = new Tapon(0,playerTouched.getPlayer().getId(),0);
+            Tapon newBlock = new Tapon(0,playerTouched.getPlayer().getId(),gameId);
             blockList.add(newBlock);
             playerStatisticsWidget.addBlocks(1);
             Toast.makeText(this,getString(R.string.BlockAddedMessage),Toast.LENGTH_SHORT).show();
@@ -304,6 +311,20 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
     private void foulBehaviorLong(){
         //removeFromFouls(playerTouched.getPlayer().getId());
         showOfensiveDefensiveDialog(getString(R.string.DeleteFoul),Constants.FOUL_CALL,Constants.MODE_REMOVE);
+    }
+
+    private void assistanceBehaviour(){
+        if(isPlayerSelected()){
+            Asistencia newAssist = new Asistencia(0,playerTouched.getPlayer().getId(),gameId);
+            assistancesList.add(newAssist);
+            playerStatisticsWidget.addAssistances(1);
+            Toast.makeText(this,getString(R.string.AssistanceAddedMessage),Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(this,getString(R.string.SelectPlayerError),Toast.LENGTH_SHORT).show();
+        }
+    }
+    private void assistanceBehaviourLong(){
+        removeFromAssistances(playerTouched.getPlayer().getId());
     }
 
     // -------------  SHOOTS --------------
@@ -360,7 +381,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
         switch (constant_shoot){
             case Constants.SIMPLE_SHOOT:
                     value = Constants.SIMPLE_SHOOT_VALUE;
-                    shoot = new Lanzamiento(status,Constants.SHOOT_TYPE_SIMPLE,value,0,playerTouched.getPlayer().getId(), quarterControlWidget.getActualQuarter());
+                    shoot = new Lanzamiento(status,Constants.SHOOT_TYPE_SIMPLE,value,gameId,playerTouched.getPlayer().getId(), quarterControlWidget.getActualQuarter());
                     shootList.add(shoot);
                     if(status == Constants.SHOOT_SCORED) {
                         playerStatisticsWidget.addPoints(value);
@@ -370,7 +391,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
                 break;
             case Constants.DOUBLE_SHOOT:
                     value = Constants.DOUBLE_SHOOT_VALUE;
-                    shoot = new Lanzamiento(status,Constants.SHOOT_TYPE_DOUBLE,value,0,playerTouched.getPlayer().getId(), quarterControlWidget.getActualQuarter());
+                    shoot = new Lanzamiento(status,Constants.SHOOT_TYPE_DOUBLE,value,gameId,playerTouched.getPlayer().getId(), quarterControlWidget.getActualQuarter());
                     shootList.add(shoot);
                     if(status == Constants.SHOOT_SCORED) {
                         playerStatisticsWidget.addPoints(value);
@@ -382,7 +403,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
                 break;
             case Constants.TRIPLE_SHOOT:
                     value = Constants.TRIPLE_SHOOT_VALUE;
-                    shoot = new Lanzamiento(status,Constants.SHOOT_TYPE_TRIPLE,value,0,playerTouched.getPlayer().getId(), quarterControlWidget.getActualQuarter());
+                    shoot = new Lanzamiento(status,Constants.SHOOT_TYPE_TRIPLE,value,gameId,playerTouched.getPlayer().getId(), quarterControlWidget.getActualQuarter());
                     shootList.add(shoot);
                     if(status == Constants.SHOOT_SCORED) {
                         playerStatisticsWidget.addPoints(Constants.TRIPLE_SHOOT_VALUE);
@@ -448,13 +469,13 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
     public void onCompleteOfDefDialog_add(String type,String whoCall) {
 
         if(whoCall.equals(Constants.REBOUND_CALL)) { //Come from REBOUND_CALL
-            Rebote rebound = new Rebote(0,playerTouched.getPlayer().getId(),0,type); //TYPE HAVE : OFENSIVE OR DEFENSIVE CONSTANTS COMMING FROM DIALOG
+            Rebote rebound = new Rebote(0,playerTouched.getPlayer().getId(),gameId,type); //TYPE HAVE : OFENSIVE OR DEFENSIVE CONSTANTS COMMING FROM DIALOG
             reboundList.add(rebound);
             playerStatisticsWidget.addRebounds(1);
             Toast.makeText(this,getString(R.string.ReboundAddedMessage),Toast.LENGTH_SHORT).show();
         }else {
             if(whoCall.equals(Constants.FOUL_CALL)){ //Come from FOUL_CALL
-                Falta foul = new Falta(0,0,playerTouched.getPlayer().getId(),type,quarterControlWidget.getActualQuarter()); //TYPE HAVE : OFENSIVE OR DEFENSIVE CONSTANTS COMMING FROM DIALOG
+                Falta foul = new Falta(0,gameId,playerTouched.getPlayer().getId(),type,quarterControlWidget.getActualQuarter()); //TYPE HAVE : OFENSIVE OR DEFENSIVE CONSTANTS COMMING FROM DIALOG
                 foulList.add(foul);
                 playerStatisticsWidget.addFouls(1);
                 mainMarkerWidget.addFouls(1);
@@ -527,6 +548,24 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
         }
         if(flag == 0)
             Toast.makeText(this,getString(R.string.NoHaveBlocks),Toast.LENGTH_SHORT).show();
+        else
+            Toast.makeText(this,getString(R.string.AllDeleteMessage),Toast.LENGTH_SHORT).show();
+    }
+
+    private void removeFromAssistances(int player_id){
+        int flag=0;
+        if(assistancesList.size() > 0) {
+            for (int i = assistancesList.size()-1; i >= 0; i--) {
+                if (assistancesList.get(i).getJugador_id() == player_id) {
+                    flag = 1;
+                    assistancesList.remove(i);
+                    playerStatisticsWidget.removeAssistances(1);
+                    i = -1; //Break for
+                }
+            }
+        }
+        if(flag == 0)
+            Toast.makeText(this,getString(R.string.NoHaveAssistances),Toast.LENGTH_SHORT).show();
         else
             Toast.makeText(this,getString(R.string.AllDeleteMessage),Toast.LENGTH_SHORT).show();
     }

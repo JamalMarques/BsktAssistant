@@ -88,7 +88,7 @@
     <string name="NoHaveFouls">No existen faltas para este jugador</string>
     <string name="NoHaveSteals">No existen robos para este jugador</string>
     <string name="NoHaveBlocks">No existen tapas para este jugador</string>
-    <string name="NoHaveAssistences">No existen asistencias para este jugador</string>
+    <string name="NoHaveAssistances">No existen asistencias para este jugador</string>
     <string name="NoHaveThisShot">No existen lanzamientos de ese tipo para eliminar</string>
     <string name="CompleteFields">Los campos deben estar completos</string>
     <string name="NoShootToDelete">No existe lanzamiento para borrar de ese jugador</string>
@@ -104,12 +104,15 @@
     <string name="Select_player">Seleccione Jugador</string>
     <string name="Was_assisted">Fue asistido?</string>
     <string name="Stadium">Estadio :</string>
+    <string name="Assistances">Asist.</string>
+
 
     <!-- Messages-->
     <string name="FoulAddedMessage">Falta agregada</string>
     <string name="StealAddedMessage">Robo agregado</string>
     <string name="ReboundAddedMessage">Rebote agregado</string>
     <string name="BlockAddedMessage">Tapa agregada</string>
+    <string name="AssistanceAddedMessage">Asistencia agregada</string>
     <string name="AllDeleteMessage">Eliminado</string>
     <string name="SimpleDeleteMessage">Simple Eliminado</string>
     <string name="DoubleDeleteMessage">Doble Eliminado</string>

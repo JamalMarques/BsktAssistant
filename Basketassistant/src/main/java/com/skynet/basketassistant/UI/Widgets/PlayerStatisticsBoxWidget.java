@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.skynet.basketassistant.Modelo.Asistencia;
 import com.skynet.basketassistant.Modelo.Falta;
 import com.skynet.basketassistant.Modelo.Jugador;
 import com.skynet.basketassistant.Modelo.Lanzamiento;
@@ -30,6 +31,7 @@ public class PlayerStatisticsBoxWidget extends RelativeLayout {
     private TextView tvBlocks;
     private TextView tvFouls;
     private TextView tvTotalPoints;
+    private TextView tvAssistances;
 
     private int points=0;
     private int totalPoints=0;
@@ -37,6 +39,7 @@ public class PlayerStatisticsBoxWidget extends RelativeLayout {
     private int steals=0;
     private int blocks=0;
     private int fouls=0;
+    private int assistances=0;
 
     public PlayerStatisticsBoxWidget(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -47,6 +50,7 @@ public class PlayerStatisticsBoxWidget extends RelativeLayout {
         tvBlocks = (TextView)getRootView().findViewById(R.id.tvBlocks);
         tvFouls = (TextView)getRootView().findViewById(R.id.tvFouls);
         tvTotalPoints = (TextView)getRootView().findViewById(R.id.tvTotalPoints);
+        tvAssistances = (TextView)getRootView().findViewById(R.id.tvAssistances);
 
 
         initiate();
@@ -63,6 +67,7 @@ public class PlayerStatisticsBoxWidget extends RelativeLayout {
         getTvBlocks().setText(String.valueOf(getBlocks()));
         getTvFouls().setText(String.valueOf(getFouls()));
         getTvTotalPoints().setText(String.valueOf(getTotalPoints()));
+        getTvAssistances().setText(String.valueOf(getAssistances()));
     }
 
     public void reset(){
@@ -72,11 +77,12 @@ public class PlayerStatisticsBoxWidget extends RelativeLayout {
         blocks=0;
         fouls=0;
         totalPoints=0;
+        assistances=0;
         refresh();
     }
 
     public void changePlayer(Jugador player,List<Lanzamiento> shootsList,List<Rebote> reboundsList,List<Robo> stealsList,
-                             List<Tapon> blocksList,List<Falta> foulsList) {
+                             List<Tapon> blocksList,List<Falta> foulsList, List<Asistencia> assitList) {
 
         reset();
 
@@ -104,6 +110,10 @@ public class PlayerStatisticsBoxWidget extends RelativeLayout {
         for (int i = 0; i < foulsList.size(); i++) {
             if (foulsList.get(i).getJugador_id() == player.getId())
                 fouls++;
+        }
+        for (int i = 0; i < assitList.size(); i++) {
+            if (assitList.get(i).getJugador_id() == player.getId())
+                assistances++;
         }
 
             refresh();
@@ -134,6 +144,12 @@ public class PlayerStatisticsBoxWidget extends RelativeLayout {
         this.fouls += fouls;
         refresh();
     }
+    public void addAssistances(int assist){
+        this.assistances += assist;
+        refresh();
+    }
+
+
     public void removePoints(int points){
         if( (this.points - points) <= 0)
             this.points = 0;
@@ -175,6 +191,14 @@ public class PlayerStatisticsBoxWidget extends RelativeLayout {
             this.fouls = 0;
         else
             this.fouls -= fouls;
+        refresh();
+    }
+    public void removeAssistances(int assist){
+        if( (this.assistances - assist) <= 0){
+            this.assistances = 0;
+        }else{
+            this.assistances -= assist;
+        }
         refresh();
     }
 
@@ -230,6 +254,8 @@ public class PlayerStatisticsBoxWidget extends RelativeLayout {
         return fouls;
     }
 
+    public int getAssistances() { return assistances; }
+
     public TextView getTvTotalPoints() {
         return tvTotalPoints;
     }
@@ -237,4 +263,10 @@ public class PlayerStatisticsBoxWidget extends RelativeLayout {
     public int getTotalPoints() {
         return totalPoints;
     }
+
+    public TextView getTvAssistances() {
+        return tvAssistances;
+    }
+
+
 }

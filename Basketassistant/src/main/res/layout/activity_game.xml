@@ -40,6 +40,7 @@
             android:layout_height="wrap_content"
             class="com.skynet.basketassistant.UI.Widgets.ShootButtonWidget"
             android:id="@+id/triplePointWidget" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -79,7 +80,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             class="com.skynet.basketassistant.UI.Widgets.AditionalButtonWidget"
-            android:id="@+id/foulButton" />
+            android:id="@+id/foulButton"
+            android:layout_marginBottom="5dp" />
+
+        <view
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            class="com.skynet.basketassistant.UI.Widgets.AditionalButtonWidget"
+            android:id="@+id/assistanceButton" />
+
     </LinearLayout>
 
     <view
@@ -119,8 +128,8 @@
         android:id="@+id/finishButton"
         style="@style/ButtonFinishGame"
         android:layout_alignBottom="@+id/mainMarkerWidget"
-        android:layout_alignRight="@+id/linearLayout"
-        android:layout_alignEnd="@+id/linearLayout"
-        android:layout_marginRight="19dp" />
+        android:layout_toRightOf="@+id/linearLayout2"
+        android:layout_toEndOf="@+id/linearLayout2"
+        android:layout_marginLeft="23dp" />
 
 </RelativeLayout>
