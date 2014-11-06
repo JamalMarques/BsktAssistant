@@ -98,6 +98,11 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
         teamPlayers = dbj.DameListaJugadoresEquipo(myTeam.getId());
         dbj.Cerrar();
 
+        //Starting Opponent Quarters
+        for(int i=0;i <= (Constants.MAX_NUMBER_OF_QUARTERS-1); i++){
+            opponentPointsInQuarter[i] = 0;
+        }
+
         boxOfPlayersW = (BoxOfPlayersWidget)findViewById(R.id.playersBox);
         playerStatisticsWidget = (PlayerStatisticsBoxWidget)findViewById(R.id.statisticsBox);
         mainMarkerWidget = (MainMarkerWidget)findViewById(R.id.mainMarkerWidget);
