@@ -42,7 +42,7 @@ public class FragDialog_final_game_statistics extends DialogFragment implements 
         game = make magic with the GSON
         */
 
-        
+
 
         return view;
     }
