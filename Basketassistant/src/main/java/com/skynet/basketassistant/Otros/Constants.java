@@ -13,6 +13,11 @@ public class Constants {
     public static final String PLAYER_ID = "PLAYER_ID";
     public static final String CONSTANT_SHOOT = "CONSTANT_SHOOT";
 
+    //Others
+    public static final String GAME = "GAME";
+    public static final String MYTEAM = "MYTEAM";
+    public static final String OPPONENTTEAM = "OPPONENTTEAM";
+
     //SHOOTS TYPE
     public static final String SHOOT_TYPE_SIMPLE = "SIMPLE";
     public static final String SHOOT_TYPE_DOUBLE = "DOUBLE";

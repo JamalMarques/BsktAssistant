@@ -112,4 +112,14 @@ public class DBFaltas{
         return CrearLista(c);
     }
 
+    public boolean SaveOnDatabase(List<Falta> foulList){
+        this.Modoescritura();
+        for (int i=0; i < foulList.size(); i++){
+            insertar(foulList.get(i).getPartido_id(),foulList.get(i).getJugador_id(),foulList.get(i).getTipo(),foulList.get(i).getQuarter_number());
+        }
+        this.Cerrar();
+        return true;
+    }
+
+
 }

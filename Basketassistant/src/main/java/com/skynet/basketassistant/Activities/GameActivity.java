@@ -7,9 +7,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.skynet.basketassistant.Datos.DBAsistencias;
 import com.skynet.basketassistant.Datos.DBEquipos;
+import com.skynet.basketassistant.Datos.DBFaltas;
 import com.skynet.basketassistant.Datos.DBJugadores;
+import com.skynet.basketassistant.Datos.DBLanzamientos;
 import com.skynet.basketassistant.Datos.DBPartidos;
+import com.skynet.basketassistant.Datos.DBRebotes;
+import com.skynet.basketassistant.Datos.DBRobos;
+import com.skynet.basketassistant.Datos.DBTapones;
 import com.skynet.basketassistant.Fragments.FragDialog_GameInformation;
 import com.skynet.basketassistant.Fragments.FragDialog_OfensiveDefensive;
 import com.skynet.basketassistant.Fragments.FragDialog_PlayersList;
@@ -20,6 +26,7 @@ import com.skynet.basketassistant.Modelo.Equipo;
 import com.skynet.basketassistant.Modelo.Falta;
 import com.skynet.basketassistant.Modelo.Jugador;
 import com.skynet.basketassistant.Modelo.Lanzamiento;
+import com.skynet.basketassistant.Modelo.Partido;
 import com.skynet.basketassistant.Modelo.Rebote;
 import com.skynet.basketassistant.Modelo.Robo;
 import com.skynet.basketassistant.Modelo.Tapon;
@@ -45,7 +52,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
 
     //Necesary data
     private Equipo myTeam;
-    private int gameId;
+    private Partido game;
     private String opponentTeamName;
     private List<Jugador> teamPlayers = new ArrayList<Jugador>();
 
@@ -154,7 +161,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
         SimpleDateFormat sdf = new SimpleDateFormat(Constants.DATE_FORMAT);
         DBPartidos dbg = new DBPartidos(this);
         dbg.Modoescritura();
-        gameId = dbg.insertar(sdf.format(Calendar.getInstance().getTime()),stadium,myTeam.getId(),oponentName,0,0,0,0,0,0,0,0,0,0,0,0);  //Create it and return the id from database
+        game = dbg.insertar(sdf.format(Calendar.getInstance().getTime()),stadium,myTeam.getId(),oponentName,0,0,0,0,0,0,0,0,0,0,0,0);  //Create it and return the id from database
         dbg.Cerrar();
 
     }
@@ -275,7 +282,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
 
     private void stealBehavior(){
         if(isPlayerSelected()){
-            Robo newSteal = new Robo(0,playerTouched.getPlayer().getId(),gameId);
+            Robo newSteal = new Robo(0,playerTouched.getPlayer().getId(),game.getId());
             stealList.add(newSteal);
             playerStatisticsWidget.addSteals(1);
             Toast.makeText(this,getString(R.string.StealAddedMessage),Toast.LENGTH_SHORT).show();
@@ -289,7 +296,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
 
     private void blockBehavior(){
         if(isPlayerSelected()){
-            Tapon newBlock = new Tapon(0,playerTouched.getPlayer().getId(),gameId);
+            Tapon newBlock = new Tapon(0,playerTouched.getPlayer().getId(),game.getId());
             blockList.add(newBlock);
             playerStatisticsWidget.addBlocks(1);
             Toast.makeText(this,getString(R.string.BlockAddedMessage),Toast.LENGTH_SHORT).show();
@@ -315,7 +322,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
 
     private void assistanceBehaviour(){
         if(isPlayerSelected()){
-            Asistencia newAssist = new Asistencia(0,playerTouched.getPlayer().getId(),gameId);
+            Asistencia newAssist = new Asistencia(0,playerTouched.getPlayer().getId(),game.getId());
             assistancesList.add(newAssist);
             playerStatisticsWidget.addAssistances(1);
             Toast.makeText(this,getString(R.string.AssistanceAddedMessage),Toast.LENGTH_SHORT).show();
@@ -381,7 +388,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
         switch (constant_shoot){
             case Constants.SIMPLE_SHOOT:
                     value = Constants.SIMPLE_SHOOT_VALUE;
-                    shoot = new Lanzamiento(status,Constants.SHOOT_TYPE_SIMPLE,value,gameId,playerTouched.getPlayer().getId(), quarterControlWidget.getActualQuarter());
+                    shoot = new Lanzamiento(status,Constants.SHOOT_TYPE_SIMPLE,value,game.getId(),playerTouched.getPlayer().getId(), quarterControlWidget.getActualQuarter());
                     shootList.add(shoot);
                     if(status == Constants.SHOOT_SCORED) {
                         playerStatisticsWidget.addPoints(value);
@@ -391,7 +398,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
                 break;
             case Constants.DOUBLE_SHOOT:
                     value = Constants.DOUBLE_SHOOT_VALUE;
-                    shoot = new Lanzamiento(status,Constants.SHOOT_TYPE_DOUBLE,value,gameId,playerTouched.getPlayer().getId(), quarterControlWidget.getActualQuarter());
+                    shoot = new Lanzamiento(status,Constants.SHOOT_TYPE_DOUBLE,value,game.getId(),playerTouched.getPlayer().getId(), quarterControlWidget.getActualQuarter());
                     shootList.add(shoot);
                     if(status == Constants.SHOOT_SCORED) {
                         playerStatisticsWidget.addPoints(value);
@@ -403,7 +410,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
                 break;
             case Constants.TRIPLE_SHOOT:
                     value = Constants.TRIPLE_SHOOT_VALUE;
-                    shoot = new Lanzamiento(status,Constants.SHOOT_TYPE_TRIPLE,value,gameId,playerTouched.getPlayer().getId(), quarterControlWidget.getActualQuarter());
+                    shoot = new Lanzamiento(status,Constants.SHOOT_TYPE_TRIPLE,value,game.getId(),playerTouched.getPlayer().getId(), quarterControlWidget.getActualQuarter());
                     shootList.add(shoot);
                     if(status == Constants.SHOOT_SCORED) {
                         playerStatisticsWidget.addPoints(Constants.TRIPLE_SHOOT_VALUE);
@@ -469,13 +476,13 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
     public void onCompleteOfDefDialog_add(String type,String whoCall) {
 
         if(whoCall.equals(Constants.REBOUND_CALL)) { //Come from REBOUND_CALL
-            Rebote rebound = new Rebote(0,playerTouched.getPlayer().getId(),gameId,type); //TYPE HAVE : OFENSIVE OR DEFENSIVE CONSTANTS COMMING FROM DIALOG
+            Rebote rebound = new Rebote(0,playerTouched.getPlayer().getId(),game.getId(),type); //TYPE HAVE : OFENSIVE OR DEFENSIVE CONSTANTS COMMING FROM DIALOG
             reboundList.add(rebound);
             playerStatisticsWidget.addRebounds(1);
             Toast.makeText(this,getString(R.string.ReboundAddedMessage),Toast.LENGTH_SHORT).show();
         }else {
             if(whoCall.equals(Constants.FOUL_CALL)){ //Come from FOUL_CALL
-                Falta foul = new Falta(0,gameId,playerTouched.getPlayer().getId(),type,quarterControlWidget.getActualQuarter()); //TYPE HAVE : OFENSIVE OR DEFENSIVE CONSTANTS COMMING FROM DIALOG
+                Falta foul = new Falta(0,game.getId(),playerTouched.getPlayer().getId(),type,quarterControlWidget.getActualQuarter()); //TYPE HAVE : OFENSIVE OR DEFENSIVE CONSTANTS COMMING FROM DIALOG
                 foulList.add(foul);
                 playerStatisticsWidget.addFouls(1);
                 mainMarkerWidget.addFouls(1);
@@ -607,7 +614,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
     @Override
     public void onItemClicked(int player_id, String action) { //That comes from the Players List Fragment Dialog
         if(action.equals(FragDialog_PlayersList.ADD_ASSISTANCE)){
-            Asistencia asist = new Asistencia(0,player_id,gameId);
+            Asistencia asist = new Asistencia(0,player_id,game.getId());
             assistancesList.add(asist);
             Toast.makeText(this,getString(R.string.Assistance_added),Toast.LENGTH_SHORT).show();
         }
@@ -615,7 +622,63 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
 
 
     private void finishGame(){
-        //Save Assistants
+        //Shoots
+        DBLanzamientos dbl = new DBLanzamientos(this);
+        dbl.SaveOnDatabase(shootList);
+        //Rebounds
+        DBRebotes dbr = new DBRebotes(this);
+        dbr.SaveOnDatabase(reboundList);
+        //Steals
+        DBRobos dbro = new DBRobos(this);
+        dbro.SaveOnDatabase(stealList);
+        //Blocks
+        DBTapones dbb = new DBTapones(this);
+        dbb.SaveOnDatabase(blockList);
+        //Fouls
+        DBFaltas dbf = new DBFaltas(this);
+        dbf.SaveOnDatabase(foulList);
+        //Assistances
+        DBAsistencias dba = new DBAsistencias(this);
+        dba.SaveOnDatabase(assistancesList);
+
+        updateGame();
+        DBPartidos dbp = new DBPartidos(this);
+        dbp.updateGame(game);
+
+        //Show the total game statistics
+        //TODO create a total statistics fragment dialog
+
+    }
+
+    private void updateGame(){
+        int[] pointsOfQuarterE1 = new int[5];
+        int totalPointsE1=0;
+
+        for (int i=0; i < shootList.size(); i++){  //Updating points of the quarters
+            Lanzamiento shoot = shootList.get(i);
+            if(shoot.getEfectivo() == Constants.SHOOT_SCORED){
+                pointsOfQuarterE1[shoot.getQuarter_number()] += shoot.getValor();
+                totalPointsE1 += shoot.getValor();
+            }
+        }
+
+        //Setting points E1
+        game.setPunt_q1_e1(pointsOfQuarterE1[1]);
+        game.setPunt_q2_e1(pointsOfQuarterE1[2]);
+        game.setPunt_q2_e1(pointsOfQuarterE1[3]);
+        game.setPunt_q2_e1(pointsOfQuarterE1[4]);
+        game.setPunt_ext_e1(pointsOfQuarterE1[5]);
+        //Setting points E2 TODO (Opponent's points of quarter )
+        //...
+        game.setPunt_q1_e2(0);
+        game.setPunt_q2_e2(0);
+        game.setPunt_q2_e2(0);
+        game.setPunt_q2_e2(0);
+        game.setPunt_ext_e2(0);
+        //Setting global points
+        game.setPuntos_E1(totalPointsE1);
+        game.setPuntos_E2(0); //TODO solve this! (Opponent's points of quarter)
+
     }
 
 

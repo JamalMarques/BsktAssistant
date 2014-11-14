@@ -111,4 +111,13 @@ public class DBRebotes{
         Cursor c = db.query(TABLE_NAME,columnas,CN_JUGADOR_ID+" = "+jug_id+" and "+CN_PARTIDO_ID+" = "+part_id,null,null,null,null);
         return CrearLista(c);
     }
+
+    public boolean SaveOnDatabase(List<Rebote> reboundList){
+        this.Modoescritura();
+        for (int i=0; i < reboundList.size(); i++){
+            insertar(reboundList.get(i).getPartido_id(),reboundList.get(i).getJugador_id(),reboundList.get(i).getTiporeb());
+        }
+        this.Cerrar();
+        return true;
+    }
 }

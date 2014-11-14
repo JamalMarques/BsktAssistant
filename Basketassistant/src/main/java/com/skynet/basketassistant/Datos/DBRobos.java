@@ -103,4 +103,13 @@ public class DBRobos{
         Cursor c = db.query(TABLE_NAME,columnas,CN_JUGADOR_ID+" = "+jug_id+" and "+CN_PARTIDO_ID+" = "+part_id,null,null,null,null);
         return CrearLista(c);
     }
+
+    public boolean SaveOnDatabase(List<Robo> stealList){
+        this.Modoescritura();
+        for (int i=0; i < stealList.size(); i++){
+            insertar(stealList.get(i).getPartido_id(),stealList.get(i).getJugador_id());
+        }
+        this.Cerrar();
+        return true;
+    }
 }

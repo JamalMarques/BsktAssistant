@@ -103,4 +103,14 @@ public class DBTapones{
         Cursor c = db.query(TABLE_NAME,columnas,CN_JUGADOR_ID+" = "+jug_id+" and "+CN_PARTIDO_ID+" = "+part_id,null,null,null,null);
         return CrearLista(c);
     }
+
+    public boolean SaveOnDatabase(List<Tapon> blockList){
+        this.Modoescritura();
+        for (int i=0; i < blockList.size(); i++){
+            insertar(blockList.get(i).getPartido_id(),blockList.get(i).getJugador_id());
+        }
+        this.Cerrar();
+        return true;
+    }
+
 }

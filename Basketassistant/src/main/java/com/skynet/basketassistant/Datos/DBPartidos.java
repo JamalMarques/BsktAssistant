@@ -113,16 +113,16 @@ public class DBPartidos{
     //Si se le manda un STRING como fecha el sqlite lo interpreta perfectamente siempre y cuando
     //se lo envie de la siguiente forma "1992-01-03" [año,mes,dia] por ende es posible usar el db.insert si el String fecha esta
     //escrito de la forma correcta
-    public int insertar(String fecha,String cancha,int equipo1_id,String equipo2_nom,int puntos_e1,int puntos_e2,
+    public Partido insertar(String fecha,String cancha,int equipo1_id,String equipo2_nom,int puntos_e1,int puntos_e2,
                           int punt_q1_e1,int punt_q2_e1,int punt_q3_e1,int punt_q4_e1,int punt_q1_e2,int punt_q2_e2,int punt_q3_e2,int punt_q4_e2,
                           int punt_ext_e1,int punt_ext_e2){
 
         db.insert(TABLE_NAME,null, Contenedorvalores(fecha,cancha,equipo1_id,equipo2_nom,puntos_e1,puntos_e2,punt_q1_e1,punt_q2_e1,punt_q3_e1,punt_q4_e1,
                                                         punt_q1_e2,punt_q2_e2,punt_q3_e2,punt_q4_e2,punt_ext_e1,punt_ext_e2));
 
-        List<Partido> listp = giveMeGamesOf(equipo1_id);
-        Partido part = listp.get(listp.size()-1);
-        return part.getId();
+        List<Partido> listg = giveMeGamesOf(equipo1_id);
+        Partido game = listg.get(listg.size()-1);
+        return game;
     }
 
 
@@ -198,9 +198,11 @@ public class DBPartidos{
     }
 
     public void updateGame(Partido game){
+        this.Modoescritura();
         ContentValues cv = Contenedorvalores(game.getFecha(),game.getCancha(),game.getEquipo1_id(),game.getEquipo2_nom(),game.getPuntos_E1(),game.getPuntos_E2(),game.getPunt_q1_e1(),game.getPunt_q2_e1(),
                                             game.getPunt_q3_e1(),game.getPunt_q4_e1(),game.getPunt_q1_e2(),game.getPunt_q2_e2(),game.getPunt_q3_e2(),game.getPunt_q4_e2(),game.getPunt_ext_e1(),game.getPunt_ext_e2());
         db.update(TABLE_NAME,cv,CN_ID+" = "+game.getId(),null);
+        this.Cerrar();
     }
 
 }

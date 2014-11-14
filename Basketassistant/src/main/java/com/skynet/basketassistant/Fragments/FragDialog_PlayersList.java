@@ -23,7 +23,7 @@ import com.skynet.basketassistant.R;
 import java.util.List;
 
 /**
- * Created by USUARIO on 28/10/2014.
+ * Created by Jamal on 28/10/2014.
  */
 public class FragDialog_PlayersList extends DialogFragment implements ListView.OnItemClickListener {
 

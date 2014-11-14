@@ -151,4 +151,15 @@ public class DBLanzamientos{
         Cursor c = db.query(TABLE_NAME,columnas,CN_JUGADOR_ID+" = "+jug_id+" and "+CN_PARTIDO_ID+" = "+part_id,null,null,null,null);
         return CrearLista(c);
     }
+
+    public boolean SaveOnDatabase(List<Lanzamiento> shootList){
+        this.Modoescritura();
+        for (int i=0; i < shootList.size(); i++){
+            insertar(shootList.get(i).getEfectivo(),shootList.get(i).getTipoLanzamiento(),shootList.get(i).getQuarter_number(),shootList.get(i).getValor(),shootList.get(i).getPartido_id(),
+                    shootList.get(i).getJugador_id());
+        }
+        this.Cerrar();
+        return true;
+    }
+
 }

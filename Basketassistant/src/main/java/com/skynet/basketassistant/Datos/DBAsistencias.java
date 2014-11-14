@@ -104,4 +104,13 @@ public class DBAsistencias{
         Cursor c = db.query(TABLE_NAME,columnas,CN_JUGADOR_ID+" = "+jug_id+" and "+CN_PARTIDO_ID+" = "+part_id,null,null,null,null);
         return CrearLista(c);
     }
+
+    public boolean SaveOnDatabase(List<Asistencia> assistList){
+        this.Modoescritura();
+        for (int i=0; i < assistList.size(); i++){
+            insertar(assistList.get(i).getPartido_id(),assistList.get(i).getJugador_id());
+        }
+        this.Cerrar();
+        return true;
+    }
 }
