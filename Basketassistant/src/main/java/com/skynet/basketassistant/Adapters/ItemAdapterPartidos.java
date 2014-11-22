@@ -65,9 +65,9 @@ public class ItemAdapterPartidos extends BaseAdapter {
         tv_idpart.setText(String.valueOf(part.getId()));
 
         if( part.Victoria() ){
-            tv_result.setText(" Victoria ");
+            tv_result.setText(context.getString(R.string.Victory));
         }else{
-            tv_result.setText(" Derrota ");
+            tv_result.setText(context.getString(R.string.Defeat));
         }
 
 

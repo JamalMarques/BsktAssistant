@@ -25,6 +25,10 @@
     <color name="Background_pressed_button_player">#e97bdbff</color>
     <color name="Border_pressed_button_player">#ff5288ff</color>
 
+    <!--Box of Points-->
+    <color name="Border_box_points">#8eb8de</color>
+
+
     <!--Android SDK 21 colors-->
     <color name="Lime500">#cddc39</color>
     <color name="Lime700">#afb42b</color>

@@ -105,6 +105,8 @@
     <string name="Was_assisted">Fue asistido?</string>
     <string name="Stadium">Estadio :</string>
     <string name="Assistances">Asist.</string>
+    <string name="Victory">Victoria</string>
+    <string name="Defeat">Derrota</string>
 
 
     <!-- Messages-->
@@ -122,6 +124,12 @@
     <string name="Opponent_Name">Contrincante</string>
     <string name="Continue">Continuar</string>
     <string name="Name_must_more_or_equal_3_to_10">El nombre debe tener entre 3 y 10 caracteres</string>
+    <string name="Q1">Q1</string>
+    <string name="Q2">Q2</string>
+    <string name="Q3">Q3</string>
+    <string name="Q4">Q4</string>
+    <string name="EXT">EXT</string>
+    <string name="EndOfGame">Fin del Juego</string>
 
 
 </resources>

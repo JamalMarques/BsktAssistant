@@ -21,6 +21,7 @@ import com.skynet.basketassistant.Fragments.FragDialog_OfensiveDefensive;
 import com.skynet.basketassistant.Fragments.FragDialog_PlayersList;
 import com.skynet.basketassistant.Fragments.FragDialog_ScoreOrNot;
 import com.skynet.basketassistant.Fragments.FragDialog_YesNo;
+import com.skynet.basketassistant.Fragments.FragDialog_final_game_statistics;
 import com.skynet.basketassistant.Modelo.Asistencia;
 import com.skynet.basketassistant.Modelo.Equipo;
 import com.skynet.basketassistant.Modelo.Falta;
@@ -651,7 +652,8 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
         dbp.updateGame(game);
 
         //Show the total game statistics
-        //TODO create a total statistics fragment dialog
+        FragDialog_final_game_statistics fragDialog = FragDialog_final_game_statistics.getInstance(getString(R.string.EndOfGame),game,myTeam.getNombre(),opponentTeamName);
+        fragDialog.show(getSupportFragmentManager(),Constants.FRAGMENT_DIALOG_FINAL_STATISTICS);
 
     }
 

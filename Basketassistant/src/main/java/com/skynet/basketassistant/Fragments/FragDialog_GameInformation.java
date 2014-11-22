@@ -52,6 +52,7 @@ public class FragDialog_GameInformation extends DialogFragment implements View.O
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragdialog_game_information, container, false);
         getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+        setCancelable(false);
 
         etOpponentName = (EditText)view.findViewById(R.id.etOpponentName);
         rbLocal = (RadioButton)view.findViewById(R.id.rbLocal);
