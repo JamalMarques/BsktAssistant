@@ -1,6 +1,5 @@
 package com.skynet.basketassistant.Activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -18,6 +17,7 @@ import com.skynet.basketassistant.Datos.DBPartidos;
 import com.skynet.basketassistant.Datos.DBUsuarios;
 import com.skynet.basketassistant.Modelo.UserContainer;
 import com.skynet.basketassistant.Modelo.Usuario;
+import com.skynet.basketassistant.Otros.Constants;
 import com.skynet.basketassistant.Otros.Manejo_Imagenes;
 import com.skynet.basketassistant.R;
 
@@ -46,11 +46,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
        ibadd.setOnClickListener(this);
 
         UserContainer.DesasignarUser();   //DETACHING USER!
-        //GenerarTesteo();
+
+        if(Constants.TESTING_MODE)
+            GenerateTestingMode();
     }
 
 
-    public void GenerarTesteo(){
+    public void GenerateTestingMode(){
         //------------ testeo
         DBUsuarios dbus = new DBUsuarios(this);
         dbus.Modoescritura();

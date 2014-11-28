@@ -5,6 +5,8 @@ package com.skynet.basketassistant.Otros;
  */
 public class Constants {
 
+    public static final boolean TESTING_MODE = false;
+
     public static final String DATE_FORMAT = "yyyy-MM-dd";
 
     public static final String TEAM_NAME = "TEAM_NAME";
