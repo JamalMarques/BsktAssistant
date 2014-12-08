@@ -73,7 +73,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
     private List<Tapon> blockList = new ArrayList<Tapon>();
     private List<Falta> foulList = new ArrayList<Falta>();
     private List<Asistencia> assistancesList = new ArrayList<Asistencia>();
-    private int[] opponentPointsInQuarter = new int[4];
+    private int[] opponentPointsInQuarter = new int[5];
 
 
     @Override
@@ -658,7 +658,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
     }
 
     private void updateGame(){
-        int[] pointsOfQuarterE1 = new int[5];
+        int[] pointsOfQuarterE1 = new int[6];
         int totalPointsE1=0;
 
         for (int i=0; i < shootList.size(); i++){  //Updating points of the quarters
