@@ -39,7 +39,8 @@ public class DBJugadores{
                                                     CN_NUMERO+" integer not null," +
                                                     CN_ROL+" text not null," +
                                                     CN_EQUIPO_ID+" int not null," +
-                                                    CN_IMAGEN_URL+" text );";
+                                                    CN_IMAGEN_URL+" text ," +
+                " FOREIGN KEY ("+CN_EQUIPO_ID+") REFERENCES "+DBEquipos.TABLE_NAME+" ("+DBEquipos.CN_ID+"));";
         return query;
     }
 

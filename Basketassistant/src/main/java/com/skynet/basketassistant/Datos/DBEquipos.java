@@ -27,7 +27,8 @@ public class DBEquipos{
                                                     CN_NOMBRE+" text not null," +
                                                     CN_CIUDAD_ID+" integer," +
                                                     CN_USER_ID+" integer," +
-                                                    CN_CATEGORIA+" text not null);";
+                                                    CN_CATEGORIA+" text not null," +
+                " FOREIGN KEY ("+CN_USER_ID+") REFERENCES "+DBUsuarios.TABLE_NAME+" ("+DBUsuarios.CN_ID+"));";
         return query;
     }
 
