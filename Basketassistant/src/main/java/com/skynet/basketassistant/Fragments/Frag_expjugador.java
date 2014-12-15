@@ -16,6 +16,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -336,11 +337,11 @@ public class Frag_expjugador extends Fragment implements View.OnClickListener {
         }
         else
             if( requestCode == SELECT_PICTURE ){  //Tengo que rotar la imagen desde la URL de la galeria original
-                Uri selectedimage = data.getData();
-                //selectedimage.getEncodedPath(); sera la url de la imagen?
-                //Toast.makeText(getActivity(),selectedimage.getEncodedPath(),Toast.LENGTH_SHORT).show();
-                InputStream is;
                 try {
+                    Uri selectedimage = data.getData();
+                    //selectedimage.getEncodedPath(); sera la url de la imagen?
+                    //Toast.makeText(getActivity(),selectedimage.getEncodedPath(),Toast.LENGTH_SHORT).show();
+                    InputStream is;
                     is = getActivity().getContentResolver().openInputStream(selectedimage);
                     BufferedInputStream bis = new BufferedInputStream(is);
                     Bitmap bitmap = BitmapFactory.decodeStream(bis);
@@ -356,7 +357,9 @@ public class Frag_expjugador extends Fragment implements View.OnClickListener {
                     dbj.CambiarNomImagen_Jugador(jugador.getId(),imagename);
                     dbj.Cerrar();
 
-                } catch(Exception e){/*no la encuentra*/}
+                } catch(Exception e){/*not founded*/
+                    Log.e("Error ",e.getMessage().toString());
+                }
             }
     }
 

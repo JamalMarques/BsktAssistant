@@ -41,11 +41,13 @@ public class DBLanzamientos{
                                                     CN_TIPOLANZ+" text not null,"+  //simple,doble o triple.
                                                     CN_VALOR+" integer not null,"+
                                                     CN_PARTIDO_ID+" integer not null,"+
-                                                    CN_JUGADOR_ID+" integer not null);";
+                                                    CN_JUGADOR_ID+" integer not null," +
+                            " FOREIGN KEY ("+CN_PARTIDO_ID+") REFERENCES "+DBPartidos.TABLE_NAME+" ("+DBPartidos.CN_ID+")," +
+                            " FOREIGN KEY ("+CN_JUGADOR_ID+") REFERENCES "+DBJugadores.TABLE_NAME+" ("+DBJugadores.CN_ID+"));";
         return query;
     }
 
-    private String[] columnas = new String[]{CN_ID,CN_EFECTIVO/*,CN_POSX,CN_POSY*/,CN_QUARTER,CN_TIPOLANZ,CN_VALOR,CN_PARTIDO_ID,CN_JUGADOR_ID};
+    private String[] columnas = new String[]{CN_ID,CN_EFECTIVO,CN_QUARTER,CN_TIPOLANZ,CN_VALOR,CN_PARTIDO_ID,CN_JUGADOR_ID};
 
     private DBHelper helper;
     private SQLiteDatabase db;
