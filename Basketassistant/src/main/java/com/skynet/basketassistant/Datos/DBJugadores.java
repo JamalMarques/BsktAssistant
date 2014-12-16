@@ -40,7 +40,7 @@ public class DBJugadores{
                                                     CN_ROL+" text not null," +
                                                     CN_EQUIPO_ID+" int not null," +
                                                     CN_IMAGEN_URL+" text ," +
-                " FOREIGN KEY ("+CN_EQUIPO_ID+") REFERENCES "+DBEquipos.TABLE_NAME+" ("+DBEquipos.CN_ID+"));";
+                " FOREIGN KEY ("+CN_EQUIPO_ID+") REFERENCES "+DBEquipos.TABLE_NAME+" ("+DBEquipos.CN_ID+") ON DELETE CASCADE );";
         return query;
     }
 

@@ -28,7 +28,7 @@ public class DBEquipos{
                                                     CN_CIUDAD_ID+" integer," +
                                                     CN_USER_ID+" integer," +
                                                     CN_CATEGORIA+" text not null," +
-                " FOREIGN KEY ("+CN_USER_ID+") REFERENCES "+DBUsuarios.TABLE_NAME+" ("+DBUsuarios.CN_ID+"));";
+                " FOREIGN KEY ("+CN_USER_ID+") REFERENCES "+DBUsuarios.TABLE_NAME+" ("+DBUsuarios.CN_ID+") ON DELETE CASCADE );";
         return query;
     }
 

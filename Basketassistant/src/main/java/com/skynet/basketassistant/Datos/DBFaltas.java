@@ -33,8 +33,8 @@ public class DBFaltas{
                 CN_JUGADOR_ID+" integer not null,"+
                 CN_TIPO+" text not null,"+
                 CN_QUARTER+" integer not null," +
-                " FOREIGN KEY ("+CN_JUGADOR_ID+") REFERENCES "+DBJugadores.TABLE_NAME+" ("+DBJugadores.CN_ID+")," +
-                " FOREIGN KEY ("+CN_PARTIDO_ID+") REFERENCES "+DBPartidos.TABLE_NAME+" ("+DBPartidos.CN_ID+"));";
+                " FOREIGN KEY ("+CN_JUGADOR_ID+") REFERENCES "+DBJugadores.TABLE_NAME+" ("+DBJugadores.CN_ID+") ON DELETE CASCADE ," +
+                " FOREIGN KEY ("+CN_PARTIDO_ID+") REFERENCES "+DBPartidos.TABLE_NAME+" ("+DBPartidos.CN_ID+") ON DELETE CASCADE );";
         return query;
     }
 

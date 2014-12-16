@@ -59,7 +59,7 @@ public class DBPartidos{
                                                     CN_PUNTOS_Q4_E2+" integer,"+
                                                     CN_PUNTOS_EXT_E1+" integer,"+
                                                     CN_PUNTOS_EXT_E2+" integer," +
-                                " FOREIGN KEY ("+CN_EQUIPO1_ID+") REFERENCES "+DBEquipos.TABLE_NAME+" ("+DBEquipos.CN_ID+"));";
+                                " FOREIGN KEY ("+CN_EQUIPO1_ID+") REFERENCES "+DBEquipos.TABLE_NAME+" ("+DBEquipos.CN_ID+") ON DELETE CASCADE );";
         return query;
     }
 
