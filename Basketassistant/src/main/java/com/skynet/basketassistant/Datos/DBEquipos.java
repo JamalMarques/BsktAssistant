@@ -7,6 +7,9 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.skynet.basketassistant.Modelo.Equipo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by jamal on 27/03/14.
  */
@@ -76,9 +79,9 @@ public class DBEquipos{
     }
 
     // ELEMENTOS CONCRETOS
-    public Cursor EquiposdeUsuarioNombres(int us_id){  //hacer con consulta SQL mucho mas facil y seguro...
-       Cursor c = db.rawQuery("Select "+CN_NOMBRE+" from "+TABLE_NAME+" where "+CN_USER_ID+" = "+us_id,null);
-       return c;
+    public List<Equipo> EquiposdeUsuario(int us_id){  //hacer con consulta SQL mucho mas facil y seguro...
+        Cursor c = db.rawQuery("Select "+CN_NOMBRE+" from "+TABLE_NAME+" where "+CN_USER_ID+" = "+us_id,null);
+        return CrearLista(c);
     }
 
     public Equipo DameEquipo(String nomequip){
@@ -118,5 +121,25 @@ public class DBEquipos{
         else
             return true;
     }
+
+
+
+    private List<Equipo> CrearLista(Cursor c){
+        List<Equipo> team_list = new ArrayList<Equipo>();
+        if(c.moveToFirst()){
+            do {
+                int id = c.getColumnIndex(CN_ID);
+                int nom = c.getColumnIndex(CN_NOMBRE);
+                int ciu_id = c.getColumnIndex(CN_CIUDAD_ID);
+                int us_id = c.getColumnIndex(CN_USER_ID);
+                int cat = c.getColumnIndex(CN_CATEGORIA);
+                Equipo equip = new Equipo(c.getInt(id),c.getString(nom),c.getInt(ciu_id),c.getInt(us_id),c.getString(cat));
+                team_list.add(equip);
+            }while(c.moveToNext());
+        }
+        c.close();
+        return team_list;
+    }
+
 
 }

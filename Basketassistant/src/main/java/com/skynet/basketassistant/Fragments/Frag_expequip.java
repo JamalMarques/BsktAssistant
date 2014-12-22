@@ -1,9 +1,10 @@
 package com.skynet.basketassistant.Fragments;
 
-import android.app.Fragment;
+import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,17 +27,35 @@ import java.util.List;
 /**
  * Created by jamal on 22/04/14.
  */
-public class Frag_expequip extends Fragment implements View.OnClickListener{
+public class Frag_expequip extends Fragment implements View.OnClickListener,FragDialog_YesNo.OnCompleteYesNoDialogListener{
 
     private Equipo equipo;
-    //private Bundle bun_usr;
     private TextView tvequip,tvciudad,tv_games,tv_wins,tv_loses;
     private int num_games,num_wins,num_loses;
     private Button b_eliminar,b_partidos,b_jugadores,b_play;
+    private onExpansionListener listener;
 
-    /*public Frag_expequip(Equipo equip){
-        equipo = equip;
-    }*/
+
+    public interface onExpansionListener{
+        public void onDeleteTeamListener();
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try{
+            listener = (onExpansionListener)activity;
+        }catch (ClassCastException e){
+            throw new ClassCastException(activity.toString()+" must implement Frag_expequip interface");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        listener = null;
+    }
+
     public Frag_expequip(){}
 
     public static Frag_expequip getInstance(int equipo_id){
@@ -87,43 +106,10 @@ public class Frag_expequip extends Fragment implements View.OnClickListener{
 
         DBPartidos dbp = new DBPartidos(getActivity());
         dbp.Modolectura();
-       // Cursor c = dbp.giveMeGamesOf(equipo.getId());
 
         List<Partido> gamesList = dbp.giveMeGamesOf(equipo.getId());
-        /*if(c.moveToFirst()){
-           do {
-               int id = c.getColumnIndex(dbp.CN_ID);
-               int fecha = c.getColumnIndex(dbp.CN_FECHA);
-               int cancha = c.getColumnIndex(dbp.CN_CANCHA);
-               int puntos_e1 = c.getColumnIndex(dbp.CN_PUNTOS_E1);
-               int puntos_e2 = c.getColumnIndex(dbp.CN_PUNTOS_E2);
-               int equipo1_id = c.getColumnIndex(dbp.CN_EQUIPO1_ID);
-               int equipo2_nom = c.getColumnIndex(dbp.CN_EQUIPO2_NOM);
-               int punt_q1_e1 = c.getColumnIndex(dbp.CN_PUNTOS_Q1_E1);
-               int punt_q2_e1 = c.getColumnIndex(dbp.CN_PUNTOS_Q2_E1);
-               int punt_q3_e1 = c.getColumnIndex(dbp.CN_PUNTOS_Q3_E1);
-               int punt_q4_e1 = c.getColumnIndex(dbp.CN_PUNTOS_Q4_E1);
-               int punt_q1_e2 = c.getColumnIndex(dbp.CN_PUNTOS_Q1_E2);
-               int punt_q2_e2 = c.getColumnIndex(dbp.CN_PUNTOS_Q2_E2);
-               int punt_q3_e2 = c.getColumnIndex(dbp.CN_PUNTOS_Q3_E2);
-               int punt_q4_e2 = c.getColumnIndex(dbp.CN_PUNTOS_Q4_E2);
-               int punt_ext_e1 = c.getColumnIndex(dbp.CN_PUNTOS_EXT_E1);
-               int punt_ext_e2 = c.getColumnIndex(dbp.CN_PUNTOS_EXT_E2);
 
-               Partido part = new Partido(c.getInt(id),c.getString(fecha),c.getString(cancha),c.getInt(puntos_e1),c.getInt(puntos_e2),c.getInt(equipo1_id),c.getString(equipo2_nom),
-                                    c.getInt(punt_q1_e1),c.getInt(punt_q2_e1),c.getInt(punt_q3_e1),c.getInt(punt_q4_e1),c.getInt(punt_q1_e2),c.getInt(punt_q2_e2),c.getInt(punt_q3_e2),
-                                    c.getInt(punt_q4_e2),c.getInt(punt_ext_e1),c.getInt(punt_ext_e2));
-
-               num_games++;
-               if( part.getEquipo1_id() == equipo.getId() ){
-                    if( part.getPuntos_E1() > part.getPuntos_E2() )
-                        num_wins++;
-                    else
-                        num_loses++;
-                }
-            }while(c.moveToNext());
-        }
-        c.close();*/
+        dbp.Cerrar();
 
         for (int i=0; i < gamesList.size() ; i++) {
             num_games++;
@@ -145,7 +131,6 @@ public class Frag_expequip extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View view) {
-        //thake care, you need eliminate rows in others tables!!
 
         if( view == b_partidos ){  //presiona el boton de "PARTIDOS"
 
@@ -169,6 +154,27 @@ public class Frag_expequip extends Fragment implements View.OnClickListener{
                      bun_equip.putString(Constants.TEAM_NAME,equipo.getNombre());
                      intent.putExtras(bun_equip);
                      startActivity(intent);
+                 }else{
+                     if( view == b_eliminar){
+                         FragDialog_YesNo fgd = FragDialog_YesNo.getInstance(getActivity().getString(R.string.DeleteTeam),0);
+                         fgd.show(getActivity().getSupportFragmentManager(),"dialogYesNo");
+                     }
                  }
+    }
+
+
+    @Override
+    public void onCompleteYesNoDialog(int response, int whocall) {
+        if(response == Constants.YES){
+            deleteTeam();
+            listener.onDeleteTeamListener(); //It will refresh the team list
+            //close fragment!  / probably its not necessary..
+        }
+    }
+
+    private void deleteTeam(){
+        DBEquipos dbe = new DBEquipos(getActivity());
+        dbe.eliminar(equipo.getId(),DBEquipos.CN_ID);
+        dbe.Cerrar();
     }
 }

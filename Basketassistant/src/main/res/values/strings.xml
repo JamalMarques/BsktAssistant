@@ -130,6 +130,7 @@
     <string name="Q4">Q4</string>
     <string name="EXT">EXT</string>
     <string name="EndOfGame">Fin del Juego</string>
+    <string name="DeleteTeam">Eliminar Equipo?</string>
 
 
 </resources>

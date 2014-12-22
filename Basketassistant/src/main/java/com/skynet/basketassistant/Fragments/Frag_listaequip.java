@@ -1,17 +1,15 @@
 package com.skynet.basketassistant.Fragments;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.skynet.basketassistant.Adapters.ItemAdapterEquip;
 import com.skynet.basketassistant.Datos.DBEquipos;
@@ -23,8 +21,6 @@ import com.skynet.basketassistant.R;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.security.auth.callback.Callback;
 
 /**
  * Created by jamal on 22/04/14.
@@ -76,16 +72,20 @@ public class Frag_listaequip extends Fragment implements AdapterView.OnItemClick
         //dbuser.Cerrar();
 
         dbequip.Modolectura();
-        cursor = dbequip.EquiposdeUsuarioNombres(usr.getId());  //cargo el cursor con los equipos del usuario
-        //dbequip.Cerrar();
+        List<Equipo> teams = dbequip.EquiposdeUsuario(usr.getId());  //cargo el cursor con los equipos del usuario
+        dbequip.Cerrar();
+
 
         List<String> listaequipos = new ArrayList<String>();
-        if(cursor.moveToFirst()){
+        for(int i=0; i<teams.size(); i++){
+            listaequipos.add(teams.get(i).getNombre());
+        }
+        /*if(cursor.moveToFirst()){
             do {
                 listaequipos.add(cursor.getString(0));
             }while(cursor.moveToNext());
         }
-        cursor.close();
+        cursor.close();*/
 
         adapterlist = new ItemAdapterEquip(getActivity().getApplicationContext(),listaequipos);
         listview.setAdapter(adapterlist);
@@ -122,9 +122,19 @@ public class Frag_listaequip extends Fragment implements AdapterView.OnItemClick
 
     public void Refrescar(){  //solo queda arreglar esto para que refresque... entra bien al metodo.
         adapterlist.notifyDataSetChanged();
+        selectTheFirstTeamInList();
     }
 
     public void Refrescar(Equipo equip){
         adapterlist.AgregarALista(equip.getNombre());
+    }
+
+    private void selectTheFirstTeamInList(){
+        DBEquipos dbe = new DBEquipos(getActivity());
+        dbe.Modolectura();
+        List<Equipo> teams = dbe.EquiposdeUsuario(UserContainer.DameUser().getId());
+        if(teams.size() >= 1) {
+            mcallbacks.onSelecciondeItemEquipo(teams.get(0));  //Select the first of the list
+        }
     }
 }
