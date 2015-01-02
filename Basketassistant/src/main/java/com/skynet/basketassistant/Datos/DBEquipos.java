@@ -66,31 +66,38 @@ public class DBEquipos{
 
     //Inserto nuevo equipo mediante el metodo de SQLiteDatabase
     public void insertar(String nombre,int ciudad_id,int user_id,String cate){
-            db.insert(TABLE_NAME,null, Contenedorvalores(nombre,ciudad_id,user_id,cate));
+        Modolectura();
+        db.insert(TABLE_NAME,null, Contenedorvalores(nombre,ciudad_id,user_id,cate));
+        Cerrar();
     }
 
     //Eliminacion propia (id a eliminar, columna a basarse)
     // Ej:  dbequipos.eliminar(3,dbequipos.CN_USER_ID): borrara el q tenga como user_id = 3
     public void eliminar(int id, String columnabase){
+        Modoescritura();
         if(columnabase == CN_ID || columnabase == CN_CIUDAD_ID || columnabase == CN_USER_ID) {
             String query = "DELETE FROM " + TABLE_NAME + " WHERE " + columnabase + " = " + id;
             db.execSQL(query);
         }
+        Cerrar();
     }
 
     // ELEMENTOS CONCRETOS
     public List<Equipo> EquiposdeUsuario(int us_id){  //hacer con consulta SQL mucho mas facil y seguro...
-        Cursor c = db.rawQuery("Select "+CN_NOMBRE+" from "+TABLE_NAME+" where "+CN_USER_ID+" = "+us_id,null);
+        Modolectura();
+        Cursor c = db.rawQuery("Select * from "+TABLE_NAME+" where "+CN_USER_ID+" = "+us_id,null);
         return CrearLista(c);
     }
 
     public Equipo DameEquipo(String nomequip){
-        Cursor c = db.rawQuery("Select "+CN_ID+","+CN_NOMBRE+","+CN_CIUDAD_ID+","+CN_USER_ID+","+CN_CATEGORIA+" from "+TABLE_NAME+" where "+CN_NOMBRE+" like '"+nomequip+"'",null);
+        Modolectura();
+        Cursor c = db.rawQuery("Select * from "+TABLE_NAME+" where "+CN_NOMBRE+" like '"+nomequip+"'",null);
         return GenerarEquipo(c);
     }
 
     public Equipo DameEquipo(int id_equip){
-        Cursor c = db.rawQuery("Select "+CN_ID+","+CN_NOMBRE+","+CN_CIUDAD_ID+","+CN_USER_ID+","+CN_CATEGORIA+" from "+TABLE_NAME+" where "+CN_ID+" = "+id_equip,null);
+        Modolectura();
+        Cursor c = db.rawQuery("Select * from "+TABLE_NAME+" where "+CN_ID+" = "+id_equip,null);
         return GenerarEquipo(c);
     }
 
@@ -109,6 +116,7 @@ public class DBEquipos{
                 return null;  //No se encontro ninguno...
         }finally {
             c.close();
+            Cerrar();
         }
     }
 
@@ -138,6 +146,7 @@ public class DBEquipos{
             }while(c.moveToNext());
         }
         c.close();
+        Cerrar();
         return team_list;
     }
 

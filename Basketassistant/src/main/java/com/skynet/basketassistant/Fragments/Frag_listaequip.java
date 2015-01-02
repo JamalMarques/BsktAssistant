@@ -27,7 +27,7 @@ import java.util.List;
  */
 public class Frag_listaequip extends Fragment implements AdapterView.OnItemClickListener{
 
-    private Cursor cursor;
+    private int userID;
     private DBEquipos dbequip;
     private DBUsuarios dbuser;
     private ListView listview;
@@ -60,37 +60,32 @@ public class Frag_listaequip extends Fragment implements AdapterView.OnItemClick
         view = inflater.inflate(R.layout.frag_listaequip,container, false);
 
         listview = (ListView)view.findViewById(R.id.lvequip);
-        String nombreuser = UserContainer.DameUser().getNombre(); //getActivity().getIntent().getExtras().getString("User");
+        //String nombreuser = UserContainer.DameUser().getNombre(); //getActivity().getIntent().getExtras().getString("User");
         listview.setOnItemClickListener(this);
 
 
         dbequip = new DBEquipos(getActivity());
         dbuser = new DBUsuarios(getActivity());
 
-        dbuser.Modolectura();
+       /* dbuser.Modolectura();
         Usuario usr = dbuser.BuscarUsuario(nombreuser);
-        //dbuser.Cerrar();
+        dbuser.Cerrar();*/
 
-        dbequip.Modolectura();
-        List<Equipo> teams = dbequip.EquiposdeUsuario(usr.getId());  //cargo el cursor con los equipos del usuario
-        dbequip.Cerrar();
-
-
-        List<String> listaequipos = new ArrayList<String>();
-        for(int i=0; i<teams.size(); i++){
-            listaequipos.add(teams.get(i).getNombre());
-        }
-        /*if(cursor.moveToFirst()){
-            do {
-                listaequipos.add(cursor.getString(0));
-            }while(cursor.moveToNext());
-        }
-        cursor.close();*/
+        List<String> listaequipos = generateTeamsName(UserContainer.DameUser().getId());
 
         adapterlist = new ItemAdapterEquip(getActivity().getApplicationContext(),listaequipos);
         listview.setAdapter(adapterlist);
 
         return view;
+    }
+
+    private List<String> generateTeamsName(int userID){
+        List<Equipo> teams = dbequip.EquiposdeUsuario(userID);  //cargo el cursor con los equipos del usuario
+        List<String> listaequipos = new ArrayList<String>();
+        for(int i=0; i<teams.size(); i++){
+            listaequipos.add(teams.get(i).getNombre());
+        }
+        return listaequipos;
     }
 
 
@@ -116,11 +111,14 @@ public class Frag_listaequip extends Fragment implements AdapterView.OnItemClick
 
         String nomequip = String.valueOf(((TextView)view.findViewById(R.id.tvnom)).getText().toString());  //Tomo el nombre del equipo desde el layout!!
 
+//        dbequip.Modolectura();
         Equipo equip = dbequip.DameEquipo(nomequip);
+   //     dbequip.Cerrar();
         mcallbacks.onSelecciondeItemEquipo(equip);  //ejecuta el codigo del ´SelectTeamAct´
     }
 
-    public void Refrescar(){  //solo queda arreglar esto para que refresque... entra bien al metodo.
+    public void Refrescar(){
+        adapterlist.changeList(generateTeamsName(UserContainer.DameUser().getId()));
         adapterlist.notifyDataSetChanged();
         selectTheFirstTeamInList();
     }

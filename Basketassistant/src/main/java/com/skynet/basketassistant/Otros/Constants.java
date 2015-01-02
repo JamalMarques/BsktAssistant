@@ -20,7 +20,7 @@ public class Constants {
     public static final String MYTEAM = "MYTEAM";
     public static final String OPPONENTTEAM = "OPPONENTTEAM";
 
-    //SHOOTS TYPE
+    //SHOOTS
     public static final String SHOOT_TYPE_SIMPLE = "SIMPLE";
     public static final String SHOOT_TYPE_DOUBLE = "DOUBLE";
     public static final String SHOOT_TYPE_TRIPLE = "TRIPLE";

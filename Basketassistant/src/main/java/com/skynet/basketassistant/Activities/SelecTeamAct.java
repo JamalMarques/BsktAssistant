@@ -1,5 +1,7 @@
 package com.skynet.basketassistant.Activities;
 
+import com.skynet.basketassistant.Datos.DBEquipos;
+import com.skynet.basketassistant.Fragments.FragDialog_YesNo;
 import com.skynet.basketassistant.Fragments.Frag_expequip;
 import com.skynet.basketassistant.Fragments.Frag_listaequip;
 import com.skynet.basketassistant.Fragments.Frag_newteam;
@@ -17,7 +19,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 
-public class SelecTeamAct extends BaseActivity implements View.OnClickListener,Frag_listaequip.Callbacks,Frag_expequip.onExpansionListener {
+public class SelecTeamAct extends BaseActivity implements View.OnClickListener,Frag_listaequip.Callbacks,FragDialog_YesNo.OnCompleteYesNoDialogListener {
 
     private ImageButton ibagregarteam,iblogout;
     private Frag_listaequip frag_listaequipos;
@@ -46,7 +48,7 @@ public class SelecTeamAct extends BaseActivity implements View.OnClickListener,F
         if(view.getId() == ibagregarteam.getId()){  //Add new team!
 
             Frag_newteam frag = new Frag_newteam();
-            FragmentTransaction ft = getFragmentManager().beginTransaction();
+            android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.framelayout_contdetalle,frag);
             ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
             ft.commit();
@@ -88,9 +90,18 @@ public class SelecTeamAct extends BaseActivity implements View.OnClickListener,F
         ft.commit();
     }
 
+    //*---------------------------- DELETE TEAMS BEHAVIUOR --------------------------------
+    private void deleteTeam(int teamId){
+        DBEquipos dbe = new DBEquipos(this);
+        dbe.eliminar(teamId,DBEquipos.CN_ID);
+        dbe.Cerrar();
+    }
+
     @Override
-    public void onDeleteTeamListener() {
+    public void onCompleteYesNoDialog(int response, int whocall) {  //whoCall in this case contains the team's ID that the app uses to delete it from database
+        deleteTeam(whocall);
         refreshTeams();
     }
+    //*-----------------------------------------------------------------------------------
 }
 

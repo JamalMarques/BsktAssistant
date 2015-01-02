@@ -67,4 +67,8 @@ public class ItemAdapterEquip extends BaseAdapter {
         equiposlista.add(nom_equip);
         notifyDataSetChanged();
     }
+
+    public void changeList(List<String> teamsName){
+        equiposlista = teamsName;
+    }
 }

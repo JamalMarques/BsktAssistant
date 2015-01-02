@@ -42,7 +42,7 @@ public class PlayerBoxWidget extends RelativeLayout {
         try {
             playerImage.setImageBitmap(Manejo_Imagenes.Cubo_Rotar_Rotacion2(player.getImagen_url(),100,100)/*Cubo_Rotar_Rotacion(player.getImagen_url())*/);
         }catch (Exception e){
-            Log.e("Error",e.getMessage());
+            Log.i("Failed loading image"," player "+player.getId()+" doesn't have image profile");
         }
         tvPlayerNumber.setText(String.valueOf(player.getNumero()));
     }

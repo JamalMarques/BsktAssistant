@@ -2,7 +2,6 @@ package com.skynet.basketassistant.Fragments;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -27,17 +26,18 @@ import java.util.List;
 /**
  * Created by jamal on 22/04/14.
  */
-public class Frag_expequip extends Fragment implements View.OnClickListener,FragDialog_YesNo.OnCompleteYesNoDialogListener{
+public class Frag_expequip extends Fragment implements View.OnClickListener{
 
+    public static final String NAME = "FRAGEXP_TEAM";
     private Equipo equipo;
     private TextView tvequip,tvciudad,tv_games,tv_wins,tv_loses;
     private int num_games,num_wins,num_loses;
     private Button b_eliminar,b_partidos,b_jugadores,b_play;
-    private onExpansionListener listener;
+    //private onExpansionListener listener;
 
-
+/*
     public interface onExpansionListener{
-        public void onDeleteTeamListener();
+        public void onDeleteTeamListener(int teamID);
     }
 
     @Override
@@ -48,13 +48,13 @@ public class Frag_expequip extends Fragment implements View.OnClickListener,Frag
         }catch (ClassCastException e){
             throw new ClassCastException(activity.toString()+" must implement Frag_expequip interface");
         }
-    }
+    }*/
 
-    @Override
+    /*@Override
     public void onDetach() {
         super.onDetach();
         listener = null;
-    }
+    }*/
 
     public Frag_expequip(){}
 
@@ -156,25 +156,10 @@ public class Frag_expequip extends Fragment implements View.OnClickListener,Frag
                      startActivity(intent);
                  }else{
                      if( view == b_eliminar){
-                         FragDialog_YesNo fgd = FragDialog_YesNo.getInstance(getActivity().getString(R.string.DeleteTeam),0);
-                         fgd.show(getActivity().getSupportFragmentManager(),"dialogYesNo");
+                         FragDialog_YesNo fgd = FragDialog_YesNo.getInstance(getActivity().getString(R.string.DeleteTeam),equipo.getId()); //I use the whoCall to send the id to delete
+                         fgd.show(getActivity().getSupportFragmentManager(), NAME);
                      }
                  }
     }
 
-
-    @Override
-    public void onCompleteYesNoDialog(int response, int whocall) {
-        if(response == Constants.YES){
-            deleteTeam();
-            listener.onDeleteTeamListener(); //It will refresh the team list
-            //close fragment!  / probably its not necessary..
-        }
-    }
-
-    private void deleteTeam(){
-        DBEquipos dbe = new DBEquipos(getActivity());
-        dbe.eliminar(equipo.getId(),DBEquipos.CN_ID);
-        dbe.Cerrar();
-    }
 }
