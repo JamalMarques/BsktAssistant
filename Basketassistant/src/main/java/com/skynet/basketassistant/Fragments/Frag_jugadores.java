@@ -1,10 +1,9 @@
 package com.skynet.basketassistant.Fragments;
 
 import android.app.Activity;
-import android.app.Fragment;
-import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,11 +34,10 @@ public class Frag_jugadores extends Fragment implements AdapterView.OnItemClickL
     private List<Jugador> lista_jugadores;
     private ProgressBar prog_bar;
 
+    ItemAdapterJugadores adapterjug;
+
     private Callback m_callback = callbackvacio;
 
-    /*public Frag_jugadores(Equipo eq){
-        equipo = eq;
-    }*/
     public Frag_jugadores(){/*Empty constructor*/}
 
     public static Frag_jugadores getInstance(int equipo_id){
@@ -83,15 +81,11 @@ public class Frag_jugadores extends Fragment implements AdapterView.OnItemClickL
 
         DBJugadores dbj = new DBJugadores(getActivity());
         dbj.Modolectura();
-        //Cursor c = dbj.Cargarcursorjugadores(equipo.getId());
-        //dbj.Cerrar()
 
         lista_jugadores = new ArrayList<Jugador>();
         lista_jugadores = dbj.DameListaJugadoresEquipo(equipo.getId());
 
         new SetearAdaptador().execute();
-        //ItemAdapterJugadores adapterjug = new ItemAdapterJugadores(getActivity().getApplicationContext(),lista_jugadores);
-        //gv_jugadores.setAdapter(adapterjug);
 
         return view;
     }
@@ -118,17 +112,11 @@ public class Frag_jugadores extends Fragment implements AdapterView.OnItemClickL
 
         int id_jug = Integer.parseInt(((TextView)view.findViewById(R.id.tv_hidden_idplayer)).getText().toString());
 
-       /* DBJugadores dbj = new DBJugadores(getActivity());
-        dbj.Modolectura();
-        Jugador jug = dbj.DameJugador(id_jug);
-        dbj.Cerrar();*/
-
         m_callback.onSeleccionItemJugador(id_jug);
     }
 
     private class SetearAdaptador extends AsyncTask<Void,Void,Void>{
 
-        ItemAdapterJugadores adapterjug;
 
         @Override
         protected void onPreExecute() {
@@ -148,4 +136,12 @@ public class Frag_jugadores extends Fragment implements AdapterView.OnItemClickL
             gv_jugadores.setVisibility(View.VISIBLE);
         }
     }
+
+    public void refreshList(){
+        DBJugadores dbj = new DBJugadores(getActivity());
+        dbj.Modolectura();
+        lista_jugadores = dbj.DameListaJugadoresEquipo(equipo.getId());
+        new SetearAdaptador().execute();
+    }
+
 }

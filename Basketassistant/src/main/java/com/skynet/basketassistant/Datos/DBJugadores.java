@@ -88,10 +88,12 @@ public class DBJugadores{
     //Eliminacion propia (id a eliminar, columna a basarse)
     //Ejemplo en DBEquipos
     public void eliminar(int id, String columnabase){
+        Modoescritura();
         if(columnabase == CN_ID || columnabase == CN_EQUIPO_ID) {
             String query = "DELETE FROM " + TABLE_NAME + " WHERE " + columnabase + " = " + id;
             db.execSQL(query);
         }
+        Cerrar();
     }
 
     public void CambiarNomImagen_Jugador(int jug_id,String imagenom){

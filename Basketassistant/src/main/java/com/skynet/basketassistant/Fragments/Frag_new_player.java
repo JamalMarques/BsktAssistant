@@ -1,9 +1,8 @@
 package com.skynet.basketassistant.Fragments;
 
-import android.app.Activity;
-import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +16,6 @@ import android.widget.Toast;
 
 import com.skynet.basketassistant.Datos.DBJugadores;
 import com.skynet.basketassistant.Activities.JugadoresAct;
-import com.skynet.basketassistant.Modelo.Equipo;
 import com.skynet.basketassistant.Otros.Constants;
 import com.skynet.basketassistant.R;
 
@@ -96,29 +94,6 @@ public class Frag_new_player extends Fragment implements View.OnClickListener{
                         dbj.Cerrar();
                     }
             }
-            /*else
-                if(view.getId() == iv_photoplayer.getId()){
-                    CharSequence opciones[] = new CharSequence[]{"Seleccionar de Galeria","Sacar Foto"};
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                    builder.setTitle("Seleccione Opcion");
-                    builder.setItems(opciones,new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                                if( which == 0 ){  //Seleccionar de la Galeria
-                                    intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-                                    codigo = SELECT_PICTURE;
-                                }else{  //Sacar foto
-                                    intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                                    codigo = TAKE_PICTURE;
-                                    Uri output = Uri.fromFile(new File(Manejo_Imagenes.Url+jugador.getApellido()+String.valueOf(jugador.getId())+".jpg"));  //ej: Marques27.jpg
-                                    intent.putExtra(MediaStore.EXTRA_OUTPUT,output);
-                                }
-
-                                startActivityForResult(intent, codigo);
-                        }
-                    });
-                    builder.show();
-                }*/
     }
 
     @Override

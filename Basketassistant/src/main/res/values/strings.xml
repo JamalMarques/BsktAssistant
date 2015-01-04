@@ -131,6 +131,7 @@
     <string name="EXT">EXT</string>
     <string name="EndOfGame">Fin del Juego</string>
     <string name="DeleteTeam">Eliminar Equipo?</string>
+    <string name="DeletePlayer">Eliminar Jugador?</string>
 
 
 </resources>

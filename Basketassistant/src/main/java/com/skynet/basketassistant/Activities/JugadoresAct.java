@@ -1,31 +1,22 @@
 package com.skynet.basketassistant.Activities;
 
 import com.skynet.basketassistant.Datos.DBEquipos;
+import com.skynet.basketassistant.Datos.DBJugadores;
+import com.skynet.basketassistant.Fragments.FragDialog_YesNo;
 import com.skynet.basketassistant.Fragments.Frag_expjugador;
 import com.skynet.basketassistant.Fragments.Frag_jugadores;
-import com.skynet.basketassistant.Fragments.Frag_listapartidos;
 import com.skynet.basketassistant.Fragments.Frag_new_player;
 import com.skynet.basketassistant.Modelo.Equipo;
-import com.skynet.basketassistant.Modelo.Jugador;
 import com.skynet.basketassistant.Otros.Constants;
 import com.skynet.basketassistant.R;
 import com.skynet.basketassistant.util.SystemUiHider;
 
-import android.annotation.TargetApi;
-import android.app.Activity;
-import android.app.Fragment;
 import android.app.FragmentTransaction;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.view.MotionEvent;
+import android.support.v4.app.Fragment;
 import android.view.View;
-import android.view.Window;
-import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputConnection;
-import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -33,12 +24,14 @@ import android.widget.ImageButton;
  *
  * @see SystemUiHider
  */
-public class JugadoresAct extends BaseActivity implements View.OnClickListener,Frag_jugadores.Callback {
+public class JugadoresAct extends BaseActivity implements View.OnClickListener,Frag_jugadores.Callback,FragDialog_YesNo.OnCompleteYesNoDialogListener {
 
     private Bundle bun_equip;
     private Equipo equipo;
 
     private ImageButton b_back,b_add;
+    private Frag_jugadores fragPlayers = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +52,7 @@ public class JugadoresAct extends BaseActivity implements View.OnClickListener,F
 
         Frag_jugadores frag_jugadores = Frag_jugadores.getInstance(equipo.getId());
         CambiarFragment1(frag_jugadores);
+        fragPlayers = frag_jugadores;
     }
 
     @Override
@@ -74,7 +68,7 @@ public class JugadoresAct extends BaseActivity implements View.OnClickListener,F
     }
 
     public void VaciarFragment2(Fragment frag){
-        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.detach(frag);
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
         ft.commit();
@@ -89,19 +83,38 @@ public class JugadoresAct extends BaseActivity implements View.OnClickListener,F
 
     public void CambiarFragment1(Fragment frag){
 
-        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.framelayout_gridplayers,frag);
         ft.setTransition(FragmentTransaction.TRANSIT_ENTER_MASK);
         ft.commit();
 
+        fragPlayers = null; //Every time that I change the fragment 1 y will refresh the fragPlayers
     }
 
     public void CambiarFragment2(Fragment frag){
 
-        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.framelayout_expplayer,frag);
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
         ft.commit();
     }
 
+    @Override
+    public void onCompleteYesNoDialog(int response, int whocall) {
+        if(response == Constants.YES){
+            deletePlayer(whocall);
+        }
+    }
+
+    private void deletePlayer(int playerID){
+        DBJugadores dbj = new DBJugadores(this);
+        dbj.eliminar(playerID,DBJugadores.CN_ID);
+        refreshPlayerList();
+    }
+
+    private void refreshPlayerList(){
+        if(fragPlayers!=null){
+            fragPlayers.refreshList();
+        }
+    }
 }

@@ -33,28 +33,6 @@ public class Frag_expequip extends Fragment implements View.OnClickListener{
     private TextView tvequip,tvciudad,tv_games,tv_wins,tv_loses;
     private int num_games,num_wins,num_loses;
     private Button b_eliminar,b_partidos,b_jugadores,b_play;
-    //private onExpansionListener listener;
-
-/*
-    public interface onExpansionListener{
-        public void onDeleteTeamListener(int teamID);
-    }
-
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        try{
-            listener = (onExpansionListener)activity;
-        }catch (ClassCastException e){
-            throw new ClassCastException(activity.toString()+" must implement Frag_expequip interface");
-        }
-    }*/
-
-    /*@Override
-    public void onDetach() {
-        super.onDetach();
-        listener = null;
-    }*/
 
     public Frag_expequip(){}
 

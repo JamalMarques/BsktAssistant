@@ -67,10 +67,6 @@ public class Frag_listaequip extends Fragment implements AdapterView.OnItemClick
         dbequip = new DBEquipos(getActivity());
         dbuser = new DBUsuarios(getActivity());
 
-       /* dbuser.Modolectura();
-        Usuario usr = dbuser.BuscarUsuario(nombreuser);
-        dbuser.Cerrar();*/
-
         List<String> listaequipos = generateTeamsName(UserContainer.DameUser().getId());
 
         adapterlist = new ItemAdapterEquip(getActivity().getApplicationContext(),listaequipos);

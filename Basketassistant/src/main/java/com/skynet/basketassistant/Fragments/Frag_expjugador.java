@@ -1,25 +1,21 @@
 package com.skynet.basketassistant.Fragments;
 
 import android.app.AlertDialog;
-import android.app.Fragment;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.drawable.RotateDrawable;
-import android.media.ExifInterface;
 import android.net.Uri;
-import android.opengl.Matrix;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -30,7 +26,6 @@ import com.skynet.basketassistant.Datos.DBFaltas;
 import com.skynet.basketassistant.Datos.DBJugadores;
 import com.skynet.basketassistant.Datos.DBJugadores_Partidos;
 import com.skynet.basketassistant.Datos.DBLanzamientos;
-import com.skynet.basketassistant.Datos.DBPartidos;
 import com.skynet.basketassistant.Datos.DBRebotes;
 import com.skynet.basketassistant.Datos.DBRobos;
 import com.skynet.basketassistant.Datos.DBTapones;
@@ -44,11 +39,7 @@ import com.skynet.basketassistant.R;
 
 import java.io.BufferedInputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.List;
 
 /**
@@ -69,6 +60,8 @@ public class Frag_expjugador extends Fragment implements View.OnClickListener {
                     tv_rebotes,tv_reb_def,tv_reb_ofen;
     private ImageView iv_fotoplayer;
 
+    private Button deleteButton;
+
     private ProgressBar load_circle;
 
     private static int TAKE_PICTURE = 1;
@@ -80,10 +73,6 @@ public class Frag_expjugador extends Fragment implements View.OnClickListener {
     private DBLanzamientos dbl;
     private DBRebotes dbr;
 
-
-    /*public Frag_expjugador(Jugador jug){
-        jugador = jug;
-    }*/
     public Frag_expjugador(){/*Empty constructor*/}
 
     public static Frag_expjugador getInstance(int id_jug){
@@ -137,6 +126,10 @@ public class Frag_expjugador extends Fragment implements View.OnClickListener {
         tv_reb_def = (TextView)view.findViewById(R.id.tv_def);
         tv_reb_ofen = (TextView)view.findViewById(R.id.tv_ofen);
         iv_fotoplayer = (ImageView)view.findViewById(R.id.iv_fotoplayer);
+
+        //Delete button
+        deleteButton = (Button)view.findViewById(R.id.button);
+        deleteButton.setOnClickListener(this);
 
         //SIMPLE DATA
         tv_apellido.setText(jugador.getApellido());
@@ -309,6 +302,11 @@ public class Frag_expjugador extends Fragment implements View.OnClickListener {
                 }
             });
             builder.show();
+        }else{
+            if(view == deleteButton){
+                FragDialog_YesNo fdYN = FragDialog_YesNo.getInstance(getActivity().getString(R.string.DeletePlayer),jugador.getId()); //whoCall is used to send the player id
+                fdYN.show(getActivity().getSupportFragmentManager(),"FragDialogYesNo");
+            }
         }
     }
 
