@@ -5,45 +5,43 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:gravity="center"
-    android:background="@drawable/layout_bg_standard">
+    android:gravity="top|center">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/Crear_Equipo"
-        android:id="@+id/twtitulo_crearteam"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:textColor="#8eb8de"
-        android:textStyle="bold" />
-
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/linearLayout">
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:background="@drawable/layout_bg_standard">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/Crear_Equipo"
+            android:id="@+id/twtitulo_crearteam"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:textColor="#8eb8de"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/layout_bg_standard"
+        android:gravity="top|center">
 
         <LinearLayout
             android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="top|center"
-            android:layout_marginTop="20dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/Nombre"
-                android:id="@+id/tvnom_team"
-                android:textColor="#8eb8de"
-                android:layout_above="@+id/tvciudad_team"
-                android:layout_toLeftOf="@+id/twtitulo_crearteam"
-                android:layout_gravity="center_horizontal" />
+            android:layout_marginTop="5dp">
 
             <EditText
                 android:layout_width="wrap_content"
@@ -55,9 +53,33 @@
                 android:layout_toRightOf="@+id/tvnom_team"
                 android:layout_alignRight="@+id/twtitulo_crearteam"
                 android:layout_alignEnd="@+id/twtitulo_crearteam"
-                android:gravity="center" />
+                android:gravity="center"
+                android:layout_marginTop="5dp"
+                android:hint="@string/Nombre"
+                android:maxLines="1"
+                android:maxLength="10" />
+        </LinearLayout>
 
-            <TextView
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="top|center"
+            android:layout_marginTop="20dp">
+
+            <!--<TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/Nombre"
+                android:id="@+id/tvnom_team"
+                android:textColor="#8eb8de"
+                android:layout_above="@+id/tvciudad_team"
+                android:layout_toLeftOf="@+id/twtitulo_crearteam"
+                android:layout_gravity="center_horizontal" />-->
+
+            <!--<TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
@@ -68,48 +90,63 @@
                 android:layout_alignStart="@+id/tvnom_team"
                 android:singleLine="false"
                 android:textColor="#8eb8de"
-                android:layout_marginTop="10dp" />
+                android:layout_marginTop="10dp" />-->
 
-            <Spinner
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/spinner_ciu"
-                android:layout_alignBottom="@+id/tvciudad_team"
-                android:layout_toRightOf="@+id/tvnom_team"
-                android:layout_below="@+id/etnombre_team"
-                android:layout_alignRight="@+id/etnombre_team"
-                android:layout_alignEnd="@+id/etnombre_team"
-                android:textAlignment="center"
-                android:gravity="center" />
+                android:gravity="center">
 
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/ibaddciu"
-                android:layout_alignBottom="@+id/spinner_ciu"
-                android:layout_toRightOf="@+id/spinner_ciu"
-                android:src="@android:drawable/ic_menu_add"
-                android:layout_alignTop="@+id/spinner_ciu"
-                android:background="@null"
-                android:layout_marginTop="10dp"
-                style="@style/ButtonGreenStyle1" />
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/ibaddciu"
+                    android:layout_alignBottom="@+id/spinner_ciu"
+                    android:layout_toRightOf="@+id/spinner_ciu"
+                    android:src="@android:drawable/ic_menu_add"
+                    android:layout_alignTop="@+id/spinner_ciu"
+                    style="@style/ButtonGreenStyle1"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp" />
+
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/spinner_ciu"
+                    android:layout_alignBottom="@+id/tvciudad_team"
+                    android:layout_toRightOf="@+id/tvnom_team"
+                    android:layout_below="@+id/etnombre_team"
+                    android:layout_alignRight="@+id/etnombre_team"
+                    android:layout_alignEnd="@+id/etnombre_team"
+                    android:textAlignment="center"
+                    android:gravity="center" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/spinner_cate"
+                    android:gravity="center"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="10dp" />
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
             android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginTop="20dp"
             android:gravity="top|center">
-
-            <Spinner
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/spinner_cate"
-                android:gravity="center"
-                android:paddingLeft="5dp"
-                android:paddingRight="10dp" />
 
             <Button
                 android:layout_width="match_parent"
@@ -119,10 +156,11 @@
                 android:layout_below="@+id/spinner_ciu"
                 android:layout_toLeftOf="@+id/ibaddciu"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="10dp"
                 style="@style/ButtonLightBlueStyle1"
                 android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp" />
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="5dp" />
 
         </LinearLayout>
 

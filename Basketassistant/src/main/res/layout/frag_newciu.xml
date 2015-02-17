@@ -3,98 +3,99 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/Ciudades"
-        android:id="@+id/tvtituciudades"
-        android:layout_gravity="center_horizontal"
-        android:textStyle="bold"
-        android:textColor="@color/Celeste_Letras" />
+    android:gravity="top|center">
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp">
+        android:gravity="center"
+        android:background="@drawable/layout_bg_standard"
+        android:padding="10dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/Ciudad"
-            android:id="@+id/textView"
-            android:layout_marginLeft="35dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/Ciudades"
+            android:id="@+id/tvtituciudades"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="bold"
             android:textColor="@color/Celeste_Letras" />
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/etnomciu"
-            android:layout_weight="0.67"
-            android:layout_marginRight="25dp"
-            android:layout_marginLeft="15dp"
-            android:gravity="center" />
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp">
+        android:padding="5dp"
+        android:background="@drawable/layout_bg_standard"
+        android:layout_marginTop="5dp">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/Provincia"
-            android:id="@+id/textView2"
-            android:layout_marginLeft="35dp"
-            android:textColor="@color/Celeste_Letras" />
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:paddingLeft="35dp"
+            android:paddingRight="35dp">
 
-        <EditText
-            android:layout_width="wrap_content"
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/etnomciu"
+                android:gravity="center"
+                android:maxLines="15"
+                android:hint="@string/Nombre" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/etnomprov"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="25dp"
-            android:layout_weight="1"
-            android:gravity="center" />
-    </LinearLayout>
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:paddingLeft="35dp"
+            android:paddingRight="35dp">
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center|top">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/etnomprov"
+                android:gravity="center"
+                android:maxLines="15"
+                android:hint="@string/Provincia" />
+        </LinearLayout>
 
-        <Button
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="@string/Cancelar"
-            android:id="@+id/bcancelar"
-            android:layout_marginTop="20dp" />
+            android:gravity="center|top"
+            android:layout_marginTop="20dp">
 
-        <Button
-            android:layout_width="173dp"
-            android:layout_height="wrap_content"
-            android:text="@string/Agregar"
-            android:id="@+id/bagregar"
-            android:layout_marginTop="20dp" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Cancelar"
+                android:id="@+id/bcancelar"
+                style="@style/ButtonDeleteStyle1" />
 
+            <Button
+                android:layout_width="173dp"
+                android:layout_height="wrap_content"
+                android:text="@string/Agregar"
+                android:id="@+id/bagregar"
+                style="@style/ButtonGreenStyle1"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp" />
+
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

@@ -63,8 +63,9 @@
 
     <FrameLayout
         android:id="@+id/framelayout_contdetalle"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="0.3"></FrameLayout>
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.3"
+        android:padding="5dp"></FrameLayout>
 
 </LinearLayout>

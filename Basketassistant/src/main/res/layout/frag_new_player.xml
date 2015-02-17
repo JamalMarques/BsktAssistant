@@ -76,13 +76,13 @@
                 android:paddingBottom="5dp"
                 android:paddingLeft="5dp">
 
-                <TextView
+                <!--<TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="@string/Apellido"
                     android:id="@+id/static_tvapellido"
-                    android:textColor="@color/Gris_Negro" />
+                    android:textColor="@color/Gris_Negro" />-->
 
                 <EditText
                     android:layout_width="match_parent"
@@ -90,18 +90,21 @@
                     android:inputType="textPersonName"
                     android:ems="10"
                     android:id="@+id/et_apellido"
-                    android:layout_marginLeft="60dp"
                     android:textColor="@color/Celeste_Letras"
                     android:maxLength="10"
-                    android:background="@null" />
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_gravity="center"
+                    android:hint="@string/Nombre"
+                    android:gravity="center" />
 
-                <TextView
+                <!--<TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="@string/Nombre"
                     android:id="@+id/static_tvnombre"
-                    android:textColor="@color/Gris_Negro" />
+                    android:textColor="@color/Gris_Negro" />-->
 
                 <EditText
                     android:layout_width="match_parent"
@@ -109,11 +112,15 @@
                     android:inputType="textPersonName"
                     android:ems="10"
                     android:id="@+id/et_nombre"
-                    android:layout_marginLeft="60dp"
                     android:textColor="@color/Celeste_Letras"
                     android:maxLength="8"
                     android:singleLine="false"
-                    android:selectAllOnFocus="false" />
+                    android:selectAllOnFocus="false"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:hint="@string/Apellido" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -145,13 +152,13 @@
                 android:paddingBottom="5dp"
                 android:layout_weight="1">
 
-                <TextView
+                <!--<TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="@string/Altura"
                     android:id="@+id/static_tvaltura"
-                    android:textColor="@color/Gris_Negro" />
+                    android:textColor="@color/Gris_Negro" />-->
 
                 <LinearLayout
                     android:orientation="horizontal"
@@ -167,25 +174,26 @@
                         android:layout_marginLeft="30dp"
                         android:maxLength="3"
                         android:gravity="center"
-                        android:textColor="@color/Celeste_Letras" />
+                        android:textColor="@color/Celeste_Letras"
+                        android:hint="@string/Altura" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:text="m"
+                        android:text="cm"
                         android:id="@+id/static_tvmetros"
                         android:textColor="@color/VerdeClaro_1"
                         android:textStyle="bold" />
                 </LinearLayout>
 
-                <TextView
+                <!--<TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="@string/Peso"
-                    android:id="@+id/static_tvkg"
-                    android:textColor="@color/Gris_Negro" />
+                    android:id="@+id/static_tvpeso"
+                    android:textColor="@color/Gris_Negro" />-->
 
                 <LinearLayout
                     android:orientation="horizontal"
@@ -201,7 +209,8 @@
                         android:layout_marginLeft="30dp"
                         android:gravity="center"
                         android:maxLength="3"
-                        android:textColor="@color/Celeste_Letras" />
+                        android:textColor="@color/Celeste_Letras"
+                        android:hint="@string/Peso" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -213,6 +222,11 @@
                         android:textStyle="bold" />
                 </LinearLayout>
 
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"></LinearLayout>
+
             </LinearLayout>
 
             <LinearLayout
@@ -223,38 +237,39 @@
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
                 android:paddingRight="5dp"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:gravity="center">
 
-                <TextView
+                <!--<TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="@string/Rol"
                     android:id="@+id/static_tvrol"
-                    android:textColor="@color/Gris_Negro" />
+                    android:textColor="@color/Gris_Negro" />-->
 
                 <Spinner
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/spinner_roles" />
 
-                <TextView
+                <!--<TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="@string/Numero"
                     android:id="@+id/static_tvnumero"
-                    android:textColor="@color/Gris_Negro" />
+                    android:textColor="@color/Gris_Negro" />-->
 
                 <EditText
-                    android:layout_width="82dp"
+                    android:layout_width="93dp"
                     android:layout_height="wrap_content"
                     android:inputType="numberDecimal"
                     android:ems="10"
                     android:id="@+id/et_numero"
                     android:maxLength="2"
-                    android:layout_marginLeft="30dp"
-                    android:textColor="@color/Celeste_Letras" />
+                    android:textColor="@color/Celeste_Letras"
+                    android:hint="@string/Numero" />
 
             </LinearLayout>
         </LinearLayout>

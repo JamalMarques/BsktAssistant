@@ -65,7 +65,7 @@ public class Frag_newteam extends Fragment implements View.OnClickListener{
         dbc.Modolectura();
         Cursor c = dbc.Cargarcursorciudades();
 
-        if(c.moveToFirst()){                               //HERE IS THE PROBLEM
+        if(c.moveToFirst()){
             int ciu = c.getColumnIndex(dbc.CN_CIUDAD);
             lista_ciudades.add(c.getString(ciu));
             while(c.moveToNext()){
@@ -75,7 +75,7 @@ public class Frag_newteam extends Fragment implements View.OnClickListener{
         }
         c.close();
 
-        ArrayAdapter<String> adap_ciu = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,lista_ciudades);
+        ArrayAdapter<String> adap_ciu = new ArrayAdapter<String>(getActivity(),R.layout.spinner_item,lista_ciudades);
         ArrayAdapter<CharSequence> adap_cat = ArrayAdapter.createFromResource(getActivity(),R.array.categorias, R.layout.spinner_item);
         spin_ciu.setAdapter(adap_ciu);
         spin_cat.setAdapter(adap_cat);
