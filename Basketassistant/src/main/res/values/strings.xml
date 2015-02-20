@@ -132,6 +132,8 @@
     <string name="EndOfGame">Fin del Juego</string>
     <string name="DeleteTeam">Eliminar Equipo?</string>
     <string name="DeletePlayer">Eliminar Jugador?</string>
+    <string name="NoPlayers">Sin Jugadores</string>
+    <string name="AddPlayer">Agregar Jugador</string>
 
 
 </resources>

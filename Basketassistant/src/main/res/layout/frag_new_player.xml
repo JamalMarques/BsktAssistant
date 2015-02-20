@@ -15,47 +15,32 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/layout_bg_standard"
-            android:padding="5dp"
-            android:layout_margin="5dp">
+            android:layout_height="40dp"
+            android:gravity="center">
 
             <LinearLayout
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center|left">
+                android:background="@drawable/layout_bg_standard"
+                android:paddingLeft="25dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:paddingRight="25dp">
 
-                <ImageButton
-                    android:layout_width="50dp"
+                <TextView
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:id="@+id/b_back" />
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/static_tvnewplayer"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/Nuevo_Jugador"
+                    android:textColor="@color/Celeste_Letras"
+                    android:textStyle="bold" />
+
             </LinearLayout>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:id="@+id/static_tvnewplayer"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/Nuevo_Jugador"
-                android:textColor="@color/Celeste_Letras"
-                android:textStyle="bold" />
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center|right">
-
-                <ImageButton
-                    android:layout_width="50dp"
-                    android:layout_height="match_parent"
-                    android:id="@+id/b_add" />
-            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -64,7 +49,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/layout_bg_standard"
             android:padding="5dp"
-            android:layout_margin="5dp">
+            android:layout_marginTop="5dp">
 
             <LinearLayout
                 android:orientation="vertical"
@@ -138,9 +123,10 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
             android:padding="5dp"
-            android:background="@drawable/layout_bg_standard">
+            android:background="@drawable/layout_bg_standard"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp">
 
             <LinearLayout
                 android:orientation="vertical"
@@ -269,9 +255,27 @@
                     android:id="@+id/et_numero"
                     android:maxLength="2"
                     android:textColor="@color/Celeste_Letras"
-                    android:hint="@string/Numero" />
+                    android:hint="@string/Numero"
+                    android:gravity="center" />
 
             </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <Button
+                android:layout_width="350dp"
+                android:layout_height="40dp"
+                android:id="@+id/b_add"
+                style="@style/ButtonGreenStyle1"
+                android:text="@string/Agregar" />
+
         </LinearLayout>
 
     </LinearLayout>

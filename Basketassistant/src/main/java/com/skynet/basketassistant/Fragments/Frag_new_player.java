@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -25,7 +26,7 @@ import com.skynet.basketassistant.R;
 public class Frag_new_player extends Fragment implements View.OnClickListener{
 
     private int equipo_id;
-    private ImageButton b_back,b_add;
+    private Button b_add;
     private EditText et_apellido,et_nombre,et_altura,et_peso,et_numero;
     private TextView tv_hidden_url;
     private Spinner spinner_roles;
@@ -53,9 +54,7 @@ public class Frag_new_player extends Fragment implements View.OnClickListener{
 
         equipo_id = getArguments().getInt(Constants.TEAM_ID);
 
-        b_back = (ImageButton)view.findViewById(R.id.b_back);
-        b_add = (ImageButton)view.findViewById(R.id.b_add);
-        b_back.setOnClickListener(this);
+        b_add = (Button)view.findViewById(R.id.b_add);
         b_add.setOnClickListener(this);
 
         et_apellido = (EditText)view.findViewById(R.id.et_apellido);
@@ -74,11 +73,6 @@ public class Frag_new_player extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View view) {
-
-        if( view.getId() == b_back.getId() ){
-            ((JugadoresAct)getActivity()).VaciarFragment2(this);
-        }
-        else
             if( view.getId() == b_add.getId() ){
                 if( et_apellido.getText().toString().equals("") || et_numero.getText().toString().equals("") || et_nombre.getText().toString().equals("") || et_altura.getText().toString().equals("") || et_peso.getText().toString().equals("") || et_numero.getText().toString().equals("")){
                     Toast.makeText(getActivity(),"Complete todos los campos",Toast.LENGTH_SHORT).show();

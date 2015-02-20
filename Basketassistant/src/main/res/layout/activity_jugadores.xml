@@ -57,7 +57,10 @@
                     android:layout_height="44dp"
                     android:id="@+id/b_add"
                     style="@style/ButtonGreenStyle1"
-                    android:layout_marginRight="3dp" />
+                    android:layout_marginRight="3dp"
+                    android:src="@drawable/add_person"
+                    android:scaleType="centerCrop"
+                    android:padding="15dp" />
             </LinearLayout>
 
         </LinearLayout>
@@ -77,6 +80,5 @@
         android:layout_height="match_parent"
         android:layout_weight="0.3"
         android:id="@+id/framelayout_expplayer"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"></FrameLayout>
+        android:layout_margin="5dp"></FrameLayout>
 </LinearLayout>

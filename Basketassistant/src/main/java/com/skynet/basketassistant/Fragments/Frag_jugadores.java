@@ -1,6 +1,7 @@
 package com.skynet.basketassistant.Fragments;
 
 import android.app.Activity;
+import android.media.Image;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,12 +29,14 @@ import java.util.List;
 /**
  * Created by Jamal on 09/06/14.
  */
-public class Frag_jugadores extends Fragment implements AdapterView.OnItemClickListener {
+public class Frag_jugadores extends Fragment implements AdapterView.OnItemClickListener, View.OnClickListener {
 
     private Equipo equipo;
     private GridView gv_jugadores;
     private List<Jugador> lista_jugadores;
     private ProgressBar prog_bar;
+
+    private ImageButton addPlayerButton;
 
     ItemAdapterJugadores adapterjug;
 
@@ -51,13 +55,19 @@ public class Frag_jugadores extends Fragment implements AdapterView.OnItemClickL
 
     public interface Callback{
         public void onSeleccionItemJugador(int id_jug);
+        public void onShowAddPlayer();
     }
 
 
     public static Callback callbackvacio = new Callback() { //callback vacio para sobreescribir
         @Override
         public void onSeleccionItemJugador(int id_jug) {
-            //vacio!
+            //empty!
+        }
+
+        @Override
+        public void onShowAddPlayer() {
+            //empty
         }
     };
 
@@ -69,6 +79,8 @@ public class Frag_jugadores extends Fragment implements AdapterView.OnItemClickL
         view = inflater.inflate(R.layout.frag_jugadores,container,false);
 
         prog_bar = (ProgressBar)view.findViewById(R.id.prog_bar);
+        addPlayerButton = (ImageButton)view.findViewById(R.id.addPlayerButton2);
+        addPlayerButton.setOnClickListener(this);
 
         gv_jugadores = (GridView)view.findViewById(R.id.gv_jugadores);
         gv_jugadores.setOnItemClickListener(this);
@@ -133,7 +145,10 @@ public class Frag_jugadores extends Fragment implements AdapterView.OnItemClickL
         protected void onPostExecute(Void aVoid) {
             prog_bar.setVisibility(View.GONE);
             gv_jugadores.setAdapter(adapterjug);
-            gv_jugadores.setVisibility(View.VISIBLE);
+            if(adapterjug.getCount() == 0)
+                gv_jugadores.setVisibility(View.GONE);
+            else
+                gv_jugadores.setVisibility(View.VISIBLE);
         }
     }
 
@@ -142,6 +157,13 @@ public class Frag_jugadores extends Fragment implements AdapterView.OnItemClickL
         dbj.Modolectura();
         lista_jugadores = dbj.DameListaJugadoresEquipo(equipo.getId());
         new SetearAdaptador().execute();
+    }
+
+    @Override
+    public void onClick(View view) {
+        if( view == addPlayerButton){
+            m_callback.onShowAddPlayer();
+        }
     }
 
 }

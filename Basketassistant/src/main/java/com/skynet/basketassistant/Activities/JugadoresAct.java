@@ -33,6 +33,7 @@ public class JugadoresAct extends BaseActivity implements View.OnClickListener,F
     private Frag_jugadores fragPlayers = null;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,12 +59,11 @@ public class JugadoresAct extends BaseActivity implements View.OnClickListener,F
     @Override
     public void onClick(View view) {
 
-        if( view.getId() == b_back.getId()){
+        if( view == b_back){
             finish();
         }else
-            if( view.getId() == b_add.getId()){
-                Frag_new_player frag = Frag_new_player.getInstance(equipo.getId());
-                CambiarFragment2(frag);
+            if( view == b_add){
+                showAddPlayer();
             }
     }
 
@@ -79,6 +79,16 @@ public class JugadoresAct extends BaseActivity implements View.OnClickListener,F
 
         Frag_expjugador frag = Frag_expjugador.getInstance(id_jug);
         CambiarFragment2(frag);
+    }
+
+    private void showAddPlayer(){
+        Frag_new_player frag = Frag_new_player.getInstance(equipo.getId());
+        CambiarFragment2(frag);
+    }
+
+    @Override
+    public void onShowAddPlayer() {
+        showAddPlayer();
     }
 
     public void CambiarFragment1(Fragment frag){

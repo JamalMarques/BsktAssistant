@@ -32,5 +32,8 @@
     <!--Table Properties-->
     <dimen name="width_column">30dp</dimen>
 
+    <!--Add Player button-->
+    <dimen name="height_width_add_player_button">80dp</dimen>
+
 
 </resources>
