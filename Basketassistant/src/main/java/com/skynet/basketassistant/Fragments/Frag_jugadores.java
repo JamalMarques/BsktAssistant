@@ -149,6 +149,8 @@ public class Frag_jugadores extends Fragment implements AdapterView.OnItemClickL
                 gv_jugadores.setVisibility(View.GONE);
             else
                 gv_jugadores.setVisibility(View.VISIBLE);
+
+            adapterjug.notifyDataSetChanged();
         }
     }
 
@@ -165,5 +167,22 @@ public class Frag_jugadores extends Fragment implements AdapterView.OnItemClickL
             m_callback.onShowAddPlayer();
         }
     }
+
+    public int getIdOfFirstPlayerOnList(){
+        return getIdPlayerPosition(0);
+    }
+
+    public int getIdOfLastPlayerOnList(){
+        return getIdPlayerPosition(lista_jugadores.size()-1);
+    }
+
+    private int getIdPlayerPosition(int position){
+        if(lista_jugadores.size() != 0)
+            return lista_jugadores.get(position).getId();
+        else
+            return -1;
+    }
+
+
 
 }

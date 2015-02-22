@@ -21,6 +21,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 /**
  *  Code by Jamal
@@ -31,7 +32,7 @@ public class PartidosAct extends BaseActivity implements View.OnClickListener,Fr
     private Bundle bun_equip;   //bun_usr.getString("User") ---> nombre del usuario! //bun_usr.getString("Nom_Equip") ---> nombre equipo seleccionado
     private Equipo equipo;
 
-    private Button b_back,b_eliminar;
+    private ImageButton b_back;
 
     private Partido Last_part_pressed = null;
 
@@ -50,10 +51,10 @@ public class PartidosAct extends BaseActivity implements View.OnClickListener,Fr
 
         LoadListFragment(bun_equip.getString(Constants.TEAM_NAME));
 
-        b_back = (Button)findViewById(R.id.bback);
-        b_eliminar = (Button)findViewById(R.id.b_eliminar);
+        b_back = (ImageButton)findViewById(R.id.bback);
+        //b_eliminar = (Button)findViewById(R.id.b_eliminar);
         b_back.setOnClickListener(this);
-        b_eliminar.setOnClickListener(this);
+        //b_eliminar.setOnClickListener(this);
 
 
     }
@@ -64,13 +65,13 @@ public class PartidosAct extends BaseActivity implements View.OnClickListener,Fr
 
         if(view.getId() == b_back.getId()){
             finish();
-        }else
+        }/*else
             if( view.getId() == b_eliminar.getId() ){
                 DBPartidos dbp = new DBPartidos(this);
                 dbp.Modoescritura();
                 //ACA REALIZO LA ELIMINACION EN CASCADA.
                 dbp.Cerrar();
-            }
+            }*/
     }
 
 

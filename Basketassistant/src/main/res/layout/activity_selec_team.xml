@@ -17,15 +17,17 @@
             android:layout_height="50dp"
             android:gravity="center"
             android:background="@drawable/layout_bg_standard"
-            android:layout_margin="5dp">
+            android:layout_margin="5dp"
+            android:padding="3dp">
 
             <ImageButton
                 android:layout_width="60dp"
                 android:layout_height="44dp"
                 android:id="@+id/iblogout"
-                android:src="@drawable/abc_ic_ab_back_holo_light"
+                android:src="@drawable/row_back_n2"
                 style="@style/ButtonGreenStyle1"
-                android:layout_marginLeft="3dp" />
+                android:scaleType="centerCrop"
+                android:padding="20dp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -38,15 +40,17 @@
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp"
                 android:layout_weight="1"
-                android:gravity="center" />
+                android:gravity="center"
+                android:maxLines="1" />
 
             <ImageButton
                 android:layout_width="60dp"
                 android:layout_height="44dp"
                 android:id="@+id/ibagregarteam"
                 android:scaleType="centerCrop"
-                android:layout_marginRight="3dp"
-                style="@style/ButtonGreenStyle1" />
+                style="@style/ButtonGreenStyle1"
+                android:src="@drawable/team_n1"
+                android:padding="10dp" />
 
         </LinearLayout>
 

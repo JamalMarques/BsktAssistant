@@ -47,8 +47,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 
         UserContainer.DesasignarUser();   //DETACHING USER!
 
-        if(Constants.TESTING_MODE)
+        if(Constants.TESTING_MODE) {
             GenerateTestingMode();
+            Constants.TESTING_MODE = false;
+        }
     }
 
 

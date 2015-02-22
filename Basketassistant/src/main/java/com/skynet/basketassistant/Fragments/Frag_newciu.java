@@ -40,7 +40,7 @@ public class Frag_newciu extends Fragment implements View.OnClickListener{
     public void onClick(View view) {
 
         if(view.getId() == btncrear.getId()){ //se realiza la insercion de la nueva ciudad
-            if(!nomciu.equals("") && !nomprov.equals("")) {
+            if(!nomciu.getText().equals("") && !nomprov.getText().equals("")) {
                 DBCiudades dbc = new DBCiudades(getActivity());
                 dbc.Modolectura();
                 if (dbc.Existe(nomciu.getText().toString()) == false) {

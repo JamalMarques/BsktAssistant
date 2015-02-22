@@ -24,7 +24,8 @@ import android.widget.Toast;
  *
  * @see SystemUiHider
  */
-public class JugadoresAct extends BaseActivity implements View.OnClickListener,Frag_jugadores.Callback,FragDialog_YesNo.OnCompleteYesNoDialogListener {
+public class JugadoresAct extends BaseActivity implements View.OnClickListener,Frag_jugadores.Callback,FragDialog_YesNo.OnCompleteYesNoDialogListener,
+                                                            Frag_new_player.onAddPlayerListener{
 
     private Bundle bun_equip;
     private Equipo equipo;
@@ -67,12 +68,12 @@ public class JugadoresAct extends BaseActivity implements View.OnClickListener,F
             }
     }
 
-    public void VaciarFragment2(Fragment frag){
+    /*public void CleanFragment(Fragment frag){
         android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.detach(frag);
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
         ft.commit();
-    }
+    }*/
 
     @Override
     public void onSeleccionItemJugador(int id_jug) {
@@ -120,6 +121,7 @@ public class JugadoresAct extends BaseActivity implements View.OnClickListener,F
         DBJugadores dbj = new DBJugadores(this);
         dbj.eliminar(playerID,DBJugadores.CN_ID);
         refreshPlayerList();
+        selectPlayerOnScreen(fragPlayers.getIdOfFirstPlayerOnList());
     }
 
     private void refreshPlayerList(){
@@ -127,4 +129,20 @@ public class JugadoresAct extends BaseActivity implements View.OnClickListener,F
             fragPlayers.refreshList();
         }
     }
+
+    @Override
+    public void onAddPlayer() {
+        refreshPlayerList();
+        selectPlayerOnScreen(fragPlayers.getIdOfLastPlayerOnList());
+    }
+
+    private void selectPlayerOnScreen(int id_player){
+        if( id_player != (-1) ){
+            onSeleccionItemJugador(id_player);
+        }else{ //Doesn't have players
+            showAddPlayer();
+        }
+
+    }
+
 }

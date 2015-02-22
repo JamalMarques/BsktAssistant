@@ -28,6 +28,11 @@
     <!--Box of Points-->
     <color name="Border_box_points">#8eb8de</color>
 
+    <!-- Circles -->
+    <color name="circle_total_games">#f5e1de2e</color>
+    <color name="circle_total_wins">#e926dd19</color>
+    <color name="circle_total_loses">#ead11a1a</color>
+
 
     <!--Android SDK 21 colors-->
     <color name="Lime500">#cddc39</color>

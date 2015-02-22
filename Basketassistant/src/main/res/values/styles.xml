@@ -29,18 +29,18 @@
     </style>
 
     <style name="ButtonGreenStyle1">
-        <item name="android:background">@drawable/button1_bg</item>
-        <item name="android:textColor">@color/Verdeclaro_2</item>
+        <item name="android:background">@drawable/button_green_bg</item>
+        <item name="android:textColor">@drawable/button_green_text</item>
     </style>
 
     <style name="ButtonLightBlueStyle1">
-        <item name="android:background">@drawable/button2_bg</item>
-        <item name="android:textColor">@drawable/button2_text</item>
+        <item name="android:background">@drawable/button_blue_bg</item>
+        <item name="android:textColor">@drawable/button_blue_text</item>
     </style>
 
     <style name="ButtonDeleteStyle1">
-        <item name="android:background">@drawable/button3_bg</item>
-        <item name="android:textColor">@drawable/button3_text</item>
+        <item name="android:background">@drawable/button_red_bg</item>
+        <item name="android:textColor">@drawable/button_red_text</item>
         <item name="android:paddingLeft">5dp</item>
         <item name="android:paddingRight">5dp</item>
     </style>

@@ -1,5 +1,6 @@
 package com.skynet.basketassistant.Fragments;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -30,12 +31,25 @@ public class Frag_new_player extends Fragment implements View.OnClickListener{
     private EditText et_apellido,et_nombre,et_altura,et_peso,et_numero;
     private TextView tv_hidden_url;
     private Spinner spinner_roles;
-    private ImageView iv_photoplayer;
+    //private ImageView iv_photoplayer;
+    private onAddPlayerListener addListener;
+
+    public static onAddPlayerListener emptyAddListener = new onAddPlayerListener() {
+        @Override
+        public void onAddPlayer() {
+            //empty
+        }
+    };
 
     /*private static int TAKE_PICTURE = 1;
     private static int SELECT_PICTURE = 2;
     private Intent intent;
     private int codigo;*/
+
+    public static interface onAddPlayerListener{
+        public void onAddPlayer();
+    }
+
 
     public Frag_new_player(){  /*Empty constructor*/ }
 
@@ -45,6 +59,24 @@ public class Frag_new_player extends Fragment implements View.OnClickListener{
         bun.putInt(Constants.TEAM_ID,team_id);
         fnp.setArguments(bun);
         return fnp;
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+
+        if (!(activity instanceof onAddPlayerListener)){
+            throw new IllegalStateException("Error: La actividad debe implementar el callback del fragmento!!");
+        }
+
+        addListener = (onAddPlayerListener)activity;
+
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        addListener = emptyAddListener;
     }
 
     @Override
@@ -80,12 +112,14 @@ public class Frag_new_player extends Fragment implements View.OnClickListener{
                     if ( et_apellido.getText().toString().length() < 4 || et_nombre.getText().toString().length() < 4){
                         Toast.makeText(getActivity(),"El apellido y el nombre deben tener minimo 4 caracteres",Toast.LENGTH_SHORT).show();
                     }else{
-                        //Creo el jugador!
+                        //Create the player
                         DBJugadores dbj = new DBJugadores(getActivity());
                         dbj.Modoescritura();
                         dbj.insertar(et_apellido.getText().toString(),et_nombre.getText().toString(),Integer.valueOf(et_altura.getText().toString()),Integer.valueOf(et_peso.getText().toString()),Integer.valueOf(et_numero.getText().toString()),
                                         spinner_roles.getSelectedItem().toString(),equipo_id,tv_hidden_url.getText().toString());
                         dbj.Cerrar();
+
+                        addListener.onAddPlayer(); //calling activity's method
                     }
             }
     }

@@ -18,25 +18,36 @@
             android:layout_width="fill_parent"
             android:layout_height="50dp"
             android:layout_margin="5dp"
-            style="@style/BaseBackground">
+            style="@style/BaseBackground"
+            android:gravity="center">
 
-            <Button
+            <ImageButton
                 style="@style/ButtonGreenStyle1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
                 android:text="@string/Atras"
                 android:id="@+id/bback"
-                android:layout_weight="0.3"
-                android:layout_margin="5dp" />
+                android:layout_margin="5dp"
+                android:src="@drawable/row_back_n2"
+                android:scaleType="centerCrop"
+                android:padding="20dp" />
 
-            <Button
-                style="@style/ButtonGreenStyle1"
-                android:layout_width="match_parent"
+            <!--<TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="X"
-                android:id="@+id/b_eliminar"
-                android:layout_weight="1"
-                android:layout_margin="5dp" />
+                android:text="@string/History"
+                android:id="@+id/textView13" />-->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/History"
+                android:id="@+id/textView"
+                android:gravity="center"
+                android:textStyle="bold|normal"
+                android:textColor="@color/Celeste_Letras"
+                android:singleLine="false" />
 
         </LinearLayout>
 

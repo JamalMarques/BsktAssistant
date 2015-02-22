@@ -5,7 +5,7 @@ package com.skynet.basketassistant.Otros;
  */
 public class Constants {
 
-    public static final boolean TESTING_MODE = false;
+    public static boolean TESTING_MODE = true;
 
     public static final String DATE_FORMAT = "yyyy-MM-dd";
 

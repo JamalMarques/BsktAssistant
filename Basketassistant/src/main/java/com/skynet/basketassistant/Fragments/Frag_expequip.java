@@ -60,8 +60,8 @@ public class Frag_expequip extends Fragment implements View.OnClickListener{
         num_wins = 0;
         num_loses = 0;
 
-        b_eliminar = (Button)view.findViewById(R.id.b_eliminar);
-        b_eliminar.setOnClickListener(this);
+/*        b_eliminar = (Button)view.findViewById(R.id.b_eliminar);
+        b_eliminar.setOnClickListener(this);*/
         tvequip = (TextView)view.findViewById(R.id.tvnomequip);
         tvciudad = (TextView)view.findViewById(R.id.tvciuteam);
         tv_games = (TextView)view.findViewById(R.id.tv_totalgames);

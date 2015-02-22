@@ -29,9 +29,11 @@
                     android:layout_width="60dp"
                     android:layout_height="44dp"
                     android:id="@+id/b_back"
-                    android:src="@drawable/abc_ic_ab_back_holo_light"
+                    android:src="@drawable/row_back_n2"
                     style="@style/ButtonGreenStyle1"
-                    android:layout_marginLeft="3dp" />
+                    android:layout_marginLeft="3dp"
+                    android:scaleType="centerCrop"
+                    android:padding="20dp" />
             </LinearLayout>
 
             <TextView
