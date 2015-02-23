@@ -67,9 +67,9 @@
 
             <ImageView
                 android:layout_width="42dp"
-                android:layout_height="wrap_content"
+                android:layout_height="42dp"
                 android:id="@+id/iw_result"
-                android:src="@android:drawable/ic_menu_compass"
+                android:src="@drawable/basketball_n2"
                 android:layout_weight="1"
                 android:layout_marginTop="3dp"
                 android:layout_marginBottom="3dp" />
@@ -80,7 +80,7 @@
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="31/12/99"
                 android:id="@+id/tv_fecha"
-                android:textColor="@color/Celeste_Letras" />
+                android:textColor="@color/black_overlay" />
         </LinearLayout>
 
         <LinearLayout
@@ -119,48 +119,43 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:background="@drawable/layout_bg_standard"
         android:layout_marginBottom="10dp"
         android:paddingLeft="5dp"
         android:paddingTop="15dp"
         android:paddingRight="5dp"
-        android:paddingBottom="10dp">
+        android:paddingBottom="10dp"
+        android:layout_marginLeft="15dp">
 
         <LinearLayout
             android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="0.9">
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"></LinearLayout>
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.9"
+            android:gravity="bottom|center">
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Medium Text"
                 android:id="@+id/tv_nom_equip1b"
-                android:layout_weight="1"
                 android:gravity="center"
                 android:textColor="@color/Celeste_Letras"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:maxLines="1" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Medium Text"
                 android:id="@+id/tv_nom_equip2b"
-                android:layout_weight="1"
                 android:gravity="center"
                 android:textColor="@color/Celeste_Letras"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:maxLines="1" />
 
         </LinearLayout>
 

@@ -160,6 +160,7 @@ public class Frag_exppart extends Fragment implements AdapterView.OnItemClickLis
         @Override
         protected Void doInBackground(Void... voids) {
             adapt = new ItemAdapterJugadores(getActivity().getApplicationContext(), dbj.DameListaJugadores());
+            //crear un nuevo adaptador que tenga otro xml con mismas referencias
             return null;
         }
 
