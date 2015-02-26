@@ -71,7 +71,6 @@ public class Manejo_Imagenes {
             Foutp.flush();
             Foutp.close();
         }catch(Exception e){
-            Log.e("PUTA MADRE",e.getMessage()+"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             e.printStackTrace();
         }
     }

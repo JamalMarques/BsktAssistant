@@ -30,7 +30,8 @@
                     android:orientation="horizontal"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:layout_margin="20dp">
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp">
 
                     <LinearLayout
                         android:orientation="vertical"
@@ -47,7 +48,8 @@
                             android:id="@+id/tv_apellido"
                             android:textSize="40dp"
                             android:layout_marginBottom="5dp"
-                            android:textColor="@color/Gris_Negro" />
+                            android:textColor="@color/Gris_Negro"
+                            android:minLines="1" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -57,7 +59,8 @@
                             android:id="@+id/tv_nombre"
                             android:textSize="40dp"
                             android:layout_marginTop="5dp"
-                            android:textColor="@color/Gris_Negro" />
+                            android:textColor="@color/Gris_Negro"
+                            android:minLines="1" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -65,7 +68,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center" >
+                        android:gravity="center"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="20dp">
 
                         <LinearLayout
                             android:orientation="vertical"
@@ -77,12 +82,15 @@
 
                             <RelativeLayout
                                 android:layout_width="fill_parent"
-                                android:layout_height="fill_parent">
+                                android:layout_height="150dp">
 
                                 <ImageView
                                     android:layout_width="150dp"
                                     android:layout_height="150dp"
-                                    android:id="@+id/iv_fotoplayer" />
+                                    android:id="@+id/iv_fotoplayer"
+                                    android:src="@drawable/no_player_image"
+                                    android:visibility="gone"
+                                    android:background="@color/Gris_1" />
 
                                 <ProgressBar
                                     style="?android:attr/progressBarStyleLarge"
@@ -101,7 +109,7 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/layout_bg_standard"
                 android:padding="10dp">
 
@@ -612,7 +620,8 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp">
+                android:padding="10dp"
+                android:background="@drawable/layout_bg_standard">
 
                 <Button
                     android:layout_width="match_parent"

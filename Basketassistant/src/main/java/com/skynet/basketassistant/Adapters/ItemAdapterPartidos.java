@@ -1,6 +1,7 @@
 package com.skynet.basketassistant.Adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,8 +66,10 @@ public class ItemAdapterPartidos extends BaseAdapter {
         tv_idpart.setText(String.valueOf(part.getId()));
 
         if( part.Victoria() ){
+            tv_result.setTextColor(context.getResources().getColor(R.color.VerdeClaro_1));
             tv_result.setText(context.getString(R.string.Victory));
         }else{
+            tv_result.setTextColor(context.getResources().getColor(R.color.Rojo_1));
             tv_result.setText(context.getString(R.string.Defeat));
         }
 

@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
 //import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -231,13 +232,16 @@ public class Frag_exp_jug_part extends Fragment implements View.OnClickListener{
         protected Void doInBackground(Void... voids) {
             try{
                 bit = Manejo_Imagenes.Cubo_Rotar_Rotacion(jugador.getImagen_url());
-            }catch (Exception e){ bit = Manejo_Imagenes.ImageNoPlayer; }
+            }catch (Exception e){
+                Log.e("Image Error","Image doesn't found");/*bit = Manejo_Imagenes.ImageNoPlayer;*/
+            }
             return null;
         }
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            iv_photoplayer.setImageBitmap(bit);
+            if(bit != null)
+                iv_photoplayer.setImageBitmap(bit);
             load_circle.setVisibility(View.GONE);
             iv_photoplayer.setVisibility(View.VISIBLE);
         }

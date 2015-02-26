@@ -80,36 +80,6 @@ public class Frag_listapartidos extends Fragment implements AdapterView.OnItemCl
         //Cursor c = dbp.giveMeGamesOf(equipo.getId());
         List<Partido> listapart = dbp.giveMeGamesOf(equipo.getId());
         dbp.Cerrar();
-        /*if(c.moveToFirst()){
-            do {
-                int id = c.getColumnIndex(dbp.CN_ID);
-                int fecha = c.getColumnIndex(dbp.CN_FECHA);
-                int cancha = c.getColumnIndex(dbp.CN_CANCHA);
-                int puntos_e1 = c.getColumnIndex(dbp.CN_PUNTOS_E1);
-                int puntos_e2 = c.getColumnIndex(dbp.CN_PUNTOS_E2);
-                int equipo1_id = c.getColumnIndex(dbp.CN_EQUIPO1_ID);
-                int equipo2_nom = c.getColumnIndex(dbp.CN_EQUIPO2_NOM);
-                int punt_q1_e1 = c.getColumnIndex(dbp.CN_PUNTOS_Q1_E1);
-                int punt_q2_e1 = c.getColumnIndex(dbp.CN_PUNTOS_Q2_E1);
-                int punt_q3_e1 = c.getColumnIndex(dbp.CN_PUNTOS_Q3_E1);
-                int punt_q4_e1 = c.getColumnIndex(dbp.CN_PUNTOS_Q4_E1);
-                int punt_q1_e2 = c.getColumnIndex(dbp.CN_PUNTOS_Q1_E2);
-                int punt_q2_e2 = c.getColumnIndex(dbp.CN_PUNTOS_Q2_E2);
-                int punt_q3_e2 = c.getColumnIndex(dbp.CN_PUNTOS_Q3_E2);
-                int punt_q4_e2 = c.getColumnIndex(dbp.CN_PUNTOS_Q4_E2);
-                int punt_ext_e1 = c.getColumnIndex(dbp.CN_PUNTOS_EXT_E1);
-                int punt_ext_e2 = c.getColumnIndex(dbp.CN_PUNTOS_EXT_E2);
-
-                Partido part = new Partido(c.getInt(id),c.getString(fecha),c.getString(cancha),c.getInt(puntos_e1),c.getInt(puntos_e2),c.getInt(equipo1_id),c.getString(equipo2_nom),
-                        c.getInt(punt_q1_e1),c.getInt(punt_q2_e1),c.getInt(punt_q3_e1),c.getInt(punt_q4_e1),c.getInt(punt_q1_e2),c.getInt(punt_q2_e2),c.getInt(punt_q3_e2),
-                        c.getInt(punt_q4_e2),c.getInt(punt_ext_e1),c.getInt(punt_ext_e2));
-
-                listapart.add(part);
-
-            }while (c.moveToNext());
-        }
-        c.close();*/
-
 
         adapterpart = new ItemAdapterPartidos(getActivity().getApplicationContext(),listapart);
         lvpartidos.setAdapter(adapterpart);

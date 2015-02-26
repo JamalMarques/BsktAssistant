@@ -137,7 +137,7 @@ public class Frag_jugadores extends Fragment implements AdapterView.OnItemClickL
 
         @Override
         protected Void doInBackground(Void... voids) {
-           adapterjug = new ItemAdapterJugadores(getActivity().getApplicationContext(),lista_jugadores);
+           adapterjug = new ItemAdapterJugadores(getActivity().getApplicationContext(),lista_jugadores,true);
            return null;
         }
 

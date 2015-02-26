@@ -380,14 +380,16 @@ public class Frag_expjugador extends Fragment implements View.OnClickListener {
             }catch (Exception e){
                 System.out.println(e.getMessage().toString());
             }
-            }else{ bitmap = Manejo_Imagenes.ImageNoPlayer; }
+            }//else{ /*bitmap = Manejo_Imagenes.ImageNoPlayer; }
             return null;
         }
 
         @Override
         protected void onPostExecute(Void aVoid) {
             load_circle.setVisibility(View.GONE);
-            iv_fotoplayer.setImageBitmap(bitmap);
+            if(bitmap != null)
+                iv_fotoplayer.setImageBitmap(bitmap);
+            iv_fotoplayer.setVisibility(View.VISIBLE);
         }
 
     }

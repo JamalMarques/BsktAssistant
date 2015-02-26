@@ -27,11 +27,13 @@ public class ItemAdapterJugadores extends BaseAdapter {
     private Context context;
     private List<Jugador> lista_jugadores = null;
     private List<Bitmap> lista_bitmap = null;
+    private boolean isOldVersion;  //Exist 2 xml to inflate (new version and old version)
 
-    public ItemAdapterJugadores(Context cont, List<Jugador> jugadores){
+    public ItemAdapterJugadores(Context cont, List<Jugador> jugadores,boolean isOldVersion){
         context = cont;
         lista_jugadores = jugadores;
         lista_bitmap = Generarbitmaps();
+        this.isOldVersion = isOldVersion;
     }
 
     @Override
@@ -60,13 +62,16 @@ public class ItemAdapterJugadores extends BaseAdapter {
         {
             holder = new Holder();
             LayoutInflater ltInflate = (LayoutInflater) context.getSystemService( Context.LAYOUT_INFLATER_SERVICE );
-            rowview = ltInflate.inflate(R.layout.grid_item_jugador,parent,false);
+            if(isOldVersion)
+                rowview = ltInflate.inflate(R.layout.grid_item_jugador,parent,false);
+            else
+                rowview = ltInflate.inflate(R.layout.grid_item_jugador_2,parent,false);
 
             holder.setnombre((TextView) rowview.findViewById(R.id.tv_apellido));
             holder.setImage((ImageView) rowview.findViewById(R.id.iv_imagenplayer));
             holder.setId_player((TextView) rowview.findViewById(R.id.tv_hidden_idplayer));
 
-            rowview.setTag(holder);  //se ejecutara la primera vez, una vez que se tenga cargado el tag ya va al else de una (para ahorrar memoria)
+            rowview.setTag(holder);
         }
         else
         {
@@ -115,7 +120,7 @@ public class ItemAdapterJugadores extends BaseAdapter {
         for(int i=0;i<lista_jugadores.size();i++){
 
             if(lista_jugadores.get(i).getImagen_url().equals("empty")){
-                list.add(Manejo_Imagenes.ImageNoPlayer); //inserto la imagen por default
+                list.add(null/*Manejo_Imagenes.ImageNoPlayer*/); //inserto la imagen por default
             }else{
                 File file = new File(Manejo_Imagenes.Url + lista_jugadores.get(i).getImagen_url());
                 if( file.exists()){
@@ -127,7 +132,7 @@ public class ItemAdapterJugadores extends BaseAdapter {
                     }catch (Exception e){ /*Excepcion no controlada*/ }
                 }
                 else{
-                    list.add(Manejo_Imagenes.ImageNoPlayer); //debo insertar la imagen por default
+                    list.add(null/*Manejo_Imagenes.ImageNoPlayer*/); //debo insertar la imagen por default
                 }
             }
     }

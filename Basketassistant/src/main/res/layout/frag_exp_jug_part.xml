@@ -524,7 +524,8 @@
                 android:layout_gravity="right"
                 android:padding="1dp"
                 android:background="@color/Gris_Negro"
-                android:visibility="gone" />
+                android:visibility="gone"
+                android:src="@drawable/no_player_image" />
 
             <ProgressBar
                 android:layout_width="100dp"
