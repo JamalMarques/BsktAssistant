@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="20dp"
         android:id="@+id/ibTopButton"
-        style="@style/ButtonQuarterLeft" />
+        style="@style/ButtonQuarterTop" />
 
     <LinearLayout
         android:orientation="vertical"
@@ -37,6 +37,6 @@
         android:layout_width="match_parent"
         android:layout_height="20dp"
         android:id="@+id/ibBottomButton"
-        android:background="@drawable/button_quarter_bottom" />
+        style="@style/ButtonQuarterBottom" />
 
 </LinearLayout>

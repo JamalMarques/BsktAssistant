@@ -24,6 +24,8 @@
     <color name="Grey_border_players_box">#ffd5d5d5</color>
     <color name="Background_pressed_button_player">#e97bdbff</color>
     <color name="Border_pressed_button_player">#ff5288ff</color>
+    <color name="OrangeButton1">#fff98704</color>
+    <color name="OrangeButton1Pressed">#fff98704</color>
 
     <!--Box of Points-->
     <color name="Border_box_points">#8eb8de</color>
@@ -39,5 +41,10 @@
     <color name="Lime700">#afb42b</color>
     <color name="Lime800">#9e9d24</color>
     <color name="Line900">#827717</color>
+
+
+    <!--Added-->
+    <color name="holo_blue">#ff35b5e5</color>
+
 
 </resources>

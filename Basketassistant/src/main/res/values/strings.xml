@@ -138,6 +138,11 @@
     <string name="wins_circle_text">G</string>
     <string name="loses_circle_text">P</string>
     <string name="History">Historial</string>
+    <string name="UserCreation">Creacion de Usuario</string>
+    <string name="NoEqualsPassword">El password no coincide</string>
+    <string name="BasketballAssistantTittle">Basketball Assistant</string>
+    <string name="LogIn">Ingresar</string>
+    <string name="SingIn">Registrarse</string>
 
 
 </resources>

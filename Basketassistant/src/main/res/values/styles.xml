@@ -33,6 +33,11 @@
         <item name="android:textColor">@drawable/button_green_text</item>
     </style>
 
+    <style name="ButtonOrangeStyle1">
+        <item name="android:background">@drawable/button_orange_bg</item>
+        <item name="android:textColor">@drawable/button_orange_text</item>
+    </style>
+
     <style name="ButtonLightBlueStyle1">
         <item name="android:background">@drawable/button_blue_bg</item>
         <item name="android:textColor">@drawable/button_blue_text</item>
@@ -52,12 +57,12 @@
         <item name="android:paddingRight">5dp</item>
     </style>
 
-    <style name="ButtonQuarterLeft">
+    <style name="ButtonQuarterTop">
         <item name="android:background">@drawable/button_quarter_top</item>
         <!--icon!-->
     </style>
 
-    <style name="ButtonQuarterRight">
+    <style name="ButtonQuarterBottom">
         <item name="android:background">@drawable/button_quarter_bottom</item>
         <!--icon!-->
     </style>

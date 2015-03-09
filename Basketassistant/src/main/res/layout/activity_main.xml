@@ -1,87 +1,107 @@
 <LinearLayout
     android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:gravity="center"
-    android:background="@drawable/wood_background">
+    android:background="@drawable/wood_background"
+    android:paddingLeft="30dp"
+    android:paddingRight="30dp">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/linearLayout"
-        android:layout_margin="20dp"
-        android:background="@drawable/layout_bg_standard"
+        android:layout_marginBottom="20dp"
         android:gravity="center"
-        android:padding="10dp">
+        android:padding="20dp"
+        android:background="@drawable/layout_bg_standard">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="@string/Nombre"
-            android:id="@+id/tv_nom" />
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/etnom"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:gravity="center" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="@string/Password"
-            android:id="@+id/tv_pass" />
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:ems="10"
-            android:id="@+id/etpass"
-            android:layout_below="@+id/etnom"
-            android:layout_alignLeft="@+id/etnom"
-            android:layout_alignStart="@+id/etnom"
-            android:gravity="center" />
-
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/BasketballAssistantTittle"
+            android:id="@+id/textView14" />
     </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/layout_bg_standard"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp">
+        android:gravity="left|center">
 
-        <ImageButton
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/ibadd"
-            android:background="@null"
-            android:src="@android:drawable/ic_input_add"
-            android:layout_alignTop="@+id/ibnext"
-            android:layout_alignLeft="@+id/etpass"
-            android:layout_alignStart="@+id/etpass"
-            android:layout_weight="1" />
+            android:id="@+id/linearLayout"
+            android:background="@drawable/layout_bg_standard"
+            android:gravity="center"
+            android:paddingLeft="25dp"
+            android:paddingTop="10dp"
+            android:paddingRight="25dp"
+            android:paddingBottom="10dp">
 
-        <ImageButton
-            android:layout_width="wrap_content"
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/etnom"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:hint="@string/Nombre" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:ems="10"
+                android:id="@+id/etpass"
+                android:layout_below="@+id/etnom"
+                android:layout_alignLeft="@+id/etnom"
+                android:layout_alignStart="@+id/etnom"
+                android:gravity="center"
+                android:hint="@string/Password"
+                android:layout_marginTop="10dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/ibnext"
-            android:src="@android:drawable/ic_media_ff"
-            android:layout_below="@+id/etpass"
-            android:layout_alignRight="@+id/etpass"
-            android:layout_alignEnd="@+id/etpass"
-            android:contentDescription="hola"
-            android:layout_weight="1"
-            android:background="@null" />
+            android:layout_marginLeft="20dp">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/ibnext"
+                android:layout_below="@+id/etpass"
+                android:layout_alignRight="@+id/etpass"
+                android:layout_alignEnd="@+id/etpass"
+                android:contentDescription="hola"
+                android:layout_weight="1"
+                style="@style/ButtonQuarterTop"
+                android:text="@string/LogIn"
+                android:layout_marginBottom="5dp"
+                android:textColor="@color/Verde_oscuro_1" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/ibadd"
+                android:layout_alignTop="@+id/ibnext"
+                android:layout_alignLeft="@+id/etpass"
+                android:layout_alignStart="@+id/etpass"
+                android:layout_weight="1"
+                style="@style/ButtonQuarterBottom"
+                android:text="@string/SingIn"
+                android:textColor="@color/lightblue_1" />
+
+        </LinearLayout>
     </LinearLayout>
+
 </LinearLayout>

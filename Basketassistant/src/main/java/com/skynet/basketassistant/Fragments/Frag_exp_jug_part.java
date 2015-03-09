@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -52,7 +53,7 @@ public class Frag_exp_jug_part extends Fragment implements View.OnClickListener{
     private TextView tv_fecha,tv_puntos,tv_foules,tv_asist,tv_robos,tv_tapas,tv_lanz,tv_acert,tv_fallidos,
                     tv_rebotes,tv_reb_def,tv_reb_ofen;
 
-    private ImageButton b_back;
+    private Button b_back;
 
     /*public Frag_exp_jug_part(Jugador jug,Partido part){
         jugador = jug;
@@ -75,7 +76,7 @@ public class Frag_exp_jug_part extends Fragment implements View.OnClickListener{
         View view;
         view = inflater.inflate(R.layout.frag_exp_jug_part,container,false);
 
-        b_back = (ImageButton)view.findViewById(R.id.b_back);
+        b_back = (Button)view.findViewById(R.id.b_back);
         b_back.setOnClickListener(this);
         load_circle = (ProgressBar)view.findViewById(R.id.load_circle);
         iv_photoplayer = (ImageView)view.findViewById(R.id.iv_photoplayer);

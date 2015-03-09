@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,8 +28,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 
     private TextView etnom;
     private TextView etpass;
-    private ImageButton ibnext;
-    private ImageButton ibadd;
+    private Button ibnext;
+    private Button ibadd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +40,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 
        etnom = (TextView)findViewById(R.id.etnom);
        etpass = (TextView)findViewById(R.id.etpass);
-       ibnext = (ImageButton)findViewById(R.id.ibnext);
-       ibadd = (ImageButton)findViewById(R.id.ibadd);
+       ibnext = (Button)findViewById(R.id.ibnext);
+       ibadd = (Button)findViewById(R.id.ibadd);
 
        ibnext.setOnClickListener(this);
        ibadd.setOnClickListener(this);

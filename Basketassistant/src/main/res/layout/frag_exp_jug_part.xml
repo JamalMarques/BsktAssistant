@@ -4,536 +4,546 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="15dp">
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView2" >
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/layout_bg_standard"
-                android:paddingLeft="5dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="@string/Fecha"
-                    android:id="@+id/static_fecha"
-                    android:textColor="@color/Celeste_botones"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="27/12/1992"
-                    android:id="@+id/tv_fecha"
-                    android:paddingLeft="10dp"
-                    android:textColor="@color/Verde_oscuro_1"
-                    android:textStyle="bold" />
-            </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="15dp">
 
             <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="20dp"
-                android:layout_marginBottom="10dp">
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
 
                 <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/layout_bg_standard">
+                    android:background="@drawable/layout_bg_standard"
+                    android:paddingLeft="5dp">
 
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:paddingTop="5dp"
-                        android:paddingBottom="5dp"
-                        android:paddingLeft="10dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="@string/Fecha"
+                        android:id="@+id/static_fecha"
+                        android:textColor="@color/Celeste_botones"
+                        android:textStyle="bold" />
 
-                        <LinearLayout
-                            android:orientation="vertical"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1">
-
-                            <LinearLayout
-                                android:orientation="horizontal"
-                                android:layout_width="fill_parent"
-                                android:layout_height="fill_parent">
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:textAppearance="?android:attr/textAppearanceMedium"
-                                    android:text="@string/Puntos"
-                                    android:id="@+id/static_puntos"
-                                    android:layout_weight="1"
-                                    android:textColor="@color/Gris_Negro" />
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:textAppearance="?android:attr/textAppearanceMedium"
-                                    android:text="18"
-                                    android:id="@+id/tv_puntos"
-                                    android:layout_weight="1"
-                                    android:textColor="@color/VerdeClaro_1"
-                                    android:textStyle="bold" />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:orientation="horizontal"
-                                android:layout_width="fill_parent"
-                                android:layout_height="fill_parent">
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:textAppearance="?android:attr/textAppearanceMedium"
-                                    android:text="@string/Fules"
-                                    android:id="@+id/static_fules"
-                                    android:layout_weight="1"
-                                    android:textColor="@color/Gris_Negro" />
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:textAppearance="?android:attr/textAppearanceMedium"
-                                    android:text="3"
-                                    android:id="@+id/tv_foules"
-                                    android:layout_weight="1"
-                                    android:textColor="@color/Rojo_1"
-                                    android:textStyle="bold" />
-                            </LinearLayout>
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:orientation="vertical"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1">
-
-                            <LinearLayout
-                                android:orientation="horizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="fill_parent"
-                                android:layout_weight="1">
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:textAppearance="?android:attr/textAppearanceMedium"
-                                    android:text="@string/Asistencias"
-                                    android:id="@+id/static_asist"
-                                    android:layout_weight="1"
-                                    android:textColor="@color/Gris_Negro" />
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:textAppearance="?android:attr/textAppearanceMedium"
-                                    android:text="8"
-                                    android:id="@+id/tv_asist"
-                                    android:gravity="center|left"
-                                    android:layout_weight="1"
-                                    android:textColor="@color/Celeste_botones" />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:orientation="horizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="fill_parent"
-                                android:layout_weight="1">
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:textAppearance="?android:attr/textAppearanceMedium"
-                                    android:text="@string/Robos"
-                                    android:id="@+id/static_robos"
-                                    android:layout_weight="1"
-                                    android:textColor="@color/Gris_Negro" />
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:textAppearance="?android:attr/textAppearanceMedium"
-                                    android:text="5"
-                                    android:id="@+id/tv_robos"
-                                    android:gravity="center|left"
-                                    android:layout_weight="1"
-                                    android:textColor="@color/Celeste_Letras"
-                                    android:textStyle="bold" />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:orientation="horizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="fill_parent"
-                                android:layout_weight="1">
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:textAppearance="?android:attr/textAppearanceMedium"
-                                    android:text="@string/Tapas"
-                                    android:id="@+id/static_tapas"
-                                    android:textColor="@color/Gris_2_score"
-                                    android:layout_weight="1" />
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:textAppearance="?android:attr/textAppearanceMedium"
-                                    android:text="3"
-                                    android:id="@+id/tv_tapas"
-                                    android:textColor="@color/Celeste_Letras"
-                                    android:layout_weight="1"
-                                    android:textStyle="bold" />
-                            </LinearLayout>
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="4">
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp">
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/layout_bg_standard">
-
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="fill_parent"
-                        android:layout_weight="1"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="27/12/1992"
+                        android:id="@+id/tv_fecha"
                         android:paddingLeft="10dp"
-                        android:paddingTop="5dp"
-                        android:paddingBottom="5dp">
-
-                        <LinearLayout
-                            android:orientation="vertical"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1">
-
-                            <LinearLayout
-                                android:orientation="horizontal"
-                                android:layout_width="fill_parent"
-                                android:layout_height="fill_parent">
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:textAppearance="?android:attr/textAppearanceMedium"
-                                    android:text="@string/Lanzamientos"
-                                    android:id="@+id/static_lanz"
-                                    android:layout_weight="1"
-                                    android:textColor="@color/Gris_Negro" />
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:textAppearance="?android:attr/textAppearanceMedium"
-                                    android:text="15"
-                                    android:id="@+id/tv_lanz"
-                                    android:layout_weight="1"
-                                    android:textColor="@color/Celeste_Letras"
-                                    android:textStyle="bold" />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:orientation="horizontal"
-                                android:layout_width="fill_parent"
-                                android:layout_height="fill_parent">
-
-                            </LinearLayout>
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:orientation="vertical"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1">
-
-                            <LinearLayout
-                                android:orientation="horizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent">
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:textAppearance="?android:attr/textAppearanceMedium"
-                                    android:text="@string/Acertados"
-                                    android:id="@+id/static_acert"
-                                    android:layout_weight="1"
-                                    android:textColor="@color/Gris_Negro" />
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:textAppearance="?android:attr/textAppearanceMedium"
-                                    android:text="10"
-                                    android:id="@+id/tv_acert"
-                                    android:layout_weight="1"
-                                    android:textColor="@color/VerdeClaro_1"
-                                    android:gravity="left"
-                                    android:textStyle="bold" />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:orientation="horizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:textAppearance="?android:attr/textAppearanceMedium"
-                                    android:text="@string/Fallidos"
-                                    android:id="@+id/static_fallidos"
-                                    android:layout_weight="1"
-                                    android:textColor="@color/Gris_Negro" />
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:textAppearance="?android:attr/textAppearanceMedium"
-                                    android:text="5"
-                                    android:id="@+id/tv_fallidos"
-                                    android:layout_weight="1"
-                                    android:textColor="@color/Rojo_1"
-                                    android:gravity="left"
-                                    android:textStyle="bold" />
-                            </LinearLayout>
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="fill_parent"
-                        android:layout_weight="4"
-                        android:weightSum="1"
-                        android:gravity="center"
-                        android:layout_marginLeft="-20dp">
-
-                        <ImageView
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:id="@+id/static_imageshoot"
-                            android:src="@drawable/shootimg" />
-                    </LinearLayout>
+                        android:textColor="@color/Verde_oscuro_1"
+                        android:textStyle="bold" />
                 </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/layout_bg_standard">
 
                 <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:paddingTop="20dp"
+                    android:layout_marginBottom="10dp">
 
                     <LinearLayout
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:paddingLeft="10dp"
-                        android:paddingTop="5dp"
-                        android:paddingBottom="5dp">
+                        android:background="@drawable/layout_bg_standard">
 
                         <LinearLayout
-                            android:orientation="vertical"
+                            android:orientation="horizontal"
                             android:layout_width="match_parent"
-                            android:layout_height="fill_parent"
-                            android:layout_weight="1">
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:paddingTop="5dp"
+                            android:paddingBottom="5dp"
+                            android:paddingLeft="10dp">
 
                             <LinearLayout
-                                android:orientation="horizontal"
+                                android:orientation="vertical"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1">
 
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:textAppearance="?android:attr/textAppearanceMedium"
-                                    android:text="@string/Rebounds"
-                                    android:id="@+id/static_rebotes"
-                                    android:layout_weight="1"
-                                    android:textColor="@color/Gris_Negro" />
+                                <LinearLayout
+                                    android:orientation="horizontal"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="fill_parent">
 
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:textAppearance="?android:attr/textAppearanceMedium"
-                                    android:text="5"
-                                    android:id="@+id/tv_rebotes"
-                                    android:paddingLeft="5dp"
-                                    android:layout_weight="1"
-                                    android:gravity="left"
-                                    android:textColor="@color/Celeste_Letras"
-                                    android:textStyle="bold" />
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:textAppearance="?android:attr/textAppearanceMedium"
+                                        android:text="@string/Puntos"
+                                        android:id="@+id/static_puntos"
+                                        android:layout_weight="1"
+                                        android:textColor="@color/Gris_Negro" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:textAppearance="?android:attr/textAppearanceMedium"
+                                        android:text="18"
+                                        android:id="@+id/tv_puntos"
+                                        android:layout_weight="1"
+                                        android:textColor="@color/VerdeClaro_1"
+                                        android:textStyle="bold" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:orientation="horizontal"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="fill_parent">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:textAppearance="?android:attr/textAppearanceMedium"
+                                        android:text="@string/Fules"
+                                        android:id="@+id/static_fules"
+                                        android:layout_weight="1"
+                                        android:textColor="@color/Gris_Negro" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:textAppearance="?android:attr/textAppearanceMedium"
+                                        android:text="3"
+                                        android:id="@+id/tv_foules"
+                                        android:layout_weight="1"
+                                        android:textColor="@color/Rojo_1"
+                                        android:textStyle="bold" />
+                                </LinearLayout>
                             </LinearLayout>
 
                             <LinearLayout
-                                android:orientation="horizontal"
+                                android:orientation="vertical"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"></LinearLayout>
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1">
+
+                                <LinearLayout
+                                    android:orientation="horizontal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="fill_parent"
+                                    android:layout_weight="1">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:textAppearance="?android:attr/textAppearanceMedium"
+                                        android:text="@string/Asistencias"
+                                        android:id="@+id/static_asist"
+                                        android:layout_weight="1"
+                                        android:textColor="@color/Gris_Negro" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:textAppearance="?android:attr/textAppearanceMedium"
+                                        android:text="8"
+                                        android:id="@+id/tv_asist"
+                                        android:gravity="center|left"
+                                        android:layout_weight="1"
+                                        android:textColor="@color/Celeste_botones" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:orientation="horizontal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="fill_parent"
+                                    android:layout_weight="1">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:textAppearance="?android:attr/textAppearanceMedium"
+                                        android:text="@string/Robos"
+                                        android:id="@+id/static_robos"
+                                        android:layout_weight="1"
+                                        android:textColor="@color/Gris_Negro" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:textAppearance="?android:attr/textAppearanceMedium"
+                                        android:text="5"
+                                        android:id="@+id/tv_robos"
+                                        android:gravity="center|left"
+                                        android:layout_weight="1"
+                                        android:textColor="@color/Celeste_Letras"
+                                        android:textStyle="bold" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:orientation="horizontal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="fill_parent"
+                                    android:layout_weight="1">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:textAppearance="?android:attr/textAppearanceMedium"
+                                        android:text="@string/Tapas"
+                                        android:id="@+id/static_tapas"
+                                        android:textColor="@color/Gris_2_score"
+                                        android:layout_weight="1" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:textAppearance="?android:attr/textAppearanceMedium"
+                                        android:text="3"
+                                        android:id="@+id/tv_tapas"
+                                        android:textColor="@color/Celeste_Letras"
+                                        android:layout_weight="1"
+                                        android:textStyle="bold" />
+                                </LinearLayout>
+                            </LinearLayout>
                         </LinearLayout>
 
                         <LinearLayout
-                            android:orientation="vertical"
+                            android:orientation="horizontal"
                             android:layout_width="match_parent"
-                            android:layout_height="fill_parent"
-                            android:layout_weight="1">
+                            android:layout_height="match_parent"
+                            android:layout_weight="4">
 
-                            <LinearLayout
-                                android:orientation="horizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:textAppearance="?android:attr/textAppearanceMedium"
-                                    android:text="@string/Def"
-                                    android:id="@+id/static_def"
-                                    android:layout_weight="1"
-                                    android:textColor="@color/Gris_Negro" />
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:textAppearance="?android:attr/textAppearanceMedium"
-                                    android:text="3"
-                                    android:id="@+id/tv_reb_def"
-                                    android:layout_weight="1"
-                                    android:textColor="@color/VerdeClaro_1"
-                                    android:textStyle="bold" />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:orientation="horizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:textAppearance="?android:attr/textAppearanceMedium"
-                                    android:text="@string/Ofen"
-                                    android:id="@+id/static_ofen"
-                                    android:layout_weight="1"
-                                    android:textColor="@color/Gris_Negro" />
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:textAppearance="?android:attr/textAppearanceMedium"
-                                    android:text="2"
-                                    android:id="@+id/tv_reb_ofen"
-                                    android:layout_weight="1"
-                                    android:textColor="@color/Celeste_botones"
-                                    android:textStyle="bold" />
-                            </LinearLayout>
                         </LinearLayout>
+
                     </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp">
 
                     <LinearLayout
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="4"
-                        android:gravity="center"
-                        android:layout_marginLeft="-20dp">
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/layout_bg_standard">
 
-                        <ImageView
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:id="@+id/tv_foules"
-                            android:src="@drawable/reboundimg" />
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="1"
+                            android:paddingLeft="10dp"
+                            android:paddingTop="5dp"
+                            android:paddingBottom="5dp">
+
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1">
+
+                                <LinearLayout
+                                    android:orientation="horizontal"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="fill_parent">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:textAppearance="?android:attr/textAppearanceMedium"
+                                        android:text="@string/Lanzamientos"
+                                        android:id="@+id/static_lanz"
+                                        android:layout_weight="1"
+                                        android:textColor="@color/Gris_Negro" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:textAppearance="?android:attr/textAppearanceMedium"
+                                        android:text="15"
+                                        android:id="@+id/tv_lanz"
+                                        android:layout_weight="1"
+                                        android:textColor="@color/Celeste_Letras"
+                                        android:textStyle="bold" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:orientation="horizontal"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="fill_parent">
+
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1">
+
+                                <LinearLayout
+                                    android:orientation="horizontal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:textAppearance="?android:attr/textAppearanceMedium"
+                                        android:text="@string/Acertados"
+                                        android:id="@+id/static_acert"
+                                        android:layout_weight="1"
+                                        android:textColor="@color/Gris_Negro" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:textAppearance="?android:attr/textAppearanceMedium"
+                                        android:text="10"
+                                        android:id="@+id/tv_acert"
+                                        android:layout_weight="1"
+                                        android:textColor="@color/VerdeClaro_1"
+                                        android:gravity="left"
+                                        android:textStyle="bold" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:orientation="horizontal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:textAppearance="?android:attr/textAppearanceMedium"
+                                        android:text="@string/Fallidos"
+                                        android:id="@+id/static_fallidos"
+                                        android:layout_weight="1"
+                                        android:textColor="@color/Gris_Negro" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:textAppearance="?android:attr/textAppearanceMedium"
+                                        android:text="5"
+                                        android:id="@+id/tv_fallidos"
+                                        android:layout_weight="1"
+                                        android:textColor="@color/Rojo_1"
+                                        android:gravity="left"
+                                        android:textStyle="bold" />
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="4"
+                            android:weightSum="1"
+                            android:gravity="center"
+                            android:layout_marginLeft="-20dp">
+
+                            <ImageView
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:id="@+id/static_imageshoot"
+                                android:src="@drawable/shootimg" />
+                        </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/layout_bg_standard">
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:paddingLeft="10dp"
+                            android:paddingTop="5dp"
+                            android:paddingBottom="5dp">
+
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:layout_width="match_parent"
+                                android:layout_height="fill_parent"
+                                android:layout_weight="1">
+
+                                <LinearLayout
+                                    android:orientation="horizontal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:textAppearance="?android:attr/textAppearanceMedium"
+                                        android:text="@string/Rebounds"
+                                        android:id="@+id/static_rebotes"
+                                        android:layout_weight="1"
+                                        android:textColor="@color/Gris_Negro" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:textAppearance="?android:attr/textAppearanceMedium"
+                                        android:text="5"
+                                        android:id="@+id/tv_rebotes"
+                                        android:paddingLeft="5dp"
+                                        android:layout_weight="1"
+                                        android:gravity="left"
+                                        android:textColor="@color/Celeste_Letras"
+                                        android:textStyle="bold" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:orientation="horizontal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"></LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:layout_width="match_parent"
+                                android:layout_height="fill_parent"
+                                android:layout_weight="1">
+
+                                <LinearLayout
+                                    android:orientation="horizontal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:textAppearance="?android:attr/textAppearanceMedium"
+                                        android:text="@string/Def"
+                                        android:id="@+id/static_def"
+                                        android:layout_weight="1"
+                                        android:textColor="@color/Gris_Negro" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:textAppearance="?android:attr/textAppearanceMedium"
+                                        android:text="3"
+                                        android:id="@+id/tv_reb_def"
+                                        android:layout_weight="1"
+                                        android:textColor="@color/VerdeClaro_1"
+                                        android:textStyle="bold" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:orientation="horizontal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:textAppearance="?android:attr/textAppearanceMedium"
+                                        android:text="@string/Ofen"
+                                        android:id="@+id/static_ofen"
+                                        android:layout_weight="1"
+                                        android:textColor="@color/Gris_Negro" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:textAppearance="?android:attr/textAppearanceMedium"
+                                        android:text="2"
+                                        android:id="@+id/tv_reb_ofen"
+                                        android:layout_weight="1"
+                                        android:textColor="@color/Celeste_botones"
+                                        android:textStyle="bold" />
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="4"
+                            android:gravity="center"
+                            android:layout_marginLeft="-20dp">
+
+                            <ImageView
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:id="@+id/img_foules"
+                                android:src="@drawable/reboundimg" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/layout_bg_standard"
+                    android:paddingRight="5dp"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp">
+
+                    <Button
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/b_back"
+                        android:src="@android:drawable/ic_media_rew"
+                        android:text="@string/Atras"
+                        style="@style/ButtonOrangeStyle1" />
+                </LinearLayout>
+
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/layout_bg_standard"
-                android:paddingRight="5dp"
-                android:paddingLeft="5dp">
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="right">
 
-                <ImageButton
+                <ImageView
                     android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/b_back"
-                    android:src="@android:drawable/ic_media_rew" />
+                    android:layout_height="100dp"
+                    android:id="@+id/iv_photoplayer"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="right"
+                    android:padding="1dp"
+                    android:background="@color/Gris_Negro"
+                    android:visibility="gone"
+                    android:src="@drawable/no_player_image" />
+
+                <ProgressBar
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/load_circle"
+                    android:background="@color/Gris_Negro" />
             </LinearLayout>
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="right">
-
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:id="@+id/iv_photoplayer"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:layout_gravity="right"
-                android:padding="1dp"
-                android:background="@color/Gris_Negro"
-                android:visibility="gone"
-                android:src="@drawable/no_player_image" />
-
-            <ProgressBar
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:id="@+id/load_circle"
-                android:background="@color/Gris_Negro" />
-        </LinearLayout>
-
-    </RelativeLayout>
+        </RelativeLayout>
+    </ScrollView>
 
 </LinearLayout>

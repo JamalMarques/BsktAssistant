@@ -60,6 +60,8 @@ public class NewUserAct extends BaseActivity implements View.OnClickListener{
                     Intent intent = new Intent(NewUserAct.this, SelecTeamAct.class);
 
                     startActivity(intent);
+                }else{
+                    Toast.makeText(getApplicationContext(), R.string.NoEqualsPassword, Toast.LENGTH_SHORT).show();
                 }
             }
             else
@@ -67,10 +69,11 @@ public class NewUserAct extends BaseActivity implements View.OnClickListener{
         }
         else
         {
-            if(view.getId() == ibback.getId()){
+            /*if(view.getId() == ibback.getId()){
                 Intent intent = new Intent(NewUserAct.this, MainActivity.class);
                 startActivity(intent);
-            }
+            }*/
+            onBackPressed();
         }
     }
 }
