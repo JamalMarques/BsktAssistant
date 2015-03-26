@@ -77,8 +77,9 @@ public class Constants {
     public static final String FRAGMENT_DIALOG_ACTION = "FRAGMENT_DIALOG_ACTION";
     public static final String FRAGMENT_DIALOG_GAME_INFORMATION = "FRAGMENT_DIALOG_GAME_INFORMATION";
     public static final String FRAGMENT_DIALOG_FINAL_STATISTICS = "FRAGMENT_DIALOG_FINAL_STATISTICS";
-        //ACTIONS
-            public static final String FRAGMENT_DIALOG_ACTION_ADD_ASSISTANCE = "ADD_ASSISTANCE";
+    //ACTIONS
+    public static final String FRAGMENT_DIALOG_ACTION_ADD_ASSISTANCE = "ADD_ASSISTANCE";
 
+    public static final String WEARABLE_DATA_PATH_1 = "/wearable_data";
 
 }
