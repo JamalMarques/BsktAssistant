@@ -77,9 +77,9 @@ public class FragDialog_GameInformation extends DialogFragment implements View.O
 
     @Override
     public void onDismiss(DialogInterface dialog) {
-        if(etOpponentName.getText().length() < 3) {
+        /*if(etOpponentName.getText().length() < 3) {
             Toast.makeText(getActivity(), getString(R.string.CompleteFields), Toast.LENGTH_SHORT).show();
             //show it again
-        }
+        }*/
     }
 }

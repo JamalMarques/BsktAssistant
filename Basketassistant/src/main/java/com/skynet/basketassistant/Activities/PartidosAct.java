@@ -1,5 +1,6 @@
 package com.skynet.basketassistant.Activities;
 
+import com.google.gson.Gson;
 import com.skynet.basketassistant.Datos.DBEquipos;
 import com.skynet.basketassistant.Datos.DBPartidos;
 import com.skynet.basketassistant.Fragments.Frag_exppart;
@@ -29,8 +30,7 @@ import android.widget.ImageButton;
 
 public class PartidosAct extends BaseActivity implements View.OnClickListener,Frag_listapartidos.Callback {
 
-    private Bundle bun_equip;   //bun_usr.getString("User") ---> nombre del usuario! //bun_usr.getString("Nom_Equip") ---> nombre equipo seleccionado
-    private Equipo equipo;
+    private Equipo teamSelected;
 
     private ImageButton b_back;
 
@@ -42,20 +42,16 @@ public class PartidosAct extends BaseActivity implements View.OnClickListener,Fr
        // requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_partidos);
 
-        bun_equip = getIntent().getExtras();   //solo lo uso para bun_usr.getString("Nom_Equip") ---> nombre equipo seleccionado
-        //bun_equip.getString("Nom_Equip") NOMBRE DEL EQUIPO QUE SE LE PASO A LA ACTIVITY
+        //bun_equip = getIntent().getExtras();   //solo lo uso para bun_usr.getString("Nom_Equip") ---> nombre equipo seleccionado
 
-        /*DBEquipos dbe = new DBEquipos(this);
-        dbe.Modolectura();
-        equipo = dbe.DameEquipo(bun_equip.getString("Nom_Equip"));*/
+        String teamSelectedJSON = getIntent().getExtras().getString(Constants.TEAM_JSON);
+        Gson gson = new Gson();
+        teamSelected = gson.fromJson(teamSelectedJSON,Equipo.class);
 
-        LoadListFragment(bun_equip.getString(Constants.TEAM_NAME));
+        LoadListFragment(teamSelected.getNombre());
 
         b_back = (ImageButton)findViewById(R.id.bback);
-        //b_eliminar = (Button)findViewById(R.id.b_eliminar);
         b_back.setOnClickListener(this);
-        //b_eliminar.setOnClickListener(this);
-
 
     }
 
@@ -65,21 +61,14 @@ public class PartidosAct extends BaseActivity implements View.OnClickListener,Fr
 
         if(view.getId() == b_back.getId()){
             finish();
-        }/*else
-            if( view.getId() == b_eliminar.getId() ){
-                DBPartidos dbp = new DBPartidos(this);
-                dbp.Modoescritura();
-                //ACA REALIZO LA ELIMINACION EN CASCADA.
-                dbp.Cerrar();
-            }*/
+        }
     }
 
 
     @Override
     public void onSeleccionItemPartido(Partido part) {
         Last_part_pressed = part;
-        //Frag_exppart frag = new Frag_exppart(part);
-        Frag_exppart frag = Frag_exppart.getInstance(part.getId());
+        Frag_exppart frag = Frag_exppart.getInstance(part.getId(),teamSelected.getId());
         CambiarFragmentLayout2(frag);
     }
 
@@ -97,7 +86,6 @@ public class PartidosAct extends BaseActivity implements View.OnClickListener,Fr
 
     public void LoadListFragment(String nom_equip){
         //cargo el fragment de la lista de partidos
-        //Frag_listapartidos frag_l_partidos = new Frag_listapartidos(equipo);
         Frag_listapartidos frag_l_partidos = Frag_listapartidos.getInstance(nom_equip);
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         ft.replace(R.id.framelayout_listpartidos,frag_l_partidos);

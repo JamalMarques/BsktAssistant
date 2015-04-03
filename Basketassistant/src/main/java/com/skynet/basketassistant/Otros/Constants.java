@@ -10,6 +10,7 @@ public class Constants {
     public static final String DATE_FORMAT = "yyyy-MM-dd";
 
     public static final String TEAM_NAME = "TEAM_NAME";
+    public static final String TEAM_JSON = "TEAM_JSON";
     public static final String TEAM_ID = "TEAM_ID";
     public static final String GAME_ID = "GAME_ID";
     public static final String PLAYER_ID = "PLAYER_ID";

@@ -1,13 +1,11 @@
 package com.skynet.basketassistant.Adapters;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.skynet.basketassistant.Modelo.Partido;
 import com.skynet.basketassistant.R;
@@ -65,12 +63,17 @@ public class ItemAdapterPartidos extends BaseAdapter {
         tv_fecha.setText(part.getFecha().toString());
         tv_idpart.setText(String.valueOf(part.getId()));
 
-        if( part.Victoria() ){
+        if( part.GameResult() == Partido.VICTORY ){
             tv_result.setTextColor(context.getResources().getColor(R.color.VerdeClaro_1));
             tv_result.setText(context.getString(R.string.Victory));
         }else{
-            tv_result.setTextColor(context.getResources().getColor(R.color.Rojo_1));
-            tv_result.setText(context.getString(R.string.Defeat));
+            if( part.GameResult() == Partido.DEFEAT) {
+                tv_result.setTextColor(context.getResources().getColor(R.color.Rojo_1));
+                tv_result.setText(context.getString(R.string.Defeat));
+            }else{
+                tv_result.setTextColor(context.getResources().getColor(R.color.OrangeButton1));
+                tv_result.setText(context.getString(R.string.Draw));
+            }
         }
 
 

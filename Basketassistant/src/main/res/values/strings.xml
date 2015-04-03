@@ -98,7 +98,7 @@
     <string name="FoulsMarker">F</string>
     <string name="Quarter_control_widget">Cuarto</string>
     <string name="QuarterExtension">EXT</string>
-    <string name="FinishGame">Finalizar</string>
+    <string name="FinishGame">F</string>
     <string name="Yes">Si</string>
     <string name="No">No</string>
     <string name="Select_player">Seleccione Jugador</string>
@@ -107,6 +107,7 @@
     <string name="Assistances">Asist.</string>
     <string name="Victory">Victoria</string>
     <string name="Defeat">Derrota</string>
+    <string name="Draw">Empate</string>
 
 
     <!-- Messages-->
@@ -143,6 +144,12 @@
     <string name="BasketballAssistantTittle">Basketball Assistant</string>
     <string name="LogIn">Ingresar</string>
     <string name="SingIn">Registrarse</string>
+
+    <string name="simple_shoot_btn">Simple</string>
+    <string name="double_shoot_btn">Doble</string>
+    <string name="triple_shoot_btn">Triple</string>
+    <string name="OpponentsPointsInQuarterResume">Op.P</string>
+    <string name="Team">Equipo</string>
 
 
 </resources>

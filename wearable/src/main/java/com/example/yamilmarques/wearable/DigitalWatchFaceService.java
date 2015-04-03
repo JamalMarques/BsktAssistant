@@ -432,7 +432,7 @@ public class DigitalWatchFaceService extends CanvasWatchFaceService {
             if(isInAmbientMode())
                 inAmbientMode();
             else
-                drawSeconds(canvas, mTime);
+               // drawSeconds(canvas, mTime);
 
 
             drawMoto360Line(canvas,true);

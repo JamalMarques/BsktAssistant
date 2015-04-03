@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.skynet.basketassistant.Datos.DBAsistencias;
@@ -65,6 +66,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
     private MainMarkerWidget mainMarkerWidget;
     private QuarterControlWidget quarterControlWidget;
     private Button finishButton;
+    private ImageButton finalizeButton;
 
     //Statistics
     private List<Lanzamiento> shootList = new ArrayList<Lanzamiento>();
@@ -123,8 +125,10 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
         simplePointWidget = (ShootButtonWidget)findViewById(R.id.simplePointWidget);
         doublePointWidget = (ShootButtonWidget)findViewById(R.id.doublePointWidget);
         triplePointWidget = (ShootButtonWidget)findViewById(R.id.triplePointWidget);
+        finalizeButton = (ImageButton)findViewById(R.id.finalizeButton);
         finishButton = (Button)findViewById(R.id.finishButton);
         finishButton.setOnClickListener(this);
+        finalizeButton.setOnClickListener(this);
 
         boxOfPlayersW.setOnPlayersWidgetsClickListener(this);
 
@@ -135,9 +139,9 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
         simplePointWidget.getViewListener().setOnLongClickListener(this);
         doublePointWidget.getViewListener().setOnLongClickListener(this);
         triplePointWidget.getViewListener().setOnLongClickListener(this);
-        simplePointWidget.setButtonProperties(1, BitmapFactory.decodeResource(Resources.getSystem(), R.drawable.ic_launcher));
-        doublePointWidget.setButtonProperties(2, BitmapFactory.decodeResource(Resources.getSystem(), R.drawable.ic_launcher));
-        triplePointWidget.setButtonProperties(3, BitmapFactory.decodeResource(Resources.getSystem(), R.drawable.ic_launcher));
+        simplePointWidget.setButtonProperties(Constants.SIMPLE_SHOOT_VALUE);
+        doublePointWidget.setButtonProperties(Constants.DOUBLE_SHOOT_VALUE);
+        triplePointWidget.setButtonProperties(Constants.TRIPLE_SHOOT_VALUE);
 
         //Aditional Buttons
         reboundButton.getViewListener().setOnClickListener(this);
@@ -208,28 +212,30 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
                                    }else
                                         if( view == finishButton ){
                                             finishGame();
-                                        }else
-                                           { //Search for player touched!
-                                               for (int i=0;i < boxOfPlayersW.getListPlayerWidget().size(); i++){
-                                                   if( view == boxOfPlayersW.getListPlayerWidget().get(i).getViewListener()){ //Player has been touched!
-                                                       if(boxOfPlayersW.getListPlayerWidget().get(i) != playerTouched ) {
-                                                           if (isPlayerSelected()) {
-                                                               playerTouched.statePressed(false);
-                                                               playerTouched = null;
-                                                           }
-                                                           playerTouched = boxOfPlayersW.getListPlayerWidget().get(i);
-                                                           playerTouched.statePressed(true);
-                                                           playerStatisticsWidget.changePlayer(playerTouched.getPlayer(), shootList, reboundList, stealList, blockList, foulList, assistancesList);
-                                                       }else {
-                                                           playerTouched.statePressed(false);
-                                                           playerTouched = null;
-                                                           playerStatisticsWidget.reset();
-                                                       }
-                                                       i = boxOfPlayersW.getListPlayerWidget().size()-1; //Break for!
-                                                   }
-                                               }
-                                           }
-
+                                        }else {
+                                            if (view == finalizeButton) {
+                                                finalizeGame();
+                                            } else { //Search for player touched!
+                                                for (int i = 0; i < boxOfPlayersW.getListPlayerWidget().size(); i++) {
+                                                    if (view == boxOfPlayersW.getListPlayerWidget().get(i).getViewListener()) { //Player has been touched!
+                                                        if (boxOfPlayersW.getListPlayerWidget().get(i) != playerTouched) {
+                                                            if (isPlayerSelected()) {
+                                                                playerTouched.statePressed(false);
+                                                                playerTouched = null;
+                                                            }
+                                                            playerTouched = boxOfPlayersW.getListPlayerWidget().get(i);
+                                                            playerTouched.statePressed(true);
+                                                            playerStatisticsWidget.changePlayer(playerTouched.getPlayer(), shootList, reboundList, stealList, blockList, foulList, assistancesList);
+                                                        } else {
+                                                            playerTouched.statePressed(false);
+                                                            playerTouched = null;
+                                                            playerStatisticsWidget.reset();
+                                                        }
+                                                        i = boxOfPlayersW.getListPlayerWidget().size() - 1; //Break for!
+                                                    }
+                                                }
+                                            }
+                                        }
     }
 
     @Override
@@ -657,9 +663,17 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
 
     }
 
+    private void finalizeGame(){
+        DBPartidos dbp = new DBPartidos(this);
+        dbp.Modoescritura();
+        dbp.eliminar(game.getId(),DBPartidos.CN_ID);
+        dbp.Cerrar();
+        onBackPressed();
+    }
+
     private void updateGame(){
         int[] pointsOfQuarterE1 = new int[6];
-        int totalPointsE1=0;
+        int totalPointsE1=0,totalPointsE2=0;
 
         for (int i=0; i < shootList.size(); i++){  //Updating points of the quarters
             Lanzamiento shoot = shootList.get(i);
@@ -672,19 +686,21 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
         //Setting points E1
         game.setPunt_q1_e1(pointsOfQuarterE1[1]);
         game.setPunt_q2_e1(pointsOfQuarterE1[2]);
-        game.setPunt_q2_e1(pointsOfQuarterE1[3]);
-        game.setPunt_q2_e1(pointsOfQuarterE1[4]);
+        game.setPunt_q3_e1(pointsOfQuarterE1[3]);
+        game.setPunt_q4_e1(pointsOfQuarterE1[4]);
         game.setPunt_ext_e1(pointsOfQuarterE1[5]);
-        //Setting points E2 TODO (Opponent's points of quarter )
-        //...
-        game.setPunt_q1_e2(0);
-        game.setPunt_q2_e2(0);
-        game.setPunt_q2_e2(0);
-        game.setPunt_q2_e2(0);
-        game.setPunt_ext_e2(0);
+        //Setting points
+        game.setPunt_q1_e2(quarterControlWidget.getOpponentQuarterList()[1]);
+        game.setPunt_q2_e2(quarterControlWidget.getOpponentQuarterList()[2]);
+        game.setPunt_q3_e2(quarterControlWidget.getOpponentQuarterList()[3]);
+        game.setPunt_q4_e2(quarterControlWidget.getOpponentQuarterList()[4]);
+        game.setPunt_ext_e2(quarterControlWidget.getOpponentQuarterList()[5]);
         //Setting global points
         game.setPuntos_E1(totalPointsE1);
-        game.setPuntos_E2(0); //TODO solve this! (Opponent's points of quarter)
+        for (int i=1 ; i < 6; i++){
+            totalPointsE2 += quarterControlWidget.getOpponentQuarterList()[i];
+        }
+        game.setPuntos_E2(totalPointsE2);
 
     }
 

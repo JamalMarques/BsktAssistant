@@ -8,10 +8,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <ImageButton
+        <Button
             android:layout_width="@dimen/width_image_shoot"
             android:layout_height="@dimen/height_image_shoot"
-            android:id="@+id/iButton" />
+            android:id="@+id/iButton"
+            style="@style/ButtonLightBlueStyle1"
+            android:maxLines="2"
+            android:gravity="center"
+            android:textSize="@dimen/SizeTextShootButton" />
 
     </LinearLayout>
 </RelativeLayout>

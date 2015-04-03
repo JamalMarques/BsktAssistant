@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.skynet.basketassistant.Activities.GameActivity;
 import com.skynet.basketassistant.Datos.DBCiudades;
 import com.skynet.basketassistant.Datos.DBEquipos;
@@ -113,9 +114,11 @@ public class Frag_expequip extends Fragment implements View.OnClickListener{
         if( view == b_partidos ){  //presiona el boton de "PARTIDOS"
 
             Intent intent = new Intent(getActivity(), PartidosAct.class);
-            Bundle bun_equip = new Bundle();
-            bun_equip.putString(Constants.TEAM_NAME, equipo.getNombre());
-            intent.putExtras(bun_equip);
+            Bundle bun = new Bundle();
+            Gson gson = new Gson();
+            //bun.putString(Constants.TEAM_NAME, equipo.getNombre());
+            bun.putString(Constants.TEAM_JSON, gson.toJson(equipo));
+            intent.putExtras(bun);
             startActivity(intent);
         }else
             if( view == b_jugadores){ //presiona el boton "JUGADORES"

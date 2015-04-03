@@ -41,8 +41,6 @@ public class Frag_exp_jug_part extends Fragment implements View.OnClickListener{
 
     private String ACERTADO = "acertado";
     private String FALLIDO = "fallido";
-    private String OFENSIVO = "Ofensivo";
-    private String DEFENSIVO = "Defensivo";
 
     private Jugador jugador;
     private Partido partido;
@@ -54,6 +52,7 @@ public class Frag_exp_jug_part extends Fragment implements View.OnClickListener{
                     tv_rebotes,tv_reb_def,tv_reb_ofen;
 
     private Button b_back;
+    private int idTeam;
 
     /*public Frag_exp_jug_part(Jugador jug,Partido part){
         jugador = jug;
@@ -62,11 +61,12 @@ public class Frag_exp_jug_part extends Fragment implements View.OnClickListener{
 
     public Frag_exp_jug_part(){/*Empty constructor*/}
 
-    public static Frag_exp_jug_part getInstance(int id_jug,int id_part){
+    public static Frag_exp_jug_part getInstance(int id_jug,int id_part,int idTeam){
         Frag_exp_jug_part fejp = new Frag_exp_jug_part();
         Bundle bun = new Bundle();
         bun.putInt(Constants.PLAYER_ID,id_jug);
         bun.putInt(Constants.GAME_ID,id_part);
+        bun.putInt(Constants.TEAM_ID,idTeam);
         fejp.setArguments(bun);
         return fejp;
     }
@@ -93,6 +93,8 @@ public class Frag_exp_jug_part extends Fragment implements View.OnClickListener{
 
         new CargaImagen_on_BG().execute();
 
+        idTeam = getArguments().getInt(Constants.TEAM_ID);
+
         tv_fecha = (TextView)view.findViewById(R.id.tv_fecha);
         tv_puntos = (TextView)view.findViewById(R.id.tv_puntos);
         tv_foules = (TextView)view.findViewById(R.id.tv_foules);
@@ -116,8 +118,8 @@ public class Frag_exp_jug_part extends Fragment implements View.OnClickListener{
         tv_acert.setText(String.valueOf(CantLanz_acert_fall(jugador.getId(),partido.getId(),ACERTADO)));
         tv_fallidos.setText(String.valueOf(CantLanz_acert_fall(jugador.getId(),partido.getId(),FALLIDO)));
         tv_rebotes.setText(String.valueOf(CantReb(jugador.getId(),partido.getId())));
-        tv_reb_ofen.setText(String.valueOf(CantReb_Ofen_Defen(jugador.getId(),partido.getId(),OFENSIVO)));
-        tv_reb_def.setText(String.valueOf(CantReb_Ofen_Defen(jugador.getId(),partido.getId(),DEFENSIVO)));
+        tv_reb_ofen.setText(String.valueOf(CantReb_Ofen_Defen(jugador.getId(),partido.getId(),Constants.OFENSIVE)));
+        tv_reb_def.setText(String.valueOf(CantReb_Ofen_Defen(jugador.getId(),partido.getId(),Constants.DEFENSIVE)));
 
         return view;
     }
@@ -254,7 +256,7 @@ public class Frag_exp_jug_part extends Fragment implements View.OnClickListener{
     public void onClick(View view) {
         if( view.getId() == b_back.getId()){  //if i press back!
             //Frag_exppart frag = new Frag_exppart(partido);
-            Frag_exppart frag = Frag_exppart.getInstance(partido.getId());
+            Frag_exppart frag = Frag_exppart.getInstance(partido.getId(),idTeam);
             ((PartidosAct)getActivity()).CambiarFragmentLayout2(frag);
         }
     }

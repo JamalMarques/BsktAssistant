@@ -5,6 +5,10 @@ package com.skynet.basketassistant.Modelo;
  */
 public class Partido {
 
+    public static final int VICTORY = 1;
+    public static final int DEFEAT = -1;
+    public static final int DRAW = 0;
+
     private int Id;
     private String Fecha;
     private String Cancha;
@@ -46,12 +50,16 @@ public class Partido {
     }
 
 
-    public boolean Victoria(){
-
-        if(Puntos_E1 > Puntos_E2)
-            return  true;
-        else
-            return false;
+    public int GameResult(){
+        if(Puntos_E1 > Puntos_E2) {
+            return VICTORY;
+        }else{
+            if(Puntos_E1 < Puntos_E2){
+                return DEFEAT;
+            }else{
+                return DRAW;
+            }
+        }
     }
 
 

@@ -5,9 +5,11 @@ import android.graphics.Bitmap;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 
+import com.skynet.basketassistant.Otros.Constants;
 import com.skynet.basketassistant.R;
 
 /**
@@ -16,18 +18,31 @@ import com.skynet.basketassistant.R;
 public class ShootButtonWidget extends RelativeLayout {
 
     private View rootView;
-    private ImageButton iButton;
+    private Button iButton;
     private int shootvalue;
 
     public ShootButtonWidget(Context context, AttributeSet attrs) {
         super(context, attrs);
         setRootView(LayoutInflater.from(context).inflate(R.layout.widget_shoot_button,this));
-        iButton = (ImageButton)getRootView().findViewById(R.id.iButton);
+        iButton = (Button)getRootView().findViewById(R.id.iButton);
     }
 
-    public void setButtonProperties(int shootvalue,Bitmap imagepoint){
+    public void setButtonProperties(int shootvalue){
         this.shootvalue = shootvalue;
-        iButton.setImageBitmap(imagepoint);
+        switch (shootvalue){
+            case Constants.SIMPLE_SHOOT_VALUE:
+                    iButton.setText(getContext().getString(R.string.simple_shoot_btn));
+                break;
+            case Constants.DOUBLE_SHOOT_VALUE:
+                    iButton.setText(getContext().getString(R.string.double_shoot_btn));
+                break;
+            case Constants.TRIPLE_SHOOT_VALUE:
+                    iButton.setText(getContext().getString(R.string.triple_shoot_btn));
+                break;
+            default:
+                    iButton.setText("BAD CONFIGURATION");
+                break;
+        }
     }
 
     @Override
@@ -39,7 +54,7 @@ public class ShootButtonWidget extends RelativeLayout {
         this.rootView = rootView;
     }
 
-    public ImageButton getViewListener() {
+    public Button getViewListener() {
         return iButton;
     }
 

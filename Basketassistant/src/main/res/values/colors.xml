@@ -7,6 +7,7 @@
     <color name="VerdeClaro_1">#52e34F</color>
     <color name="Rojo_1">#ff5a40</color>
     <color name="Gris_1">#e4e4e4</color>
+    <color name="Gris_2">#fff8f8f8</color>
     <color name="Gris_2_score">#646464</color>
     <color name="CasiBlanco_background">#fbfbfb</color>
     <color name="Blanco">#FFFFFF</color>
@@ -26,6 +27,7 @@
     <color name="Border_pressed_button_player">#ff5288ff</color>
     <color name="OrangeButton1">#fff98704</color>
     <color name="OrangeButton1Pressed">#fff98704</color>
+    <color name="Purple_1">#ffc114a3</color>
 
     <!--Box of Points-->
     <color name="Border_box_points">#8eb8de</color>

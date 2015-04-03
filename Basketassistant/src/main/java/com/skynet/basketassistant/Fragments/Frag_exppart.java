@@ -37,6 +37,7 @@ public class Frag_exppart extends Fragment implements AdapterView.OnItemClickLis
     private ImageView iw_result;
     private HorizontalListView h_list;
     private DBJugadores dbj;
+    private int teamId;
 
     private ProgressBar load_circle;
 
@@ -47,10 +48,11 @@ public class Frag_exppart extends Fragment implements AdapterView.OnItemClickLis
 
     public Frag_exppart(){/*Empty constructor*/}
 
-    public static Frag_exppart getInstance(int id_partido){
+    public static Frag_exppart getInstance(int id_partido,int id_team){
         Frag_exppart fexp = new Frag_exppart();
         Bundle bun = new Bundle();
         bun.putInt(Constants.GAME_ID,id_partido);
+        bun.putInt(Constants.TEAM_ID,id_team);
         fexp.setArguments(bun);
         return fexp;
     }
@@ -63,10 +65,14 @@ public class Frag_exppart extends Fragment implements AdapterView.OnItemClickLis
         view = inflater.inflate(R.layout.frag_exppartid,container,false);
 
         //Bundle
-        DBPartidos dbp = new DBPartidos(getActivity());
-        dbp.Modolectura();
-        partido = dbp.DamePartido(getArguments().getInt(Constants.GAME_ID));
-        dbp.Cerrar();
+        if(getArguments() != null) {
+            DBPartidos dbp = new DBPartidos(getActivity());
+            dbp.Modolectura();
+            partido = dbp.DamePartido(getArguments().getInt(Constants.GAME_ID));
+            dbp.Cerrar();
+
+            teamId = getArguments().getInt(Constants.TEAM_ID);
+        }
 
         if( partido != null ){
             CargaBasica(view);
@@ -143,8 +149,7 @@ public class Frag_exppart extends Fragment implements AdapterView.OnItemClickLis
         Jugador jug = dbj.DameJugador(id_jug);
         dbj.Cerrar();
 
-       // Frag_exp_jug_part frag = new Frag_exp_jug_part(jug,partido);
-        Frag_exp_jug_part frag = Frag_exp_jug_part.getInstance(id_jug,partido.getId());
+        Frag_exp_jug_part frag = Frag_exp_jug_part.getInstance(id_jug,partido.getId(),teamId);
         ((PartidosAct)getActivity()).CambiarFragmentLayout2(frag);
     }
 
@@ -159,7 +164,7 @@ public class Frag_exppart extends Fragment implements AdapterView.OnItemClickLis
 
         @Override
         protected Void doInBackground(Void... voids) {
-            adapt = new ItemAdapterJugadores(getActivity().getApplicationContext(), dbj.DameListaJugadores(),false);
+            adapt = new ItemAdapterJugadores(getActivity().getApplicationContext(), dbj.DameListaJugadoresEquipo(teamId),false);
             return null;
         }
 

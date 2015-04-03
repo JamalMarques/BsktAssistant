@@ -1,42 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
-
-    <ImageButton
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:id="@+id/ibTopButton"
-        style="@style/ButtonQuarterTop" />
+    android:orientation="horizontal" android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center">
 
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="top|center"
-        android:background="@color/Blanco"
-        android:padding="5dp">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        <TextView
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:id="@+id/ibTopButton"
+            style="@style/ButtonQuarterTop" />
+
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/Quarter_control_widget"
-            android:id="@+id/tvQuarterStatic"
-            android:layout_marginBottom="3dp" />
+            android:gravity="top|center"
+            android:background="@color/Blanco"
+            android:padding="5dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="X"
-            android:id="@+id/tvQuarter"
-            style="@style/Text_Style_S" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Quarter_control_widget"
+                android:id="@+id/tvQuarterStatic"
+                android:layout_marginBottom="3dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="X"
+                android:id="@+id/tvQuarter"
+                style="@style/Text_Style_S" />
+        </LinearLayout>
+
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:id="@+id/ibBottomButton"
+            style="@style/ButtonQuarterBottom" />
     </LinearLayout>
 
-    <ImageButton
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:id="@+id/ibBottomButton"
-        style="@style/ButtonQuarterBottom" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="54dp"
+        android:gravity="top|center"
+        android:background="@drawable/layout_bg_leftline"
+        android:paddingTop="5dp"
+        android:paddingRight="5dp"
+        android:paddingBottom="5dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="1dp"
+            android:layout_height="52dp"
+            android:background="@color/Gris_1"></LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/OpponentsPointsInQuarterResume"
+                android:id="@+id/textView15"
+                android:textSize="10dp" />
+
+            <EditText
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:inputType="numberSigned"
+                android:ems="10"
+                android:id="@+id/etOpponentPoints"
+                android:maxLength="2"
+                android:textSize="14dp"
+                android:gravity="center" />
+        </LinearLayout>
+
+    </LinearLayout>
 
 </LinearLayout>
