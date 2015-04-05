@@ -3,6 +3,10 @@ package com.skynet.basketassistant.Adapters;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.BitmapShader;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +18,8 @@ import com.skynet.basketassistant.Modelo.Jugador;
 import com.skynet.basketassistant.Otros.GraphicsUtil;
 import com.skynet.basketassistant.Otros.Manejo_Imagenes;
 import com.skynet.basketassistant.R;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Transformation;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -26,14 +32,18 @@ public class ItemAdapterJugadores extends BaseAdapter {
 
     private Context context;
     private List<Jugador> lista_jugadores = null;
-    private List<Bitmap> lista_bitmap = null;
+    //private List<Bitmap> lista_bitmap = null;
     private boolean isOldVersion;  //Exist 2 xml to inflate (new version and old version)
 
     public ItemAdapterJugadores(Context cont, List<Jugador> jugadores,boolean isOldVersion){
         context = cont;
         lista_jugadores = jugadores;
-        lista_bitmap = Generarbitmaps();
+        //lista_bitmap = Generarbitmaps();
         this.isOldVersion = isOldVersion;
+    }
+
+    public void setList(List<Jugador> playersList){
+        lista_jugadores = playersList;
     }
 
     @Override
@@ -67,9 +77,9 @@ public class ItemAdapterJugadores extends BaseAdapter {
             else
                 rowview = ltInflate.inflate(R.layout.grid_item_jugador_2,parent,false);
 
-            holder.setnombre((TextView) rowview.findViewById(R.id.tv_apellido));
-            holder.setImage((ImageView) rowview.findViewById(R.id.iv_imagenplayer));
-            holder.setId_player((TextView) rowview.findViewById(R.id.tv_hidden_idplayer));
+            holder.nombre = (TextView) rowview.findViewById(R.id.tv_apellido);
+            holder.image = (ImageView) rowview.findViewById(R.id.iv_imagenplayer);
+            holder.id_player = (TextView) rowview.findViewById(R.id.tv_hidden_idplayer);
 
             rowview.setTag(holder);
         }
@@ -80,12 +90,20 @@ public class ItemAdapterJugadores extends BaseAdapter {
 
         Jugador jug = lista_jugadores.get(position);
 
-        holder.getnombre().setText(jug.getApellido());
-        holder.getId_player().setText(String.valueOf(jug.getId()));
+        holder.nombre.setText(jug.getApellido());
+        holder.id_player.setText(String.valueOf(jug.getId()));
+
+        String url = "file://"+Manejo_Imagenes.Url+((Jugador)getItem(position)).getImagen_url();
+        Picasso.with(context).load(url)
+                .error(R.drawable.no_player_image)
+                .transform(new CircleTransformPicasso())
+                .fit()
+                .centerCrop()
+                .into(holder.image);
 
 
-        if(lista_bitmap.get(position) != null)
-            holder.getImage().setImageBitmap(lista_bitmap.get(position));
+        /*if(lista_bitmap.get(position) != null)
+            holder.getImage().setImageBitmap(lista_bitmap.get(position));*/
 
         return rowview;
     }
@@ -96,22 +114,6 @@ public class ItemAdapterJugadores extends BaseAdapter {
         ImageView image;
         TextView nombre;
         TextView id_player;
-
-        public ImageView getImage(){ return image; }
-
-        public void setImage(ImageView image){ this.image = image; }
-
-        public TextView getnombre(){ return nombre; }
-
-        public void setnombre(TextView textView){ this.nombre = textView; }
-
-        public TextView getId_player() {
-            return id_player;
-        }
-
-        public void setId_player(TextView id_player) {
-            this.id_player = id_player;
-        }
     }
 
     public List<Bitmap> Generarbitmaps(){   //lo que pasas es que al enviarle "" con el hidden automaticamente lee la url entera y lo toma como file.exist true y esto genera luego la excepcion
@@ -137,6 +139,43 @@ public class ItemAdapterJugadores extends BaseAdapter {
             }
     }
     return list;
+    }
+
+
+    public class CircleTransformPicasso implements Transformation {
+        @Override
+        public Bitmap transform(Bitmap source) {
+            int size = Math.min(source.getWidth(), source.getHeight());
+            //250
+
+            int x = (source.getWidth() - size) / 2;
+            int y = (source.getHeight() - size) / 2;
+
+            Bitmap squaredBitmap = Bitmap.createBitmap(source, x, y, size, size);
+            if (squaredBitmap != source) {
+                source.recycle();
+            }
+
+            Bitmap bitmap = Bitmap.createBitmap(size, size, source.getConfig());
+
+            Canvas canvas = new Canvas(bitmap);
+            Paint paint = new Paint();
+            BitmapShader shader = new BitmapShader(squaredBitmap,
+                    BitmapShader.TileMode.CLAMP, BitmapShader.TileMode.CLAMP);
+            paint.setShader(shader);
+            paint.setAntiAlias(true);
+
+            float r = size / 2f;
+            canvas.drawCircle(r, r, r, paint);
+
+            squaredBitmap.recycle();
+            return bitmap;
+        }
+
+        @Override
+        public String key() {
+            return "circle";
+        }
     }
 
 }

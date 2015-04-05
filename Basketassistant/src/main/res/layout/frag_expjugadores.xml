@@ -82,22 +82,22 @@
 
                             <RelativeLayout
                                 android:layout_width="fill_parent"
-                                android:layout_height="150dp">
+                                android:layout_height="wrap_content"
+                                android:background="@color/Gris_1">
+
+                                <ProgressBar
+                                    style="?android:attr/progressBarStyleLarge"
+                                    android:layout_width="150dp"
+                                    android:layout_height="150dp"
+                                    android:indeterminate="true"
+                                    android:id="@+id/load_circle" />
 
                                 <ImageView
                                     android:layout_width="150dp"
                                     android:layout_height="150dp"
                                     android:id="@+id/iv_fotoplayer"
-                                    android:src="@drawable/no_player_image"
-                                    android:visibility="gone"
-                                    android:background="@color/Gris_1" />
+                                    android:visibility="visible" />
 
-                                <ProgressBar
-                                    style="?android:attr/progressBarStyleLarge"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:indeterminate="true"
-                                    android:id="@+id/load_circle" />
                             </RelativeLayout>
 
                         </LinearLayout>

@@ -518,30 +518,29 @@
 
             </LinearLayout>
 
-            <LinearLayout
+            <RelativeLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="right">
-
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:id="@+id/iv_photoplayer"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_gravity="right"
-                    android:padding="1dp"
-                    android:background="@color/Gris_Negro"
-                    android:visibility="gone"
-                    android:src="@drawable/no_player_image" />
+                android:gravity="center|right">
 
                 <ProgressBar
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:id="@+id/load_circle"
                     android:background="@color/Gris_Negro" />
-            </LinearLayout>
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/iv_photoplayer"
+                    android:layout_alignParentRight="false"
+                    android:layout_alignParentEnd="false"
+                    android:layout_gravity="right"
+                    android:padding="1dp"
+                    android:visibility="visible" />
+
+            </RelativeLayout>
 
         </RelativeLayout>
     </ScrollView>

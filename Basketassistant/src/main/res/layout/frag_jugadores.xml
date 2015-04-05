@@ -14,7 +14,9 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center">
+            android:gravity="center"
+            android:visibility="gone"
+            android:id="@+id/addPlayerLayout">
 
             <ImageButton
                 android:layout_width="@dimen/height_width_add_player_button"
@@ -64,7 +66,6 @@
                 android:layout_marginLeft="5dp"
                 android:verticalSpacing="10dp"
                 android:horizontalSpacing="7dp"
-                android:background="@drawable/layout_bg_standard"
                 android:visibility="invisible"
                 android:layout_marginRight="5dp" />
 

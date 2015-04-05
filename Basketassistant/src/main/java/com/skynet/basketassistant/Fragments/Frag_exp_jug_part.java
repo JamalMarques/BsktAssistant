@@ -2,6 +2,9 @@ package com.skynet.basketassistant.Fragments;
 
 import android.app.Fragment;
 import android.graphics.Bitmap;
+import android.graphics.BitmapShader;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.os.AsyncTask;
 import android.os.Bundle;
 //import android.support.v4.app.Fragment;
@@ -31,6 +34,8 @@ import com.skynet.basketassistant.Otros.Constants;
 import com.skynet.basketassistant.Otros.Manejo_Imagenes;
 import com.skynet.basketassistant.Activities.PartidosAct;
 import com.skynet.basketassistant.R;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Transformation;
 
 import java.util.List;
 
@@ -91,7 +96,14 @@ public class Frag_exp_jug_part extends Fragment implements View.OnClickListener{
         dbj.Cerrar();
         dbp.Cerrar();
 
-        new CargaImagen_on_BG().execute();
+        //new CargaImagen_on_BG().execute();
+        String url = "file://"+Manejo_Imagenes.Url+jugador.getImagen_url();
+        Picasso.with(getActivity()).load(url)
+                .error(R.drawable.no_player_image)
+                .fit()
+                .centerCrop()
+                .into(iv_photoplayer);
+
 
         idTeam = getArguments().getInt(Constants.TEAM_ID);
 
@@ -220,36 +232,6 @@ public class Frag_exp_jug_part extends Fragment implements View.OnClickListener{
         }
 
     // ------- /Rebotes --------
-
-
-    private class CargaImagen_on_BG extends AsyncTask<Void,Void,Void>{
-
-        private Bitmap bit;
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
-        protected Void doInBackground(Void... voids) {
-            try{
-                bit = Manejo_Imagenes.Cubo_Rotar_Rotacion(jugador.getImagen_url());
-            }catch (Exception e){
-                Log.e("Image Error","Image doesn't found");/*bit = Manejo_Imagenes.ImageNoPlayer;*/
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            if(bit != null)
-                iv_photoplayer.setImageBitmap(bit);
-            load_circle.setVisibility(View.GONE);
-            iv_photoplayer.setVisibility(View.VISIBLE);
-        }
-
-    }
 
 
     @Override

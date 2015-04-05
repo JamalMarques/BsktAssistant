@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,6 +36,7 @@ public class Frag_jugadores extends Fragment implements AdapterView.OnItemClickL
     private GridView gv_jugadores;
     private List<Jugador> lista_jugadores;
     private ProgressBar prog_bar;
+    private LinearLayout addPlayerLayout;
 
     private ImageButton addPlayerButton;
 
@@ -79,6 +81,7 @@ public class Frag_jugadores extends Fragment implements AdapterView.OnItemClickL
         view = inflater.inflate(R.layout.frag_jugadores,container,false);
 
         prog_bar = (ProgressBar)view.findViewById(R.id.prog_bar);
+        addPlayerLayout = (LinearLayout)view.findViewById(R.id.addPlayerLayout);
         addPlayerButton = (ImageButton)view.findViewById(R.id.addPlayerButton2);
         addPlayerButton.setOnClickListener(this);
 
@@ -97,7 +100,20 @@ public class Frag_jugadores extends Fragment implements AdapterView.OnItemClickL
         lista_jugadores = new ArrayList<Jugador>();
         lista_jugadores = dbj.DameListaJugadoresEquipo(equipo.getId());
 
-        new SetearAdaptador().execute();
+        //new SetearAdaptador().execute();
+        adapterjug = new ItemAdapterJugadores(getActivity().getApplicationContext(),lista_jugadores,true);
+        prog_bar.setVisibility(View.GONE);
+        gv_jugadores.setAdapter(adapterjug);
+        if(adapterjug.getCount() == 0) {
+            gv_jugadores.setVisibility(View.GONE);
+            addPlayerLayout.setVisibility(View.VISIBLE);
+        }
+        else {
+            addPlayerLayout.setVisibility(View.GONE);
+            gv_jugadores.setVisibility(View.VISIBLE);
+        }
+
+        adapterjug.notifyDataSetChanged();
 
         return view;
     }
@@ -127,7 +143,7 @@ public class Frag_jugadores extends Fragment implements AdapterView.OnItemClickL
         m_callback.onSeleccionItemJugador(id_jug);
     }
 
-    private class SetearAdaptador extends AsyncTask<Void,Void,Void>{
+    /*private class SetearAdaptador extends AsyncTask<Void,Void,Void>{
 
 
         @Override
@@ -145,20 +161,27 @@ public class Frag_jugadores extends Fragment implements AdapterView.OnItemClickL
         protected void onPostExecute(Void aVoid) {
             prog_bar.setVisibility(View.GONE);
             gv_jugadores.setAdapter(adapterjug);
-            if(adapterjug.getCount() == 0)
+            if(adapterjug.getCount() == 0) {
                 gv_jugadores.setVisibility(View.GONE);
-            else
+                addPlayerLayout.setVisibility(View.VISIBLE);
+            }
+            else {
+                addPlayerLayout.setVisibility(View.GONE);
                 gv_jugadores.setVisibility(View.VISIBLE);
+            }
 
             adapterjug.notifyDataSetChanged();
         }
-    }
+    }*/
 
     public void refreshList(){
         DBJugadores dbj = new DBJugadores(getActivity());
         dbj.Modolectura();
         lista_jugadores = dbj.DameListaJugadoresEquipo(equipo.getId());
-        new SetearAdaptador().execute();
+        //new SetearAdaptador().execute(); //TODO check this!
+        adapterjug.setList(lista_jugadores);
+        adapterjug.notifyDataSetChanged();
+        dbj.Cerrar();
     }
 
     @Override

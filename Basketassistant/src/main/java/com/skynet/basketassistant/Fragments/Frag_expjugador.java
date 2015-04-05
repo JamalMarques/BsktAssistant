@@ -36,6 +36,7 @@ import com.skynet.basketassistant.Modelo.Tapon;
 import com.skynet.basketassistant.Otros.Constants;
 import com.skynet.basketassistant.Otros.Manejo_Imagenes;
 import com.skynet.basketassistant.R;
+import com.squareup.picasso.Picasso;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -104,7 +105,13 @@ public class Frag_expjugador extends Fragment implements View.OnClickListener {
         iv_fotoplayer.setOnClickListener(this);
         load_circle = (ProgressBar)view.findViewById(R.id.load_circle);
 
-        new CargarFoto().execute();  //Cargo foto en el iv_fotoplayer
+        //new CargarFoto().execute();  //Cargo foto en el iv_fotoplayer
+        String url = "file://"+Manejo_Imagenes.Url+jugador.getImagen_url();
+        Picasso.with(getActivity()).load(url)
+                .error(R.drawable.no_player_image)
+                .fit()
+                .centerCrop()
+                .into(iv_fotoplayer);
 
         tv_apellido = (TextView)view.findViewById(R.id.tv_apellido);
         tv_nombre = (TextView)view.findViewById(R.id.tv_nombre);
@@ -359,39 +366,6 @@ public class Frag_expjugador extends Fragment implements View.OnClickListener {
                     Log.e("Error ",e.getMessage().toString());
                 }
             }
-    }
-
-    private class CargarFoto extends AsyncTask<Void,Void,Void>{
-
-        private Bitmap bitmap;
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
-        protected Void doInBackground(Void... voids) {
-            File file = new File(Url + jugador.getImagen_url());
-            if( file.exists()){
-            try {
-                //bitmap = Bitmap.createScaledBitmap(Manejo_Imagenes.Cubo_Rotar_Rotacion(jugador.getImagen_url()),350,350,true);
-                bitmap = Manejo_Imagenes.Cubo_Rotar_Rotacion2(jugador.getImagen_url(),250,250);
-            }catch (Exception e){
-                System.out.println(e.getMessage().toString());
-            }
-            }//else{ /*bitmap = Manejo_Imagenes.ImageNoPlayer; }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            load_circle.setVisibility(View.GONE);
-            if(bitmap != null)
-                iv_fotoplayer.setImageBitmap(bitmap);
-            iv_fotoplayer.setVisibility(View.VISIBLE);
-        }
-
     }
 
 }

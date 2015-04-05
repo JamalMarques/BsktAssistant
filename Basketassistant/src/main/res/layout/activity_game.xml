@@ -29,7 +29,8 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:id="@+id/linearLayout2"
-        android:layout_marginBottom="5dp">
+        android:background="@drawable/layout_bg_bottomline"
+        android:padding="5dp">
 
         <view
             android:layout_width="wrap_content"

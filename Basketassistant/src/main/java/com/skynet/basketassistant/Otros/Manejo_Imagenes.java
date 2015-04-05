@@ -2,6 +2,7 @@ package com.skynet.basketassistant.Otros;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
@@ -13,6 +14,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.skynet.basketassistant.R;
+import com.squareup.picasso.Transformation;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -177,5 +179,7 @@ public class Manejo_Imagenes {
         }
         return bitmap;
     }
+
+
 
 }

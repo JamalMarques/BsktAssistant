@@ -1,1 +1,1 @@
-include ':Basketassistant'
+include ':Basketassistant', ':wearable'

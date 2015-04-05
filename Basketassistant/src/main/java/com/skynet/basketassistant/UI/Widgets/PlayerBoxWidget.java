@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.skynet.basketassistant.Modelo.Jugador;
 import com.skynet.basketassistant.Otros.Manejo_Imagenes;
 import com.skynet.basketassistant.R;
+import com.squareup.picasso.Picasso;
 
 /**
  * Created by Jamal on 11/09/2014.
@@ -39,11 +40,12 @@ public class PlayerBoxWidget extends RelativeLayout {
 
     public void setPlayer(Jugador player){
         this.player = player;
-        try {
-            playerImage.setImageBitmap(Manejo_Imagenes.Cubo_Rotar_Rotacion2(player.getImagen_url(),100,100)/*Cubo_Rotar_Rotacion(player.getImagen_url())*/);
-        }catch (Exception e){
-            Log.i("Failed loading image"," player "+player.getId()+" doesn't have image profile");
-        }
+        String url = "file://"+Manejo_Imagenes.Url+player.getImagen_url();
+        Picasso.with(getContext()).load(url)
+                .error(R.drawable.no_player_image)
+                .fit()
+                .centerCrop()
+                .into(playerImage);
         tvPlayerNumber.setText(String.valueOf(player.getNumero()));
     }
 
