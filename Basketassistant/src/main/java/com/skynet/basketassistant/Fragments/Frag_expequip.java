@@ -9,11 +9,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.skynet.basketassistant.Activities.GameActivity;
 import com.skynet.basketassistant.Datos.DBCiudades;
 import com.skynet.basketassistant.Datos.DBEquipos;
+import com.skynet.basketassistant.Datos.DBJugadores;
 import com.skynet.basketassistant.Datos.DBPartidos;
 import com.skynet.basketassistant.Activities.JugadoresAct;
 import com.skynet.basketassistant.Modelo.Equipo;
@@ -130,11 +132,17 @@ public class Frag_expequip extends Fragment implements View.OnClickListener{
                 startActivity(intent);
             }else
                  if( view == b_play){
-                     Intent intent = new Intent(getActivity(), GameActivity.class);
-                     Bundle bun_equip = new Bundle();
-                     bun_equip.putString(Constants.TEAM_NAME,equipo.getNombre());
-                     intent.putExtras(bun_equip);
-                     startActivity(intent);
+                     DBJugadores dbj = new DBJugadores(getActivity());
+                     dbj.Modolectura();
+                     if(dbj.DameListaJugadoresEquipo(equipo.getId()).size() >= 3) {
+                         Intent intent = new Intent(getActivity(), GameActivity.class);
+                         Bundle bun_equip = new Bundle();
+                         bun_equip.putString(Constants.TEAM_NAME, equipo.getNombre());
+                         intent.putExtras(bun_equip);
+                         startActivity(intent);
+                     }else{
+                         Toast.makeText(getActivity(),"El equipo debe tener 3 o mas jugadores",Toast.LENGTH_SHORT).show();
+                     }
                  }else{
                      if( view == b_eliminar){
                          FragDialog_YesNo fgd = FragDialog_YesNo.getInstance(getActivity().getString(R.string.DeleteTeam),equipo.getId()); //I use the whoCall to send the id to delete

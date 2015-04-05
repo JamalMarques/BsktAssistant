@@ -83,4 +83,14 @@ public class Constants {
 
     public static final String WEARABLE_DATA_PATH_1 = "/wearable_data";
 
+    //Time to refresh
+    public static final String SHARED_PREFERENCES_TIME_TO_REFRESH = "SP_TIME_REFRESH";
+    public static final int MINUTES_30 = 1;
+    public static final int HOURS_1 = 2;
+    public static final int HOURS_2 = 3;
+    public static final int HOURS_3 = 4;
+    public static final long HALF_HOUR = 1000*60*30;
+
+    public static final int ID_PENDING_INTENT = 27;
+
 }

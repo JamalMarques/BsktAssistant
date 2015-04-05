@@ -6,14 +6,32 @@
         android:minSdkVersion="11"
         android:targetSdkVersion="19" />
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.google.android.permission.PROVIDE_BACKGROUND" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
+    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <android:uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-
-        <receiver android:name=".Receivers.RefreshReceiver"
-            android:enabled="true"/>
+        <receiver
+            android:name=".Receivers.RefreshReceiver"
+            android:enabled="true" />
 
         <activity
             android:name=".Activities.MainActivity"
@@ -31,7 +49,7 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_selec_team"
             android:screenOrientation="landscape"
-            android:windowSoftInputMode="adjustResize">
+            android:windowSoftInputMode="adjustResize" >
         </activity>
         <activity
             android:name=".Activities.NewUserAct"
@@ -48,25 +66,25 @@
         <activity
             android:name=".Activities.JugadoresAct"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:imeOptions="flagNoExtractUi"
             android:label="@string/title_activity_jugadores"
-            android:screenOrientation="landscape"
-            android:imeOptions="flagNoExtractUi" >
-            <!--android:windowSoftInputMode="adjustResize"-->
-
+            android:screenOrientation="landscape" >
         </activity>
+
         <activity
             android:name=".Activities.GameActivity"
             android:label="@string/title_activity_game"
-            android:screenOrientation="landscape">
+            android:screenOrientation="landscape" >
         </activity>
+
+        <activity
+            android:name=".Activities.WearableConfigurationActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="landscape"
+            android:label="@string/title_activity_wearable_configuration" >
+        </activity>
+
+        <service android:name=".SpiceManager.SpiceService" android:exported="false" />
     </application>
-
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
-    <uses-feature
-        android:name="android.hardware.camera"
-        android:required="true" />
-    <!-- <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> -->
-    <!-- <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="19" /> -->
 
 </manifest>

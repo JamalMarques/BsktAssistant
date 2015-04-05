@@ -62,6 +62,11 @@
         <!--icon!-->
     </style>
 
+    <style name="ButtonWearable">
+        <item name="android:background">@drawable/button_wearable</item>
+        <!--icon!-->
+    </style>
+
     <style name="ButtonQuarterBottom">
         <item name="android:background">@drawable/button_quarter_bottom</item>
         <!--icon!-->

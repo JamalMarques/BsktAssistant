@@ -30,6 +30,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     private TextView etpass;
     private Button ibnext;
     private Button ibadd;
+    private ImageButton bWearable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,17 +39,19 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 
         InicializarManejoImagenes();
 
-       etnom = (TextView)findViewById(R.id.etnom);
-       etpass = (TextView)findViewById(R.id.etpass);
-       ibnext = (Button)findViewById(R.id.ibnext);
-       ibadd = (Button)findViewById(R.id.ibadd);
+        etnom = (TextView) findViewById(R.id.etnom);
+        etpass = (TextView) findViewById(R.id.etpass);
+        ibnext = (Button) findViewById(R.id.ibnext);
+        ibadd = (Button) findViewById(R.id.ibadd);
+        bWearable = (ImageButton) findViewById(R.id.bWearable);
 
-       ibnext.setOnClickListener(this);
-       ibadd.setOnClickListener(this);
+        ibnext.setOnClickListener(this);
+        ibadd.setOnClickListener(this);
+        bWearable.setOnClickListener(this);
 
         UserContainer.DesasignarUser();   //DETACHING USER!
 
-        if(Constants.TESTING_MODE) {
+        if (Constants.TESTING_MODE) {
             GenerateTestingMode();
             Constants.TESTING_MODE = false;
         }
@@ -157,10 +160,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
             {Toast.makeText(getApplicationContext(),"Complete los campos requeridos",Toast.LENGTH_SHORT).show();}
         }
         else{
-        if(view.getId() == ibadd.getId()){
-           Intent intent = new Intent(MainActivity.this, NewUserAct.class);
-           startActivity(intent);
-        }
+            if(view.getId() == ibadd.getId()){
+               Intent intent = new Intent(MainActivity.this, NewUserAct.class);
+               startActivity(intent);
+            }else{
+                if(view == bWearable){
+                    Intent intent = new Intent(MainActivity.this, WearableConfigurationActivity.class);
+                    startActivity(intent);
+                }
+            }
         }
     }
 

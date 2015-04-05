@@ -104,4 +104,18 @@
         </LinearLayout>
     </LinearLayout>
 
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center|right"
+        android:layout_marginTop="5dp">
+
+        <ImageButton
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:id="@+id/bWearable"
+            style="@style/ButtonWearable" />
+    </LinearLayout>
+
 </LinearLayout>

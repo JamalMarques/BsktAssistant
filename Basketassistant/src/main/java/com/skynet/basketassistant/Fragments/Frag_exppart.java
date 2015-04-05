@@ -37,6 +37,7 @@ public class Frag_exppart extends Fragment implements AdapterView.OnItemClickLis
     private ImageView iw_result;
     private HorizontalListView h_list;
     private DBJugadores dbj;
+    private ItemAdapterJugadores adapt;
     private int teamId;
 
     private ProgressBar load_circle;
@@ -85,9 +86,10 @@ public class Frag_exppart extends Fragment implements AdapterView.OnItemClickLis
         h_list = (HorizontalListView)view.findViewById(R.id.h_listview);
         h_list.setOnItemClickListener(this);
 
-        //h_list.setAdapter(new ItemAdapterJugadores(getActivity().getApplicationContext(), dbj.DameListaJugadores()));
-        new SetearAdaptador().execute();
-        //dbj.Cerrar();
+        adapt = new ItemAdapterJugadores(getActivity().getApplicationContext(), dbj.DameListaJugadoresEquipo(teamId),false);
+        h_list.setAdapter(adapt);
+        load_circle.setVisibility(View.GONE);
+        h_list.setVisibility(View.VISIBLE);
 
         return view;
     }
@@ -153,26 +155,5 @@ public class Frag_exppart extends Fragment implements AdapterView.OnItemClickLis
         ((PartidosAct)getActivity()).CambiarFragmentLayout2(frag);
     }
 
-    private class SetearAdaptador extends AsyncTask<Void,Void,Void>{
 
-        private ItemAdapterJugadores adapt;
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
-        protected Void doInBackground(Void... voids) {
-            adapt = new ItemAdapterJugadores(getActivity().getApplicationContext(), dbj.DameListaJugadoresEquipo(teamId),false);
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid){
-            h_list.setAdapter(adapt);
-            load_circle.setVisibility(View.GONE);
-            h_list.setVisibility(View.VISIBLE);
-        }
-    }
 }
