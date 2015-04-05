@@ -178,9 +178,8 @@ public class Frag_jugadores extends Fragment implements AdapterView.OnItemClickL
         DBJugadores dbj = new DBJugadores(getActivity());
         dbj.Modolectura();
         lista_jugadores = dbj.DameListaJugadoresEquipo(equipo.getId());
-        //new SetearAdaptador().execute(); //TODO check this!
-        adapterjug.setList(lista_jugadores);
-        adapterjug.notifyDataSetChanged();
+        adapterjug = new ItemAdapterJugadores(getActivity().getApplicationContext(),lista_jugadores,true);
+        gv_jugadores.setAdapter(adapterjug);
         dbj.Cerrar();
     }
 

@@ -12,14 +12,21 @@
         android:id="@+id/scrollView3"
         android:layout_centerHorizontal="true">
 
-        <view
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            class="com.skynet.basketassistant.UI.Widgets.BoxOfPlayersWidget"
-            android:id="@+id/playersBox"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:gravity="top|center" />
+            android:gravity="top|center">
+
+            <view
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                class="com.skynet.basketassistant.UI.Widgets.BoxOfPlayersWidget"
+                android:id="@+id/playersBox"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:gravity="top|center" />
+        </LinearLayout>
     </ScrollView>
 
     <LinearLayout
