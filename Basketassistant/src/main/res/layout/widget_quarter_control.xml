@@ -10,11 +10,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageButton
+        <Button
             android:layout_width="match_parent"
-            android:layout_height="20dp"
+            android:layout_height="25dp"
             android:id="@+id/ibTopButton"
-            style="@style/ButtonQuarterTop" />
+            style="@style/ButtonQuarterTop"
+            android:text="+"
+            android:textColor="@color/circle_total_wins" />
 
         <LinearLayout
             android:orientation="vertical"
@@ -39,11 +41,13 @@
                 style="@style/Text_Style_S" />
         </LinearLayout>
 
-        <ImageButton
+        <Button
             android:layout_width="match_parent"
-            android:layout_height="20dp"
+            android:layout_height="25dp"
             android:id="@+id/ibBottomButton"
-            style="@style/ButtonQuarterBottom" />
+            style="@style/ButtonQuarterBottom"
+            android:text="-"
+            android:textColor="@color/circle_total_loses" />
     </LinearLayout>
 
 

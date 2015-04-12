@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -20,7 +21,7 @@ public class QuarterControlWidget extends LinearLayout implements View.OnClickLi
     private OnChangeQuarterListener quarterListener;
 
     private View rootView;
-    private ImageButton ibBottomButton, ibTopButton;
+    private Button ibBottomButton, ibTopButton;
     private TextView tvQuarter;
     private EditText etOpponentPoints;
     private int[] opponentPointsCuarter = new int[6];
@@ -33,8 +34,8 @@ public class QuarterControlWidget extends LinearLayout implements View.OnClickLi
     public QuarterControlWidget(Context context, AttributeSet attrs) {
         super(context, attrs);
         setRootView(LayoutInflater.from(context).inflate(R.layout.widget_quarter_control, this));
-        ibBottomButton = (ImageButton)getRootView().findViewById(R.id.ibBottomButton);
-        ibTopButton = (ImageButton)getRootView().findViewById(R.id.ibTopButton);
+        ibBottomButton = (Button)getRootView().findViewById(R.id.ibBottomButton);
+        ibTopButton = (Button)getRootView().findViewById(R.id.ibTopButton);
         tvQuarter = (TextView)getRootView().findViewById(R.id.tvQuarter);
         etOpponentPoints = (EditText)getRootView().findViewById(R.id.etOpponentPoints);
         ibBottomButton.setOnClickListener(this);

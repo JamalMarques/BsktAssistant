@@ -39,8 +39,8 @@ public class OpenWeatherListener implements PendingRequestListener<OpenWeather> 
             String ciudad = openWeather.getName();
 
             DataMap dataMap = new DataMap();
-            /*dataMap.putDouble(Constants.MAP_TEMPERATURE, temperatura);
-            dataMap.putString(Constants.MAP_CITY,ciudad);*/
+            dataMap.putDouble(Constants.MAP_TEMPERATURE, temperatura);
+            dataMap.putString(Constants.MAP_CITY,ciudad);
             if(googleApiClient != null) {
                 new SendToDataLayerThread(Constants.WEARABLE_DATA_PATH_1, dataMap, googleApiClient).start();
             }

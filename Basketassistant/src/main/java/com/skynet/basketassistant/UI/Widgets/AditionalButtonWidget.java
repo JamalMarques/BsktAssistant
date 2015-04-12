@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
@@ -15,12 +16,12 @@ import com.skynet.basketassistant.R;
 public class AditionalButtonWidget extends LinearLayout {
 
     private View rootView;
-    private ImageButton iButton;
+    private Button iButton;
 
     public AditionalButtonWidget(Context context, AttributeSet attrs) {
         super(context, attrs);
         setRootView(LayoutInflater.from(context).inflate(R.layout.widget_aditional_button,this));
-        iButton = (ImageButton)getRootView().findViewById(R.id.iButton);
+        iButton = (Button)getRootView().findViewById(R.id.iButton);
     }
 
 
@@ -33,5 +34,9 @@ public class AditionalButtonWidget extends LinearLayout {
         this.rootView = rootView;
     }
 
-    public ImageButton getViewListener(){ return iButton;}
+    public Button getViewListener(){ return iButton;}
+
+    public void setButtonText(String text){
+        iButton.setText(text);
+    }
 }

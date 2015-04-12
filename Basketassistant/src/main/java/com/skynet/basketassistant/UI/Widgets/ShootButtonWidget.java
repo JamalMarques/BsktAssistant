@@ -2,6 +2,7 @@ package com.skynet.basketassistant.UI.Widgets;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;

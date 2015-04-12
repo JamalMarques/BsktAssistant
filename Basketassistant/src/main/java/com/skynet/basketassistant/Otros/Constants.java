@@ -93,4 +93,7 @@ public class Constants {
 
     public static final int ID_PENDING_INTENT = 27;
 
+    public static final String MAP_TEMPERATURE = "MAP_TEMPERATURE";
+    public static final String MAP_CITY = "MAP_CITY";
+
 }

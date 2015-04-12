@@ -163,5 +163,10 @@
         <item>3 horas</item>
     </array>
 
+    <string name="rebound_button_text">Rebote</string>
+    <string name="steal_button_text">Robo</string>
+    <string name="block_button_text">Tapa</string>
+    <string name="foul_button_text">Falta</string>
+    <string name="assistance_button_text">Asist</string>
 
 </resources>

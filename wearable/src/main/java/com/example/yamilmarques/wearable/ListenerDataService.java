@@ -23,14 +23,10 @@ public class ListenerDataService extends WearableListenerService {
                 // Check the data path
                 String path = event.getDataItem().getUri().getPath();
                 if (path.equals(Constants.WEARABLE_DATA_PATH_1)) {
-
-                    /*dataMap = DataMapItem.fromDataItem(event.getDataItem()).getDataMap();
-                    String actionNumber = dataMap.getString(Constants.MAP_ACTION_NUMBER);
-                    boolean isActionUp = dataMap.getBoolean(Constants.MAP_IS_ACTION_UP);
-                    int widgetMode = dataMap.getInt(Constants.MAP_WIDGET_MODE);
-                    int colorMode = dataMap.getInt(Constants.MAP_COLOR_MODE);
-                    String percentajeChange = dataMap.getString(Constants.MAP_PERCENTAJE_CHANGE);
-
+                    dataMap = DataMapItem.fromDataItem(event.getDataItem()).getDataMap();
+                    String mapCity = dataMap.getString(Constants.MAP_CITY);
+                    Double temperature = dataMap.getDouble(Constants.MAP_TEMPERATURE);
+                    /*
                     DigitalWatchFaceService.globActions = actionNumber;
                     DigitalWatchFaceService.isActionUp = isActionUp;
                     DigitalWatchFaceService.widgetMode = widgetMode;

@@ -122,6 +122,11 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
         blockButton = (AditionalButtonWidget)findViewById(R.id.blockButton);
         foulButton = (AditionalButtonWidget)findViewById(R.id.foulButton);
         assistanceButton = (AditionalButtonWidget)findViewById(R.id.assistanceButton);
+        reboundButton.setButtonText(getResources().getString(R.string.rebound_button_text));
+        stealButton.setButtonText(getResources().getString(R.string.steal_button_text));
+        blockButton.setButtonText(getResources().getString(R.string.block_button_text));
+        foulButton.setButtonText(getResources().getString(R.string.foul_button_text));
+        assistanceButton.setButtonText(getResources().getString(R.string.assistance_button_text));
         simplePointWidget = (ShootButtonWidget)findViewById(R.id.simplePointWidget);
         doublePointWidget = (ShootButtonWidget)findViewById(R.id.doublePointWidget);
         triplePointWidget = (ShootButtonWidget)findViewById(R.id.triplePointWidget);

@@ -45,18 +45,17 @@ import java.util.concurrent.TimeUnit;
 public class DigitalWatchFaceService extends CanvasWatchFaceService {
     private static final String TAG = "DigitalWatchFaceService";
 
-    public static String temperature;
-    /*public static boolean isActionUp = true;
-    public static int widgetMode = 0, colorMode = 0;
-    public static double percentajeActionChange = 0.00;*/
+    public static Double temperature;
+    public static String city;
 
     private static  Typeface BOLD_TYPEFACE;
     private static  Typeface NORMAL_TYPEFACE;
 
     private float degressOfSeconds = 0;
     private float extraHeight = 0;
-    //private Bitmap globantLogo, wearereadyLogo, rightRowAsset, leftRowAsset;
     private Bitmap backgroundBit;
+
+    private int secondAnimationNumber = 0;
 
     private Paint mBackgroundPaint;
     private Paint mHourPaint;
@@ -70,7 +69,7 @@ public class DigitalWatchFaceService extends CanvasWatchFaceService {
     private float mColonWidth;
 
 
-    private static final long NORMAL_UPDATE_RATE_MS = 500; //500
+    private static final long NORMAL_UPDATE_RATE_MS = 1; //500
 
     private static final long MUTE_UPDATE_RATE_MS = TimeUnit.MINUTES.toMillis(1);
 
@@ -199,7 +198,7 @@ public class DigitalWatchFaceService extends CanvasWatchFaceService {
         }
 
         private Paint createTextPaintTime(int defaultInteractiveColor){
-            return createTextPaint(defaultInteractiveColor, Typeface.createFromAsset(getAssets(), "typography/Roboto-Regular.ttf"));
+            return createTextPaint(defaultInteractiveColor, Typeface.createFromAsset(getAssets(), "typography/Roboto-Thin.ttf"));
         }
 
         private Paint createTextPaint(int defaultInteractiveColor, Typeface typeface) {
@@ -269,13 +268,14 @@ public class DigitalWatchFaceService extends CanvasWatchFaceService {
             boolean isRound = insets.isRound();
             mXCenter = resources.getDimension( isRound? R.dimen.digital_x_offset_round : R.dimen.digital_x_offset );
 
-            float textSize = resources.getDimension( isRound ? R.dimen.digital_text_size_round : R.dimen.digital_text_size );
+            float textSizeHour = resources.getDimension( isRound ? R.dimen.digital_text_size_round_hour : R.dimen.digital_text_size_hour );
+            float textSizeMinute = resources.getDimension(isRound ? R.dimen.digital_text_size_round_minute : R.dimen.digital_text_size_minute);
             //float amPmSize = resources.getDimension( isRound ? R.dimen.digital_am_pm_size_round : R.dimen.digital_am_pm_size );
 
-            mHourPaint.setTextSize(textSize);
-            mMinutePaint.setTextSize(textSize);
-            mSecondPaint.setTextSize(textSize);
-            mColonPaint.setTextSize(textSize);
+            mHourPaint.setTextSize(textSizeHour);
+            mMinutePaint.setTextSize(textSizeMinute);
+            //mSecondPaint.setTextSize(textSize);
+            //mColonPaint.setTextSize(textSize);
 
             mColonWidth = mColonPaint.measureText(COLON_STRING);
         }
@@ -402,6 +402,8 @@ public class DigitalWatchFaceService extends CanvasWatchFaceService {
 
             //shouldChangeColorMode();
 
+            mShouldDrawColons = (System.currentTimeMillis() % 1000) < 500;
+
             canvas.drawBitmap(backgroundBit, -60,0,mBackgroundPaint);
 
             extraHeight = extraHeight(bounds.height());
@@ -416,18 +418,8 @@ public class DigitalWatchFaceService extends CanvasWatchFaceService {
 
             //Declares
             float mYTime = mYCenter + 20;
-            float mXTimeStart = mXCenter - (timeTotalWidth/2) - 1;
-            /*float mYRows = mYCenter - 28;
-            float mXLeftRow = 20;
-            float mXRightRow = (mXCenter *2) -rightRowAsset.getWidth() - 20 ;
-            float mYGLogo = mYCenter - 165;
-            float mXGlogo = mXCenter - (globantLogo.getWidth()/2);
-            float mYWLogo = mYCenter + 40;
-            float mXWLogo = mXCenter - (wearereadyLogo.getWidth()/2);*/
 
             drawTime(canvas,mXCenter,mYTime,hourString,minuteString);
-            //drawArrowsAndLogos(canvas,mXLeftRow,mYRows,mXRightRow,mXGlogo,mYGLogo,mXWLogo,mYWLogo);
-            //drawWidgets(canvas, globActions, temperature, shortLocation, isActionUp);
 
             if(isInAmbientMode())
                 inAmbientMode();
@@ -472,33 +464,30 @@ public class DigitalWatchFaceService extends CanvasWatchFaceService {
             //Draw the hours
             canvas.drawText(hourString, x, mYTime, mHourPaint);
             x += mHourPaint.measureText(hourString);
-            //Draw colons
-            if (isInAmbientMode() || mMute || mShouldDrawColons) {
-                canvas.drawText(COLON_STRING, x, mYTime, mColonPaint);
-            }
-            x += mColonWidth;
             // Draw the minutes.
             canvas.drawText(minuteString, x, mYTime, mMinutePaint);
             x += mMinutePaint.measureText(minuteString);
-        }
 
-        /*private void shouldChangeColorMode(){
-            if(backgroundModeSaved != DigitalWatchFaceService.colorMode){
-                if( DigitalWatchFaceService.colorMode == Constants.BACKGROUND_BLACK ){
-                    mBackgroundPaint.setColor(getResources().getColor(R.color.black));
-                    mBackgroundPaint.setAntiAlias(true);
-                    changeDrawables(Constants.BACKGROUND_BLACK);
-                    backgroundModeSaved = Constants.BACKGROUND_BLACK;
-                }else{
-                    if( DigitalWatchFaceService.colorMode == Constants.BACKGROUND_WHITE ){
-                        mBackgroundPaint.setColor(getResources().getColor(R.color.white));
-                        mBackgroundPaint.setAntiAlias(true);
-                        changeDrawables(Constants.BACKGROUND_WHITE);
-                        backgroundModeSaved = Constants.BACKGROUND_WHITE;
-                    }
-                }
+            //DrawSeconds
+            Paint rSecondP = new Paint();
+            rSecondP.setAntiAlias(true);
+            rSecondP.setColor(getResources().getColor(R.color.white));
+            rSecondP.setStyle(Paint.Style.FILL);
+            rSecondP.setShadowLayer(1, 0, 0, getResources().getColor(R.color.white));
+            canvas.drawCircle(mXCenter, mYTime + 20, 25, rSecondP);
+            Paint rAnimationSecondP = new Paint();
+            rAnimationSecondP.setAntiAlias(true);
+            rAnimationSecondP.setColor(getResources().getColor(R.color.light_blue));
+            rAnimationSecondP.setStyle(Paint.Style.STROKE);
+            rAnimationSecondP.setStrokeWidth(3);
+            rAnimationSecondP.setShadowLayer(1, 0, 0, getResources().getColor(R.color.white));
+            if( secondAnimationNumber == 361 ){
+                secondAnimationNumber = 0;
+            }else {
+                secondAnimationNumber++;
             }
-        }*/
+            canvas.drawArc(mXCenter-10 , mYCenter-10 , mXCenter+10 , mYCenter-10 ,  secondAnimationNumber, secondAnimationNumber+10, false, rAnimationSecondP);
+        }
 
 
 
