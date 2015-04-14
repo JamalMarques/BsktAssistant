@@ -55,7 +55,7 @@ public class DigitalWatchFaceService extends CanvasWatchFaceService {
     private float extraHeight = 0;
     private Bitmap backgroundBit;
 
-    private int secondAnimationNumber = 0;
+    private int secondAnimationNumber1 = 0,secondAnimationNumber2 = 180;
 
     private Paint mBackgroundPaint;
     private Paint mHourPaint;
@@ -468,27 +468,39 @@ public class DigitalWatchFaceService extends CanvasWatchFaceService {
             canvas.drawText(minuteString, x, mYTime, mMinutePaint);
             x += mMinutePaint.measureText(minuteString);
 
+            secondsAnimation(canvas,mYTime);
+
+        }
+
+        private void secondsAnimation(Canvas canvas,float mYTime){
             //DrawSeconds
             Paint rSecondP = new Paint();
             rSecondP.setAntiAlias(true);
             rSecondP.setColor(getResources().getColor(R.color.white));
             rSecondP.setStyle(Paint.Style.FILL);
             rSecondP.setShadowLayer(1, 0, 0, getResources().getColor(R.color.white));
-            canvas.drawCircle(mXCenter, mYTime + 20, 25, rSecondP);
+            canvas.drawCircle(mXCenter, mYTime + 25, 15, rSecondP);
             Paint rAnimationSecondP = new Paint();
             rAnimationSecondP.setAntiAlias(true);
             rAnimationSecondP.setColor(getResources().getColor(R.color.light_blue));
             rAnimationSecondP.setStyle(Paint.Style.STROKE);
             rAnimationSecondP.setStrokeWidth(3);
             rAnimationSecondP.setShadowLayer(1, 0, 0, getResources().getColor(R.color.white));
-            if( secondAnimationNumber == 361 ){
-                secondAnimationNumber = 0;
+            //Line 1
+            if( secondAnimationNumber1 == 361 ){
+                secondAnimationNumber1 = 0;
             }else {
-                secondAnimationNumber++;
+                secondAnimationNumber1 = secondAnimationNumber1+4;
             }
-            canvas.drawArc(mXCenter-10 , mYCenter-10 , mXCenter+10 , mYCenter-10 ,  secondAnimationNumber, secondAnimationNumber+10, false, rAnimationSecondP);
+            canvas.drawArc(mXCenter-15 , mYCenter+30 , mXCenter+15 , mYCenter+40+20 ,  secondAnimationNumber1, 50, false, rAnimationSecondP);
+            //Line 2
+            if( secondAnimationNumber2 == 361 ){
+                secondAnimationNumber2 = 0;
+            }else {
+                secondAnimationNumber2 = secondAnimationNumber2+4;
+            }
+            canvas.drawArc(mXCenter-15 , mYCenter+30 , mXCenter+15 , mYCenter+40+20 ,  secondAnimationNumber2, 50, false, rAnimationSecondP);
         }
-
 
 
         private void drawWidgetsMode1(Canvas canvas,String temperature){
