@@ -50,6 +50,7 @@ public class DigitalWatchFaceService extends CanvasWatchFaceService {
 
     private static  Typeface BOLD_TYPEFACE;
     private static  Typeface NORMAL_TYPEFACE;
+    private static Typeface SECOND_TYPEFACE;
 
     private float degressOfSeconds = 0;
     private float extraHeight = 0;
@@ -160,8 +161,9 @@ public class DigitalWatchFaceService extends CanvasWatchFaceService {
                     .setShowSystemUiTime(false)
                     .build());
 
-            //BOLD_TYPEFACE = Typeface.createFromAsset(getAssets(), "typography/Roboto-Thin.ttf");
-            NORMAL_TYPEFACE = Typeface.createFromAsset(getAssets(), "typography/Roboto-Black.ttf");
+
+            NORMAL_TYPEFACE = Typeface.createFromAsset(getAssets(), "typography/Roboto-Thin.ttf");
+            SECOND_TYPEFACE = Typeface.createFromAsset(getAssets(), "typography/Roboto-Bold.ttf");
             BOLD_TYPEFACE = NORMAL_TYPEFACE;
 
             Resources resources = DigitalWatchFaceService.this.getResources();
@@ -170,15 +172,12 @@ public class DigitalWatchFaceService extends CanvasWatchFaceService {
             mBackgroundPaint = new Paint();
             mBackgroundPaint.setColor(mInteractiveBackgroundColor);
             mBackgroundPaint.setAntiAlias(true);
-            mHourPaint = createTextPaintTime(mInteractiveHourDigitsColor);
-            mMinutePaint = createTextPaintTime(mInteractiveMinuteDigitsColor);
-            mSecondPaint = createTextPaintTime(mInteractiveSecondDigitsColor);
-            mColonPaint = createTextPaintTime(resources.getColor(R.color.digital_colons));
+            mHourPaint = createTextPaintTime(mInteractiveHourDigitsColor,NORMAL_TYPEFACE);
+            mHourPaint.setFakeBoldText(true);
+            mMinutePaint = createTextPaintTime(mInteractiveMinuteDigitsColor,NORMAL_TYPEFACE);
+            mSecondPaint = createTextPaintTime(mInteractiveSecondDigitsColor,SECOND_TYPEFACE);
+            mColonPaint = createTextPaintTime(resources.getColor(R.color.digital_colons),NORMAL_TYPEFACE);
 
-            /*globantLogo = BitmapFactory.decodeResource(getResources(), R.drawable.ic_logoglobant);
-            wearereadyLogo = BitmapFactory.decodeResource(getResources(), R.drawable.ic_weareready);
-            rightRowAsset = BitmapFactory.decodeResource(getResources(), R.drawable.ic_arrow);
-            leftRowAsset = BitmapFactory.decodeResource(getResources(), R.drawable.ic_arrowreverse);*/
             backgroundBit = BitmapFactory.decodeResource(getResources(), R.drawable.basketball_bg_resized);
             colorTextGeneral = getResources().getColor(R.color.white);
 
@@ -193,12 +192,12 @@ public class DigitalWatchFaceService extends CanvasWatchFaceService {
             super.onDestroy();
         }
 
-        private Paint createTextPaint(int defaultInteractiveColor) {
+        private Paint createTextPaintSecond(int defaultInteractiveColor) {
             return createTextPaint(defaultInteractiveColor, NORMAL_TYPEFACE);
         }
 
-        private Paint createTextPaintTime(int defaultInteractiveColor){
-            return createTextPaint(defaultInteractiveColor, Typeface.createFromAsset(getAssets(), "typography/Roboto-Thin.ttf"));
+        private Paint createTextPaintTime(int defaultInteractiveColor, Typeface typeface){
+            return createTextPaint(defaultInteractiveColor, typeface);
         }
 
         private Paint createTextPaint(int defaultInteractiveColor, Typeface typeface) {
@@ -270,11 +269,12 @@ public class DigitalWatchFaceService extends CanvasWatchFaceService {
 
             float textSizeHour = resources.getDimension( isRound ? R.dimen.digital_text_size_round_hour : R.dimen.digital_text_size_hour );
             float textSizeMinute = resources.getDimension(isRound ? R.dimen.digital_text_size_round_minute : R.dimen.digital_text_size_minute);
+            float textSizeSecond = resources.getDimension( isRound ? R.dimen.digital_text_size_round_second : R.dimen.digital_text_size_second );
             //float amPmSize = resources.getDimension( isRound ? R.dimen.digital_am_pm_size_round : R.dimen.digital_am_pm_size );
 
             mHourPaint.setTextSize(textSizeHour);
             mMinutePaint.setTextSize(textSizeMinute);
-            //mSecondPaint.setTextSize(textSize);
+            mSecondPaint.setTextSize(textSizeSecond);
             //mColonPaint.setTextSize(textSize);
 
             mColonWidth = mColonPaint.measureText(COLON_STRING);
@@ -413,13 +413,14 @@ public class DigitalWatchFaceService extends CanvasWatchFaceService {
 
             String hourString = String.valueOf(mTime.hour);
             String minuteString = formatTwoDigitNumber(mTime.minute);
+            String secondString = String.valueOf(mTime.second);
 
             float timeTotalWidth = mHourPaint.measureText(hourString) + mColonWidth + mMinutePaint.measureText(minuteString);
 
             //Declares
             float mYTime = mYCenter + 20;
 
-            drawTime(canvas,mXCenter,mYTime,hourString,minuteString);
+            drawTime(canvas,mXCenter,mYTime,hourString,minuteString,secondString);
 
             if(isInAmbientMode())
                 inAmbientMode();
@@ -454,7 +455,7 @@ public class DigitalWatchFaceService extends CanvasWatchFaceService {
             }*/
         }
 
-        private void drawTime(Canvas canvas,float mXCenter,float mYTime,String hourString, String minuteString){
+        private void drawTime(Canvas canvas,float mXCenter,float mYTime,String hourString, String minuteString,String secondsString){
 
             float x1 = 0;
             x1 = (mHourPaint.measureText(hourString) + mColonWidth + mMinutePaint.measureText(minuteString)) / 2;
@@ -468,23 +469,20 @@ public class DigitalWatchFaceService extends CanvasWatchFaceService {
             canvas.drawText(minuteString, x, mYTime, mMinutePaint);
             x += mMinutePaint.measureText(minuteString);
 
-            secondsAnimation(canvas,mYTime);
+            secondsAnimation(canvas,mYTime,secondsString);
 
         }
 
-        private void secondsAnimation(Canvas canvas,float mYTime){
+        private void secondsAnimation(Canvas canvas,float mYTime,String seconds){
             //DrawSeconds
-            Paint rSecondP = new Paint();
-            rSecondP.setAntiAlias(true);
-            rSecondP.setColor(getResources().getColor(R.color.white));
-            rSecondP.setStyle(Paint.Style.FILL);
-            rSecondP.setShadowLayer(1, 0, 0, getResources().getColor(R.color.white));
-            canvas.drawCircle(mXCenter, mYTime + 25, 15, rSecondP);
+            float xsecondStart = (mSecondPaint.measureText(seconds))/2;
+            mSecondPaint.setColor(getResources().getColor(R.color.gray_2));
+            canvas.drawText(seconds,mXCenter-xsecondStart,mYTime+33,mSecondPaint);
             Paint rAnimationSecondP = new Paint();
             rAnimationSecondP.setAntiAlias(true);
-            rAnimationSecondP.setColor(getResources().getColor(R.color.light_blue));
+            rAnimationSecondP.setColor(getResources().getColor(R.color.white));
             rAnimationSecondP.setStyle(Paint.Style.STROKE);
-            rAnimationSecondP.setStrokeWidth(3);
+            rAnimationSecondP.setStrokeWidth(2);
             rAnimationSecondP.setShadowLayer(1, 0, 0, getResources().getColor(R.color.white));
             //Line 1
             if( secondAnimationNumber1 == 361 ){
@@ -492,14 +490,14 @@ public class DigitalWatchFaceService extends CanvasWatchFaceService {
             }else {
                 secondAnimationNumber1 = secondAnimationNumber1+4;
             }
-            canvas.drawArc(mXCenter-15 , mYCenter+30 , mXCenter+15 , mYCenter+40+20 ,  secondAnimationNumber1, 50, false, rAnimationSecondP);
+            canvas.drawArc(mXCenter-15 , mYTime+10 , mXCenter+15 , mYTime+40 ,  secondAnimationNumber1, 50, false, rAnimationSecondP);
             //Line 2
             if( secondAnimationNumber2 == 361 ){
                 secondAnimationNumber2 = 0;
             }else {
                 secondAnimationNumber2 = secondAnimationNumber2+4;
             }
-            canvas.drawArc(mXCenter-15 , mYCenter+30 , mXCenter+15 , mYCenter+40+20 ,  secondAnimationNumber2, 50, false, rAnimationSecondP);
+            canvas.drawArc(mXCenter-15 , mYTime+10 , mXCenter+15 , mYTime+40 ,  secondAnimationNumber2, 50, false, rAnimationSecondP);
         }
 
 
