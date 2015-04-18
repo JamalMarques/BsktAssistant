@@ -21,7 +21,8 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center">
+            android:gravity="center"
+            android:layout_marginTop="2dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -29,9 +30,14 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Large Text"
                 android:id="@+id/tvnom_rival"
-                android:layout_gravity="left"
+                android:textSize="18dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
                 android:textColor="@color/Celeste_Letras"
-                android:textStyle="bold" />
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:gravity="center"
+                android:maxWidth="125dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -67,6 +73,14 @@
             </LinearLayout>
 
             <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/Gris_1"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"></LinearLayout>
+
+            <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -80,7 +94,8 @@
                     android:text="Medium Text"
                     android:id="@+id/tv_result"
                     android:gravity="center"
-                    android:textColor="@color/VerdeClaro_1" />
+                    android:textColor="@color/VerdeClaro_1"
+                    android:textSize="15dp" />
 
             </LinearLayout>
         </LinearLayout>

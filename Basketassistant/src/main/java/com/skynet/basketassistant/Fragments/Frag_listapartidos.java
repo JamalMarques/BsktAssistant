@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Mdpprogram0 on 29/05/14.
+ * Created by Jamal on 29/05/14.
  */
 public class Frag_listapartidos extends Fragment implements AdapterView.OnItemClickListener {
 
@@ -33,10 +33,6 @@ public class Frag_listapartidos extends Fragment implements AdapterView.OnItemCl
 
     private Callback mcallback = callbackvacio;
 
-
-    /*public Frag_listapartidos(Equipo eq){
-        equipo = eq;
-    }*/
 
     public Frag_listapartidos(){/*Empty constructor*/}
 

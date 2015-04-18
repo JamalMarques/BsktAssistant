@@ -82,5 +82,6 @@
         android:layout_height="match_parent"
         android:layout_weight="0.3"
         android:id="@+id/framelayout_expplayer"
-        android:layout_margin="5dp"></FrameLayout>
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"></FrameLayout>
 </LinearLayout>

@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -34,6 +35,7 @@ public class WearableConfigurationActivity extends Activity implements GoogleApi
     public static final String SHARED_PREFERENCES_NAME = "Preferences";
 
     private ImageButton buttonBack;
+    private TextView tvCity;
     private Button buttonConfirm;
     private Spinner refreshSpinner;
     private Location lastLocation;
@@ -83,6 +85,7 @@ public class WearableConfigurationActivity extends Activity implements GoogleApi
             GenerateAlarm(refreshSpinner.getSelectedItemPosition());
         }
 
+        tvCity = (TextView)findViewById(R.id.tvCity);
     }
 
     @Override
@@ -136,7 +139,7 @@ public class WearableConfigurationActivity extends Activity implements GoogleApi
                 GenerateAlarm(refreshSpinner.getSelectedItemPosition());
                 OpenWeatherRequest weatherRequest = new OpenWeatherRequest(lastLat,lastLong,"metric");
                 lastRequestCacheKey = weatherRequest.createCacheKey();
-                spiceManager.execute(weatherRequest,lastRequestCacheKey,DurationInMillis.ONE_HOUR,new OpenWeatherListener(googleApiClient));
+                spiceManager.execute(weatherRequest,lastRequestCacheKey,DurationInMillis.ONE_HOUR,new OpenWeatherListener(googleApiClient,tvCity));
             }
         }
     }
@@ -165,5 +168,6 @@ public class WearableConfigurationActivity extends Activity implements GoogleApi
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt(Constants.SHARED_PREFERENCES_TIME_TO_REFRESH,alarmPositionTime);
     }
+
 
 }
