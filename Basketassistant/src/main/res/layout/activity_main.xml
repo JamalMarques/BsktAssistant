@@ -9,20 +9,37 @@
     android:paddingRight="30dp">
 
     <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:gravity="center"
-        android:padding="20dp"
-        android:background="@drawable/layout_bg_standard">
+        android:background="@drawable/layout_bg_standard"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="60dp"
+            android:id="@+id/imageView3"
+            android:src="@drawable/mjintro1" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/BasketballAssistantTittle"
-            android:id="@+id/textView14" />
+            android:id="@+id/textView14"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp" />
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="60dp"
+            android:id="@+id/imageView2"
+            android:src="@drawable/guyintro2" />
     </LinearLayout>
 
     <LinearLayout
