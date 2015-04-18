@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -41,24 +40,19 @@ import com.squareup.picasso.Picasso;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.InputStream;
+import java.text.DecimalFormat;
 import java.util.List;
 
 /**
  * Created by Jamal on 13/06/14.
  */
 
-
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-
 public class Frag_expjugador extends Fragment implements View.OnClickListener {
 
     private Jugador jugador;
     private TextView tv_apellido,tv_nombre,tv_altura,tv_peso,tv_rol,tv_numero,tv_juegos,tv_anotaciones,
                     tv_disparos,tv_triples,tv_dobles,tv_simples,tv_efectividad,tv_robos,tv_tapas,tv_asistencias,
-                    tv_rebotes,tv_reb_def,tv_reb_ofen;
+                    tv_rebotes,tv_reb_def,tv_reb_ofen,tvTotalSimple,tvTotalDouble,tvTotalTriple;
     private ImageView iv_fotoplayer;
 
     private Button deleteButton;
@@ -125,6 +119,9 @@ public class Frag_expjugador extends Fragment implements View.OnClickListener {
         tv_triples = (TextView)view.findViewById(R.id.tv_triples);
         tv_dobles = (TextView)view.findViewById(R.id.tv_dobles);
         tv_simples = (TextView)view.findViewById(R.id.tv_simples);
+        tvTotalSimple = (TextView)view.findViewById(R.id.tvTotalSimple);
+        tvTotalDouble = (TextView)view.findViewById(R.id.tvTotalDouble);
+        tvTotalTriple = (TextView)view.findViewById(R.id.tvTotalTriple);
         tv_efectividad = (TextView)view.findViewById(R.id.tv_efectividad);
         tv_robos = (TextView)view.findViewById(R.id.tv_robos);
         tv_tapas = (TextView)view.findViewById(R.id.tv_tapas);
@@ -141,8 +138,9 @@ public class Frag_expjugador extends Fragment implements View.OnClickListener {
         //SIMPLE DATA
         tv_apellido.setText(jugador.getApellido());
         tv_nombre.setText(jugador.getNombre());
-        tv_altura.setText(String.valueOf(jugador.getAltura())+"m");
-        tv_peso.setText(String.valueOf(jugador.getPeso())+"kg");
+        DecimalFormat df = new DecimalFormat("#");
+        tv_altura.setText(df.format(jugador.getAltura())+"cm");//String.valueOf(jugador.getAltura())+"cm");
+        tv_peso.setText(df.format(jugador.getPeso())+"kg");//String.valueOf(jugador.getPeso())+"kg");
         tv_rol.setText(jugador.getRol());
         tv_numero.setText(String.valueOf(jugador.getNumero()));
 
@@ -152,13 +150,18 @@ public class Frag_expjugador extends Fragment implements View.OnClickListener {
         tv_juegos.setText(String.valueOf(CantPartidosJugados()));
         tv_asistencias.setText(String.valueOf(CantAsistencias()));
         tv_disparos.setText(String.valueOf(CantLanzamientos()));
-        tv_triples.setText(String.valueOf(CantTriples()));
-        tv_dobles.setText(String.valueOf(CantDobles()));
-        tv_simples.setText(String.valueOf(CantSimples()));
+
+        tv_triples.setText(String.valueOf(CantTriplesAcert()));
+        tv_dobles.setText(String.valueOf(CantDoblesAcert()));
+        tv_simples.setText(String.valueOf(CantSimplesAcert()));
+        tvTotalSimple.setText("/"+String.valueOf(CantSimplesTotal()));
+        tvTotalDouble.setText("/"+String.valueOf(CantDoblesTotal()));
+        tvTotalTriple.setText("/"+String.valueOf(CantTriplesTotal()));
         tv_anotaciones.setText(String.valueOf(CantAcertadosTotal()));
 
         //String asd = "hola"; //asd.substring(0,2) = ho
-        tv_efectividad.setText((String.valueOf(PorcentajedeTotal())).substring(0,2)+"%");
+        //tv_efectividad.setText((String.valueOf(PorcentajedeTotal())).substring(0,2)+"%");
+        tv_efectividad.setText(PorcentajedeTotal()+"%");
 
         tv_rebotes.setText(String.valueOf(CantRebotes()));
         tv_reb_ofen.setText(String.valueOf(CantRebOfen()));
@@ -218,16 +221,33 @@ public class Frag_expjugador extends Fragment implements View.OnClickListener {
         int cant = dbl.ListaLanzamientosJugador(jugador.getId()).size();
         return cant;
     }
-    public int CantTriples(){
+
+    public int CantTriplesAcert(){
+        return CantAcertados(dbl.Lanzamientos_triple_jugador(jugador.getId()));
+    }
+
+    public int CantDoblesAcert(){
+        return CantAcertados(dbl.Lanzamientos_doble_jugador(jugador.getId()));
+    }
+    public int CantSimplesAcert(){
+        return CantAcertados(dbl.Lanzamientos_simple_jugador(jugador.getId()));
+    }
+
+    public int CantDoblesTotal(){
+        int cant = dbl.Lanzamientos_doble_jugador(jugador.getId()).size();
+        return cant;
+    }
+
+    public int CantSimplesTotal(){
+        int cant = dbl.Lanzamientos_simple_jugador(jugador.getId()).size();
+        return cant;
+    }
+
+    public int CantTriplesTotal(){
         int cant = dbl.Lanzamientos_triple_jugador(jugador.getId()).size();
         return cant;
     }
-    public int CantDobles(){
-        return CantAcertados(dbl.Lanzamientos_doble_jugador(jugador.getId()));
-    }
-    public int CantSimples(){
-        return CantAcertados(dbl.Lanzamientos_simple_jugador(jugador.getId()));
-    }
+
 
     public int CantAcertados(List<Lanzamiento> list_lanz){  //Calculo los acertados de una lista de lanzamientos
         int cont = 0;
@@ -238,15 +258,16 @@ public class Frag_expjugador extends Fragment implements View.OnClickListener {
     }
 
     public int CantAcertadosTotal(){
-        return CantTriples()+CantDobles()+CantSimples();
+        return CantTriplesAcert()+CantDoblesAcert()+CantSimplesAcert();
     }
 
-    public float PorcentajedeTotal(){  //sacar porcentaje en base a "CantAcertadosTotal" y "CantAcertadosTotal"  verificar los de el ((flotante))
+    public String PorcentajedeTotal(){  //sacar porcentaje en base a "CantAcertadosTotal" y "CantAcertadosTotal"  verificar los de el ((flotante))
         if(CantLanzamientos() == 0)
-            return 0;
+            return getActivity().getResources().getString(R.string.whitout_shoots);
         else{
             float porc = ((CantAcertadosTotal()*100)/CantLanzamientos()); //porcentaje
-            return porc;
+            DecimalFormat df = new DecimalFormat("###");
+            return df.format(Double.valueOf(porc));
         }
     }
     //----------- </ Lanzamientos > ------------------

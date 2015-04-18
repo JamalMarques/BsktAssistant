@@ -127,8 +127,8 @@ public class DBLanzamientos{
                 int val = c.getColumnIndex(CN_VALOR);
                 int part_id = c.getColumnIndex(CN_PARTIDO_ID);
                 int jug_id = c.getColumnIndex(CN_JUGADOR_ID);
-                Lanzamiento lanz = new Lanzamiento(c.getInt(id),c.getInt(efect),c.getString(tiplanz),c.getInt(quarter),c.getInt(val),
-                                                    c.getInt(part_id),c.getInt(jug_id));
+                Lanzamiento lanz = new Lanzamiento(c.getInt(id),c.getInt(efect),c.getString(tiplanz),c.getInt(val),
+                                                    c.getInt(part_id),c.getInt(jug_id),c.getInt(quarter));
                 lista_lanz.add(lanz);
             }while (c.moveToNext());
         }

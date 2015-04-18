@@ -169,4 +169,6 @@
     <string name="foul_button_text">Falta</string>
     <string name="assistance_button_text">Asist</string>
 
+    <string name="whitout_shoots">--</string>
+
 </resources>

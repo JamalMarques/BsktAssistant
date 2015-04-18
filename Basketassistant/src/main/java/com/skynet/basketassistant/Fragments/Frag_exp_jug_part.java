@@ -54,10 +54,13 @@ public class Frag_exp_jug_part extends Fragment implements View.OnClickListener{
     private ProgressBar load_circle;
 
     private TextView tv_fecha,tv_puntos,tv_foules,tv_asist,tv_robos,tv_tapas,tv_lanz,tv_acert,tv_fallidos,
-                    tv_rebotes,tv_reb_def,tv_reb_ofen;
+                    tv_rebotes,tv_reb_def,tv_reb_ofen,tvSimpleScored,tvSimpleTotal,tvDoubleScored,tvDoubleTotal,tvTripleScored,tvTripleTotal;
 
     private Button b_back;
     private int idTeam;
+    private List<Lanzamiento> list_lanz;
+    private DBLanzamientos dbl;
+    private int countSimpleScored,countSimpleTotal,countDoubleScored,countDoubleTotal,countTripleScored,countTripleTotal,totalAcerted,totalFailed;
 
     /*public Frag_exp_jug_part(Jugador jug,Partido part){
         jugador = jug;
@@ -96,6 +99,11 @@ public class Frag_exp_jug_part extends Fragment implements View.OnClickListener{
         dbj.Cerrar();
         dbp.Cerrar();
 
+        dbl = new DBLanzamientos(getActivity());
+        dbl.Modolectura();
+        list_lanz = DBLanz().Lanzamientos_jugador_en_partido(jugador.getId(),partido.getId());
+        populateShootData();
+
         //new CargaImagen_on_BG().execute();
         String url = "file://"+Manejo_Imagenes.Url+jugador.getImagen_url();
         Picasso.with(getActivity()).load(url)
@@ -119,6 +127,12 @@ public class Frag_exp_jug_part extends Fragment implements View.OnClickListener{
         tv_rebotes = (TextView)view.findViewById(R.id.tv_rebotes);
         tv_reb_def = (TextView)view.findViewById(R.id.tv_reb_def);
         tv_reb_ofen = (TextView)view.findViewById(R.id.tv_reb_ofen);
+        tvSimpleScored = (TextView)view.findViewById(R.id.tvSimpleScored);
+        tvSimpleTotal = (TextView)view.findViewById(R.id.tvSimpleTotal);
+        tvDoubleScored = (TextView)view.findViewById(R.id.tvDoubleScored);
+        tvDoubleTotal = (TextView)view.findViewById(R.id.tvDoubleTotal);
+        tvTripleScored = (TextView)view.findViewById(R.id.tvTripleScored);
+        tvTripleTotal = (TextView)view.findViewById(R.id.tvTripleTotal);
 
         tv_fecha.setText(partido.getFecha().toString());
         tv_puntos.setText(String.valueOf(CantPuntos(jugador.getId(),partido.getId())));
@@ -127,11 +141,18 @@ public class Frag_exp_jug_part extends Fragment implements View.OnClickListener{
         tv_robos.setText(String.valueOf(CantRob(jugador.getId(),partido.getId())));
         tv_tapas.setText(String.valueOf(CantTap(jugador.getId(),partido.getId())));
         tv_lanz.setText(String.valueOf(CantLanz(jugador.getId(),partido.getId())));
-        tv_acert.setText(String.valueOf(CantLanz_acert_fall(jugador.getId(),partido.getId(),ACERTADO)));
-        tv_fallidos.setText(String.valueOf(CantLanz_acert_fall(jugador.getId(),partido.getId(),FALLIDO)));
+        tv_acert.setText(String.valueOf(totalAcerted));
+        tv_fallidos.setText(String.valueOf(totalFailed));
         tv_rebotes.setText(String.valueOf(CantReb(jugador.getId(),partido.getId())));
         tv_reb_ofen.setText(String.valueOf(CantReb_Ofen_Defen(jugador.getId(),partido.getId(),Constants.OFENSIVE)));
         tv_reb_def.setText(String.valueOf(CantReb_Ofen_Defen(jugador.getId(),partido.getId(),Constants.DEFENSIVE)));
+
+        tvSimpleScored.setText(String.valueOf(countSimpleScored));
+        tvSimpleTotal.setText("/"+String.valueOf(countSimpleTotal));
+        tvDoubleScored.setText(String.valueOf(countDoubleScored));
+        tvDoubleTotal.setText("/"+String.valueOf(countDoubleTotal));
+        tvTripleScored.setText(String.valueOf(countTripleScored));
+        tvTripleTotal.setText("/"+String.valueOf(countTripleTotal));
 
         return view;
     }
@@ -141,8 +162,10 @@ public class Frag_exp_jug_part extends Fragment implements View.OnClickListener{
     // ------ Points ------------
 
         public DBLanzamientos DBLanz(){
-            DBLanzamientos dbl = new DBLanzamientos(getActivity());
-            dbl.Modolectura();
+            if(dbl == null) {
+                dbl = new DBLanzamientos(getActivity());
+                dbl.Modolectura();
+            }
             return dbl;
         }
 
@@ -160,21 +183,51 @@ public class Frag_exp_jug_part extends Fragment implements View.OnClickListener{
             return (DBLanz().Lanzamientos_jugador_en_partido(jug_id,part_id)).size();
         }
 
-        public int CantLanz_acert_fall(int jug_id, int part_id,String tipo){  //tipo= "acertado"/"fallido"
-            int acert=0,fall=0;
-            List<Lanzamiento> list_lanz = DBLanz().Lanzamientos_jugador_en_partido(jug_id,part_id);
-            for (int i = 0 ; i < list_lanz.size() ; i++){
-                Lanzamiento lanz = list_lanz.get(i);
-                if( lanz.getEfectivo() == 1 )
-                    acert++;
-                else
-                    fall++;
+        public void populateShootData(){
+            for (Lanzamiento auxLanz : list_lanz){
+                if (auxLanz.getEfectivo() == 1){
+                    totalAcerted++;
+                    if(auxLanz.getTipoLanzamiento().equals(Constants.SHOOT_TYPE_SIMPLE)){
+                        countSimpleScored ++;
+                        countSimpleTotal++;
+                    }else{
+                        if(auxLanz.getTipoLanzamiento().equals(Constants.SHOOT_TYPE_DOUBLE)){
+                            countDoubleScored++;
+                            countDoubleTotal++;
+                        }else{
+                            if (auxLanz.getTipoLanzamiento().equals(Constants.SHOOT_TYPE_TRIPLE)){
+                                countTripleScored++;
+                                countTripleTotal++;
+                            }
+                        }
+                    }
+                }else{
+                    totalFailed++;
+                    if(auxLanz.getTipoLanzamiento().equals(Constants.SHOOT_TYPE_SIMPLE)){
+                        countSimpleTotal++;
+                    }else{
+                        if(auxLanz.getTipoLanzamiento().equals(Constants.SHOOT_TYPE_DOUBLE)){
+                            countDoubleTotal++;
+                        }else{
+                            if (auxLanz.getTipoLanzamiento().equals(Constants.SHOOT_TYPE_TRIPLE)){
+                                countTripleTotal++;
+                            }
+                        }
+                    }
+                }
             }
-            if(tipo.equals(ACERTADO))
-                return acert;
-            else
-                return fall;
         }
+
+
+
+    public int CantAcertados(List<Lanzamiento> list_lanz){  //Calculo los acertados de una lista de lanzamientos
+        int cont = 0;
+        for( int i = 0 ; i < list_lanz.size() ; i++ ){
+            if( (list_lanz.get(i)).getEfectivo() == 1 ){ cont++; }
+        }
+        return cont;
+    }
+
     // ------ /Points -----------
 
     // ------ Foules ------------

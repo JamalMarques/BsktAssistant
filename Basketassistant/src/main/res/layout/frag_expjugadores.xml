@@ -137,7 +137,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceLarge"
-                            android:text="2.00m"
+                            android:text="198cm"
                             android:id="@+id/tv_altura"
                             android:layout_weight="1"
                             android:textColor="@color/Celeste_botones" />
@@ -161,7 +161,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceLarge"
-                            android:text="92 Kg"
+                            android:text="92kg"
                             android:id="@+id/tv_peso"
                             android:layout_weight="1"
                             android:textColor="@color/Celeste_Letras" />
@@ -352,7 +352,15 @@
                                 android:id="@+id/tv_triples"
                                 android:layout_weight="1"
                                 android:textColor="@color/Gris_Negro"
-                                android:gravity="center" />
+                                android:gravity="center|right" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:text="/35"
+                                android:id="@+id/tvTotalTriple"
+                                android:textColor="@color/Gris_Negro" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -377,7 +385,15 @@
                                 android:id="@+id/tv_dobles"
                                 android:layout_weight="1"
                                 android:textColor="@color/Gris_Negro"
-                                android:gravity="center" />
+                                android:gravity="center|right" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:text="/50"
+                                android:id="@+id/tvTotalDouble"
+                                android:textColor="@color/Gris_Negro" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -402,7 +418,15 @@
                                 android:id="@+id/tv_simples"
                                 android:layout_weight="1"
                                 android:textColor="@color/Gris_Negro"
-                                android:gravity="center" />
+                                android:gravity="center|right" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:text="/12"
+                                android:id="@+id/tvTotalSimple"
+                                android:textColor="@color/Gris_Negro" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -413,7 +437,8 @@
                         android:background="@drawable/layout_bg_standard"
                         android:layout_marginTop="13dp"
                         android:paddingLeft="5dp"
-                        android:paddingRight="5dp">
+                        android:paddingRight="5dp"
+                        android:gravity="center">
 
                         <TextView
                             android:layout_width="match_parent"
@@ -422,7 +447,9 @@
                             android:text="@string/PorcentajeEfectividad"
                             android:id="@+id/static_efectividad"
                             android:layout_weight="1"
-                            android:textColor="@color/Gris_Negro" />
+                            android:textColor="@color/Gris_Negro"
+                            android:textSize="15dp"
+                            android:gravity="center" />
 
                         <TextView
                             android:layout_width="match_parent"

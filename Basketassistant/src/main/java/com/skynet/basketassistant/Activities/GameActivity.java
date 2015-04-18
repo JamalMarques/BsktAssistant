@@ -12,6 +12,7 @@ import com.skynet.basketassistant.Datos.DBAsistencias;
 import com.skynet.basketassistant.Datos.DBEquipos;
 import com.skynet.basketassistant.Datos.DBFaltas;
 import com.skynet.basketassistant.Datos.DBJugadores;
+import com.skynet.basketassistant.Datos.DBJugadores_Partidos;
 import com.skynet.basketassistant.Datos.DBLanzamientos;
 import com.skynet.basketassistant.Datos.DBPartidos;
 import com.skynet.basketassistant.Datos.DBRebotes;
@@ -178,7 +179,6 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
         dbg.Modoescritura();
         game = dbg.insertar(sdf.format(Calendar.getInstance().getTime()),stadium,myTeam.getId(),oponentName,0,0,0,0,0,0,0,0,0,0,0,0);  //Create it and return the id from database
         dbg.Cerrar();
-
     }
 
 
@@ -661,6 +661,13 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
         updateGame();
         DBPartidos dbp = new DBPartidos(this);
         dbp.updateGame(game);
+
+        DBJugadores_Partidos dbjp = new DBJugadores_Partidos(this);
+        dbjp.Modoescritura();
+        for (Jugador playerAux : teamPlayers){
+            dbjp.insertar(game.getId(),playerAux.getId());
+        }
+        dbjp.Cerrar();
 
         //Show the total game statistics
         FragDialog_final_game_statistics fragDialog = FragDialog_final_game_statistics.getInstance(getString(R.string.EndOfGame),game,myTeam.getNombre(),opponentTeamName);
