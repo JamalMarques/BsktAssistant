@@ -48,6 +48,8 @@ public class Constants {
     //called by:
     public static final int YES_NO_ASSISTANCE = 0;
     public static final int YES_NO_FINAL_GAME = 1;
+    public static final int YES_NO_LOG_OUT = 2;
+    public static final int YES_NO_DELETE_TEAM = 3;
 
     //Mode for Dialog Fragments
     public static final int MODE_ADD = 0;
@@ -78,6 +80,7 @@ public class Constants {
     public static final String FRAGMENT_DIALOG_ACTION = "FRAGMENT_DIALOG_ACTION";
     public static final String FRAGMENT_DIALOG_GAME_INFORMATION = "FRAGMENT_DIALOG_GAME_INFORMATION";
     public static final String FRAGMENT_DIALOG_FINAL_STATISTICS = "FRAGMENT_DIALOG_FINAL_STATISTICS";
+
     //ACTIONS
     public static final String FRAGMENT_DIALOG_ACTION_ADD_ASSISTANCE = "ADD_ASSISTANCE";
 

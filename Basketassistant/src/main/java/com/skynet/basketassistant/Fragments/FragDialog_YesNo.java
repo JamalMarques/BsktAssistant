@@ -50,13 +50,13 @@ public class FragDialog_YesNo extends DialogFragment implements View.OnClickList
         }
     }
 
-    public void setListenerOnFragment(Fragment frag){
+    /*public void setListenerOnFragment(Fragment frag){
         try{
             this.dListener = (OnCompleteYesNoDialogListener)frag;
         }catch(ClassCastException e){
             throw new ClassCastException("The fragment "+frag.toString() + " must implement OnCompleteYesNoDialogListener");
         }
-    }
+    }*/
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

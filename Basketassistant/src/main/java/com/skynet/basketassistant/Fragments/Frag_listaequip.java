@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,12 +12,15 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.fortysevendeg.swipelistview.BaseSwipeListViewListener;
+import com.fortysevendeg.swipelistview.SwipeListView;
 import com.skynet.basketassistant.Adapters.ItemAdapterEquip;
 import com.skynet.basketassistant.Datos.DBEquipos;
 import com.skynet.basketassistant.Datos.DBUsuarios;
 import com.skynet.basketassistant.Modelo.Equipo;
 import com.skynet.basketassistant.Modelo.UserContainer;
 import com.skynet.basketassistant.Modelo.Usuario;
+import com.skynet.basketassistant.Otros.Constants;
 import com.skynet.basketassistant.R;
 
 import java.util.ArrayList;
@@ -27,14 +31,16 @@ import java.util.List;
  */
 public class Frag_listaequip extends Fragment implements AdapterView.OnItemClickListener{
 
+    public static Integer idToDelete = null; //Take care with this attribute, always must be cleaned after use it.
+
     private int userID;
     private DBEquipos dbequip;
     private DBUsuarios dbuser;
-    private ListView listview;
+    //private ListView listview;
+    private SwipeListView listview;
     private ItemAdapterEquip adapterlist;
 
     private Callbacks mcallbacks = callbacksvacios;  //Al inicializarlo no tengo enlace con nadie
-
 
     public interface Callbacks{   //Creo la interfaz que me va a servir para enlazarlo cn el metodo "onSelecciondeItemEquipo" de otro objeto
         public void onSelecciondeItemEquipo(Equipo equip);
@@ -59,9 +65,8 @@ public class Frag_listaequip extends Fragment implements AdapterView.OnItemClick
         View view;
         view = inflater.inflate(R.layout.frag_listaequip,container, false);
 
-        listview = (ListView)view.findViewById(R.id.lvequip);
-        //String nombreuser = UserContainer.DameUser().getNombre(); //getActivity().getIntent().getExtras().getString("User");
-        listview.setOnItemClickListener(this);
+        listview = (SwipeListView)view.findViewById(R.id.lvequip);
+        listViewBehaviour(listview);
 
 
         dbequip = new DBEquipos(getActivity());
@@ -69,10 +74,74 @@ public class Frag_listaequip extends Fragment implements AdapterView.OnItemClick
 
         List<String> listaequipos = generateTeamsName(UserContainer.DameUser().getId());
 
-        adapterlist = new ItemAdapterEquip(getActivity().getApplicationContext(),listaequipos);
+        adapterlist = new ItemAdapterEquip(getActivity(),listaequipos);
         listview.setAdapter(adapterlist);
 
         return view;
+    }
+
+    private void listViewBehaviour(final SwipeListView listview){
+        listview.setSwipeListViewListener(new BaseSwipeListViewListener() {
+            @Override
+            public void onOpened(int position, boolean toRight) {
+            }
+
+            @Override
+            public void onClosed(int position, boolean fromRight) {
+            }
+
+            @Override
+            public void onListChanged() {
+            }
+
+            @Override
+            public void onMove(int position, float x) {
+            }
+
+            @Override
+            public void onStartOpen(int position, int action, boolean right) {
+            }
+
+            @Override
+            public void onStartClose(int position, boolean right) {
+            }
+
+            @Override
+            public void onClickFrontView(int position) {
+                String nomequip = adapterlist.getItem(position);//String.valueOf(((TextView)view.findViewById(R.id.tvnom)).getText().toString());  //Tomo el nombre del equipo desde el layout!!
+                Equipo equip = dbequip.DameEquipo(nomequip);
+                mcallbacks.onSelecciondeItemEquipo(equip);  //ejecuta el codigo del ´SelectTeamAct´
+            }
+
+            @Override
+            public void onClickBackView(int position) {
+                FragDialog_YesNo frag = FragDialog_YesNo.getInstance(getString(R.string.delete_team_message), Constants.YES_NO_DELETE_TEAM);
+                DBEquipos dbe = new DBEquipos(getActivity());
+                Frag_listaequip.idToDelete = dbe.DameEquipo(adapterlist.getItem(position)).getId();
+                frag.show(getActivity().getSupportFragmentManager(),"FragDialog_YesNo");
+            }
+
+            @Override
+            public void onDismiss(int[] reverseSortedPositions) {
+
+            }
+        });
+
+        //These are the swipe listview settings. you can change these
+        //setting as your requrement
+        listview.setSwipeMode(SwipeListView.SWIPE_MODE_LEFT); // there are five swiping modes
+        listview.setSwipeActionLeft(SwipeListView.SWIPE_ACTION_REVEAL); //there are four swipe actions
+        //listview.setSwipeActionRight(SwipeListView.SWIPE_ACTION_NONE);
+        listview.setOffsetLeft(convertDpToPixel(60f)); // left side offset
+        listview.setOffsetRight(convertDpToPixel(60f)); // right side offset
+        listview.setAnimationTime(80); // animarion time
+        listview.setSwipeOpenOnLongPress(false); // enable or disable SwipeOpenOnLongPress
+    }
+
+    public int convertDpToPixel(float dp) {
+        DisplayMetrics metrics = getResources().getDisplayMetrics();
+        float px = dp * (metrics.densityDpi / 160f);
+        return (int) px;
     }
 
     private List<String> generateTeamsName(int userID){
@@ -104,13 +173,6 @@ public class Frag_listaequip extends Fragment implements AdapterView.OnItemClick
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-        String nomequip = String.valueOf(((TextView)view.findViewById(R.id.tvnom)).getText().toString());  //Tomo el nombre del equipo desde el layout!!
-
-//        dbequip.Modolectura();
-        Equipo equip = dbequip.DameEquipo(nomequip);
-   //     dbequip.Cerrar();
-        mcallbacks.onSelecciondeItemEquipo(equip);  //ejecuta el codigo del ´SelectTeamAct´
     }
 
     public void Refrescar(){
@@ -131,4 +193,7 @@ public class Frag_listaequip extends Fragment implements AdapterView.OnItemClick
             mcallbacks.onSelecciondeItemEquipo(teams.get(0));  //Select the first of the list
         }
     }
+
+
+
 }

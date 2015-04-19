@@ -7,6 +7,7 @@ import com.skynet.basketassistant.Fragments.Frag_listaequip;
 import com.skynet.basketassistant.Fragments.Frag_newteam;
 import com.skynet.basketassistant.Modelo.Equipo;
 import com.skynet.basketassistant.Modelo.UserContainer;
+import com.skynet.basketassistant.Otros.Constants;
 import com.skynet.basketassistant.R;
 
 import android.app.Activity;
@@ -55,8 +56,9 @@ public class SelecTeamAct extends BaseActivity implements View.OnClickListener,F
 
         }else
             if(view.getId() == iblogout.getId() ){  //Redirect to the Login Activity!
-                Intent intent = new Intent(SelecTeamAct.this, MainActivity.class);
-                startActivity(intent);
+                FragDialog_YesNo frag = FragDialog_YesNo.getInstance(getString(R.string.logout_message), Constants.YES_NO_LOG_OUT);
+                frag.show(getSupportFragmentManager(),"YES_NO_MESSAGE");
+                //onBackPressed();
             }
 
     }
@@ -95,12 +97,19 @@ public class SelecTeamAct extends BaseActivity implements View.OnClickListener,F
         DBEquipos dbe = new DBEquipos(this);
         dbe.eliminar(teamId,DBEquipos.CN_ID);
         dbe.Cerrar();
+        refreshTeams();
     }
 
     @Override
-    public void onCompleteYesNoDialog(int response, int whocall) {  //whoCall in this case contains the team's ID that the app uses to delete it from database
-        deleteTeam(whocall);
-        refreshTeams();
+    public void onCompleteYesNoDialog(int response, int whocall) {
+        if(whocall == Constants.YES_NO_LOG_OUT && response == Constants.YES){
+            onBackPressed();
+        }else{
+            if(whocall == Constants.YES_NO_DELETE_TEAM && response == Constants.YES ){
+                deleteTeam(Frag_listaequip.idToDelete);
+            }
+            Frag_listaequip.idToDelete = null;
+        }
     }
     //*-----------------------------------------------------------------------------------
 }

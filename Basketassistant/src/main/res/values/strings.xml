@@ -170,5 +170,8 @@
     <string name="assistance_button_text">Asist</string>
 
     <string name="whitout_shoots">--</string>
+    <string name="logout_message">Seguro quiere desloguearse?</string>
+    <string name="Borrar">Eliminar</string>
+    <string name="delete_team_message">Desea eliminar el equipo?</string>
 
 </resources>
