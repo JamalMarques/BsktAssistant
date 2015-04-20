@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         minSdkVersion 11
-        targetSdkVersion 19
+        targetSdkVersion 21
         versionCode 1
         versionName "1.0"
     }
@@ -56,6 +56,10 @@ dependencies {
     compile('com.google.http-client:google-http-client-jackson2:1.17.0-rc') {
         exclude module: 'xpp3'
         exclude group: 'stax'
+    }
+
+    compile ('com.fortysevendeg.swipelistview:swipelistview:1.0-SNAPSHOT@aar') {
+        transitive = true
     }
 
 }

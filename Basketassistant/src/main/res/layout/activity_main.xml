@@ -132,7 +132,9 @@
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:id="@+id/bWearable"
-            style="@style/ButtonWearable" />
+            style="@style/ButtonWearable"
+            android:src="@drawable/smartwatch_ico_1"
+            android:scaleType="centerCrop" />
     </LinearLayout>
 
 </LinearLayout>

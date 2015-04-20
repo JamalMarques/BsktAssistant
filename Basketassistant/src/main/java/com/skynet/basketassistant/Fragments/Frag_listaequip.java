@@ -132,8 +132,8 @@ public class Frag_listaequip extends Fragment implements AdapterView.OnItemClick
         listview.setSwipeMode(SwipeListView.SWIPE_MODE_LEFT); // there are five swiping modes
         listview.setSwipeActionLeft(SwipeListView.SWIPE_ACTION_REVEAL); //there are four swipe actions
         //listview.setSwipeActionRight(SwipeListView.SWIPE_ACTION_NONE);
-        listview.setOffsetLeft(convertDpToPixel(60f)); // left side offset
-        listview.setOffsetRight(convertDpToPixel(60f)); // right side offset
+        listview.setOffsetLeft(convertDpToPixel(-60f)); // left side offset
+        listview.setOffsetRight(convertDpToPixel(-60f)); // right side offset
         listview.setAnimationTime(80); // animarion time
         listview.setSwipeOpenOnLongPress(false); // enable or disable SwipeOpenOnLongPress
     }

@@ -302,7 +302,7 @@ public class Frag_expjugador extends Fragment implements View.OnClickListener {
 
         if( view.getId() == iv_fotoplayer.getId()){  //Toca la foto del player!
 
-            CharSequence opciones[] = new CharSequence[]{"Ver Imagen","Seleccionar de Galeria","Sacar Foto"};
+            CharSequence opciones[] = new CharSequence[]{"Seleccionar de Galeria","Sacar Foto"};
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
             builder.setTitle("Seleccione Opcion");
             builder.setItems(opciones, new DialogInterface.OnClickListener() {
@@ -310,21 +310,15 @@ public class Frag_expjugador extends Fragment implements View.OnClickListener {
                 public void onClick(DialogInterface dialog, int which) { // el user clickea en opciones[cual]
 
                     if( which == 0){ //Selecciona Ver Imagen
-
-                        Toast.makeText(getActivity(), "Ver imageeeen", Toast.LENGTH_SHORT).show();
-
+                        intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+                        codigo = SELECT_PICTURE;
                     }else{
                         if( which == 1 ){  //Seleccionar de la Galeria
-                            intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-                            codigo = SELECT_PICTURE;
-
-                        }else{  //Sacar foto
                             intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                             codigo = TAKE_PICTURE;
                             Uri output = Uri.fromFile(new File(Manejo_Imagenes.Url+jugador.getApellido()+String.valueOf(jugador.getId())+".jpg"));  //ej: Marques27.jpg
                             intent.putExtra(MediaStore.EXTRA_OUTPUT,output);
                         }
-
                         startActivityForResult(intent, codigo);
                     }
                 }
@@ -364,9 +358,7 @@ public class Frag_expjugador extends Fragment implements View.OnClickListener {
         else
             if( requestCode == SELECT_PICTURE ){  //Tengo que rotar la imagen desde la URL de la galeria original
                 try {
-                    Uri selectedimage = data.getData();
-                    //selectedimage.getEncodedPath(); sera la url de la imagen?
-                    //Toast.makeText(getActivity(),selectedimage.getEncodedPath(),Toast.LENGTH_SHORT).show();
+                    Uri selectedimage = data.getData();;
                     InputStream is;
                     is = getActivity().getContentResolver().openInputStream(selectedimage);
                     BufferedInputStream bis = new BufferedInputStream(is);
