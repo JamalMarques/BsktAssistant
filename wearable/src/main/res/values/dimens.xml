@@ -4,8 +4,6 @@
     <dimen name="digital_text_size_round_hour">50dp</dimen>
     <dimen name="digital_text_size_minute">30dp</dimen>
     <dimen name="digital_text_size_round_minute">30dp</dimen>
-    <dimen name="digital_text_size_second">15dp</dimen>
-    <dimen name="digital_text_size_round_second">15dp</dimen>
     <dimen name="digital_am_pm_size">25dp</dimen>
     <dimen name="digital_am_pm_size_round">30dp</dimen>
     <dimen name="digital_x_offset">60dp</dimen>

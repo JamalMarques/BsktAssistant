@@ -11,5 +11,6 @@
     <color name="gray_1">#ffaaaaa0</color>
     <color name="light_blue">#ff0fa7df</color>
     <color name="gray_2">#ffd0d0c6</color>
+    <color name="pure_white">#ffffff</color>
 
 </resources>

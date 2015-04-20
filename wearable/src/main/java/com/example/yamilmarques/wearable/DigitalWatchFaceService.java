@@ -269,7 +269,7 @@ public class DigitalWatchFaceService extends CanvasWatchFaceService {
 
             float textSizeHour = resources.getDimension( isRound ? R.dimen.digital_text_size_round_hour : R.dimen.digital_text_size_hour );
             float textSizeMinute = resources.getDimension(isRound ? R.dimen.digital_text_size_round_minute : R.dimen.digital_text_size_minute);
-            float textSizeSecond = resources.getDimension( isRound ? R.dimen.digital_text_size_round_second : R.dimen.digital_text_size_second );
+            float textSizeSecond = 18;//resources.getDimension( isRound ? R.dimen.digital_text_size_round_second : R.dimen.digital_text_size_second );
             //float amPmSize = resources.getDimension( isRound ? R.dimen.digital_am_pm_size_round : R.dimen.digital_am_pm_size );
 
             mHourPaint.setTextSize(textSizeHour);
@@ -421,6 +421,9 @@ public class DigitalWatchFaceService extends CanvasWatchFaceService {
             float mYTime = mYCenter + 20;
 
             drawTime(canvas,mXCenter,mYTime,hourString,minuteString,secondString);
+            drawTemperature();
+            drawDate();
+            drawLocation();
 
             if(isInAmbientMode())
                 inAmbientMode();
@@ -475,9 +478,10 @@ public class DigitalWatchFaceService extends CanvasWatchFaceService {
 
         private void secondsAnimation(Canvas canvas,float mYTime,String seconds){
             //DrawSeconds
+            //mSecondPaint.setTextSize(18);
             float xsecondStart = (mSecondPaint.measureText(seconds))/2;
-            mSecondPaint.setColor(getResources().getColor(R.color.gray_2));
-            canvas.drawText(seconds,mXCenter-xsecondStart,mYTime+33,mSecondPaint);
+            mSecondPaint.setColor(getResources().getColor(R.color.pure_white));
+            canvas.drawText(seconds,mXCenter-xsecondStart,mYTime+31,mSecondPaint);
             Paint rAnimationSecondP = new Paint();
             rAnimationSecondP.setAntiAlias(true);
             rAnimationSecondP.setColor(getResources().getColor(R.color.white));
@@ -498,6 +502,18 @@ public class DigitalWatchFaceService extends CanvasWatchFaceService {
                 secondAnimationNumber2 = secondAnimationNumber2+4;
             }
             canvas.drawArc(mXCenter-15 , mYTime+10 , mXCenter+15 , mYTime+40 ,  secondAnimationNumber2, 50, false, rAnimationSecondP);
+        }
+
+        private void drawTemperature(){
+
+        }
+
+        private void drawDate(){
+
+        }
+
+        private void drawLocation(){
+
         }
 
 
