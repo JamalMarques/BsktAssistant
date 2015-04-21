@@ -36,6 +36,7 @@ import com.google.android.gms.wearable.DataMap;
 import com.google.android.gms.wearable.DataMapItem;
 import com.google.android.gms.wearable.Wearable;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.TimeZone;
@@ -47,6 +48,8 @@ public class DigitalWatchFaceService extends CanvasWatchFaceService {
 
     public static Double temperature;
     public static String city;
+
+    public DecimalFormat decimalFormat = new DecimalFormat("#");
 
     private static  Typeface BOLD_TYPEFACE;
     private static  Typeface NORMAL_TYPEFACE;
@@ -64,6 +67,9 @@ public class DigitalWatchFaceService extends CanvasWatchFaceService {
     private Paint mSecondPaint;
     private Paint mColonPaint;
     private Paint dayTextPaint;
+    private Paint mTempPaint;
+    private Paint mDatePaint;
+    private Paint mCityPaint;
 
     private int colorTextGeneral;
 
@@ -161,6 +167,8 @@ public class DigitalWatchFaceService extends CanvasWatchFaceService {
                     .setShowSystemUiTime(false)
                     .build());
 
+            DigitalWatchFaceService.temperature = Double.valueOf(0);
+            DigitalWatchFaceService.city = "Unknown";
 
             NORMAL_TYPEFACE = Typeface.createFromAsset(getAssets(), "typography/Roboto-Thin.ttf");
             SECOND_TYPEFACE = Typeface.createFromAsset(getAssets(), "typography/Roboto-Bold.ttf");
@@ -176,15 +184,20 @@ public class DigitalWatchFaceService extends CanvasWatchFaceService {
             mHourPaint.setFakeBoldText(true);
             mMinutePaint = createTextPaintTime(mInteractiveMinuteDigitsColor,NORMAL_TYPEFACE);
             mSecondPaint = createTextPaintTime(mInteractiveSecondDigitsColor,SECOND_TYPEFACE);
-            mColonPaint = createTextPaintTime(resources.getColor(R.color.digital_colons),NORMAL_TYPEFACE);
+            mTempPaint = createTextPaintTime(mInteractiveMinuteDigitsColor,NORMAL_TYPEFACE);
+            mTempPaint.setFakeBoldText(true);
+            mDatePaint = createTextPaintTime(mInteractiveMinuteDigitsColor,NORMAL_TYPEFACE);
+            mDatePaint.setFakeBoldText(true);
+            mCityPaint = createTextPaintTime(mInteractiveMinuteDigitsColor,NORMAL_TYPEFACE);
+            mCityPaint.setFakeBoldText(true);
+
+            //mColonPaint = createTextPaintTime(resources.getColor(R.color.digital_colons),NORMAL_TYPEFACE);
 
             backgroundBit = BitmapFactory.decodeResource(getResources(), R.drawable.basketball_bg_resized);
             colorTextGeneral = getResources().getColor(R.color.white);
 
             mTime = new Time();
         }
-
-
 
         @Override
         public void onDestroy() {
@@ -269,15 +282,18 @@ public class DigitalWatchFaceService extends CanvasWatchFaceService {
 
             float textSizeHour = resources.getDimension( isRound ? R.dimen.digital_text_size_round_hour : R.dimen.digital_text_size_hour );
             float textSizeMinute = resources.getDimension(isRound ? R.dimen.digital_text_size_round_minute : R.dimen.digital_text_size_minute);
-            float textSizeSecond = 18;//resources.getDimension( isRound ? R.dimen.digital_text_size_round_second : R.dimen.digital_text_size_second );
-            //float amPmSize = resources.getDimension( isRound ? R.dimen.digital_am_pm_size_round : R.dimen.digital_am_pm_size );
+            float textSizeSecond = 18;
+            float textSizeTemperature = 30;
+            float textSizeDate = 24;
 
             mHourPaint.setTextSize(textSizeHour);
             mMinutePaint.setTextSize(textSizeMinute);
             mSecondPaint.setTextSize(textSizeSecond);
-            //mColonPaint.setTextSize(textSize);
+            mTempPaint.setTextSize(textSizeTemperature);
+            mDatePaint.setTextSize(textSizeDate);
+            mCityPaint.setTextSize(20);
 
-            mColonWidth = mColonPaint.measureText(COLON_STRING);
+            //mColonWidth = mColonPaint.measureText(COLON_STRING);
         }
 
         @Override
@@ -325,6 +341,9 @@ public class DigitalWatchFaceService extends CanvasWatchFaceService {
                 mMinutePaint.setAntiAlias(antiAlias);
                 mSecondPaint.setAntiAlias(antiAlias);
                 mColonPaint.setAntiAlias(antiAlias);
+                mDatePaint.setAntiAlias(antiAlias);
+                mTempPaint.setAntiAlias(antiAlias);
+                mCityPaint.setAntiAlias(antiAlias);
             }
             invalidate();
             updateTimer();
@@ -352,6 +371,9 @@ public class DigitalWatchFaceService extends CanvasWatchFaceService {
                 mHourPaint.setAlpha(alpha);
                 mMinutePaint.setAlpha(alpha);
                 mColonPaint.setAlpha(alpha);
+                mTempPaint.setAlpha(alpha);
+                mDatePaint.setAlpha(alpha);
+                mCityPaint.setAlpha(alpha);
                 //mAmPmPaint.setAlpha(alpha);
                 invalidate();
             }
@@ -421,9 +443,9 @@ public class DigitalWatchFaceService extends CanvasWatchFaceService {
             float mYTime = mYCenter + 20;
 
             drawTime(canvas,mXCenter,mYTime,hourString,minuteString,secondString);
-            drawTemperature();
-            drawDate();
-            drawLocation();
+            drawTemperature(mXCenter,mYTime,canvas);
+            drawDate(mXCenter,mYTime,canvas);
+            drawLocation(mXCenter,mYTime,canvas);
 
             if(isInAmbientMode())
                 inAmbientMode();
@@ -504,16 +526,17 @@ public class DigitalWatchFaceService extends CanvasWatchFaceService {
             canvas.drawArc(mXCenter-15 , mYTime+10 , mXCenter+15 , mYTime+40 ,  secondAnimationNumber2, 50, false, rAnimationSecondP);
         }
 
-        private void drawTemperature(){
-
+        private void drawTemperature(float mXCenter,float mYTimeText,Canvas canvas){
+            canvas.drawText(decimalFormat.format(temperature)+"º",mXCenter+70,mYTimeText-70,mTempPaint);
         }
 
-        private void drawDate(){
-
+        private void drawDate(float mXCenter,float mYTimeText,Canvas canvas){
+            String dateToShow = mTime.monthDay+"/"+mTime.month;
+            canvas.drawText(dateToShow,mXCenter-70-(mTempPaint.measureText(dateToShow)),mYTimeText-70,mTempPaint);
         }
 
-        private void drawLocation(){
-
+        private void drawLocation(float mXCenter,float mYTimeText,Canvas canvas){
+            canvas.drawText(city,mXCenter-((mCityPaint.measureText(city))/2),mYTimeText+90,mCityPaint);
         }
 
 
