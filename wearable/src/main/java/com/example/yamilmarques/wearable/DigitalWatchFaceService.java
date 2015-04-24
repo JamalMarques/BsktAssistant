@@ -514,20 +514,64 @@ public class DigitalWatchFaceService extends CanvasWatchFaceService {
             if( secondAnimationNumber1 == 361 ){
                 secondAnimationNumber1 = 0;
             }else {
-                secondAnimationNumber1 = secondAnimationNumber1+4;
+                secondAnimationNumber1 = secondAnimationNumber1+2;
             }
             canvas.drawArc(mXCenter-15 , mYTime+10 , mXCenter+15 , mYTime+40 ,  secondAnimationNumber1, 50, false, rAnimationSecondP);
             //Line 2
             if( secondAnimationNumber2 == 361 ){
                 secondAnimationNumber2 = 0;
             }else {
-                secondAnimationNumber2 = secondAnimationNumber2+4;
+                secondAnimationNumber2 = secondAnimationNumber2+2;
             }
             canvas.drawArc(mXCenter-15 , mYTime+10 , mXCenter+15 , mYTime+40 ,  secondAnimationNumber2, 50, false, rAnimationSecondP);
         }
 
         private void drawTemperature(float mXCenter,float mYTimeText,Canvas canvas){
-            canvas.drawText(decimalFormat.format(temperature)+"º",mXCenter+70,mYTimeText-70,mTempPaint);
+            float mytimeText2 = mYTimeText-70;
+            float mxCenterText2 = mXCenter+70;
+            canvas.drawText(decimalFormat.format(temperature)+"º",mxCenterText2,mytimeText2,mTempPaint);
+            drawTemperatureAnimation(canvas, mxCenterText2, mytimeText2);
+        }
+
+        private void drawTemperatureAnimation(Canvas canvas, float mx, float my){
+            Paint rAnimationSecondP = new Paint();
+            rAnimationSecondP.setAntiAlias(true);
+            rAnimationSecondP.setColor(getResources().getColor(R.color.white));
+            rAnimationSecondP.setStyle(Paint.Style.STROKE);
+            rAnimationSecondP.setStrokeWidth(2);
+            rAnimationSecondP.setShadowLayer(1, 0, 0, getResources().getColor(R.color.white));
+            //----+ Circle 1 +-----
+            //Line 1
+            if( secondAnimationNumber1 == 361 ){
+                secondAnimationNumber1 = 0;
+            }else {
+                secondAnimationNumber1 = secondAnimationNumber1+2;
+            }
+            canvas.drawArc(mx-15 , my+5 , mx+15 , my+35 ,  secondAnimationNumber1, 50, false, rAnimationSecondP);
+            //Line 2
+            if( secondAnimationNumber2 == 361 ){
+                secondAnimationNumber2 = 0;
+            }else {
+                secondAnimationNumber2 = secondAnimationNumber2+2;
+            }
+            canvas.drawArc(mx-15 , my+5 , mx+15 , my+35 ,  secondAnimationNumber2, 50, false, rAnimationSecondP);
+            //------+ Circle 1 Finish +-----
+            //----+ Circle 2 +-----
+            //Line 1
+            if( secondAnimationNumber1 == 0 ){
+                secondAnimationNumber1 = 361;
+            }else {
+                secondAnimationNumber1 = secondAnimationNumber1-2;
+            }
+            canvas.drawArc(mx-10 , my+5 , mx+10 , my+35 ,  secondAnimationNumber1, 50, false, rAnimationSecondP);
+            //Line 2
+            if( secondAnimationNumber2 == 0 ){
+                secondAnimationNumber2 = 361;
+            }else {
+                secondAnimationNumber2 = secondAnimationNumber2-2;
+            }
+            canvas.drawArc(mx-10 , my+5 , mx+10 , my+35 ,  secondAnimationNumber2, 50, false, rAnimationSecondP);
+            //------+ Circle 2 Finish +-----
         }
 
         private void drawDate(float mXCenter,float mYTimeText,Canvas canvas){
