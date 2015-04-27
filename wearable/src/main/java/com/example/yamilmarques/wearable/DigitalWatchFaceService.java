@@ -514,14 +514,14 @@ public class DigitalWatchFaceService extends CanvasWatchFaceService {
             if( secondAnimationNumber1 == 361 ){
                 secondAnimationNumber1 = 0;
             }else {
-                secondAnimationNumber1 = secondAnimationNumber1+2;
+                secondAnimationNumber1 = secondAnimationNumber1+4;
             }
             canvas.drawArc(mXCenter-15 , mYTime+10 , mXCenter+15 , mYTime+40 ,  secondAnimationNumber1, 50, false, rAnimationSecondP);
             //Line 2
             if( secondAnimationNumber2 == 361 ){
                 secondAnimationNumber2 = 0;
             }else {
-                secondAnimationNumber2 = secondAnimationNumber2+2;
+                secondAnimationNumber2 = secondAnimationNumber2+4;
             }
             canvas.drawArc(mXCenter-15 , mYTime+10 , mXCenter+15 , mYTime+40 ,  secondAnimationNumber2, 50, false, rAnimationSecondP);
         }
@@ -530,7 +530,7 @@ public class DigitalWatchFaceService extends CanvasWatchFaceService {
             float mytimeText2 = mYTimeText-70;
             float mxCenterText2 = mXCenter+70;
             canvas.drawText(decimalFormat.format(temperature)+"º",mxCenterText2,mytimeText2,mTempPaint);
-            drawTemperatureAnimation(canvas, mxCenterText2, mytimeText2);
+            //drawTemperatureAnimation(canvas, mxCenterText2, mytimeText2);
         }
 
         private void drawTemperatureAnimation(Canvas canvas, float mx, float my){
