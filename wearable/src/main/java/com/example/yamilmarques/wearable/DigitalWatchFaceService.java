@@ -575,7 +575,7 @@ public class DigitalWatchFaceService extends CanvasWatchFaceService {
         }
 
         private void drawDate(float mXCenter,float mYTimeText,Canvas canvas){
-            String dateToShow = mTime.monthDay+"/"+mTime.month;
+            String dateToShow = mTime.monthDay+"/"+mTime.month+1;
             canvas.drawText(dateToShow,mXCenter-70-(mDatePaint.measureText(dateToShow)),mYTimeText-70,mDatePaint);
         }
 

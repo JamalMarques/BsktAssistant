@@ -26,12 +26,9 @@ public class ListenerDataService extends WearableListenerService {
                     dataMap = DataMapItem.fromDataItem(event.getDataItem()).getDataMap();
                     String mapCity = dataMap.getString(Constants.MAP_CITY);
                     Double temperature = dataMap.getDouble(Constants.MAP_TEMPERATURE);
-                    /*
-                    DigitalWatchFaceService.globActions = actionNumber;
-                    DigitalWatchFaceService.isActionUp = isActionUp;
-                    DigitalWatchFaceService.widgetMode = widgetMode;
-                    DigitalWatchFaceService.colorMode = colorMode;
-                    DigitalWatchFaceService.percentajeActionChange = Double.valueOf(percentajeChange);*/
+
+                    DigitalWatchFaceService.city = mapCity;
+                    DigitalWatchFaceService.temperature = temperature;
 
                 }
             }
