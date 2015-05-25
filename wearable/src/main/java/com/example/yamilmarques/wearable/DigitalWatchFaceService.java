@@ -86,8 +86,7 @@ public class DigitalWatchFaceService extends CanvasWatchFaceService {
         return new Engine();
     }
 
-    private class Engine extends CanvasWatchFaceService.Engine implements DataApi.DataListener,
-            GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+    private class Engine extends CanvasWatchFaceService.Engine implements DataApi.DataListener,GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
         static final String COLON_STRING = ":";
 
         /** Alpha value for drawing time when in mute mode. */
@@ -167,10 +166,11 @@ public class DigitalWatchFaceService extends CanvasWatchFaceService {
                     .setShowSystemUiTime(false)
                     .build());
 
-
             NORMAL_TYPEFACE = Typeface.createFromAsset(getAssets(), "typography/Roboto-Thin.ttf");
             SECOND_TYPEFACE = Typeface.createFromAsset(getAssets(), "typography/Roboto-Bold.ttf");
             BOLD_TYPEFACE = NORMAL_TYPEFACE;
+
+            mGoogleApiClient.connect();
 
             Resources resources = DigitalWatchFaceService.this.getResources();
             //mYCenter = resources.getDimension(R.dimen.digital_y_offset);
@@ -811,8 +811,8 @@ public class DigitalWatchFaceService extends CanvasWatchFaceService {
             if (Log.isLoggable(TAG, Log.DEBUG)) {
                 Log.d(TAG, "onConnected: " + connectionHint);
             }
-            Wearable.DataApi.addListener(mGoogleApiClient, Engine.this);
-            updateConfigDataItemAndUiOnStartup();
+            Wearable.DataApi.addListener(mGoogleApiClient, this);
+            //updateConfigDataItemAndUiOnStartup();
         }
 
         @Override  // GoogleApiClient.ConnectionCallbacks

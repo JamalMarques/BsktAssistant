@@ -38,7 +38,7 @@
             </intent-filter>
         </service>
 
-        <service android:name=".ListenerDataService">
+        <service android:name="com.example.yamilmarques.wearable.ListenerDataService">
             <intent-filter>
                 <action android:name="com.google.android.gms.wearable.BIND_LISTENER" />
             </intent-filter>

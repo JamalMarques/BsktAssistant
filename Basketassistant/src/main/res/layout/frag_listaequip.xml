@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    style="@style/BaseBackground">
 
     <!--<ListView
         android:layout_width="match_parent"
@@ -16,14 +17,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/lvequip"
-        style="@style/BaseBackground"
         android:listSelector="#00000000"
         app:swipeBackView="@+id/back"
         app:swipeCloseAllItemsWhenMoveList="true"
         app:swipeDrawableChecked="@drawable/choice_selected"
         app:swipeDrawableUnchecked="@drawable/choice_unselected"
         app:swipeFrontView="@+id/front"
-        app:swipeMode="both"/>
+        app:swipeMode="both"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp" />
 
 
 </LinearLayout>

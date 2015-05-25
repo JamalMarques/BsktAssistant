@@ -1,29 +1,222 @@
 <?xml version="1.0" encoding="utf-8"?>
-<pre-dex-items>
+<items version="2" >
 
     <item
-        dex="C:\Users\yamil.marques@globant.com\Documents\BsktAssist\BsktAssistant\Basketassistant\build\intermediates\pre-dexed\debug\internal_impl-20.0.0-f0fa146d97d6861698d00df52bc6227c48270d2d.jar"
-        jar="C:\Users\yamil.marques@globant.com\Documents\BsktAssist\BsktAssistant\Basketassistant\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\libs\internal_impl-20.0.0.jar"
+        jar="C:\Users\USUARIO\Documents\SEMINARIO\BasketAssistant2.1\wearable\build\intermediates\exploded-aar\com.android.support\support-v13\21.0.3\libs\internal_impl-21.0.3.jar"
         jumboMode="false"
-        revision="19.1.0"
-        sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d"/>
+        revision="21.1.2"
+        sha1="0dcc55e70f7ebf7238fe2ec53f662eb378ab2668">
+        <dex dex="C:\Users\USUARIO\Documents\SEMINARIO\BasketAssistant2.1\wearable\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-aed731d11ce60d42b42ce5ecbc5b22530f57cd11.jar" />
+    </item>
     <item
-        dex="C:\Users\yamil.marques@globant.com\Documents\BsktAssist\BsktAssistant\Basketassistant\build\intermediates\pre-dexed\debug\classes-c9e4b646e699e8f85d218c37bb680a386177e804.jar"
-        jar="C:\Users\yamil.marques@globant.com\Documents\BsktAssist\BsktAssistant\Basketassistant\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\classes.jar"
+        jar="C:\Users\USUARIO\Documents\SEMINARIO\BasketAssistant2.1\wearable\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\21.0.0\classes.jar"
         jumboMode="false"
-        revision="19.1.0"
-        sha1="8694693636ab36910c8100ce527c258ff3ebece0"/>
+        revision="21.1.2"
+        sha1="efeda77c808750cb670ee9c48d8a1835d89dbcb2">
+        <dex dex="C:\Users\USUARIO\Documents\SEMINARIO\BasketAssistant2.1\wearable\build\intermediates\pre-dexed\debug\classes-6196331eee0fc30e4a033781b1274d58b58f09e9.jar" />
+    </item>
     <item
-        dex="C:\Users\yamil.marques@globant.com\Documents\BsktAssist\BsktAssistant\Basketassistant\build\intermediates\pre-dexed\debug\support-annotations-20.0.0-1f28fc3d2ee61dcc3f60bb7472669781418f0895.jar"
-        jar="C:\Program Files (x86)\Eclipse + ADT + SDK Tools\sdk\extras\android\m2repository\com\android\support\support-annotations\20.0.0\support-annotations-20.0.0.jar"
+        jar="C:\Users\USUARIO\.gradle\caches\modules-2\files-2.1\org.codehaus.jackson\jackson-mapper-asl\1.9.0\74828722eb1127057a9522dd6a7a8e208e82b3e7\jackson-mapper-asl-1.9.0.jar"
         jumboMode="false"
         revision="19.1.0"
-        sha1="9d9013e9ff35fc3756411e62873c363c70c638fa"/>
+        sha1="74828722eb1127057a9522dd6a7a8e208e82b3e7">
+        <dex dex="C:\Users\USUARIO\Documents\SEMINARIO\BasketAssistant2.1\Basketassistant\build\intermediates\pre-dexed\debug\jackson-mapper-asl-1.9.0-031b012f244f7ec5e31bfa4feb6e38b4c5cac3bb.jar" />
+    </item>
     <item
-        dex="C:\Users\yamil.marques@globant.com\Documents\BsktAssist\BsktAssistant\Basketassistant\build\intermediates\pre-dexed\debug\classes-3c560105397004e649caa0181c4aa104a5b0306a.jar"
-        jar="C:\Users\yamil.marques@globant.com\Documents\BsktAssist\BsktAssistant\Basketassistant\build\intermediates\exploded-aar\com.android.support\appcompat-v7\20.0.0\classes.jar"
+        jar="C:\Users\USUARIO\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="C:\Users\USUARIO\Documents\SEMINARIO\BasketAssistant2.1\wearable\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-0280561c16ba369c8d805804493a6ee8d8b74c90.jar" />
+    </item>
+    <item
+        jar="C:\Users\USUARIO\Documents\SEMINARIO\BasketAssistant2.1\wearable\build\intermediates\exploded-aar\com.android.support\support-v13\21.0.3\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2c2071dcaf7a008c3b01a6381a33be55396bab09">
+        <dex dex="C:\Users\USUARIO\Documents\SEMINARIO\BasketAssistant2.1\wearable\build\intermediates\pre-dexed\debug\classes-caa24013a8ea0ee8974abd2ae60fec94759db2e4.jar" />
+    </item>
+    <item
+        jar="C:\Users\USUARIO\.gradle\caches\modules-2\files-2.1\commons-io\commons-io\1.3.2\b6dde38349ba9bb5e6ea6320531eae969985dae5\commons-io-1.3.2.jar"
         jumboMode="false"
         revision="19.1.0"
-        sha1="f21927d22fe31889ecce94dd697a2e75b137e0ef"/>
+        sha1="b6dde38349ba9bb5e6ea6320531eae969985dae5">
+        <dex dex="C:\Users\USUARIO\Documents\SEMINARIO\BasketAssistant2.1\Basketassistant\build\intermediates\pre-dexed\debug\commons-io-1.3.2-851ff2b947f748999c8fe541a8da926cdb255527.jar" />
+    </item>
+    <item
+        jar="C:\Users\USUARIO\Documents\SEMINARIO\BasketAssistant2.1\Basketassistant\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\6.5.87\classes.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="95482e7c792a7c0d5a9d5461e97726bd54fe9549">
+        <dex dex="C:\Users\USUARIO\Documents\SEMINARIO\BasketAssistant2.1\Basketassistant\build\intermediates\pre-dexed\debug\classes-a6031255e615a19c0d69e45858db89c5f9a6ef68.jar" />
+    </item>
+    <item
+        jar="C:\Users\USUARIO\.gradle\caches\modules-2\files-2.1\org.springframework.android\spring-android-rest-template\1.0.1.RELEASE\e132d929bd181941f79b0d63edafb8a86ae6fd33\spring-android-rest-template-1.0.1.RELEASE.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="e132d929bd181941f79b0d63edafb8a86ae6fd33">
+        <dex dex="C:\Users\USUARIO\Documents\SEMINARIO\BasketAssistant2.1\Basketassistant\build\intermediates\pre-dexed\debug\spring-android-rest-template-1.0.1.RELEASE-7ebae818fe20ae1da374c2b629a9a8d0bb2f535f.jar" />
+    </item>
+    <item
+        jar="C:\Users\USUARIO\Documents\SEMINARIO\BasketAssistant2.1\wearable\build\intermediates\exploded-aar\com.google.android.gms\play-services-wearable\6.5.87\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="6384c6cd674a22610b932d9464aa6938d067f285">
+        <dex dex="C:\Users\USUARIO\Documents\SEMINARIO\BasketAssistant2.1\wearable\build\intermediates\pre-dexed\debug\classes-8e3d07e1c9542dc7ae34048e8de2bf4fe720163a.jar" />
+    </item>
+    <item
+        jar="C:\Users\USUARIO\Documents\SEMINARIO\BasketAssistant2.1\Basketassistant\build\intermediates\exploded-aar\com.fortysevendeg.swipelistview\swipelistview\1.0-SNAPSHOT\classes.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="e4c70565b4247864e4577107e53f604de0ae56d3">
+        <dex dex="C:\Users\USUARIO\Documents\SEMINARIO\BasketAssistant2.1\Basketassistant\build\intermediates\pre-dexed\debug\classes-b6eb7f57ca322cb943e6bc9a23b9d8e145deaff2.jar" />
+    </item>
+    <item
+        jar="C:\Users\USUARIO\Documents\SEMINARIO\BasketAssistant2.1\Basketassistant\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\6.5.87\classes.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="a75b29dc51b364df032af8bcfcad7e54ccfda28d">
+        <dex dex="C:\Users\USUARIO\Documents\SEMINARIO\BasketAssistant2.1\Basketassistant\build\intermediates\pre-dexed\debug\classes-1e0414baa0d1a97144a45f000f8194fde959e5bf.jar" />
+    </item>
+    <item
+        jar="C:\Users\USUARIO\.gradle\caches\modules-2\files-2.1\com.octo.android.robospice\robospice-spring-android\1.4.9\1dd2aef1f33a210c87c41cf28c0c3c2891e7a813\robospice-spring-android-1.4.9.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="1dd2aef1f33a210c87c41cf28c0c3c2891e7a813">
+        <dex dex="C:\Users\USUARIO\Documents\SEMINARIO\BasketAssistant2.1\Basketassistant\build\intermediates\pre-dexed\debug\robospice-spring-android-1.4.9-233f0e9a751c2c704cece1798fb8f9ef196f241e.jar" />
+    </item>
+    <item
+        jar="C:\Users\USUARIO\.gradle\caches\modules-2\files-2.1\com.fasterxml.jackson.core\jackson-core\2.1.3\f6c3aed1cdfa21b5c1737c915186ea93a95a58bd\jackson-core-2.1.3.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="f6c3aed1cdfa21b5c1737c915186ea93a95a58bd">
+        <dex dex="C:\Users\USUARIO\Documents\SEMINARIO\BasketAssistant2.1\Basketassistant\build\intermediates\pre-dexed\debug\jackson-core-2.1.3-510bc48e4299c854967131fa5e963c15ad3feb5c.jar" />
+    </item>
+    <item
+        jar="C:\Users\USUARIO\Documents\SEMINARIO\BasketAssistant2.1\wearable\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="C:\Users\USUARIO\Documents\SEMINARIO\BasketAssistant2.1\wearable\build\intermediates\pre-dexed\debug\classes-c2f507b6b3bd0f050e47b06063693386ea5f3950.jar" />
+    </item>
+    <item
+        jar="C:\Users\USUARIO\Documents\SEMINARIO\BasketAssistant2.1\Basketassistant\build\intermediates\exploded-aar\com.google.android.gms\play-services-location\6.5.87\classes.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="4a568f733067f786d53e191ccf998e7ea3da68cc">
+        <dex dex="C:\Users\USUARIO\Documents\SEMINARIO\BasketAssistant2.1\Basketassistant\build\intermediates\pre-dexed\debug\classes-972c0193f136c3d336f0fa1fb57dc859a82140ae.jar" />
+    </item>
+    <item
+        jar="C:\Users\USUARIO\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.0\support-annotations-21.0.0.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="1a578b9607b36266c63d43a4fa0ab5664dbe911e">
+        <dex dex="C:\Users\USUARIO\Documents\SEMINARIO\BasketAssistant2.1\Basketassistant\build\intermediates\pre-dexed\debug\support-annotations-21.0.0-8cd58653dcde77c39a3c2509ec1ffb6d9e3bba1a.jar" />
+    </item>
+    <item
+        jar="C:\Users\USUARIO\Documents\SEMINARIO\BasketAssistant2.1\wearable\build\intermediates\exploded-aar\com.google.android.support\wearable\1.1.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="27f19641b81b1078e653d2f0e5d1ed44d158a785">
+        <dex dex="C:\Users\USUARIO\Documents\SEMINARIO\BasketAssistant2.1\wearable\build\intermediates\pre-dexed\debug\classes-d191e4950e95f0c21e0cb47f56885502c24f16e4.jar" />
+    </item>
+    <item
+        jar="C:\Users\USUARIO\.gradle\caches\modules-2\files-2.1\org.codehaus.jackson\jackson-core-asl\1.9.0\194599ab3dd29b63b763e7635c8d7a63c830f058\jackson-core-asl-1.9.0.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="194599ab3dd29b63b763e7635c8d7a63c830f058">
+        <dex dex="C:\Users\USUARIO\Documents\SEMINARIO\BasketAssistant2.1\Basketassistant\build\intermediates\pre-dexed\debug\jackson-core-asl-1.9.0-a05382cf9249b44077d6c67916f637cc32994de1.jar" />
+    </item>
+    <item
+        jar="C:\Users\USUARIO\.gradle\caches\modules-2\files-2.1\com.google.code.findbugs\jsr305\1.3.9\40719ea6961c0cb6afaeb6a921eaa1f6afd4cfdf\jsr305-1.3.9.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="40719ea6961c0cb6afaeb6a921eaa1f6afd4cfdf">
+        <dex dex="C:\Users\USUARIO\Documents\SEMINARIO\BasketAssistant2.1\Basketassistant\build\intermediates\pre-dexed\debug\jsr305-1.3.9-8614a83e69b6e2917925d6f518c0b19c998c303b.jar" />
+    </item>
+    <item
+        jar="C:\Users\USUARIO\.gradle\caches\modules-2\files-2.1\com.nineoldandroids\library\2.4.0\e9b63380f3a242dbdbf103a2355ad7e43bad17cb\library-2.4.0.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="C:\Users\USUARIO\Documents\SEMINARIO\BasketAssistant2.1\Basketassistant\build\intermediates\pre-dexed\debug\library-2.4.0-72ccca807ed5b664d41e0a7235b6b89b2698460c.jar" />
+    </item>
+    <item
+        jar="C:\Users\USUARIO\.gradle\caches\modules-2\files-2.1\org.apache.commons\commons-lang3\3.1\905075e6c80f206bbe6cf1e809d2caa69f420c76\commons-lang3-3.1.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="905075e6c80f206bbe6cf1e809d2caa69f420c76">
+        <dex dex="C:\Users\USUARIO\Documents\SEMINARIO\BasketAssistant2.1\Basketassistant\build\intermediates\pre-dexed\debug\commons-lang3-3.1-1a9c13140caae24582952ea9373af0878805aaf7.jar" />
+    </item>
+    <item
+        jar="C:\Users\USUARIO\.gradle\caches\modules-2\files-2.1\com.google.http-client\google-http-client\1.17.0-rc\637da6cca16f4a97c4771137bce02e7c291e67af\google-http-client-1.17.0-rc.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="637da6cca16f4a97c4771137bce02e7c291e67af">
+        <dex dex="C:\Users\USUARIO\Documents\SEMINARIO\BasketAssistant2.1\Basketassistant\build\intermediates\pre-dexed\debug\google-http-client-1.17.0-rc-ceae3248de1f3c056449577398d391dfff7857bc.jar" />
+    </item>
+    <item
+        jar="C:\Users\USUARIO\Documents\SEMINARIO\BasketAssistant2.1\Basketassistant\build\intermediates\exploded-aar\com.google.android.gms\play-services-wearable\6.5.87\classes.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="6384c6cd674a22610b932d9464aa6938d067f285">
+        <dex dex="C:\Users\USUARIO\Documents\SEMINARIO\BasketAssistant2.1\Basketassistant\build\intermediates\pre-dexed\debug\classes-6a7d05d61c0a9bba591e494a302ccfdf4ab80669.jar" />
+    </item>
+    <item
+        jar="C:\Users\USUARIO\Documents\SEMINARIO\BasketAssistant2.1\Basketassistant\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.0\libs\internal_impl-21.0.0.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="1609e6d42d0480b0f4188e2c29f75388fa12a8f0">
+        <dex dex="C:\Users\USUARIO\Documents\SEMINARIO\BasketAssistant2.1\Basketassistant\build\intermediates\pre-dexed\debug\internal_impl-21.0.0-35acbc7bbea3512faa6bbd714252586f78e2b77f.jar" />
+    </item>
+    <item
+        jar="C:\Users\USUARIO\.gradle\caches\modules-2\files-2.1\com.google.http-client\google-http-client-jackson2\1.17.0-rc\5b1c6d2715fed6bcc93638b6cbe15dd56ca96d21\google-http-client-jackson2-1.17.0-rc.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="5b1c6d2715fed6bcc93638b6cbe15dd56ca96d21">
+        <dex dex="C:\Users\USUARIO\Documents\SEMINARIO\BasketAssistant2.1\Basketassistant\build\intermediates\pre-dexed\debug\google-http-client-jackson2-1.17.0-rc-d68a9a340a654f26b580167d74857c112fefa092.jar" />
+    </item>
+    <item
+        jar="C:\Users\USUARIO\Documents\SEMINARIO\BasketAssistant2.1\Basketassistant\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.0\classes.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="686344a780033e4ba22b926cd225f8d4941247e6">
+        <dex dex="C:\Users\USUARIO\Documents\SEMINARIO\BasketAssistant2.1\Basketassistant\build\intermediates\pre-dexed\debug\classes-c0e5c677ee476aa6ca20ac6f3918de8d01bd0f50.jar" />
+    </item>
+    <item
+        jar="C:\Users\USUARIO\Documents\SEMINARIO\BasketAssistant2.1\wearable\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\6.5.87\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="95482e7c792a7c0d5a9d5461e97726bd54fe9549">
+        <dex dex="C:\Users\USUARIO\Documents\SEMINARIO\BasketAssistant2.1\wearable\build\intermediates\pre-dexed\debug\classes-7712c17b6a5690e17fc980c6b0f2bc76f1debbe2.jar" />
+    </item>
+    <item
+        jar="C:\Users\USUARIO\.gradle\caches\modules-2\files-2.1\com.octo.android.robospice\robospice\1.4.9\2691f0fe8507c70237b730bbf26ff6aca50bb2f5\robospice-1.4.9.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="2691f0fe8507c70237b730bbf26ff6aca50bb2f5">
+        <dex dex="C:\Users\USUARIO\Documents\SEMINARIO\BasketAssistant2.1\Basketassistant\build\intermediates\pre-dexed\debug\robospice-1.4.9-b368493c193004e2f3d72f5dee6943f3d4a95630.jar" />
+    </item>
+    <item
+        jar="C:\Users\USUARIO\.gradle\caches\modules-2\files-2.1\org.springframework.android\spring-android-core\1.0.1.RELEASE\e68f0e8e4b636ee30c4de58953be38d9b72a5e3b\spring-android-core-1.0.1.RELEASE.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="e68f0e8e4b636ee30c4de58953be38d9b72a5e3b">
+        <dex dex="C:\Users\USUARIO\Documents\SEMINARIO\BasketAssistant2.1\Basketassistant\build\intermediates\pre-dexed\debug\spring-android-core-1.0.1.RELEASE-9bc11ebb644fc116edfdf785a756f31795e64e52.jar" />
+    </item>
+    <item
+        jar="C:\Users\USUARIO\.gradle\caches\modules-2\files-2.1\com.octo.android.robospice\robospice-cache\1.4.9\93727a3ea1199751517f2279a78c1f79981eac1b\robospice-cache-1.4.9.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="93727a3ea1199751517f2279a78c1f79981eac1b">
+        <dex dex="C:\Users\USUARIO\Documents\SEMINARIO\BasketAssistant2.1\Basketassistant\build\intermediates\pre-dexed\debug\robospice-cache-1.4.9-393c09b41198956072ca221f3ca6c07b5099673c.jar" />
+    </item>
+    <item
+        jar="C:\Users\USUARIO\Documents\SEMINARIO\BasketAssistant2.1\wearable\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="C:\Users\USUARIO\Documents\SEMINARIO\BasketAssistant2.1\wearable\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-47172898792f480db3e22c11d796cf755c135aac.jar" />
+    </item>
 
-</pre-dex-items>
+</items>

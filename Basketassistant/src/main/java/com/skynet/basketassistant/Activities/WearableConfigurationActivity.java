@@ -58,11 +58,13 @@ public class WearableConfigurationActivity extends Activity implements GoogleApi
         setContentView(R.layout.activity_wearable_configuration);
 
         sharedPreferences = getSharedPreferences(SHARED_PREFERENCES_NAME,0);
+
         //Building a Google Api Client
         googleApiClient = new GoogleApiClient.Builder(this).addApi(Wearable.API)
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
                 .build();
+
         positionGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
