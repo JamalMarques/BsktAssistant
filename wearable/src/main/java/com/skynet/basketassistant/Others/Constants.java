@@ -1,4 +1,4 @@
-package com.example.yamilmarques.wearable.Others;
+package com.skynet.basketassistant.Others;
 
 /**
  * Created by yamil.marques on 3/3/15.

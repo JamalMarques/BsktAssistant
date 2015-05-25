@@ -1,11 +1,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.yamilmarques.wearable">
+    package="com.skynet.basketassistant">
 
     <uses-feature android:name="android.hardware.type.watch" />
 
     <!-- Required to act as a custom watch face. -->
     <uses-permission android:name="com.google.android.permission.PROVIDE_BACKGROUND" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
     <!-- Calendar permission used by CalendarWatchFaceService -->
     <uses-permission android:name="android.permission.READ_CALENDAR" />
@@ -14,7 +19,7 @@
         android:icon="@drawable/ic_launcher" android:theme="@android:style/Theme.DeviceDefault">
 
         <service
-            android:name=".DigitalWatchFaceService"
+            android:name="com.skynet.basketassistant.DigitalWatchFaceService"
             android:label="@string/basketball_watchface"
             android:permission="android.permission.BIND_WALLPAPER" >
             <meta-data
@@ -38,7 +43,7 @@
             </intent-filter>
         </service>
 
-        <service android:name="com.example.yamilmarques.wearable.ListenerDataService">
+        <service android:name=".ListenerDataService">
             <intent-filter>
                 <action android:name="com.google.android.gms.wearable.BIND_LISTENER" />
             </intent-filter>

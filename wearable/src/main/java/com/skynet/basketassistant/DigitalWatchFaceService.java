@@ -1,4 +1,4 @@
-package com.example.yamilmarques.wearable;
+package com.skynet.basketassistant;
 /**
  * Created by yamil.marques on 3/3/15.
  */
@@ -26,6 +26,7 @@ import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.WindowInsets;
 
+import com.skynet.basketassistant.R;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.wearable.DataApi;
@@ -46,8 +47,8 @@ import java.util.concurrent.TimeUnit;
 public class DigitalWatchFaceService extends CanvasWatchFaceService {
     private static final String TAG = "DigitalWatchFaceService";
 
-    public static Double temperature = Double.valueOf(18);
-    public static String city = "Mar del Plata";
+    public static Double temperature = Double.valueOf(0);
+    public static String city = "Unknow";
 
     public DecimalFormat decimalFormat = new DecimalFormat("#");
 

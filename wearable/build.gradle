@@ -4,9 +4,8 @@ apply plugin: 'android'
 android {
     compileSdkVersion 21
     buildToolsVersion "21.1.2"
-
     defaultConfig {
-        applicationId "com.example.yamilmarques.wearable"
+        applicationId 'com.skynet.basketassistant'
         minSdkVersion 20
         targetSdkVersion 21
         versionCode 1
@@ -17,6 +16,8 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    productFlavors {
     }
 }
 

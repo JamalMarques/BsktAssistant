@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.yamilmarques.wearable;
+package com.skynet.basketassistant;
 /**
  * Created by yamil.marques on 3/3/13.
  */
