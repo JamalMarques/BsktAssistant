@@ -99,7 +99,6 @@ public class Frag_expjugador extends Fragment implements View.OnClickListener {
         iv_fotoplayer.setOnClickListener(this);
         load_circle = (ProgressBar)view.findViewById(R.id.load_circle);
 
-        //new CargarFoto().execute();  //Cargo foto en el iv_fotoplayer
         String url = "file://"+Manejo_Imagenes.Url+jugador.getImagen_url();
         Picasso.with(getActivity()).load(url)
                 .error(R.drawable.no_player_image)
@@ -309,18 +308,19 @@ public class Frag_expjugador extends Fragment implements View.OnClickListener {
                 @Override
                 public void onClick(DialogInterface dialog, int which) { // el user clickea en opciones[cual]
 
-                    if( which == 0){ //Selecciona Ver Imagen
+                    if (which == 0) { //Selecciona Ver Imagen
                         intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
                         codigo = SELECT_PICTURE;
-                    }else{
-                        if( which == 1 ){  //Seleccionar de la Galeria
+                    } else {
+                        if (which == 1) {  //Seleccionar de la Galeria
                             intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                             codigo = TAKE_PICTURE;
-                            Uri output = Uri.fromFile(new File(Manejo_Imagenes.Url+jugador.getApellido()+String.valueOf(jugador.getId())+".jpg"));  //ej: Marques27.jpg
-                            intent.putExtra(MediaStore.EXTRA_OUTPUT,output);
+                            Uri output = Uri.fromFile(new File(Manejo_Imagenes.Url + jugador.getApellido() + String.valueOf(jugador.getId()) + ".jpg"));  //ej: Marques27.jpg
+                            intent.putExtra(MediaStore.EXTRA_OUTPUT, output);
                         }
-                        startActivityForResult(intent, codigo);
                     }
+                    startActivityForResult(intent, codigo);
+
                 }
             });
             builder.show();

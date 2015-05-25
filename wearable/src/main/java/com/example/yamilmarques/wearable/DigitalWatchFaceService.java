@@ -46,8 +46,8 @@ import java.util.concurrent.TimeUnit;
 public class DigitalWatchFaceService extends CanvasWatchFaceService {
     private static final String TAG = "DigitalWatchFaceService";
 
-    public static Double temperature;
-    public static String city;
+    public static Double temperature = Double.valueOf(18);
+    public static String city = "Mar del Plata";
 
     public DecimalFormat decimalFormat = new DecimalFormat("#");
 
@@ -167,8 +167,6 @@ public class DigitalWatchFaceService extends CanvasWatchFaceService {
                     .setShowSystemUiTime(false)
                     .build());
 
-            DigitalWatchFaceService.temperature = Double.valueOf(0);
-            DigitalWatchFaceService.city = "Unknown";
 
             NORMAL_TYPEFACE = Typeface.createFromAsset(getAssets(), "typography/Roboto-Thin.ttf");
             SECOND_TYPEFACE = Typeface.createFromAsset(getAssets(), "typography/Roboto-Bold.ttf");

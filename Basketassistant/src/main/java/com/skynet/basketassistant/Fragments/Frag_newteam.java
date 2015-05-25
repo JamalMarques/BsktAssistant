@@ -47,10 +47,6 @@ public class Frag_newteam extends Fragment implements View.OnClickListener{
         View view;
         view = inflater.inflate(R.layout.frag_newteam,container,false);
 
-       // bun_usr = getArguments();
-
-        // Toast.makeText(getActivity(), bun_usr.getString("User"), Toast.LENGTH_SHORT).show();  FUNCIONA, MUESTRA EL USUARIO ACTUAL
-
         tvnom = (TextView)view.findViewById(R.id.etnombre_team);
         spin_ciu = (Spinner)view.findViewById(R.id.spinner_ciu);
         spin_cat = (Spinner)view.findViewById(R.id.spinner_cate);
