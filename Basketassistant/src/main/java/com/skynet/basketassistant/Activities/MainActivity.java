@@ -62,7 +62,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         //------------ testeo
         DBUsuarios dbus = new DBUsuarios(this);
         dbus.Modoescritura();
-        dbus.insertar("yamil","1234","yama_marques@hotmail.com");
+        dbus.insertar("Yamil","1234","yama_marques@hotmail.com");
         dbus.Cerrar();
         ///-----------------------
         DBCiudades dbc = new DBCiudades(this);
@@ -88,17 +88,17 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         dbj.Modoescritura();
         dbj.insertar("James", "Lebron", 203, 97, 6, "Ala-Privot", 1, "empty");
         dbj.insertar("Gasol","Paul",192,85,10,"Ayuda-Base",1,"empty");
-        dbj.insertar("Wade","Dwayne",192,87,27,"Alero",1,"empty");
+        dbj.insertar("Wade","Dwyane",192,87,27,"Alero",1,"empty");
         dbj.insertar("Michael","Jordan",198,87,23,"Alero",1,"empty");
-        dbj.insertar("Briant","Kobe",198,83,24,"Alero",1,"empty");
-        dbj.insertar("Howard","Dwayne",212,102,14,"Pivot",1,"empty");
-        dbj.insertar("Rondo","Rajon",212,102,14,"Pivot",1,"empty");
-        dbj.insertar("Pierce","Paul",212,102,14,"Pivot",1,"empty");
-        dbj.insertar("O'neal","Shaquille",212,102,14,"Pivot",1,"empty");
-        dbj.insertar("Rose","Derrick",212,102,14,"Pivot",1,"empty");
-        dbj.insertar("Harden","James",212,102,14,"Pivot",1,"empty");
-        dbj.insertar("Duncan","Tim",212,102,14,"Pivot",1,"empty");
-        dbj.insertar("Leonard","Kawhi",212,102,14,"Pivot",1,"empty");
+        dbj.insertar("Bryant","Kobe",198,83,24,"Alero",1,"empty");
+        dbj.insertar("Howard","Dwight",212,102,14,"Pivot",1,"empty");
+        dbj.insertar("Rondo","Rajon",185,84,9,"Base",1,"empty");
+        dbj.insertar("Pierce","Paul",201,106,34,"Ala-Pivot",1,"empty");
+        dbj.insertar("Oneal","Shaquille",216,147,32,"Pivot",1,"empty");
+        dbj.insertar("Rose","Derrick",191,86,1,"Base",1,"empty");
+        dbj.insertar("Harden","James",196,102,13,"Alero",1,"empty");
+        dbj.insertar("Duncan","Tim",211,117,21,"Pivot",1,"empty");
+        dbj.insertar("Leonard","Kawhi",201,104,2,"Alero",1,"empty");
         //dbj.Cerrar();
 
         DBEquipos asd = new DBEquipos(this);
