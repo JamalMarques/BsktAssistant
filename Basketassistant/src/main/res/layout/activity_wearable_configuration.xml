@@ -90,12 +90,24 @@
 
         <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:gravity="bottom|right"
-            android:paddingLeft="15dp"
-            android:paddingTop="15dp"
             android:paddingBottom="15dp">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center|bottom">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvTemperature"
+                    android:textSize="100dp" />
+            </LinearLayout>
 
             <ImageButton
                 android:layout_width="50dp"
@@ -116,6 +128,7 @@
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:layout_marginLeft="10dp" />
+
         </LinearLayout>
     </LinearLayout>
 

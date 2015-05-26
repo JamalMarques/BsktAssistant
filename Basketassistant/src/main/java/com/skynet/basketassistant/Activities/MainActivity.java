@@ -86,12 +86,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 
         DBJugadores dbj = new DBJugadores(this);
         dbj.Modoescritura();
-        dbj.insertar("James","Lebron",2.03,97,6,"Ala-Privot",1,"empty");
-        dbj.insertar("Chalmers","Mario",1.92,85,10,"Ayuda-Base",1,"empty");
-        dbj.insertar("Marques","Yamil",1.92,87,27,"Alero",1,"empty");
-        dbj.insertar("Michael","Jordan",1.98,87,23,"Alero",1,"empty");
-        dbj.insertar("Briant","Kobe",1.98,83,24,"Alero",1,"empty");
-        dbj.insertar("Howard","Dwayne",2.12,102,14,"Pivot",1,"empty");
+        dbj.insertar("James","Lebron",203,97,6,"Ala-Privot",1,"empty");
+        dbj.insertar("Chalmers","Mario",192,85,10,"Ayuda-Base",1,"empty");
+        dbj.insertar("Marques","Yamil",192,87,27,"Alero",1,"empty");
+        dbj.insertar("Michael","Jordan",198,87,23,"Alero",1,"empty");
+        dbj.insertar("Briant","Kobe",198,83,24,"Alero",1,"empty");
+        dbj.insertar("Howard","Dwayne",212,102,14,"Pivot",1,"empty");
         //dbj.Cerrar();
 
         DBEquipos asd = new DBEquipos(this);

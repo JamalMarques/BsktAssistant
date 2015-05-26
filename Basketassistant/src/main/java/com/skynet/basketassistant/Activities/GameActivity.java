@@ -85,8 +85,6 @@ public class GameActivity extends BaseActivity implements View.OnClickListener,V
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-
         loadAtributtes();
         loadPlayers();
         showInformationDialog();

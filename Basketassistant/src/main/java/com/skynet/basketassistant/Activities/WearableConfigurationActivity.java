@@ -35,7 +35,7 @@ public class WearableConfigurationActivity extends Activity implements GoogleApi
     public static final String SHARED_PREFERENCES_NAME = "Preferences";
 
     private ImageButton buttonBack;
-    private TextView tvCity;
+    private TextView tvCity,tvTemperature;
     private Button buttonConfirm;
     private Spinner refreshSpinner;
     private Location lastLocation;
@@ -88,6 +88,7 @@ public class WearableConfigurationActivity extends Activity implements GoogleApi
         }
 
         tvCity = (TextView)findViewById(R.id.tvCity);
+        tvTemperature = (TextView)findViewById(R.id.tvTemperature);
     }
 
     @Override
@@ -141,7 +142,7 @@ public class WearableConfigurationActivity extends Activity implements GoogleApi
                 GenerateAlarm(refreshSpinner.getSelectedItemPosition());
                 OpenWeatherRequest weatherRequest = new OpenWeatherRequest(lastLat,lastLong,"metric");
                 lastRequestCacheKey = weatherRequest.createCacheKey();
-                spiceManager.execute(weatherRequest,lastRequestCacheKey,DurationInMillis.ONE_HOUR,new OpenWeatherListener(googleApiClient,tvCity));
+                spiceManager.execute(weatherRequest,lastRequestCacheKey,DurationInMillis.ONE_HOUR,new OpenWeatherListener(googleApiClient,tvCity,tvTemperature));
             }
         }
     }
