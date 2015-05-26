@@ -174,7 +174,9 @@ public class Frag_exp_jug_part extends Fragment implements View.OnClickListener{
             List<Lanzamiento> list_lanz = DBLanz().Lanzamientos_jugador_en_partido(jug_id,part_id);
             for (int i = 0 ; i < list_lanz.size() ; i++){
                 Lanzamiento lanz = list_lanz.get(i);
-                cont = cont + lanz.getValor();
+                if(lanz.getEfectivo() == 1) {
+                    cont = cont + lanz.getValor();
+                }
             }
             return cont;
         }
