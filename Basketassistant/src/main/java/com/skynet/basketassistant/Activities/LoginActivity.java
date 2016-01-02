@@ -1,6 +1,8 @@
 package com.skynet.basketassistant.Activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.Menu;
@@ -23,13 +25,13 @@ import com.skynet.basketassistant.Otros.Manejo_Imagenes;
 import com.skynet.basketassistant.R;
 
 
-public class MainActivity extends BaseActivity implements View.OnClickListener{
+public class LoginActivity extends BaseActivity implements View.OnClickListener{
 
 
     private TextView etnom;
-    private TextView etpass;
+    //private TextView etpass;
     private Button ibnext;
-    private Button ibadd;
+    //private Button ibadd;
     private ImageButton bWearable;
 
     @Override
@@ -37,19 +39,22 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        InicializarManejoImagenes();
-
         etnom = (TextView) findViewById(R.id.etnom);
-        etpass = (TextView) findViewById(R.id.etpass);
+        //etpass = (TextView) findViewById(R.id.etpass);
         ibnext = (Button) findViewById(R.id.ibnext);
-        ibadd = (Button) findViewById(R.id.ibadd);
+        //ibadd = (Button) findViewById(R.id.ibadd);
         bWearable = (ImageButton) findViewById(R.id.bWearable);
 
         ibnext.setOnClickListener(this);
-        ibadd.setOnClickListener(this);
+        //ibadd.setOnClickListener(this);
         bWearable.setOnClickListener(this);
 
-        UserContainer.DesasignarUser();   //DETACHING USER!
+        if(UserContainer.isUserRegistered(this)){
+            Intent intent = new Intent(LoginActivity.this, SelecTeamAct.class);
+            startActivity(intent);
+        }
+
+        //UserContainer.DesasignarUser(this);   //DETACHING USER!
 
         if (Constants.TESTING_MODE) {
             GenerateTestingMode();
@@ -62,8 +67,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         //------------ testeo
         DBUsuarios dbus = new DBUsuarios(this);
         dbus.Modoescritura();
-        dbus.insertar("Yamil","1234","yama_marques@hotmail.com");
+        dbus.insertar("Yamil", "1234", "yama_marques@hotmail.com");
         dbus.Cerrar();
+        UserContainer.UserFirstTimeRegister(this,"Yamil","yama_marques@hotmail.com");
         ///-----------------------
         DBCiudades dbc = new DBCiudades(this);
         dbc.Modoescritura();
@@ -118,8 +124,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
@@ -127,9 +131,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
             return true;
@@ -139,47 +140,28 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 
 
     @Override
-    public void onClick(View view) { //checkear despues como hacerlo en case
+    public void onClick(View view) {
 
         //PRESIONA NEXT
-        if(view.getId() == ibnext.getId()){
-
-            if(etnom.getText().toString().equals("") == false || etpass.getText().toString().equals("") == false){
-                DBUsuarios dbus = new DBUsuarios(this);
-                dbus.Modolectura();
-                Usuario usr = dbus.BuscarUsuario(etnom.getText().toString());
-                dbus.Cerrar();
-                if(usr != null) {
-                    if (usr.getPass().toString().equals(etpass.getText().toString())) {
-                        //redirigir a la nueva activity
-                        Intent intent = new Intent(MainActivity.this, SelecTeamAct.class);
-                        UserContainer.AsignarUser(usr);
-                        startActivity(intent);
-
-                    } else {
-                        Toast.makeText(getApplicationContext(),"Password erroneo...", Toast.LENGTH_SHORT).show();
-                    }
-                }
-                else
-                    Toast.makeText(getApplicationContext(),"El usuario no existe",Toast.LENGTH_SHORT).show();
+        if(view == ibnext){
+            if(etnom.getText().toString().equals("") == false && etnom.getText().toString().length() > 3 ){
+                UserContainer.UserFirstTimeRegister(this,etnom.getText().toString(),"");
+                Intent intent = new Intent(LoginActivity.this, SelecTeamAct.class);
+                startActivity(intent);
             }
             else
-            {Toast.makeText(getApplicationContext(),"Complete los campos requeridos",Toast.LENGTH_SHORT).show();}
+            {Toast.makeText(getApplicationContext(),"El nombre de usuario debe ser mayor a 3 caracteres",Toast.LENGTH_SHORT).show();}
         }
         else{
-            if(view.getId() == ibadd.getId()){
-               Intent intent = new Intent(MainActivity.this, NewUserAct.class);
+            /*if(view == ibadd){
+               Intent intent = new Intent(LoginActivity.this, NewUserAct.class);
                startActivity(intent);
-            }else{
+            }else{*/
                 if(view == bWearable){
-                    Intent intent = new Intent(MainActivity.this, WearableConfigurationActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, WearableConfigurationActivity.class);
                     startActivity(intent);
                 }
-            }
+            //}
         }
-    }
-
-    public void InicializarManejoImagenes(){
-        Manejo_Imagenes.ImageNoPlayer = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher); //Cargo la imagen del noplayer
     }
 }

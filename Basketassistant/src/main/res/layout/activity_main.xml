@@ -18,7 +18,8 @@
         android:paddingLeft="40dp"
         android:paddingRight="40dp"
         android:paddingTop="5dp"
-        android:paddingBottom="5dp">
+        android:paddingBottom="5dp"
+        android:elevation="30dp">
 
         <ImageView
             android:layout_width="50dp"
@@ -43,10 +44,10 @@
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="left|center">
+        android:gravity="center">
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:orientation="vertical"
@@ -58,7 +59,8 @@
             android:paddingLeft="25dp"
             android:paddingTop="10dp"
             android:paddingRight="25dp"
-            android:paddingBottom="10dp">
+            android:paddingBottom="10dp"
+            android:elevation="30dp">
 
             <EditText
                 android:layout_width="wrap_content"
@@ -69,9 +71,9 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:gravity="center"
-                android:hint="@string/Nombre" />
+                android:hint="@string/NombreUsuario" />
 
-            <EditText
+            <!--<EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
@@ -82,15 +84,14 @@
                 android:layout_alignStart="@+id/etnom"
                 android:gravity="center"
                 android:hint="@string/Password"
-                android:layout_marginTop="10dp" />
+                android:layout_marginTop="10dp" />-->
 
         </LinearLayout>
 
         <LinearLayout
             android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
             <Button
                 android:layout_width="match_parent"
@@ -99,14 +100,16 @@
                 android:layout_below="@+id/etpass"
                 android:layout_alignRight="@+id/etpass"
                 android:layout_alignEnd="@+id/etpass"
-                android:contentDescription="hola"
                 android:layout_weight="1"
-                style="@style/ButtonQuarterTop"
+                style="@style/ButtonWearable"
                 android:text="@string/LogIn"
-                android:layout_marginBottom="5dp"
-                android:textColor="@color/Verde_oscuro_1" />
+                android:textColor="@color/Verde_oscuro_1"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginTop="20dp"
+                android:elevation="20dp" />
 
-            <Button
+            <!--<Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/ibadd"
@@ -116,7 +119,7 @@
                 android:layout_weight="1"
                 style="@style/ButtonQuarterBottom"
                 android:text="@string/SingIn"
-                android:textColor="@color/lightblue_1" />
+                android:textColor="@color/lightblue_1" />-->
 
         </LinearLayout>
     </LinearLayout>
@@ -134,7 +137,9 @@
             android:id="@+id/bWearable"
             style="@style/ButtonWearable"
             android:src="@drawable/smartwatch_ico_1"
-            android:scaleType="centerCrop" />
+            android:scaleType="centerCrop"
+            android:elevation="30dp" />
+
     </LinearLayout>
 
 </LinearLayout>

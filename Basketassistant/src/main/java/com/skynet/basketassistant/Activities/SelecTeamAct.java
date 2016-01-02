@@ -87,7 +87,7 @@ public class SelecTeamAct extends BaseActivity implements View.OnClickListener,F
 
     public void CambiarFrameLayoutLista(Fragment frag){
         android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.framelayout_lista,frag);
+        ft.replace(R.id.framelayout_lista, frag);
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
         ft.commit();
     }
@@ -103,7 +103,10 @@ public class SelecTeamAct extends BaseActivity implements View.OnClickListener,F
     @Override
     public void onCompleteYesNoDialog(int response, int whocall) {
         if(whocall == Constants.YES_NO_LOG_OUT && response == Constants.YES){
-            onBackPressed();
+            UserContainer.DesloguearUser(this);
+            Intent intent = new Intent(this,LoginActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); //problem here TODO
+            startActivity(intent);
         }else{
             if(whocall == Constants.YES_NO_DELETE_TEAM && response == Constants.YES ){
                 deleteTeam(Frag_listaequip.idToDelete);
@@ -112,5 +115,6 @@ public class SelecTeamAct extends BaseActivity implements View.OnClickListener,F
         }
     }
     //*-----------------------------------------------------------------------------------
+
 }
 

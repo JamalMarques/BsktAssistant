@@ -52,13 +52,13 @@ public class NewUserAct extends BaseActivity implements View.OnClickListener{
                     || !(etcorreo.getText().toString().equals(""))){
                 if(etpass1.getText().toString().equals(etpass2.getText().toString())){
                     //agregar usuario a base de datos!
-                    DBUsuarios bdus = new DBUsuarios(this);
+                    UserContainer.UserFirstTimeRegister(this,etnom.getText().toString(),etcorreo.getText().toString());
+                    /*DBUsuarios bdus = new DBUsuarios(this);
                     bdus.Modoescritura();
                     bdus.insertar(etnom.getText().toString(), etpass1.getText().toString(), etcorreo.getText().toString());
                     bdus.Modolectura();
-                    UserContainer.AsignarUser(bdus.BuscarUsuario(etnom.getText().toString()));  //Attach user to the static parameter!!
+                    UserContainer.AsignarUser(bdus.BuscarUsuario(etnom.getText().toString()));*/  //Attach user to the static parameter!!
                     Intent intent = new Intent(NewUserAct.this, SelecTeamAct.class);
-
                     startActivity(intent);
                 }else{
                     Toast.makeText(getApplicationContext(), R.string.NoEqualsPassword, Toast.LENGTH_SHORT).show();
@@ -70,7 +70,7 @@ public class NewUserAct extends BaseActivity implements View.OnClickListener{
         else
         {
             /*if(view.getId() == ibback.getId()){
-                Intent intent = new Intent(NewUserAct.this, MainActivity.class);
+                Intent intent = new Intent(NewUserAct.this, LoginActivity.class);
                 startActivity(intent);
             }*/
             onBackPressed();

@@ -53,14 +53,14 @@ public class DBUsuarios{
         ContentValues cont = new ContentValues();
         cont.put(CN_NOMBRE,nombre);
         cont.put(CN_PASS,pass);
-        cont.put(CN_CORREO,correo);
+        cont.put(CN_CORREO, correo);
         return cont;
     }
 
     //Inserto nuevo equipo mediante el metodo de SQLiteDatabase
-    public void insertar(String nombre,String pass,String correo){
-
-        db.insert(TABLE_NAME,null, Contenedorvalores(nombre,pass,correo));
+    public Usuario insertar(String nombre,String pass,String correo){
+        db.insert(TABLE_NAME, null, Contenedorvalores(nombre, pass, correo));
+        return BuscarUsuario(nombre);
     }
 
     //Eliminar comun, debido a que no tiene ninguna FK

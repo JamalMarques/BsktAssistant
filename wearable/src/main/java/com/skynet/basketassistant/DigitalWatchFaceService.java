@@ -47,8 +47,8 @@ import java.util.concurrent.TimeUnit;
 public class DigitalWatchFaceService extends CanvasWatchFaceService {
     private static final String TAG = "DigitalWatchFaceService";
 
-    public static Double temperature = Double.valueOf(0);
-    public static String city = "Unknow";
+    public static Double temperature = Double.valueOf(15);
+    public static String city = "Mar del Plata";
 
     public DecimalFormat decimalFormat = new DecimalFormat("#");
 

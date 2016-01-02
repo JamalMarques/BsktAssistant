@@ -7,6 +7,9 @@ public class Constants {
 
     public static boolean TESTING_MODE = false;
 
+    public static String SHARED_PREFERENCES = "SHARED_PREFERENCES";
+    public static String SP_USER = "SP_USER";
+
     public static final String DATE_FORMAT = "yyyy-MM-dd";
 
     public static final String TEAM_NAME = "TEAM_NAME";

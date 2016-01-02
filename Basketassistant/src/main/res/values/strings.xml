@@ -173,5 +173,6 @@
     <string name="logout_message">Seguro quiere desloguearse?</string>
     <string name="Borrar">Eliminar</string>
     <string name="delete_team_message">Desea eliminar el equipo?</string>
+    <string name="NombreUsuario">Nombre de Usuario</string>
 
 </resources>
