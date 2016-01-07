@@ -29,9 +29,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
 
 
     private TextView etnom;
-    //private TextView etpass;
     private Button ibnext;
-    //private Button ibadd;
     private ImageButton bWearable;
 
     @Override
@@ -147,6 +145,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
             if(etnom.getText().toString().equals("") == false && etnom.getText().toString().length() > 3 ){
                 UserContainer.UserFirstTimeRegister(this,etnom.getText().toString(),"");
                 Intent intent = new Intent(LoginActivity.this, SelecTeamAct.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
             }
             else

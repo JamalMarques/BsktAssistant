@@ -39,6 +39,7 @@ public class Frag_listaequip extends Fragment implements AdapterView.OnItemClick
     //private ListView listview;
     private SwipeListView listview;
     private ItemAdapterEquip adapterlist;
+    private int lastItemSelected = 0;
 
     private Callbacks mcallbacks = callbacksvacios;  //Al inicializarlo no tengo enlace con nadie
 
@@ -108,9 +109,12 @@ public class Frag_listaequip extends Fragment implements AdapterView.OnItemClick
 
             @Override
             public void onClickFrontView(int position) {
-                String nomequip = adapterlist.getItem(position);//String.valueOf(((TextView)view.findViewById(R.id.tvnom)).getText().toString());  //Tomo el nombre del equipo desde el layout!!
-                Equipo equip = dbequip.DameEquipo(nomequip);
-                mcallbacks.onSelecciondeItemEquipo(equip);  //ejecuta el codigo del ´SelectTeamAct´
+                if(position != lastItemSelected) {
+                    String nomequip = adapterlist.getItem(position);//String.valueOf(((TextView)view.findViewById(R.id.tvnom)).getText().toString());  //Tomo el nombre del equipo desde el layout!!
+                    Equipo equip = dbequip.DameEquipo(nomequip);
+                    lastItemSelected = position;
+                    mcallbacks.onSelecciondeItemEquipo(equip);  //ejecuta el codigo del ´SelectTeamAct´
+                }
             }
 
             @Override

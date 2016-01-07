@@ -40,7 +40,7 @@ public class Frag_jugadores extends Fragment implements AdapterView.OnItemClickL
 
     private ImageButton addPlayerButton;
 
-    ItemAdapterJugadores adapterjug;
+    private ItemAdapterJugadores adapterjug;
 
     private Callback m_callback = callbackvacio;
 
@@ -181,6 +181,12 @@ public class Frag_jugadores extends Fragment implements AdapterView.OnItemClickL
         adapterjug = new ItemAdapterJugadores(getActivity().getApplicationContext(),lista_jugadores,true);
         gv_jugadores.setAdapter(adapterjug);
         dbj.Cerrar();
+        showHideAddPlayer(adapterjug.getCount() == 0);
+    }
+
+    private void showHideAddPlayer(boolean show){
+        int visibility = (show)? View.VISIBLE : View.GONE;
+        addPlayerLayout.setVisibility(visibility);
     }
 
     @Override

@@ -77,7 +77,6 @@ public class JugadoresAct extends BaseActivity implements View.OnClickListener,F
 
     @Override
     public void onSeleccionItemJugador(int id_jug) {
-
         Frag_expjugador frag = Frag_expjugador.getInstance(id_jug);
         CambiarFragment2(frag);
     }

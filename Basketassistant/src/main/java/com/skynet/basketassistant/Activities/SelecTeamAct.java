@@ -10,7 +10,6 @@ import com.skynet.basketassistant.Modelo.UserContainer;
 import com.skynet.basketassistant.Otros.Constants;
 import com.skynet.basketassistant.R;
 
-import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,8 +21,9 @@ import android.widget.TextView;
 
 public class SelecTeamAct extends BaseActivity implements View.OnClickListener,Frag_listaequip.Callbacks,FragDialog_YesNo.OnCompleteYesNoDialogListener {
 
-    private ImageButton ibagregarteam,iblogout;
-    private Frag_listaequip frag_listaequipos;
+    private ImageButton IBAddTeam, IBLogout;
+    private Frag_listaequip teamListFragment;
+    private Frag_expequip actualDetailFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,20 +33,20 @@ public class SelecTeamAct extends BaseActivity implements View.OnClickListener,F
         TextView nomusr = (TextView)findViewById(R.id.tvuser);
         nomusr.setText(UserContainer.DameUser().getNombre());
 
-        ibagregarteam = (ImageButton)findViewById(R.id.ibagregarteam);
-        iblogout = (ImageButton)findViewById(R.id.iblogout);
+        IBAddTeam = (ImageButton)findViewById(R.id.ibagregarteam);
+        IBLogout = (ImageButton)findViewById(R.id.iblogout);
 
-        ibagregarteam.setOnClickListener(this);
-        iblogout.setOnClickListener(this);
+        IBAddTeam.setOnClickListener(this);
+        IBLogout.setOnClickListener(this);
 
-        frag_listaequipos = Frag_listaequip.getInstance();
-        CambiarFrameLayoutLista(frag_listaequipos);
+        teamListFragment = Frag_listaequip.getInstance();
+        CambiarFrameLayoutLista(teamListFragment);
     }
 
     @Override
     public void onClick(View view) {
 
-        if(view.getId() == ibagregarteam.getId()){  //Add new team!
+        if(view.getId() == IBAddTeam.getId()){  //Add new team!
 
             Frag_newteam frag = new Frag_newteam();
             android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
@@ -55,7 +55,7 @@ public class SelecTeamAct extends BaseActivity implements View.OnClickListener,F
             ft.commit();
 
         }else
-            if(view.getId() == iblogout.getId() ){  //Redirect to the Login Activity!
+            if(view.getId() == IBLogout.getId() ){  //Redirect to the Login Activity!
                 FragDialog_YesNo frag = FragDialog_YesNo.getInstance(getString(R.string.logout_message), Constants.YES_NO_LOG_OUT);
                 frag.show(getSupportFragmentManager(),"YES_NO_MESSAGE");
                 //onBackPressed();
@@ -65,17 +65,17 @@ public class SelecTeamAct extends BaseActivity implements View.OnClickListener,F
 
     @Override
     public void onSelecciondeItemEquipo(Equipo equip) {  //Aca va a venir luego del onItemClick() del Fragment1
-        Frag_expequip frag = Frag_expequip.getInstance(equip.getId());
-        CambiarFrameLayout(frag);
+        actualDetailFragment = Frag_expequip.getInstance(equip.getId());
+        CambiarFrameLayout(actualDetailFragment);
     }
 
     public void refreshTeams(){  //se llama desde el fragment frag_newteam al hacer la insercion
                                         //aca se refrescara el framelayout con el equipo recien creado (como si lo ubiera seleccionado)
-        frag_listaequipos.Refrescar();
+        teamListFragment.Refrescar();
     }
 
     public void RefrescarListaEquiposAdd(Equipo equip){
-        frag_listaequipos.Refrescar(equip);
+        teamListFragment.Refrescar(equip);
     }
 
     public void CambiarFrameLayout(Fragment frag){
@@ -92,12 +92,20 @@ public class SelecTeamAct extends BaseActivity implements View.OnClickListener,F
         ft.commit();
     }
 
+    public void ClearDetailFragment(Fragment fragment){
+        android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.remove(fragment);
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
+        ft.commit();
+    }
+
     //*---------------------------- DELETE TEAMS BEHAVIUOR --------------------------------
     private void deleteTeam(int teamId){
         DBEquipos dbe = new DBEquipos(this);
-        dbe.eliminar(teamId,DBEquipos.CN_ID);
+        dbe.eliminar(teamId, DBEquipos.CN_ID);
         dbe.Cerrar();
         refreshTeams();
+        ClearDetailFragment(actualDetailFragment);
     }
 
     @Override
@@ -105,7 +113,7 @@ public class SelecTeamAct extends BaseActivity implements View.OnClickListener,F
         if(whocall == Constants.YES_NO_LOG_OUT && response == Constants.YES){
             UserContainer.DesloguearUser(this);
             Intent intent = new Intent(this,LoginActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); //problem here TODO
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
         }else{
             if(whocall == Constants.YES_NO_DELETE_TEAM && response == Constants.YES ){

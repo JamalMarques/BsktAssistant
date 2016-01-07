@@ -49,6 +49,7 @@
             android:name=".Activities.SelecTeamAct"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_selec_team"
+            android:launchMode="singleTop"
             android:screenOrientation="landscape"
             android:windowSoftInputMode="adjustResize" >
         </activity>
