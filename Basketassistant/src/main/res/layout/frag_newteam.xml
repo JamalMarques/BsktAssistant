@@ -94,9 +94,10 @@
 
             <LinearLayout
                 android:orientation="horizontal"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center">
+                android:gravity="center"
+                android:layout_weight="1">
 
                 <ImageButton
                     android:layout_width="wrap_content"
@@ -111,7 +112,7 @@
                     android:layout_marginRight="5dp" />
 
                 <Spinner
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/spinner_ciu"
                     android:layout_alignBottom="@+id/tvciudad_team"
@@ -127,12 +128,13 @@
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center">
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center|bottom">
 
                 <Spinner
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:id="@+id/spinner_cate"
                     android:gravity="center"
                     android:paddingLeft="5dp"

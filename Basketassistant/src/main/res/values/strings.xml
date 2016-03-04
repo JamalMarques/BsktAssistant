@@ -54,7 +54,7 @@
     <string name="Robos">Robos</string>
     <string name="Tapas">Tapas</string>
     <string name="Asistencias">Asist.</string>
-    <string name="Rebounds">Rebotes</string>
+    <string name="Rebounds">Reb</string>
     <string name="Rebound">Rebote</string>
     <string name="Def">Def</string>
     <string name="Ofen">Ofen</string>
@@ -173,5 +173,6 @@
     <string name="logout_message">Seguro quiere desloguearse?</string>
     <string name="Borrar">Eliminar</string>
     <string name="delete_team_message">Desea eliminar el equipo?</string>
+    <string name="NombreUsuario">Nombre de Usuario</string>
 
 </resources>

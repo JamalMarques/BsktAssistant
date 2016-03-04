@@ -5,7 +5,10 @@ package com.skynet.basketassistant.Otros;
  */
 public class Constants {
 
-    public static boolean TESTING_MODE = false;
+    public static boolean TESTING_MODE = true;
+
+    public static String SHARED_PREFERENCES = "SHARED_PREFERENCES";
+    public static String SP_USER = "SP_USER";
 
     public static final String DATE_FORMAT = "yyyy-MM-dd";
 
