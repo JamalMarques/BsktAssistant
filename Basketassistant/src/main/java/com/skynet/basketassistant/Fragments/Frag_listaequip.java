@@ -198,6 +198,9 @@ public class Frag_listaequip extends Fragment implements AdapterView.OnItemClick
         }
     }
 
-
-
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        selectTheFirstTeamInList();
+    }
 }

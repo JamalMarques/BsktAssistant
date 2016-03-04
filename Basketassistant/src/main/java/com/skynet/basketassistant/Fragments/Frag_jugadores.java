@@ -1,6 +1,7 @@
 package com.skynet.basketassistant.Fragments;
 
 import android.app.Activity;
+import android.content.Context;
 import android.media.Image;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -125,14 +126,14 @@ public class Frag_jugadores extends Fragment implements AdapterView.OnItemClickL
     }
 
     @Override
-    public void onAttach(Activity activity) {  //enlazo el metodo de "m_callback" entre la activity contenedora y el fragment.
-        super.onAttach(activity);
+    public void onAttach(Context context) {  //enlazo el metodo de "m_callback" entre la activity contenedora y el fragment.
+        super.onAttach(context);
 
-        if (!(activity instanceof Callback)){    //Pregunto si esta actividad implementa la interfaz "Callback" aqui creada.
+        if (!(context instanceof Callback)){    //Pregunto si esta actividad implementa la interfaz "Callback" aqui creada.
             throw new IllegalStateException("Error: La actividad debe implementar el callback del fragmento!!");
         }
 
-        m_callback = (Callback)activity;
+        m_callback = (Callback)context;
     }
 
     @Override
@@ -142,37 +143,6 @@ public class Frag_jugadores extends Fragment implements AdapterView.OnItemClickL
 
         m_callback.onSeleccionItemJugador(id_jug);
     }
-
-    /*private class SetearAdaptador extends AsyncTask<Void,Void,Void>{
-
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
-        protected Void doInBackground(Void... voids) {
-           adapterjug = new ItemAdapterJugadores(getActivity().getApplicationContext(),lista_jugadores,true);
-           return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            prog_bar.setVisibility(View.GONE);
-            gv_jugadores.setAdapter(adapterjug);
-            if(adapterjug.getCount() == 0) {
-                gv_jugadores.setVisibility(View.GONE);
-                addPlayerLayout.setVisibility(View.VISIBLE);
-            }
-            else {
-                addPlayerLayout.setVisibility(View.GONE);
-                gv_jugadores.setVisibility(View.VISIBLE);
-            }
-
-            adapterjug.notifyDataSetChanged();
-        }
-    }*/
 
     public void refreshList(){
         DBJugadores dbj = new DBJugadores(getActivity());
