@@ -20,6 +20,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.skynet.basketassistant.Activities.JugadoresAct;
 import com.skynet.basketassistant.Datos.DBAsistencias;
 import com.skynet.basketassistant.Datos.DBFaltas;
 import com.skynet.basketassistant.Datos.DBJugadores;
@@ -67,15 +68,17 @@ public class Frag_expjugador extends Fragment implements View.OnClickListener {
 
     private DBLanzamientos dbl;
     private DBRebotes dbr;
+    private JugadoresAct.OnExpPlayerChangesInterface expChangesInterface;
 
     public Frag_expjugador(){/*Empty constructor*/}
 
-    public static Frag_expjugador getInstance(int id_jug){
-        Frag_expjugador fexpj = new Frag_expjugador();
+    public static Frag_expjugador getInstance(int id_jug, JugadoresAct.OnExpPlayerChangesInterface expChangesInterface){
+        Frag_expjugador frag = new Frag_expjugador();
         Bundle bun = new Bundle();
         bun.putInt(Constants.PLAYER_ID,id_jug);
-        fexpj.setArguments(bun);
-        return fexpj;
+        frag.setArguments(bun);
+        frag.expChangesInterface = expChangesInterface;
+        return frag;
     }
 
     @Override
@@ -379,6 +382,8 @@ public class Frag_expjugador extends Fragment implements View.OnClickListener {
                     Log.e("Error ",e.getMessage().toString());
                 }
             }
+        
+        expChangesInterface.onPhotoChange();
     }
 
 }

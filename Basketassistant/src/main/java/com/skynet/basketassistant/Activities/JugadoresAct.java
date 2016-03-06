@@ -18,22 +18,24 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-/**
- * An example full-screen activity that shows and hides the system UI (i.e.
- * status bar and navigation/system bar) with user interaction.
- *
- * @see SystemUiHider
- */
 public class JugadoresAct extends BaseActivity implements View.OnClickListener,Frag_jugadores.Callback,FragDialog_YesNo.OnCompleteYesNoDialogListener,
                                                             Frag_new_player.onAddPlayerListener{
 
     private Bundle bun_equip;
     private Equipo equipo;
-
     private ImageButton b_back,b_add;
     private Frag_jugadores fragPlayers = null;
 
+    private OnExpPlayerChangesInterface expChangesInterface = new OnExpPlayerChangesInterface() {
+        @Override
+        public void onPhotoChange() {
+            refreshPlayerList();
+        }
+    };
 
+    public interface OnExpPlayerChangesInterface{
+        public void onPhotoChange();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
