@@ -7,11 +7,36 @@
     android:layout_height="match_parent"
     style="@style/BaseBackground">
 
-    <!--<ListView
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/lvequip"
-        style="@style/BaseBackground" />-->
+        android:gravity="center"
+        android:visibility="visible"
+        android:id="@+id/add_team_layout">
+
+        <ImageButton
+            android:layout_width="@dimen/height_width_add_player_button"
+            android:layout_height="@dimen/height_width_add_player_button"
+            android:id="@+id/addButton"
+            style="@style/ButtonGreenStyle1"
+            android:layout_marginBottom="5dp"
+            android:src="@drawable/plus_n2"
+            android:scaleType="centerCrop"
+            android:padding="@dimen/paddingAddButton" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/AddTeam"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:maxLines="2"
+            android:textColor="@color/Gris_Negro" />
+
+    </LinearLayout>
 
     <com.fortysevendeg.swipelistview.SwipeListView
         android:layout_width="match_parent"

@@ -47,13 +47,7 @@ public class SelecTeamAct extends BaseActivity implements View.OnClickListener,F
     public void onClick(View view) {
 
         if(view.getId() == IBAddTeam.getId()){  //Add new team!
-
-            Frag_newteam frag = new Frag_newteam();
-            android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.framelayout_contdetalle,frag);
-            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-            ft.commit();
-
+            addTeamFragmentBehavior();
         }else
             if(view.getId() == IBLogout.getId() ){  //Redirect to the Login Activity!
                 FragDialog_YesNo frag = FragDialog_YesNo.getInstance(getString(R.string.logout_message), Constants.YES_NO_LOG_OUT);
@@ -63,10 +57,26 @@ public class SelecTeamAct extends BaseActivity implements View.OnClickListener,F
 
     }
 
+    private void addTeamFragmentBehavior(){
+        Frag_newteam addFragment = (Frag_newteam) getSupportFragmentManager().findFragmentByTag(getString(R.string.new_team_fragment_TAG));
+        if( addFragment == null || !addFragment.isVisible() ) {
+            Frag_newteam frag = new Frag_newteam();
+            android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.framelayout_contdetalle, frag, getString(R.string.new_team_fragment_TAG));
+            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+            ft.commit();
+        }
+    }
+
     @Override
     public void onSelecciondeItemEquipo(Equipo equip) {  //Aca va a venir luego del onItemClick() del Fragment1
         actualDetailFragment = Frag_expequip.getInstance(equip.getId());
         CambiarFrameLayout(actualDetailFragment);
+    }
+
+    @Override
+    public void onSelectionNewTeam() {
+        addTeamFragmentBehavior();
     }
 
     public void refreshTeams(){  //se llama desde el fragment frag_newteam al hacer la insercion

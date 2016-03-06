@@ -70,16 +70,9 @@ public class JugadoresAct extends BaseActivity implements View.OnClickListener,F
             }
     }
 
-    /*public void CleanFragment(Fragment frag){
-        android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.detach(frag);
-        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-        ft.commit();
-    }*/
-
     @Override
     public void onSeleccionItemJugador(int id_jug) {
-        Frag_expjugador frag = Frag_expjugador.getInstance(id_jug);
+        Frag_expjugador frag = Frag_expjugador.getInstance(id_jug, expChangesInterface);
         CambiarFragment2(frag);
     }
 

@@ -9,6 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -36,7 +39,7 @@ public class Frag_listaequip extends Fragment implements AdapterView.OnItemClick
     private int userID;
     private DBEquipos dbequip;
     private DBUsuarios dbuser;
-    //private ListView listview;
+    private LinearLayout addTeamLayout;
     private SwipeListView listview;
     private ItemAdapterEquip adapterlist;
     private int lastItemSelected = 0;
@@ -45,11 +48,16 @@ public class Frag_listaequip extends Fragment implements AdapterView.OnItemClick
 
     public interface Callbacks{   //Creo la interfaz que me va a servir para enlazarlo cn el metodo "onSelecciondeItemEquipo" de otro objeto
         public void onSelecciondeItemEquipo(Equipo equip);
+        public void onSelectionNewTeam();
     }
 
     public static Callbacks callbacksvacios = new Callbacks() {  //Creo el objeto de tipo "Callbacks" que va a estar vacio, se va a usar para
         @Override                                                // desenlazar del objeto al que estaba enlazado.
         public void onSelecciondeItemEquipo(Equipo equip) {
+
+        }
+        @Override
+        public void onSelectionNewTeam() {
 
         }
     };
@@ -66,6 +74,8 @@ public class Frag_listaequip extends Fragment implements AdapterView.OnItemClick
         View view;
         view = inflater.inflate(R.layout.frag_listaequip,container, false);
 
+        setAddTeamLayout(view);
+
         listview = (SwipeListView)view.findViewById(R.id.lvequip);
         listViewBehaviour(listview);
 
@@ -75,10 +85,23 @@ public class Frag_listaequip extends Fragment implements AdapterView.OnItemClick
 
         List<String> listaequipos = generateTeamsName(UserContainer.DameUser().getId());
 
+        addTeamLayout.setVisibility((listaequipos.size() == 0 )? View.VISIBLE : View.GONE );
+
         adapterlist = new ItemAdapterEquip(getActivity(),listaequipos);
         listview.setAdapter(adapterlist);
 
         return view;
+    }
+
+    private void setAddTeamLayout(View rootView){
+        addTeamLayout = (LinearLayout)rootView.findViewById(R.id.add_team_layout);
+        ImageButton btnAdd = (ImageButton)addTeamLayout.findViewById(R.id.addButton);
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mcallbacks.onSelectionNewTeam();
+            }
+        });
     }
 
     private void listViewBehaviour(final SwipeListView listview){

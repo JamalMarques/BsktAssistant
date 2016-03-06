@@ -174,5 +174,7 @@
     <string name="Borrar">Eliminar</string>
     <string name="delete_team_message">Desea eliminar el equipo?</string>
     <string name="NombreUsuario">Nombre de Usuario</string>
+    <string name="AddTeam">Nuevo equipo</string>
+    <string name="new_team_fragment_TAG">NewTeamFragmentTAG</string>
 
 </resources>
